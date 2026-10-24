@@ -9,3 +9,6 @@ coverage/
 dist/.DS_Store
 .openai/local*
 .vercel/
+
+__pycache__/
+*.pyc

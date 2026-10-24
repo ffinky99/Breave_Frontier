@@ -1,0 +1,890 @@
+[
+  {
+    "id": "10011",
+    "name": "검호 발가스",
+    "cggFrames": 27,
+    "actions": {
+      "idle": {
+        "rows": 5,
+        "ticks60fps": 46
+      },
+      "move": {
+        "rows": 1,
+        "ticks60fps": 1
+      },
+      "atk": {
+        "rows": 14,
+        "ticks60fps": 117
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      26,
+      44,
+      62
+    ],
+    "hitDistribution": [
+      50,
+      30,
+      20
+    ],
+    "bbHitFrames": [
+      26,
+      47,
+      68,
+      89,
+      110
+    ],
+    "bbHitDistribution": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/10011.json"
+  },
+  {
+    "id": "10030",
+    "name": "모엘스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/10030.json"
+  },
+  {
+    "id": "10050",
+    "name": "고블린",
+    "cggFrames": 15,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "atk": {
+        "rows": 8,
+        "ticks60fps": 61
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      46
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      46,
+      48,
+      51,
+      54
+    ],
+    "bbHitDistribution": [
+      25,
+      25,
+      25,
+      25
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/10050.json"
+  },
+  {
+    "id": "20011",
+    "name": "검사 세레나",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 48
+      },
+      "move": {
+        "rows": 1,
+        "ticks60fps": 12
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 83
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      26,
+      30
+    ],
+    "hitDistribution": [
+      50,
+      50
+    ],
+    "bbHitFrames": [
+      10,
+      14,
+      26,
+      30
+    ],
+    "bbHitDistribution": [
+      20,
+      20,
+      30,
+      30
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/20011.json"
+  },
+  {
+    "id": "20030",
+    "name": "미즐스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/20030.json"
+  },
+  {
+    "id": "20050",
+    "name": "머먼",
+    "cggFrames": 10,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "move": {
+        "rows": 1,
+        "ticks60fps": 5
+      },
+      "atk": {
+        "rows": 9,
+        "ticks60fps": 58
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      13,
+      32
+    ],
+    "hitDistribution": [
+      60,
+      60
+    ],
+    "bbHitFrames": [
+      13,
+      16,
+      32,
+      35
+    ],
+    "bbHitDistribution": [
+      25,
+      25,
+      25,
+      25
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/20050.json"
+  },
+  {
+    "id": "30011",
+    "name": "창사 란셀",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 48
+      },
+      "move": {
+        "rows": 1,
+        "ticks60fps": 11
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 88
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      26,
+      32,
+      38
+    ],
+    "hitDistribution": [
+      50,
+      20,
+      30
+    ],
+    "bbHitFrames": [
+      26,
+      32,
+      38,
+      44
+    ],
+    "bbHitDistribution": [
+      25,
+      25,
+      25,
+      25
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/30011.json"
+  },
+  {
+    "id": "30030",
+    "name": "모릴스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/30030.json"
+  },
+  {
+    "id": "30031",
+    "name": "모릴스 킹",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 3,
+        "ticks60fps": 36
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 39
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 66
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      42
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      42,
+      50
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/30031.json"
+  },
+  {
+    "id": "30050",
+    "name": "만드라고라",
+    "cggFrames": 23,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "atk": {
+        "rows": 23,
+        "ticks60fps": 125
+      }
+    },
+    "fallbackActions": [
+      "move"
+    ],
+    "hitFrames": [
+      60,
+      75,
+      90
+    ],
+    "hitDistribution": [
+      33,
+      33,
+      34
+    ],
+    "bbHitFrames": [
+      66
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/30050.json"
+  },
+  {
+    "id": "40011",
+    "name": "전사 에젤",
+    "cggFrames": 13,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 52
+      },
+      "move": {
+        "rows": 1,
+        "ticks60fps": 13
+      },
+      "atk": {
+        "rows": 8,
+        "ticks60fps": 91
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30,
+      40
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/40011.json"
+  },
+  {
+    "id": "40030",
+    "name": "라일스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": true,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/40030.json"
+  },
+  {
+    "id": "40031",
+    "name": "라일스 킹",
+    "cggFrames": 24,
+    "actions": {
+      "idle": {
+        "rows": 6,
+        "ticks60fps": 36
+      },
+      "move": {
+        "rows": 8,
+        "ticks60fps": 40
+      },
+      "atk": {
+        "rows": 11,
+        "ticks60fps": 72
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      42
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      42,
+      50
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/40031.json"
+  },
+  {
+    "id": "40050",
+    "name": "하피",
+    "cggFrames": 19,
+    "actions": {
+      "idle": {
+        "rows": 6,
+        "ticks60fps": 60
+      },
+      "move": {
+        "rows": 2,
+        "ticks60fps": 10
+      },
+      "atk": {
+        "rows": 11,
+        "ticks60fps": 83
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      44,
+      56,
+      68
+    ],
+    "hitDistribution": [
+      33,
+      33,
+      34
+    ],
+    "bbHitFrames": [
+      100
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/40050.json"
+  },
+  {
+    "id": "50030",
+    "name": "히칼스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/50030.json"
+  },
+  {
+    "id": "50031",
+    "name": "히칼스 킹",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 3,
+        "ticks60fps": 36
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 39
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 66
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      42
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      42,
+      50
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/50031.json"
+  },
+  {
+    "id": "50131",
+    "name": "주얼 고스트",
+    "cggFrames": 19,
+    "actions": {
+      "idle": {
+        "rows": 6,
+        "ticks60fps": 48
+      },
+      "move": {
+        "rows": 8,
+        "ticks60fps": 48
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 54
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      32
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [],
+    "bbHitDistribution": [],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/50131.json"
+  },
+  {
+    "id": "50132",
+    "name": "주얼 킹",
+    "cggFrames": 23,
+    "actions": {
+      "idle": {
+        "rows": 6,
+        "ticks60fps": 48
+      },
+      "move": {
+        "rows": 8,
+        "ticks60fps": 64
+      },
+      "atk": {
+        "rows": 8,
+        "ticks60fps": 71
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      42
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [],
+    "bbHitDistribution": [],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/50132.json"
+  },
+  {
+    "id": "50133",
+    "name": "주얼 갓",
+    "cggFrames": 30,
+    "actions": {
+      "idle": {
+        "rows": 12,
+        "ticks60fps": 60
+      },
+      "move": {
+        "rows": 12,
+        "ticks60fps": 60
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 54
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      40
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [],
+    "bbHitDistribution": [],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/50133.json"
+  },
+  {
+    "id": "60030",
+    "name": "아클스",
+    "cggFrames": 9,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 42
+      },
+      "move": {
+        "rows": 5,
+        "ticks60fps": 30
+      },
+      "atk": {
+        "rows": 7,
+        "ticks60fps": 57
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30
+    ],
+    "bbHitDistribution": [
+      100
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/60030.json"
+  },
+  {
+    "id": "60031",
+    "name": "아클스 킹",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 3,
+        "ticks60fps": 36
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 39
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 66
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      42
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      42,
+      50
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/60031.json"
+  },
+  {
+    "id": "60050",
+    "name": "스켈레톤",
+    "cggFrames": 12,
+    "actions": {
+      "idle": {
+        "rows": 6,
+        "ticks60fps": 60
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 44
+      },
+      "atk": {
+        "rows": 6,
+        "ticks60fps": 62
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      30
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [
+      30,
+      36
+    ],
+    "bbHitDistribution": [
+      50,
+      50
+    ],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/60050.json"
+  },
+  {
+    "id": "60132",
+    "name": "메탈 고스트",
+    "cggFrames": 19,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 28
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 28
+      },
+      "atk": {
+        "rows": 16,
+        "ticks60fps": 97
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      73
+    ],
+    "hitDistribution": [
+      100
+    ],
+    "bbHitFrames": [],
+    "bbHitDistribution": [],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/60132.json"
+  },
+  {
+    "id": "60133",
+    "name": "메탈 킹",
+    "cggFrames": 19,
+    "actions": {
+      "idle": {
+        "rows": 4,
+        "ticks60fps": 40
+      },
+      "move": {
+        "rows": 4,
+        "ticks60fps": 36
+      },
+      "atk": {
+        "rows": 16,
+        "ticks60fps": 97
+      }
+    },
+    "fallbackActions": [],
+    "hitFrames": [
+      73,
+      78
+    ],
+    "hitDistribution": [
+      80,
+      20
+    ],
+    "bbHitFrames": [],
+    "bbHitDistribution": [],
+    "originalFullIllustration": false,
+    "uiChecked": "상세 열기·공격 모션·뒤로·480px 넘침 없음",
+    "source": "https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/60133.json"
+  }
+]

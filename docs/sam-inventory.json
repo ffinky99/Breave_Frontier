@@ -1,0 +1,234 @@
+{
+  "Touch": {
+    "fps": 24,
+    "frames": 33,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 22
+      },
+      {
+        "name": "delete",
+        "start": 23,
+        "end": 32
+      }
+    ],
+    "sha256": "5208ebec865f3538d9bab9df58a124e82c3b85bf4e3e83adaedaa60fb9f752b4"
+  },
+  "Hold": {
+    "fps": 24,
+    "frames": 33,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 22
+      },
+      {
+        "name": "delete",
+        "start": 23,
+        "end": 32
+      }
+    ],
+    "sha256": "d9f0a135a943f69d437c5cbf6ac206a3d2aae209e41812b6c38e6a6455223305"
+  },
+  "BraveBurstSlideMotion": {
+    "fps": 24,
+    "frames": 87,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 81
+      },
+      {
+        "name": "delete",
+        "start": 82,
+        "end": 86
+      }
+    ],
+    "sha256": "0c9003b5bb4488aa1b053d72f375c639a5db881c08cd61666452d9743d4dfb22"
+  },
+  "GuardSlideMotion": {
+    "fps": 24,
+    "frames": 54,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 48
+      },
+      {
+        "name": "delete",
+        "start": 49,
+        "end": 53
+      }
+    ],
+    "sha256": "680bcd47887eff0c28183899421e509299173acd2328b55c2a8695640c7a5381"
+  },
+  "BraveBurstSlideMotionAdd": {
+    "fps": 24,
+    "frames": 87,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 81
+      },
+      {
+        "name": "delete",
+        "start": 82,
+        "end": 86
+      }
+    ],
+    "sha256": "e89041a4b3405ea3151a0ca5b0ded1810b6765348de0a03d102e21211906cf09"
+  },
+  "GuardSlideMotionAdd": {
+    "fps": 24,
+    "frames": 54,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 48
+      },
+      {
+        "name": "delete",
+        "start": 49,
+        "end": 53
+      }
+    ],
+    "sha256": "eaa6166148d98bdb8032fc722544d3ff665c4b63957e5cf27ad6a2890503a593"
+  },
+  "GachaGateClose3": {
+    "fps": 24,
+    "frames": 65,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 19
+      },
+      {
+        "name": "loop",
+        "start": 20,
+        "end": 63
+      },
+      {
+        "name": "delete",
+        "start": 64,
+        "end": 64
+      }
+    ],
+    "sha256": "6eafdc40f87fb62ada46dbceb72429b2a6391b1e2b9daa05ad2ed1e018ed9d4b"
+  },
+  "GachaGateOpen3": {
+    "fps": 24,
+    "frames": 61,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 59
+      },
+      {
+        "name": "delete",
+        "start": 60,
+        "end": 60
+      }
+    ],
+    "sha256": "ce621df13eeae24aead1dd2f0d764914edbbd48dbd8d38ebc3390e2124cbfd89"
+  },
+  "GachaGateOpenAdd": {
+    "fps": 24,
+    "frames": 80,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 78
+      },
+      {
+        "name": "delete",
+        "start": 79,
+        "end": 79
+      }
+    ],
+    "sha256": "ea5dd4fd613c9387e9ab20d42bd0012cc2d6b424651c7cd22345455d0d713fa6"
+  },
+  "GachaGetEndCircle": {
+    "fps": 24,
+    "frames": 242,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 239
+      },
+      {
+        "name": "delete",
+        "start": 240,
+        "end": 241
+      }
+    ],
+    "sha256": "fc85f770d5e1316c9d812bd2d62476d0779ae59ade1bf5ffefdf00610c3dc39d"
+  },
+  "GachaEndCircleGet": {
+    "fps": 24,
+    "frames": 482,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 479
+      },
+      {
+        "name": "delete",
+        "start": 480,
+        "end": 481
+      }
+    ],
+    "sha256": "73c51d6d788aa5501e3cdf9620b958502209cd038440cf7caaae0f068541f662"
+  }
+}

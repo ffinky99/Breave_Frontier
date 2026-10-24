@@ -1,5 +1,5 @@
 // Pure offline rules. Original statistics and Korean names live in units.json.
-// Combat formula, growth curve, quests, rewards and summon rules are web adaptations.
+// Basic combat follows inspected native paths; growth, quests, rewards and drop masters remain web adaptations.
 export const SAVE_KEY = 'brave-frontier-ko.v1';
 export const ELEMENTS = {
   fire:{name:'불', color:'#ff8465', symbol:'불'}, water:{name:'물',color:'#73cfff',symbol:'물'},
@@ -22,7 +22,12 @@ export function newSave(starterId,catalog,name='소환사'){
   if(!['10011','20011','30011','40011'].includes(starterId))throw Error('선택할 수 없는 영웅입니다.');
   const support=['10030','20030','30030','40030'].filter(id=>catalog[id].element!==catalog[starterId].element).slice(0,2);
   const ids=[starterId,...support];
-  return {version:1,name:String(name).trim().slice(0,12)||'소환사',starterId,units:Object.fromEntries(ids.map(id=>[id,{id,level:1,xp:0}])),party:ids,zel:2500,karma:800,gems:6,clears:{},summons:0,battles:0,sound:false,volume:0.35,speed:1,tutorialSeen:false,updatedAt:Date.now()};
+  return {version:1,name:String(name).trim().slice(0,12)||'소환사',starterId,units:Object.fromEntries(ids.map(id=>[id,{id,level:1,xp:0}])),party:ids,zel:2500,karma:800,gems:6,clears:{},summons:0,battles:0,sound:false,volume:0.35,speed:1,tutorialSeen:false,tutorial:tutorialProgress(),updatedAt:Date.now()};
+}
+export function tutorialProgress(raw){
+ if(raw==null)return {chapter:1,wave:0,active:false,completed:[]};
+ if(typeof raw!=='object'||![1,2].includes(raw.chapter)||![0,1,2].includes(raw.wave)||!Array.isArray(raw.completed)||raw.completed.some(n=>![1,2].includes(n))||new Set(raw.completed).size!==raw.completed.length||typeof raw.active!=='boolean')throw Error('튜토리얼 기록이 올바르지 않습니다.');
+ return {chapter:raw.chapter,wave:raw.wave,active:raw.active,completed:[...raw.completed]};
 }
 const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 export function validateSave(raw,catalog){
@@ -40,7 +45,7 @@ export function validateSave(raw,catalog){
     if(!QUESTS.some(q=>q.id===id)||!info||!integer(info.count,1,1e7)||!integer(info.stars,1,3))throw Error('탐험 기록이 올바르지 않습니다.');
     clears[id]={count:info.count,stars:info.stars};
   }
-  return {version:1,name:raw.name.slice(0,12)||'소환사',starterId:Object.hasOwn(cleanUnits,raw.starterId)?raw.starterId:raw.party[0],units:cleanUnits,party:[...raw.party],zel:raw.zel,karma:raw.karma,gems:raw.gems,clears,summons:raw.summons,battles:raw.battles,sound:raw.sound===true,volume:Number.isFinite(raw.volume)?Math.max(0,Math.min(1,raw.volume)):0.35,speed:raw.speed===2?2:1,tutorialSeen:raw.tutorialSeen===true,updatedAt:Date.now()};
+  return {version:1,name:raw.name.slice(0,12)||'소환사',starterId:Object.hasOwn(cleanUnits,raw.starterId)?raw.starterId:raw.party[0],units:cleanUnits,party:[...raw.party],zel:raw.zel,karma:raw.karma,gems:raw.gems,clears,summons:raw.summons,battles:raw.battles,sound:raw.sound===true,volume:Number.isFinite(raw.volume)?Math.max(0,Math.min(1,raw.volume)):0.35,speed:raw.speed===2?2:1,tutorialSeen:raw.tutorialSeen===true,tutorial:tutorialProgress(raw.tutorial),updatedAt:Date.now()};
 }
 export function stats(unit,catalog){
   const d=catalog[unit.id],progress=(unit.level-1)/19;
@@ -53,13 +58,13 @@ export function grow(save,id){
   save.zel-=cost.zel;save.karma-=cost.karma;u.level++;return u;
 }
 export function setParty(save,ids){
-  if(!Array.isArray(ids)||ids.length<1||ids.length>6||new Set(ids).size!==ids.length||ids.some(id=>!save.units[id]))throw Error('한 명 이상, 여섯 명 이하로 편성해 주세요.');
+  if(!Array.isArray(ids)||ids.length<1||ids.length>5||new Set(ids).size!==ids.length||ids.some(id=>!save.units[id]))throw Error('한 명 이상, 다섯 명 이하로 편성해 주세요.');
   save.party=[...ids];
 }
 export function elementMultiplier(a,b){
   const stronger={fire:'earth',earth:'thunder',thunder:'water',water:'fire',light:'dark',dark:'light'};
   if(stronger[a]===b)return 1.5;
-  if(stronger[b]===a&&a!=='light'&&a!=='dark')return .75;
+  if(stronger[b]===a&&a!=='light'&&a!=='dark')return .5;
   return 1;
 }
 export function isUnlocked(q,save){const index=QUESTS.indexOf(q);return q.extra?!!save.clears['grass-2']:index===0||!!save.clears[QUESTS[index-1]?.id];}
@@ -85,44 +90,135 @@ export function createBattle(save,questId,catalog,seed=Date.now()){
   const b={questId,seed:(seed>>>0)||1234567,wave:0,turn:1,phase:'player',party,enemies:[],damage:0,maxCombo:0,claimed:false,attackBuff:0,defenseBuff:0,itemsUsed:0,events:[],turnActions:0};
   b.enemies=enemiesFor(b,catalog);return b;
 }
-function hit(b,actor,target,power,guard=false,spark=false){
+// Native constants recovered from libgame.so: element 1.5 / .5, critical
+// probability .1 and multiplier [1.5,1.6], same waitCount SPARK multiplier 1.5.
+// Enemy masters, drop rates and unsupported passive effects remain web rules.
+function rollDamage(b,actor,target,power,guard=false){
   const critical=random(b)<.1,element=elementMultiplier(actor.element,target.element);
-  const value=Math.max(1,Math.floor((actor.atk*power*element-target.def*.35)*(.9+random(b)*.2)*(critical?1.5:1)*(guard ? .5 : 1)*(spark?1.2:1)));
-  const actual=Math.min(target.hp,value);target.hp=Math.max(0,target.hp-value);
-  return {value,actual,critical,element,spark};
+  const ratio=(critical?1500:900)+Math.floor(random(b)*101);
+  const atk=actor.atk*power,def=Math.trunc(target.def/3),bonus=atk/(25+Math.floor(random(b)*8));
+  const value=Math.max(1,Math.trunc(Math.max(0,(atk-def)*element*ratio/1000+bonus)*(guard?.5:1)));
+  return {value,critical,element};
+}
+function hit(b,actor,target,power,guard=false){
+  const damage=rollDamage(b,actor,target,power,guard),actual=Math.min(target.hp,damage.value);
+  target.hp=Math.max(0,target.hp-damage.value);return {...damage,actual,spark:false};
 }
 function determine(b){
   if(b.enemies.every(e=>e.hp<=0)){b.phase='waveclear';return;}
   if(b.party.every(p=>p.hp<=0)){b.phase='defeat';return;}
   if(b.party.every(p=>p.hp<=0||p.acted))b.phase='enemyPending';
 }
-export function act(b,index,mode,targetIndex,catalog,spark=false){
+export function attackFrames(info,mode='attack'){
+  const source=mode==='burst'?info.skill:info,hits=Math.max(1,source.hits||1);
+  const frames=source.hitFrames?.length===hits?source.hitFrames:Array.from({length:hits},(_,i)=>26+i*6);
+  const weights=source.hitDistribution?.length===hits?source.hitDistribution:Array(hits).fill(100/hits);
+  return {frames,weights};
+}
+function splitDamage(total,weights){
+  const sum=weights.reduce((a,b)=>a+b,0)||100;let used=0;
+  return weights.map((weight,i)=>{const value=i===weights.length-1?total-used:Math.floor(total*weight/sum);used+=value;return value;});
+}
+// Queue attacks without taking HP before the corresponding animation hit. Frame
+// numbers, not intervals between taps, drive both the packets and SPARK pairing.
+export function queueAction(b,index,mode,targetIndex,catalog,{at=0,speed=1,duration=0}={}){
   const actor=b.party[index];if(b.phase!=='player'||!actor||actor.hp<=0||actor.acted)throw Error('지금은 행동할 수 없습니다.');
   const info=catalog[actor.id];if(!['attack','guard','burst'].includes(mode))throw Error('알 수 없는 행동입니다.');
   if(mode==='burst'&&(!actor.bbCost||actor.bb<actor.bbCost))throw Error('필살기 게이지가 부족합니다.');
-  const events=[];actor.acted=true;b.turnActions++;
-  if(mode==='guard'){actor.guard=true;actor.bb=Math.min(actor.bbCost,actor.bb+2);events.push({type:'guard',actor:index});}
+  const living=b.enemies.map((e,i)=>({e,i})).filter(x=>x.e.hp>0);
+  if(mode!=='guard'&&!living.length)throw Error('남아 있는 적이 없습니다.');
+  actor.acted=true;b.turnActions++;b.pendingHits??=[];b.actionEnds??=[];
+  const events=[];
+  if(mode==='guard'){actor.guard=true;events.push({type:'guard',actor:index});}
   else{
-    const skill=info.skill;
-    if(mode==='burst')actor.bb=0;
+    const skill=info.skill;if(mode==='burst')actor.bb=0;
     if(mode==='burst'&&skill.kind.includes('buff')){
       if(skill.kind==='attack-buff')b.attackBuff=3;else b.defenseBuff=3;
       events.push({type:'buff',actor:index,kind:skill.kind});
     }else{
-      const living=b.enemies.map((e,i)=>({e,i})).filter(x=>x.e.hp>0);
-      const chosen=living.find(x=>x.i===targetIndex)||living[0];
-      const targets=mode==='burst'&&skill.target==='aoe'?living:[chosen];
+      const chosen=living.find(x=>x.i===targetIndex)||living[0],targets=mode==='burst'&&skill.target==='aoe'?living:[chosen];
+      const {frames,weights}=attackFrames(info,mode),startFrame=Math.ceil(at*speed*60/1000),travelFrames=10;
+      const length=Math.max(duration,(travelFrames+Math.max(...frames)+18)/60*1000)/speed;
+      b.actionEnds.push(at+length);b.maxCombo=Math.max(b.maxCombo,frames.length);
       for(const {e,i} of targets){
-        const power=(mode==='burst'?1+skill.bonus/100:1)*(b.attackBuff?1.5:1);
-        const damage=hit(b,actor,e,power,false,spark);b.damage+=damage.actual;
-        const hits=mode==='burst'?skill.hits:info.hits;b.maxCombo=Math.max(b.maxCombo,hits);
-        events.push({type:'hit',actor:index,target:i,mode,hits,...damage});
+        const power=(mode==='burst'?1+skill.bonus/100:1)*(b.attackBuff?1.5:1),damage=rollDamage(b,actor,e,power);
+        const values=splitDamage(damage.value,weights);
+        frames.forEach((frame,n)=>b.pendingHits.push({actor:index,target:i,mode,frame:startFrame+travelFrames+frame,at:(startFrame+travelFrames+frame)/60*1000/speed,hit:n,hits:frames.length,value:values[n],critical:damage.critical,element:damage.element,dropChecks:Math.max(1,info.dropChecks||1),speed}));
       }
-      if(mode==='attack')actor.bb=Math.min(actor.bbCost,actor.bb+4);
-      if(random(b)<.22){const heal=Math.round(actor.rec*.35);actor.hp=Math.min(actor.maxHp,actor.hp+heal);events.push({type:'heal',actor:index,value:heal});}
+      events.push({type:'action-start',actor:index,target:chosen.i,mode,start:at,duration:length,travel:travelFrames/60*1000/speed,speed});
     }
   }
-  determine(b);return events;
+  if(!b.pendingHits.length&&!b.actionEnds.length&&!b.pendingCrystals?.length)determine(b);
+  return events;
+}
+export function advanceCombat(b,now){
+  const pending=b.pendingHits||[],events=[];b.pendingCrystals??=[];
+  pending.sort((a,b)=>a.at-b.at||a.actor-b.actor||a.hit-b.hit);
+  for(const packet of pending){
+    if(packet.at>now)break;
+    const e=packet.side==='enemy'?b.party[packet.target]:b.enemies[packet.target];
+    const spark=packet.side!=='enemy'&&pending.some(other=>other!==packet&&other.side!=='enemy'&&other.target===packet.target&&other.frame===packet.frame);
+    const value=Math.max(1,Math.floor(packet.value*(spark?1.5:1))),overkill=e.hp<=0,actual=Math.min(e.hp,value);
+    e.hp=Math.max(0,e.hp-value);if(packet.side!=='enemy')b.damage+=actual;
+    if(packet.side==='enemy'){events.push({...packet,type:'enemy-impact',enemy:packet.actor,actor:packet.target,value,actual,spark:false,overkill});continue;}
+    events.push({type:'impact',...packet,value,actual,spark,overkill});
+    // The tutorial script confirms random distribution; rates are explicitly
+    // local rehearsal values because enemy drop masters are absent from the APK.
+    for(let check=0;check<packet.dropChecks;check++){
+      const kind=random(b)<.35?'battle':random(b)<.06?'heart':null;if(!kind)continue;
+      let candidates=b.party.map((p,i)=>({p,i})).filter(({p})=>p.hp>0);
+      if(kind==='heart'&&candidates.some(({p})=>p.hp<p.maxHp))candidates=candidates.filter(({p})=>p.hp<p.maxHp);
+      if(!candidates.length)continue;
+      const {p,i}=candidates[Math.floor(random(b)*candidates.length)];
+      const amount=kind==='heart'?Math.max(1,Math.trunc(p.rec/((3000+Math.floor(random(b)*1201))/1000))):1;
+      const crystal={kind,actor:i,target:packet.target,value:amount,at:packet.at+800/(packet.speed||1)};
+      b.pendingCrystals.push(crystal);events.push({type:'crystal',...crystal});
+    }
+  }
+  for(const crystal of b.pendingCrystals.filter(c=>c.at<=now)){
+    const p=b.party[crystal.actor];if(p.hp<=0)continue;
+    const amount=Math.min(crystal.value,crystal.kind==='heart'?p.maxHp-p.hp:p.bbCost-p.bb);
+    if(crystal.kind==='heart')p.hp+=amount;else p.bb+=amount;
+    events.push({...crystal,type:'crystal-collect',value:amount});
+  }
+  b.pendingCrystals=b.pendingCrystals.filter(c=>c.at>now);
+  b.pendingHits=pending.filter(p=>p.at>now);b.actionEnds=(b.actionEnds||[]).filter(end=>end>now);
+  if(!b.pendingHits.length&&!b.actionEnds.length&&!b.pendingCrystals.length){if(b.phase==='player')determine(b);else if(b.phase==='enemyAnimating')finishEnemyTurn(b);}
+  return events;
+}
+// Synchronous adapter for scripted rehearsals and simulations. The interactive
+// battle uses queueAction / advanceCombat with the same underlying rules.
+export function act(b,index,mode,targetIndex,catalog){
+  const starts=queueAction(b,index,mode,targetIndex,catalog),resolved=advanceCombat(b,Infinity);
+  const events=starts.filter(e=>e.type!=='action-start'),groups=new Map();
+  for(const event of resolved){
+    if(event.type!=='impact'){events.push(event);continue;}
+    let group=groups.get(event.target);if(!group){group={type:'hit',actor:index,target:event.target,mode,hits:event.hits,value:0,actual:0,critical:event.critical,element:event.element,spark:event.spark,hitValues:[]};groups.set(event.target,group);}
+    group.value+=event.value;group.actual+=event.actual;group.hitValues.push(event.value);
+  }
+  return [...groups.values(),...events];
+}
+export function queueEnemyTurn(b,catalog,{at=0,speed=1,durationFor=()=>1500}={}){
+  if(b.phase!=='enemyPending')throw Error('적의 차례가 아닙니다.');
+  b.phase='enemyAnimating';b.pendingHits=[];b.actionEnds=[];const events=[];
+  for(let i=0;i<b.enemies.length;i++){
+    const enemy=b.enemies[i];if(enemy.hp<=0)continue;
+    const live=b.party.map((p,j)=>({p,j})).filter(x=>x.p.hp>0);if(!live.length)break;
+    const {p,j}=live[Math.floor(random(b)*live.length)],burst=enemy.boss&&b.turn%3===0;
+    const damage=rollDamage(b,enemy,p,(burst?1.6:1)*(b.defenseBuff?.7:1),p.guard);
+    const {frames,weights}=attackFrames(catalog[enemy.id],burst?'burst':'attack'),values=splitDamage(damage.value,weights);
+    const start=at+i*250/speed,startFrame=Math.ceil(start*speed*60/1000),travel=10/60*1000/speed;
+    const duration=Math.max(durationFor(enemy.id)+330,(Math.max(...frames)+28)/60*1000)/speed;
+    b.actionEnds.push(start+duration);
+    frames.forEach((frame,h)=>b.pendingHits.push({side:'enemy',actor:i,target:j,frame:startFrame+10+frame,at:(startFrame+10+frame)/60*1000/speed,hit:h,hits:frames.length,value:values[h],critical:damage.critical,element:damage.element,guarded:p.guard,burst}));
+    events.push({type:'enemy-start',enemy:i,actor:j,start,duration,travel,speed,burst});
+  }
+  if(!b.pendingHits.length)finishEnemyTurn(b);return events;
+}
+function finishEnemyTurn(b){
+  if(b.party.every(p=>p.hp<=0)){b.phase='defeat';return;}
+  b.turn++;b.attackBuff=Math.max(0,b.attackBuff-1);b.defenseBuff=Math.max(0,b.defenseBuff-1);
+  b.party.forEach(p=>{p.acted=false;p.guard=false;});b.phase='player';b.turnActions=0;
 }
 export function enemyTurn(b){
   if(b.phase!=='enemyPending')throw Error('적의 차례가 아닙니다.');
@@ -133,11 +229,9 @@ export function enemyTurn(b){
     const {p,j}=live[Math.floor(random(b)*live.length)];
     const burst=enemy.boss&&b.turn%3===0;
     const damage=hit(b,enemy,p,(burst?1.6:1)*(b.defenseBuff ? .7 : 1),p.guard);
-    p.bb=Math.min(p.bbCost,p.bb+2);events.push({type:'enemy-hit',enemy:i,actor:j,burst,...damage});
+    events.push({type:'enemy-hit',enemy:i,actor:j,burst,...damage});
   }
-  if(b.party.every(p=>p.hp<=0)){b.phase='defeat';return events;}
-  b.turn++;b.attackBuff=Math.max(0,b.attackBuff-1);b.defenseBuff=Math.max(0,b.defenseBuff-1);
-  b.party.forEach(p=>{p.acted=false;p.guard=false;});b.phase='player';b.turnActions=0;return events;
+  finishEnemyTurn(b);return events;
 }
 export function nextWave(b,catalog){
   if(b.phase!=='waveclear')throw Error('전투가 끝나지 않았습니다.');
@@ -166,7 +260,7 @@ export function summon(save,kind,catalog,roll=Math.random()){
   if(!['regular','hero'].includes(kind))throw Error('알 수 없는 소환입니다.');
   const heroes=['10011','20011','30011','40011'];
   let pool;
-  if(kind==='hero'){if(save.gems<3)throw Error('보석이 부족합니다.');save.gems-=3;pool=heroes.filter(id=>!save.units[id]);if(!pool.length)pool=heroes;}
+  if(kind==='hero'){if(save.gems<5)throw Error('보석이 부족합니다.');save.gems-=5;pool=heroes.filter(id=>!save.units[id]);if(!pool.length)pool=heroes;}
   else{if(save.zel<350)throw Error('젤이 부족합니다.');save.zel-=350;pool=Object.keys(catalog).filter(id=>!heroes.includes(id));}
   const id=pool[Math.min(pool.length-1,Math.floor(Math.max(0,roll)*pool.length))],duplicate=!!save.units[id];
   if(duplicate)save.karma+=kind==='hero'?500:200;else save.units[id]={id,level:1,xp:0};

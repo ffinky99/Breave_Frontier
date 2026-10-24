@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-24",
+  "viewportWidth": 480,
+  "results": [
+    {
+      "motion": "atk",
+      "name": "검호 발가스",
+      "overflow": false,
+      "unit": "10011",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "모엘스",
+      "overflow": false,
+      "unit": "10030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "고블린",
+      "overflow": false,
+      "unit": "10050",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "검사 세레나",
+      "overflow": false,
+      "unit": "20011",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "미즐스",
+      "overflow": false,
+      "unit": "20030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "머먼",
+      "overflow": false,
+      "unit": "20050",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "창사 란셀",
+      "overflow": false,
+      "unit": "30011",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "모릴스",
+      "overflow": false,
+      "unit": "30030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "모릴스 킹",
+      "overflow": false,
+      "unit": "30031",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "만드라고라",
+      "overflow": false,
+      "unit": "30050",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "전사 에젤",
+      "overflow": false,
+      "unit": "40011",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "라일스",
+      "overflow": false,
+      "unit": "40030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "라일스 킹",
+      "overflow": false,
+      "unit": "40031",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "하피",
+      "overflow": false,
+      "unit": "40050",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "히칼스",
+      "overflow": false,
+      "unit": "50030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "히칼스 킹",
+      "overflow": false,
+      "unit": "50031",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "주얼 고스트",
+      "overflow": false,
+      "unit": "50131",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "주얼 킹",
+      "overflow": false,
+      "unit": "50132",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "주얼 갓",
+      "overflow": false,
+      "unit": "50133",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "아클스",
+      "overflow": false,
+      "unit": "60030",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "아클스 킹",
+      "overflow": false,
+      "unit": "60031",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "스켈레톤",
+      "overflow": false,
+      "unit": "60050",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "메탈 고스트",
+      "overflow": false,
+      "unit": "60132",
+      "width": 480
+    },
+    {
+      "motion": "atk",
+      "name": "메탈 킹",
+      "overflow": false,
+      "unit": "60133",
+      "width": 480
+    }
+  ]
+}

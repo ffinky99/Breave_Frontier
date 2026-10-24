@@ -1,0 +1,77 @@
+/* Original 640-wide battle panels and APK dialogue textures. */
+.prologue-screen{position:relative;min-height:100dvh;height:max(150cqw,100dvh);background:#000;color:#eee8d8;text-align:center;overflow:hidden}
+.prologue-light{position:absolute;top:17cqw;left:15%;width:70%;height:50cqw;display:grid;place-items:center;isolation:isolate;animation:wakeIn 1s}
+.prologue-light img{position:absolute;width:70%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:.3;filter:sepia(.8) hue-rotate(75deg) saturate(.9);animation:gateLight 5s ease-in-out infinite;animation-delay:calc(var(--i)*-1s)}
+.prologue-words{position:absolute;left:3.125%;width:93.75%;top:75cqw;font-size:4.1cqw;line-height:2.1;animation:wakeIn .6s}
+.prologue-words>p{min-height:34cqw}.prologue-words>button{display:block;width:100%;background:transparent;color:#d8c899;font-size:2.9cqw;margin-top:6cqw;padding:3cqw}.prologue-words>label{display:block;font-size:2.8cqw}.prologue-words>input{width:75%;text-align:center;font-size:4cqw;padding:2cqw;border:1px solid #96856b;border-radius:3px}
+@keyframes gateLight{0%,100%{transform:rotate(-12deg) scale(.5);opacity:0}50%{transform:rotate(12deg) scale(1);opacity:.3}}
+.battle-screen{position:relative;isolation:isolate}
+.battle-unit{touch-action:none;user-select:none;-webkit-user-select:none}
+.tutorial-hub{padding-bottom:6cqw;min-height:110cqw;background:linear-gradient(#050b1455,#050b14df),url('assets/dungeon_battle_10100.jpg') center/cover}
+.tutorial-hub-portrait{height:44cqw;width:100%;object-fit:contain;object-position:50% 10%;filter:drop-shadow(0 0 10px #000)}
+.tutorial-hub .quest{width:96%;margin:1.5cqw 2%;text-align:left}
+.tutorial-hub .quest h3{font-size:4cqw}.tutorial-hub .quest p{font-size:2.7cqw;margin-top:1cqw}
+.tutorial-hub .gold-button{margin:3cqw;width:94%}
+.tutorial-hub-intro{padding:3cqw 4cqw;font-size:3.3cqw;line-height:1.6;background:#03060ac9;color:#fff7dd}
+.tutorial-hub .quest-end{font-size:2.8cqw;min-width:17cqw}
+.tutorial-overlay{position:absolute;inset:0;z-index:12;pointer-events:none;overflow:clip}
+.tutorial-overlay button{pointer-events:auto}
+.tutorial-story{position:absolute;inset:0;min-height:150cqw;background:linear-gradient(#23434500,#10272277),url('assets/dungeon_battle_10100.jpg') center top/auto 100%;pointer-events:auto}
+.tutorial-story:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 65%,#000a);pointer-events:none}
+.tutorial-person{position:absolute;left:5%;width:90%;height:90cqw;object-fit:contain;top:12cqw;object-position:bottom;animation:storyEnter .25s ease-out}
+.story-dialog{position:absolute;z-index:2;top:94cqw;left:0;width:100%;min-height:36cqw;padding:9cqw 5cqw 7cqw;background:linear-gradient(transparent 4cqw,#000e 4cqw);border-bottom:1px solid #d6ba71;text-align:left;font-size:3.5cqw;line-height:1.65;color:#fffaf1;text-shadow:1px 1px #000}
+.story-dialog:before{content:'';position:absolute;inset:0;background:url('assets/message_window.png') top center/100% auto no-repeat;pointer-events:none}
+.story-speaker{position:absolute;top:1.2cqw;left:4.5cqw;font-weight:bold;font-size:3.4cqw;color:#ffebbb}
+.story-next{position:absolute;bottom:1.3cqw;right:4cqw;font-size:2.5cqw;color:#ffda69;animation:guidePulse 1s ease-in-out infinite}
+.tutorial-exit{position:absolute;top:1cqw;right:1cqw;padding:1.4cqw 3cqw;z-index:20;background:#07121ad9;border:1px solid #af9658;border-radius:3px;color:white;font-size:2.7cqw}
+.tutorial-wake{background:#fff;color:#111;display:grid;place-content:center;width:100%;height:150cqw;min-height:100%;font-size:7cqw;text-align:center;line-height:1.8}
+.tutorial-wake .wake-copy{animation:wakeIn 1s ease-out}
+.tutorial-wake .wake-next{position:absolute;bottom:10cqw;left:0;width:100%;color:#6b665d;font-size:2.7cqw}
+.tutorial-shade{position:absolute;inset:0;background:#0008;pointer-events:none}
+.tutorial-focus{position:absolute;box-shadow:0 0 0 200vmax #0009;border:2px solid #ffeb92;border-radius:4px;pointer-events:none;z-index:1}
+.tutorial-focus:after{content:'';position:absolute;inset:-3px;border:1px solid #fff8b8;box-shadow:0 0 12px #ffed77;animation:guidePulse 1s ease-in-out infinite}
+.tutorial-coach{position:absolute;z-index:4;left:4.5%;top:9cqw;width:91%;min-height:23.5cqw;padding:3.5cqw 4cqw 4.7cqw;background:#000 url('assets/tuto_navi_window.png') center/100% 100% no-repeat;font-size:3.15cqw;line-height:1.65;color:white;text-align:left;white-space:normal;text-shadow:1px 1px #000;pointer-events:none}
+button.tutorial-coach{pointer-events:auto}
+.tutorial-coach small{display:block;position:absolute;bottom:1.7cqw;right:3.4cqw;color:#ffdd78;font-size:2.3cqw}
+.tutorial-coach.rainbow{color:#c9ffb1;font-weight:bold;text-shadow:0 0 6px #7cb5ff}
+.tutorial-point{position:absolute;z-index:3;width:12cqw;height:12cqw;display:grid;place-items:center;border:2px solid #fff1a0;border-radius:50%;color:#fff5c6;font-size:6cqw;background:#ffe68826;transform:translate(-50%,-50%);animation:pointTap 1s ease-in-out infinite;pointer-events:none}
+.tutorial-point:after{content:'';position:absolute;width:48%;height:48%;border:2px solid white;border-radius:50%}
+.tutorial-chest{position:absolute;left:7%;top:23%;width:17cqw;height:14cqw;background:none;padding:0;z-index:3}
+.tutorial-chest canvas{width:100%;height:100%}
+.tutorial-gem{position:absolute;left:21%;top:27%;width:8cqw;height:11cqw;z-index:2;animation:crystalFloat 1.3s ease-in-out infinite}
+.tutorial-gem canvas{width:100%;height:100%;object-fit:contain}
+.tutorial-gem.heart{height:8cqw;filter:drop-shadow(0 0 8px #ff83b0)}
+.tutorial-gem.battle{filter:drop-shadow(0 0 10px #5cd4ff)}
+.tutorial-element-chart{position:absolute;z-index:5;top:38cqw;left:10%;width:80%;padding:4cqw;background:#05121cf2;border:2px solid #d9bd6d;border-radius:6px;color:white;font-size:3.2cqw;text-align:center;line-height:1.7;pointer-events:none}
+.element-ring{display:grid;grid-template-columns:repeat(5,1fr);align-items:center;gap:.7cqw;margin:2cqw 0}.element-ring .element-orb{border-radius:50%;width:10cqw;height:10cqw;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff7,var(--element) 60%,#000);color:#fff;text-shadow:1px 1px 2px #000;border:2px solid #e8d7aa;font-size:3.3cqw;font-weight:bold}
+.element-ring>span{color:#f5df9d;font-size:4cqw}.element-ring.light-dark{display:flex;justify-content:center;gap:5cqw}
+.element-chart-note{font-size:2.8cqw;color:#ffe8a9}
+.tutorial-controls-note{margin:3cqw;font-size:2.6cqw;line-height:1.6;color:#ddd2bc}
+.element-advantage{position:absolute;left:2%;top:3%;z-index:5;background:#b92f08;border:1px solid #ffed95;border-radius:2px;color:#fff4bc;font-size:2.3cqw;line-height:1.2;padding:.6cqw;pointer-events:none;text-shadow:1px 1px #000}
+.potion-slot.selected{filter:brightness(1.5);outline:2px solid #fff199;outline-offset:-4px}
+.native-enemy-bar .enemy-element{position:absolute;left:5.5%;bottom:31%;width:4.3cqw;height:4.3cqw}
+.brave-command{position:absolute;z-index:18;display:grid;gap:.8cqw;width:31cqw;pointer-events:auto;filter:drop-shadow(0 0 6px #000)}
+.brave-command button{min-height:10cqw;color:#fff7be;font-size:3cqw;line-height:1.2;font-weight:900;text-shadow:1px 1px #000;border:2px solid #c2a75b;background:linear-gradient(#396083,#0b132a 70%,#25465a);border-radius:10px 20px 10px 20px;padding:1.3cqw}
+.brave-command button:first-child{border-color:#fce378;background:linear-gradient(#b19c35,#30447e 50%,#141d3f);box-shadow:inset 0 0 7px #ffed99}
+.brave-command button:disabled{filter:grayscale(1);opacity:.65}
+.tutorial-free-tag{position:absolute;top:9cqw;left:2cqw;right:24cqw;font-size:2.7cqw;color:white;text-shadow:1px 1px #000;background:#05111ccc;border:1px solid #c4ad72;padding:1.2cqw 2cqw;z-index:4}
+body[data-tutorial=true] .gesture-hint,body[data-tutorial=true] .battle-log,body[data-tutorial=true] .battle-message,body[data-tutorial=true] .battle-tools{display:none}
+body[data-tutorial=true] .battle-screen{min-height:150cqw}
+.tutorial-complete{position:absolute;inset:0;min-height:150cqw;pointer-events:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(#07131cde,#07131cf5);padding:6cqw;text-align:center;color:#fff5c4}
+.tutorial-complete>img{width:50%;height:46cqw;object-fit:cover;object-position:top}.tutorial-complete h2{font-size:6cqw;margin:5cqw 0 3cqw}.tutorial-complete p{font-size:3.2cqw;line-height:1.8;margin-bottom:4cqw}.tutorial-complete .gold-button{width:100%;margin:1.5cqw 0}
+@keyframes guidePulse{50%{filter:brightness(1.65)}}@keyframes pointTap{50%{transform:translate(-50%,-44%) scale(.9)}}@keyframes crystalFloat{50%{transform:translateY(-2cqw)}}@keyframes storyEnter{from{opacity:0;transform:translateX(3cqw)}to{opacity:1;transform:none}}@keyframes wakeIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.tutorial-person,.story-next,.tutorial-focus:after,.tutorial-point,.tutorial-gem,.tutorial-wake .wake-copy{animation:none}}
+.tutorial-coach{left:0;top:6.25cqw;width:100%;min-height:28.125cqw;padding:2.8125cqw 3.125cqw 4.7cqw 29.375cqw;font-size:3.5cqw;line-height:1.65;box-sizing:border-box}
+.tutorial-coach-portrait{position:absolute;z-index:5;left:1.875cqw;top:1.71875cqw;width:26.25cqw;height:31.25cqw;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.prologue-light,.prologue-light img,.prologue-words{animation:none}.prologue-light img{opacity:.25}}
+@media(max-width:375px){.battle-unit{min-height:0;padding:0}.battle-unit>img{width:34%;height:86%}.battle-unit-info>b{font-size:2.7cqw}.battle-unit-info>small{font-size:2.7cqw}}
+
+/* APK command silhouettes; Korean labels replace their English text layers. */
+.brave-command{width:40cqw;gap:0;filter:drop-shadow(0 0 5px #000);transform:translateY(-10cqw)}
+.brave-command button:first-child{height:54cqw;background:url('assets/BraveBurstSlideMotion_257x559.png') center/contain no-repeat;border:0;box-shadow:none;border-radius:0;padding:25cqw 1cqw 8cqw;color:#fff3a5;transform:translateY(-9cqw)}
+.brave-command button:first-child:after{content:'↗';position:absolute;top:1cqw;right:6cqw;color:#ffef9a;font-size:6cqw}
+.brave-command button+button{height:26cqw;width:20cqw;background:url('assets/GuardSlideMotion_171x270.png') center/contain no-repeat;border:0;border-radius:0;margin:-15cqw 0 0 6cqw;z-index:1;padding:2cqw 0 10cqw;color:#bcefff}
+.tutorial-point{border:0;background:transparent;border-radius:0;width:10cqw;height:13.4375cqw;background:url('assets/Touch_64x86.png') center/contain no-repeat;transform:translate(-20%,-5%)}
+.tutorial-point:after{display:none}
+.tutorial-point.hold{background-image:url('assets/Hold_64x86.png')}
+@keyframes pointTap{50%{transform:translate(-20%,0%) scale(.94)}}

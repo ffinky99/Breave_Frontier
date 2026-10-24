@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-24",
+  "pages": [
+    {
+      "brokenImages": 0,
+      "heading": "소환사의 마을",
+      "overflow": false,
+      "screen": "village"
+    },
+    {
+      "brokenImages": 0,
+      "heading": "상점",
+      "overflow": false,
+      "screen": "shop"
+    },
+    {
+      "brokenImages": 0,
+      "heading": "소환",
+      "overflow": false,
+      "screen": "summon"
+    },
+    {
+      "brokenImages": 0,
+      "heading": "친구",
+      "overflow": false,
+      "screen": "friends"
+    },
+    {
+      "brokenImages": 0,
+      "heading": "홈",
+      "overflow": false,
+      "screen": "home"
+    }
+  ]
+}

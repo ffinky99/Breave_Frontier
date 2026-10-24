@@ -3444,14 +3444,164 @@
       "sha256": "6f53d56d19728263ab8f341f9fd2a903b151cab0678bad5ed2fd7afe0be55ff8"
     },
     {
+      "file": "BraveBurstSlideMotionAdd_100x100.png",
+      "bytes": 1966,
+      "sha256": "d34b7d002cdcaf1ee1783b2e65c20a5ec04a08b2f43e390249242801c8743682"
+    },
+    {
+      "file": "BraveBurstSlideMotionAdd_128x128.png",
+      "bytes": 5117,
+      "sha256": "b99a173d2670477a500e1bd704e794e25e1e80568b1c9229f4bd112c147ba481"
+    },
+    {
+      "file": "BraveBurstSlideMotionAdd_183x86.png",
+      "bytes": 7267,
+      "sha256": "8690e21cb69fceb9b37474b05fd223184787c0f2d20e4b243577f4fd9e583f02"
+    },
+    {
+      "file": "BraveBurstSlideMotionAdd_219x124.png",
+      "bytes": 9388,
+      "sha256": "66c19a7e36e42b8a1e69634d25b2eb8c2fb5841adc2a78cd521d3aa218066914"
+    },
+    {
+      "file": "BraveBurstSlideMotionAdd_256x256.png",
+      "bytes": 16010,
+      "sha256": "728e7b11e9310917ab7a852cb2785808440f908d8aa4858ff7f557da1ff60723"
+    },
+    {
+      "file": "BraveBurstSlideMotionAdd_256x256_2.png",
+      "bytes": 14106,
+      "sha256": "cf5ccb89736f778f64a67fd589e10bc0c224e7fc78aa86ba803d59c0caecff52"
+    },
+    {
+      "file": "BraveBurstSlideMotion_164x164.png",
+      "bytes": 7015,
+      "sha256": "c450779f800bc56e3462cac7f71ec6e60cba70ca5414587d718b253fe22eaad9"
+    },
+    {
+      "file": "BraveBurstSlideMotion_183x86.png",
+      "bytes": 7264,
+      "sha256": "383ad7ace9dbc877a1dfc2a7999bb0709b0d604bd3e6347fe28c9bbce87c0ded"
+    },
+    {
+      "file": "BraveBurstSlideMotion_219x124.png",
+      "bytes": 9389,
+      "sha256": "a647a54fbb59abb6eddeef4f204242ade90a731a61c315858e4b4716af8a9028"
+    },
+    {
+      "file": "BraveBurstSlideMotion_257x559.png",
+      "bytes": 24640,
+      "sha256": "73ba34cbe20591cc584cdd2774541ab4daad5aa8f26f3ad94994e43910e726aa"
+    },
+    {
       "file": "GachaEndCircleGet_645x644.png",
       "bytes": 188658,
       "sha256": "a82fd9e36be66fdec1cf716062dcfaebdf0e188929390f447fa0f46b2893da3f"
     },
     {
+      "file": "GachaGateClose3_500x250.png",
+      "bytes": 637,
+      "sha256": "b55b95cc529a01812c14b4d8cccc0eb88483cac0c76161a9c73e807ebea7bde6"
+    },
+    {
       "file": "GachaGateClose3_500x500.png",
       "bytes": 88299,
       "sha256": "0464d5c0c277a2778038de24b3ea2dfced811ac137fb8512df2ab8a0d1635fdc"
+    },
+    {
+      "file": "GachaGateOpen3_500x250.png",
+      "bytes": 637,
+      "sha256": "b55b95cc529a01812c14b4d8cccc0eb88483cac0c76161a9c73e807ebea7bde6"
+    },
+    {
+      "file": "GachaGateOpen3_500x500.png",
+      "bytes": 88274,
+      "sha256": "95beb7779bcd62d37e2f0082739f8ee8f3bda5d85c09bff8c80c49cf87a7fd9c"
+    },
+    {
+      "file": "GachaGateOpen3_500x500_2.png",
+      "bytes": 82688,
+      "sha256": "d38a45cb00556d8f12d7825a074d9db4864ee109e19105e241fd4b1c54311fb9"
+    },
+    {
+      "file": "GachaGateOpenAdd_100x100.png",
+      "bytes": 81,
+      "sha256": "5f2d571dc958545acd535c55ab8b0480c4f4d5ff9f0222adc1189fa389a571be"
+    },
+    {
+      "file": "GachaGateOpenAdd_260x579.png",
+      "bytes": 17035,
+      "sha256": "d4970054cd10c5f8e8ae14ea5faa95fd5133e1fb094f7edc907dec17b399e611"
+    },
+    {
+      "file": "GachaGetEndCircle_610x153.png",
+      "bytes": 5515,
+      "sha256": "1e6850c760eb1f4531e5415f19304bff0d8d0de8840c70f93c151f8e6e3c3efa"
+    },
+    {
+      "file": "GachaGetEndCircle_610x610.png",
+      "bytes": 59737,
+      "sha256": "fb5ceae2670733e4c96a66c7387f3b8e3ecea4df99ed2f48343b63718c498c44"
+    },
+    {
+      "file": "GuardSlideMotionAdd_100x100.png",
+      "bytes": 1966,
+      "sha256": "d34b7d002cdcaf1ee1783b2e65c20a5ec04a08b2f43e390249242801c8743682"
+    },
+    {
+      "file": "GuardSlideMotionAdd_128x128.png",
+      "bytes": 5117,
+      "sha256": "b99a173d2670477a500e1bd704e794e25e1e80568b1c9229f4bd112c147ba481"
+    },
+    {
+      "file": "GuardSlideMotionAdd_183x86.png",
+      "bytes": 7267,
+      "sha256": "65d4ac5582815eea5107fb82a10ce715fe3b5d16fd2d484ae6e740bceb4db527"
+    },
+    {
+      "file": "GuardSlideMotionAdd_256x256.png",
+      "bytes": 16010,
+      "sha256": "728e7b11e9310917ab7a852cb2785808440f908d8aa4858ff7f557da1ff60723"
+    },
+    {
+      "file": "GuardSlideMotionAdd_256x256_2.png",
+      "bytes": 14106,
+      "sha256": "cf5ccb89736f778f64a67fd589e10bc0c224e7fc78aa86ba803d59c0caecff52"
+    },
+    {
+      "file": "GuardSlideMotion_164x164.png",
+      "bytes": 7015,
+      "sha256": "c450779f800bc56e3462cac7f71ec6e60cba70ca5414587d718b253fe22eaad9"
+    },
+    {
+      "file": "GuardSlideMotion_171x270.png",
+      "bytes": 13581,
+      "sha256": "14706a3bda6056fd6dc55f2aad94daf0278ebe323d8a6c7b26b511862684d9a6"
+    },
+    {
+      "file": "GuardSlideMotion_183x86.png",
+      "bytes": 7264,
+      "sha256": "65b6d9d1f1d6824fe2d0734d62dd4ed33952d749f626c39315ca5352fc4a0d15"
+    },
+    {
+      "file": "Hold_64x86.png",
+      "bytes": 8958,
+      "sha256": "eaa4d37b4c762898298c0a4159cb686bd2bd816bbe079fd1c376f4d0d1ac13f8"
+    },
+    {
+      "file": "Hold_74x42.png",
+      "bytes": 6770,
+      "sha256": "4d6f8c73cdf4fbda90277628732ec4f64995d49363a210e9286ab7c95e604ddf"
+    },
+    {
+      "file": "Hold_74x42_2.png",
+      "bytes": 5848,
+      "sha256": "b82b355940c8a21e526d49479bf3584b4fa3187ea0d6cd7b6107a6a4d3916f74"
+    },
+    {
+      "file": "Hold_74x42_3.png",
+      "bytes": 5486,
+      "sha256": "9e9c208dd883ec1a86630815df021de340987ab6fa9537369521eeb7c400c03d"
     },
     {
       "file": "MapVillage_640x384.png",
@@ -3464,6 +3614,26 @@
       "sha256": "7fd4d21fa25277649584ca8a4b9f0cf3a1b386ff02cc50bbc1f1f333671a86a3"
     },
     {
+      "file": "Touch_64x32.png",
+      "bytes": 2002,
+      "sha256": "0c334dc5ff037b8c94322c90abb343dc5a9defd470f5952d499c163881a8621b"
+    },
+    {
+      "file": "Touch_64x32_2.png",
+      "bytes": 1613,
+      "sha256": "8061722b74ab39baff33bd8f312a6a1da6f9b4d9d064bc564e7b99626cbd2dc5"
+    },
+    {
+      "file": "Touch_64x86.png",
+      "bytes": 6372,
+      "sha256": "42c26d3eb5a2e0feaf24f46cb244037e33e00468c7d70c371d4e3bfd6073abb2"
+    },
+    {
+      "file": "Touch_74x42.png",
+      "bytes": 2931,
+      "sha256": "373147c2882a43002555850ed245ede641d6c5b1eba2fa6bfeeec13405cb5b2e"
+    },
+    {
       "file": "attribute_mark.png",
       "bytes": 3637,
       "sha256": "772467af7dbf5d33eaf1ea387f2bebc3205ff49701ad71cc9cccd0389db0eaf3"
@@ -3472,6 +3642,11 @@
       "file": "base.jpg",
       "bytes": 139745,
       "sha256": "a4a15de84732ae8814146e436590e7138ea180b81d7ee22f2220acd0b0618175"
+    },
+    {
+      "file": "battle_damage_font.png",
+      "bytes": 1782,
+      "sha256": "6c324a731ad67f792889a56da08e3ae2c41a63fd3e04c8af13ecf86a895ffb6b"
     },
     {
       "file": "battle_footer_base_ip5.png",
@@ -3487,6 +3662,11 @@
       "file": "battle_header_ip5.png",
       "bytes": 37132,
       "sha256": "4a9d294bc59719211fd339519aa0a9debfa9609e8b74a3f826d0e0fbaa0bd10e"
+    },
+    {
+      "file": "battle_recover_font.png",
+      "bytes": 1706,
+      "sha256": "9bbc197260860e5e01c53962bb0dce1f7a9277a00623fe907ded007efec9e217"
     },
     {
       "file": "battle_target_mark.png",
@@ -3512,6 +3692,11 @@
       "file": "bf010_map_grass.mp3",
       "bytes": 1027878,
       "sha256": "2b346d22c843a43d62abdac25ce02aa333e40199c7b5070f6d30530e8cbbe0f1"
+    },
+    {
+      "file": "bf027_map_god.mp3",
+      "bytes": 708241,
+      "sha256": "94d3207361d54812830ab9269bc01690ef2f77ad60a21175f54f41a77032cbae"
     },
     {
       "file": "bf104_zin_quest_clear_ff.mp3",
@@ -3559,9 +3744,24 @@
       "sha256": "3f6ba612034ee3c0c51fb91562882f3e2023f265f68e6f98f294efbaf0decc00"
     },
     {
+      "file": "bf227_se_crystal_drop.mp3",
+      "bytes": 20225,
+      "sha256": "48239b2d8223e1ceebf000a9e35eecb7eeec1e2bb312c8b395e804c7d25d5643"
+    },
+    {
+      "file": "bf228_se_heart_drop.mp3",
+      "bytes": 26492,
+      "sha256": "46b4a9689d670d7fa1ff75328e73f83ed5142d9a5f25920b38f50be9885ecbe1"
+    },
+    {
       "file": "bf233_se_skill_action.mp3",
       "bytes": 27563,
       "sha256": "b35307ae874cdd37175b0302b8a92761e62b61a203e1c8a711d7d370e4c74fab"
+    },
+    {
+      "file": "bf244_se_treasure_open.mp3",
+      "bytes": 3114,
+      "sha256": "6e096e8fa7765109685471be4a6a79eafd81ad27c81e0883b252afd9d08eca5b"
     },
     {
       "file": "bf300_se_action.mp3",
@@ -3569,9 +3769,24 @@
       "sha256": "e9936b3ecd82426f3a0771c60ffd6025e924b547a04d4cb67376d345cbb1ece3"
     },
     {
+      "file": "bf303_se_magic.mp3",
+      "bytes": 24735,
+      "sha256": "ebc4c6e680fd789dce1fc07f4b41bb781d6074766aa637d7d3a178d2727320f7"
+    },
+    {
       "file": "character_frame.png",
       "bytes": 6594,
       "sha256": "fc0e49fe5d0cd63b0bf89d792f718e16478adfc1e5c5bf511692654955b06d03"
+    },
+    {
+      "file": "drop_battle_crystal.png",
+      "bytes": 9258,
+      "sha256": "fcb5eb666a8df950c03b0f4f1f44ec8974ac27485c3642593333f43a47614c90"
+    },
+    {
+      "file": "drop_heart_crystal.png",
+      "bytes": 4141,
+      "sha256": "4c825b51e1464d7d4f60b4b7e91bf89c8b4aa8d41279eda59c6059666e76da4f"
     },
     {
       "file": "dungeon_battle_10100.jpg",
@@ -3587,6 +3802,26 @@
       "file": "footer_btn.png",
       "bytes": 108454,
       "sha256": "8b333985e343ee968579f0859afd43fafeff633d9dc1bdeb56fd6f24a813d1ce"
+    },
+    {
+      "file": "gacha_normal_bg_img.png",
+      "bytes": 117557,
+      "sha256": "dda2b3cd035114c3550b2c83332ad75b41377754ed733e99b0ff30b0680c4bb8"
+    },
+    {
+      "file": "gacha_normal_summons_btn1.png",
+      "bytes": 10626,
+      "sha256": "4aed6e31db606de6cfdc7aa93b5b4e960e9c431e80fdd1d3442454d53067700f"
+    },
+    {
+      "file": "gacha_rare_bg_img.png",
+      "bytes": 157359,
+      "sha256": "5da9cd1ec2f2560feac305b09b948e8f85c39a1dc41edfd96329084a1249938d"
+    },
+    {
+      "file": "gacha_rare_summons_btn1.png",
+      "bytes": 12197,
+      "sha256": "2eb93fa999990bcd61227c17dad4b6802fdd68f6ca8237bd8e47ddff4291513b"
     },
     {
       "file": "header_title_base.png",
@@ -3674,6 +3909,16 @@
       "sha256": "ed6d41ecbaa3b4c09f96cf3e3a15630b3358dc1d34a68a21b0f130b3ccb9aefc"
     },
     {
+      "file": "message_window.png",
+      "bytes": 6143,
+      "sha256": "2637bfdacc34b7b1d7e0b1c50eb1afca9d1353c76ee335db737f38865aeed0b9"
+    },
+    {
+      "file": "message_window_simple.png",
+      "bytes": 2150,
+      "sha256": "200042ccaa63d49176642ab1655ce995f05f8e5b65489a8760a0b02d3c747521"
+    },
+    {
       "file": "navi_chara1_0.png",
       "bytes": 107419,
       "sha256": "312e926601854589d0c381f2ae9692e2d53c7ad67d1964a8fdd2145cc0fe969d"
@@ -3682,6 +3927,53 @@
       "file": "navi_chara1_1.png",
       "bytes": 107167,
       "sha256": "2f236405d6d434fc1c94f7e6c99549be6b09b8e57b1f205bac586a71cdf83fdd"
+    },
+    {
+      "file": "navi_chara1_2.png",
+      "bytes": 107920,
+      "sha256": "00e5a281ed4e7d16411f9b1b9a0f039d9f370dd800d2398b722289f291ec3ac7"
+    },
+    {
+      "file": "navi_chara1_3.png",
+      "bytes": 108312,
+      "sha256": "54b149422eb403bccf1820922b22ac11834bdcde26f5a66a4828477bea5957f1"
+    },
+    {
+      "file": "navi_chara1_4.png",
+      "bytes": 107373,
+      "sha256": "b24cefc363cd1a9b328a671de3e5073ce6e88d6f030d893cbbf9da73fe1ccf58"
+    },
+    {
+      "file": "navi_chara1_7.png",
+      "bytes": 107511,
+      "sha256": "f8c74c6ed945f0427954ffdfba3d75050ce9325320e1ab74736b7037a18e84eb"
+    },
+    {
+      "file": "navi_chara1_8.png",
+      "bytes": 107770,
+      "sha256": "62f91d06da64714096382c1d946e8b23002bb74c739b60d87e28da54bc53b14e"
+    },
+    {
+      "file": "page_1200_3.png",
+      "bytes": 2230,
+      "sha256": "a16cac4a7babdae69fd7be031d47fc51efcd9a8bc3c149ec8395137485ab7e91",
+      "embeddedIn": "eff_page_1200_3.plist",
+      "encoding": "base64+gzip"
+    },
+    {
+      "file": "status_frame_m_c.png",
+      "bytes": 134,
+      "sha256": "9222b81fcca1159a775c8f95d8a7dc50e68ab06afc2d3b9c77636e59fee6244c"
+    },
+    {
+      "file": "status_frame_m_l.png",
+      "bytes": 228,
+      "sha256": "dbef49c437515a0426c1c90ce2cde0237c09418e5f97244de0f1a9500579ae93"
+    },
+    {
+      "file": "status_frame_m_r.png",
+      "bytes": 228,
+      "sha256": "941e6da61f5705fe8410cd42b23ef20ec686e956c8a1fc7714001acecccc1fc5"
     },
     {
       "file": "sub_m_btn1.png",
@@ -3724,9 +4016,39 @@
       "sha256": "2e766398f0e6681accc73c674f99e1bdb0cac2123cb24ec9ceb6569ea93ae285"
     },
     {
+      "file": "thum_navi_chara1_0.png",
+      "bytes": 19300,
+      "sha256": "79654f5df1068c4c1c3400ae398468df9f65b23ce472caa9c04c0fbdca4f5aff"
+    },
+    {
       "file": "title2_logo.png",
       "bytes": 1509312,
       "sha256": "f81ed5b4aaf7707432d778c9a18e4203a2feefd342e4721c2ddb8e5390d583ff"
+    },
+    {
+      "file": "treasure_box.png",
+      "bytes": 14742,
+      "sha256": "5a216bfcbfa7dcb21eebb2aaf2108fe8333c9af077f697c29eb5fbf0c76f667e"
+    },
+    {
+      "file": "tuto_arrow_down.png",
+      "bytes": 2840,
+      "sha256": "6523dde715a10d21e451fd8d9a70137c1974584e8bd32b8425001f5c1bfaceef"
+    },
+    {
+      "file": "tuto_arrow_up.png",
+      "bytes": 2917,
+      "sha256": "1ebaa646645ffe3d5d86180e3b835417d31aef4a955f4a3492346f79dd1227f7"
+    },
+    {
+      "file": "tuto_battle_crystal.png",
+      "bytes": 3738,
+      "sha256": "c8b97b18be4256c054da7c580f9bb82ba7413e53a06cc348f91cfb08a825d50d"
+    },
+    {
+      "file": "tuto_navi_window.png",
+      "bytes": 2788,
+      "sha256": "3c03136d3d5fca2c2f1c02dc471a0248c9c7538053a843c3ba4413eb1f322553"
     },
     {
       "file": "unit_anime_10011.png",
@@ -3852,6 +4174,16 @@
       "file": "unit_common_plate.png",
       "bytes": 36478,
       "sha256": "df934f24f88d77f17e7b262dcc8244aaa5847ec2dd20baf654830ea3e8da6c1e"
+    },
+    {
+      "file": "unit_explanation_frame1.png",
+      "bytes": 16848,
+      "sha256": "a5a64477a11b4bd99e3cb906a2105f8a3f2a7e314ffedc2f0c18e57083324242"
+    },
+    {
+      "file": "unit_explanation_frame2.png",
+      "bytes": 108,
+      "sha256": "a6085f74501d7dc68c0b77209ba69935c9cefbb09beb25562eb83f0ea5111aa2"
     },
     {
       "file": "unit_ills_battle_10011.png",

@@ -34,10 +34,10 @@ test('모든 시작 영웅은 서로 다른 난수 60개에서 첫 모험을 완
 test('한 차례에는 한 번만 행동하며 부족한 필살기 게이지는 상태를 바꾸지 않는다',()=>{
   const b=createBattle(fresh(),'grass-1',catalog,17),before=structuredClone(b);
   assert.throws(()=>act(b,0,'burst',0,catalog));assert.deepEqual(b,before);
-  act(b,0,'attack',0,catalog);assert.equal(b.party[0].bb,4);assert.throws(()=>act(b,0,'attack',0,catalog));
+  act(b,0,'attack',0,catalog);assert.ok(b.party.every(p=>p.bb>=0&&p.bb<=p.bbCost));assert.throws(()=>act(b,0,'attack',0,catalog));
 });
 test('속성 유리, 불리, 빛과 어둠의 상호 상성이 적용된다',()=>{
-  assert.equal(elementMultiplier('fire','earth'),1.5);assert.equal(elementMultiplier('earth','fire'),.75);
+  assert.equal(elementMultiplier('fire','earth'),1.5);assert.equal(elementMultiplier('earth','fire'),.5);
   assert.equal(elementMultiplier('light','dark'),1.5);assert.equal(elementMultiplier('dark','light'),1.5);assert.equal(elementMultiplier('water','water'),1);
 });
 test('방어는 같은 난수의 적 공격 피해를 절반으로 줄인다',()=>{
@@ -49,7 +49,7 @@ test('방어는 같은 난수의 적 공격 피해를 절반으로 줄인다',()
 });
 test('전체 공격 필살기는 살아 있는 모든 적을 공격하고 게이지를 소모한다',()=>{
   const b=createBattle(fresh(),'grass-1',catalog,55);b.party[0].bb=b.party[0].bbCost;
-  const events=act(b,0,'burst',0,catalog).filter(e=>e.type==='hit');assert.equal(events.length,2);assert.equal(b.party[0].bb,0);assert.ok(events.every(e=>e.hits===5));
+  const all=act(b,0,'burst',0,catalog),events=all.filter(e=>e.type==='hit');assert.equal(events.length,2);assert.equal(b.party[0].bb,all.filter(e=>e.type==='crystal'&&e.kind==='battle'&&e.actor===0).reduce((n,e)=>n+e.value,0));assert.ok(events.every(e=>e.hits===5));
 });
 test('회복약은 생존한 부상 유닛에만 최대 세 번 사용한다',()=>{
   const b=createBattle(fresh(),'grass-1',catalog,1),p=b.party[0];assert.throws(()=>usePotion(b,0));
@@ -74,12 +74,12 @@ test('강화 비용 차감과 최대 레벨이 적용되며 실패하면 재화�
   s.zel=0;const before=structuredClone(s);assert.throws(()=>grow(s,'10011'));assert.deepEqual(s,before);
   s.units['10011'].level=20;assert.deepEqual(stats(s.units['10011'],catalog),catalog['10011'].max);assert.throws(()=>grow(s,'10011'));
 });
-test('편성은 보유한 서로 다른 동료 한 명에서 여섯 명만 허용한다',()=>{
+test('편성은 보유한 서로 다른 동료 한 명에서 다섯 명만 허용한다',()=>{
   const s=fresh();for(const p of [[],['10011','10011'],['60133']])assert.throws(()=>setParty(s,p));
   setParty(s,[s.party[1],'10011']);assert.equal(s.party[1],'10011');
 });
 test('영웅 소환은 미보유 영웅을 우선 지급하고 중복은 카르마가 된다',()=>{
-  const s=fresh();s.gems=12;for(let i=0;i<3;i++){const r=summon(s,'hero',catalog,0);assert.equal(r.duplicate,false);}
+  const s=fresh();s.gems=20;for(let i=0;i<3;i++){const r=summon(s,'hero',catalog,0);assert.equal(r.duplicate,false);}
   assert.ok(data.starterIds.every(id=>s.units[id]));const r=summon(s,'hero',catalog,.999);assert.equal(r.duplicate,true);assert.equal(r.karma,500);assert.equal(s.gems,0);
   const before=structuredClone(s);assert.throws(()=>summon(s,'hero',catalog));assert.deepEqual(s,before);
 });
@@ -93,8 +93,8 @@ test('저장 파일은 정상 복원되고 잘못된 재화, 레벨, 편성, 기
   for(const mutate of [x=>x.zel=-1,x=>x.gems=NaN,x=>x.units['10011'].level=21,x=>x.party=['constructor'],x=>x.party=['10011','10011'],x=>x.clears={'grass-1':null}]){const raw=structuredClone(s);mutate(raw);assert.throws(()=>validateSave(raw,catalog));}
   const raw=structuredClone(s);raw.volume=NaN;assert.equal(validateSave(raw,catalog).volume,.35);
 });
-test('최대 성장한 여섯 명의 부대로 모든 웹판 모험을 완주할 수 있다',()=>{
-  const s=fresh();const ids=[...data.starterIds,'30050','40050'];s.units=Object.fromEntries(ids.map(id=>[id,{id,level:20,xp:0}]));setParty(s,ids);
+test('최대 성장한 다섯 명의 부대로 모든 웹판 모험을 완주할 수 있다',()=>{
+  const s=fresh();const ids=[...data.starterIds,'30050'];s.units=Object.fromEntries(ids.map(id=>[id,{id,level:20,xp:0}]));setParty(s,ids);
   for(const q of QUESTS){const b=finish(createBattle(s,q.id,catalog,2048));assert.equal(b.phase,'victory',q.id);claimVictory(s,b,catalog);}
   assert.equal(Object.keys(s.clears).length,8);
 });
