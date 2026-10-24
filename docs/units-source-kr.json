@@ -1,0 +1,5863 @@
+[
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_under",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 30,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 70,
+        "target conditions": "hp_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 50,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 131
+      },
+      "idle": {
+        "total number of frames": 51
+      },
+      "move": {
+        "total number of frames": 1
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            26,
+            47,
+            68,
+            89,
+            110
+          ],
+          "hit dmg% distribution": [
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 5,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 전체에게 화속성 5연속 데미지",
+      "drop check count": 1,
+      "id": "10011",
+      "levels": [
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 35,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 45,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "플레어 라이드"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 10010,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        26,
+        44,
+        62
+      ],
+      "hit dmg% distribution": [
+        50,
+        30,
+        20
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 3
+    },
+    "dictionary": {
+      "description": "A swordsman from the ruined Agni Empire, he later became one of the Six Heroes. Proud of his late father, a Knight in the Order of Agni, he trained in the long sword, becoming a formidable knight. Although he is well-known for his countless victories over other warriors, he still considers himself inexperienced and continues to train with great zeal.",
+      "evolution": " ",
+      "fusion": "I still have much to learn!<br>I must become stronger!",
+      "summon": "So, you're calling on me, eh?<br>Alright then, I'll fight for you.<br>Just don't mess with my blade."
+    },
+    "drop check count": 2,
+    "element": "fire",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "10130",
+          "name": "불의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "10012"
+    },
+    "exp_pattern": 10,
+    "gender": "male",
+    "getting type": "not eligible for achievement",
+    "guide_id": 1,
+    "id": 10011,
+    "imp": {
+      "max atk": "160",
+      "max def": "80",
+      "max hp": "400",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "화속성 유닛의 공격력 25% 상승",
+      "effects": [
+        {
+          "atk% buff": 25,
+          "elements buffed": [
+            "fire"
+          ],
+          "passive id": "2"
+        }
+      ],
+      "id": "100",
+      "name": "화신의 힘"
+    },
+    "lord damage range": "651~728",
+    "movement": {
+      "attack": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      }
+    },
+    "name": "검호 발가스",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 500,
+        "def": 410,
+        "hp": 1030,
+        "rec": 320
+      },
+      "_lord": {
+        "atk": 700,
+        "def": 574,
+        "hp": 1948,
+        "rec": 448
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 화속성 데미지",
+      "drop check count": 5,
+      "id": "10030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 플레임"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 10030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "Allegedly born from lava, this liquid-type demon radiates heat from its body. The lowest ranked of the demons, it is said to be the perfect sparring partner for new summoners. It prefers fiery places, but lacks a specific habitat. It causes fire when it appears, troubling those who come across it. Many Summoners choose it due to its cute appearance.",
+      "evolution": " ",
+      "fusion": "*Sizzle* I got stronger!<br>Hmm? *Sizzle* Did it just<br>get hotter!?",
+      "summon": "*Sizzle* Let's go!<br>*Sizzle* Leave it to Burny!"
+    },
+    "drop check count": 2,
+    "element": "fire",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "10130",
+          "name": "불의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "10031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 43,
+    "id": 10030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "401~449",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "모엘스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 320,
+        "def": 280,
+        "hp": 830,
+        "rec": 210
+      },
+      "_lord": {
+        "atk": 432,
+        "def": 367,
+        "hp": 1628,
+        "rec": 273
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_under",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 30,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 70,
+        "target conditions": "hp_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 50,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 69
+      },
+      "idle": {
+        "total number of frames": 44
+      },
+      "move": {
+        "total number of frames": 44
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            46,
+            48,
+            51,
+            54
+          ],
+          "hit dmg% distribution": [
+            25,
+            25,
+            25,
+            25
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 4,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 화속성 4연속 데미지＆BC 출현율 상승",
+      "drop check count": 5,
+      "id": "10050",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb bc%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "고블린 어택"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 10050,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        46
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "Goblins are said to be fairies who became hideous demons after being possessed by evil spirits. The mischievous nature of their fairy hearts lead them to cause trouble for humans. Although individually weak, their pack nature, high reproduction ability, and knowledge of weapons allow them to continually trouble folks all over the world.",
+      "evolution": " ",
+      "fusion": "Ahaha!<br>I'm overflowing with power!",
+      "summon": "You need me?<br>You need me that bad?<br>Hehe, I'll join you."
+    },
+    "drop check count": 2,
+    "element": "fire",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "60142",
+          "name": "미믹",
+          "type": "unit"
+        }
+      ],
+      "next": "10051"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 67,
+    "id": 10050,
+    "imp": {
+      "max atk": "60",
+      "max def": "60",
+      "max hp": "150",
+      "max rec": "60"
+    },
+    "kind": "normal",
+    "lord damage range": "566~632",
+    "movement": {
+      "attack": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      }
+    },
+    "name": "고블린",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 450,
+        "def": 250,
+        "hp": 1000,
+        "rec": 100
+      },
+      "_lord": {
+        "atk": 608,
+        "def": 330,
+        "hp": 1860,
+        "rec": 170
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "atk_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 30,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 90
+      },
+      "idle": {
+        "total number of frames": 52
+      },
+      "move": {
+        "total number of frames": 13
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            10,
+            14,
+            26,
+            30
+          ],
+          "hit dmg% distribution": [
+            20,
+            20,
+            30,
+            30
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 4,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 전체에게 수속성 4연속 데미지",
+      "drop check count": 1,
+      "id": "20011",
+      "levels": [
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 35,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 45,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "에스트레알 블레이드"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 20010,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        26,
+        30
+      ],
+      "hit dmg% distribution": [
+        50,
+        50
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 2
+    },
+    "dictionary": {
+      "description": "A swordswoman from the ruined Sama Kingdom, she later became one of the Six Heroes. Born from a line of chiefs of the wandering sea people of Savat, she was raised in traditional long sword techniques. She stood out so much that she was offered the treasured sword Lexida as proof of her chiefdom at age 14. She refused it at the time, claiming she was inexperienced.",
+      "evolution": " ",
+      "fusion": "I don't really need<br>to get any stronger...",
+      "summon": "You're a Summoner?<br>Alright then, I'll stick <br>with you for now."
+    },
+    "drop check count": 3,
+    "element": "water",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "20130",
+          "name": "물의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "20012"
+    },
+    "exp_pattern": 10,
+    "gender": "female",
+    "getting type": "not eligible for achievement",
+    "guide_id": 5,
+    "id": 20011,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "수속성 유닛의 공격력 25% 상승",
+      "effects": [
+        {
+          "atk% buff": 25,
+          "elements buffed": [
+            "water"
+          ],
+          "passive id": "2"
+        }
+      ],
+      "id": "110",
+      "name": "수신의 힘"
+    },
+    "lord damage range": "657~734",
+    "movement": {
+      "attack": {
+        "move speed": 0.0024,
+        "move speed type": "4",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0024,
+        "move speed type": "4",
+        "move type": "1"
+      }
+    },
+    "name": "검사 세레나",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 490,
+        "def": 360,
+        "hp": 1000,
+        "rec": 420
+      },
+      "_lord": {
+        "atk": 706,
+        "def": 468,
+        "hp": 1830,
+        "rec": 693
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 수속성 데미지",
+      "drop check count": 5,
+      "id": "20030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 아이징"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 20030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A demon born from drops at the bottom of a giant waterfall. They are weak and the lowest ranked of all monsters. They exhibit pack behavior and like watery places, but are cowardly and usually run from humans. However, some of them are violent and attack by attaching themselves to an enemy's head. Rumor is they're not suitable for drinking, but no one has ever tested this theory.",
+      "evolution": " ",
+      "fusion": "*Splish* *Splosh*<br>My body is damp!",
+      "summon": "Take me with you!<br>If you get thirsty you can <br>have a drink of me."
+    },
+    "drop check count": 2,
+    "element": "water",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "20130",
+          "name": "물의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "20031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 45,
+    "id": 20030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "368~411",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "미즐스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 300,
+        "def": 280,
+        "hp": 800,
+        "rec": 250
+      },
+      "_lord": {
+        "atk": 396,
+        "def": 392,
+        "hp": 1596,
+        "rec": 408
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_under",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 30,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 70,
+        "target conditions": "hp_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 50,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 67
+      },
+      "idle": {
+        "total number of frames": 44
+      },
+      "move": {
+        "total number of frames": 6
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            13,
+            16,
+            32,
+            35
+          ],
+          "hit dmg% distribution": [
+            25,
+            25,
+            25,
+            25
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 4,
+          "proc id": "1"
+        },
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            0
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "11"
+        }
+      ],
+      "desc": "적 1명에게 수속성 4연속 데미지＆확률로 질병 효과",
+      "drop check count": 1,
+      "id": "20050",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "스파이럴 랜스"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 20050,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        13,
+        32
+      ],
+      "hit dmg% distribution": [
+        60,
+        60
+      ],
+      "hit dmg% distribution (total)": 120,
+      "hits": 2
+    },
+    "dictionary": {
+      "description": "A magical aquatic being that lives in the oceans of Grand Gaia. They are often found in the tales of humans. They usually live in the sea or on the shore, but they are found anywhere where there is water, including rivers and lakes. A human can easily run into one. They move in groups and are observed to be very dangerous when hunting larger beasts.",
+      "evolution": " ",
+      "fusion": "Kishashashasha!<br>You now understand how strong I've gotten.",
+      "summon": "Kishashasha!<br>I like you.<br>I'll join you."
+    },
+    "drop check count": 2,
+    "element": "water",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "60142",
+          "name": "미믹",
+          "type": "unit"
+        }
+      ],
+      "next": "20051"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 69,
+    "id": 20050,
+    "imp": {
+      "max atk": "60",
+      "max def": "60",
+      "max hp": "150",
+      "max rec": "60"
+    },
+    "kind": "normal",
+    "lord damage range": "494~553",
+    "movement": {
+      "attack": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      }
+    },
+    "name": "머먼",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 380,
+        "def": 350,
+        "hp": 950,
+        "rec": 200
+      },
+      "_lord": {
+        "atk": 532,
+        "def": 462,
+        "hp": 1735,
+        "rec": 312
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 94
+      },
+      "idle": {
+        "total number of frames": 52
+      },
+      "move": {
+        "total number of frames": 12
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            26,
+            32,
+            38,
+            44
+          ],
+          "hit dmg% distribution": [
+            25,
+            25,
+            25,
+            25
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 4,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 전체에게 목속성 4연속 데미지",
+      "drop check count": 1,
+      "id": "30011",
+      "levels": [
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 35,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 45,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "플래쉬 게일"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 30010,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        26,
+        32,
+        38
+      ],
+      "hit dmg% distribution": [
+        50,
+        20,
+        30
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 3
+    },
+    "dictionary": {
+      "description": "A pikeman from the ruined Principality of Vriksha, he eventually became one of the Six Heroes. He was a quiet, noble boy, but one day he saw the Demon Pike Drevas, lying in a storehouse on his estate. Suddenly, he informed his family he was leaving to train. His parents strongly opposed, but in the end he ran away, Drevas in hand. Rumors are that the spear spoke to him.",
+      "evolution": " ",
+      "fusion": "Still not enough...<br>I must get stronger...",
+      "summon": "Do you like my pike?<br>Alright, I'll let you see it,<br>but just this once..."
+    },
+    "drop check count": 3,
+    "element": "earth",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "30130",
+          "name": "나무의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "30012"
+    },
+    "exp_pattern": 10,
+    "gender": "male",
+    "getting type": "not eligible for achievement",
+    "guide_id": 9,
+    "id": 30011,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "목속성 유닛의 공격력 25% 상승",
+      "effects": [
+        {
+          "atk% buff": 25,
+          "elements buffed": [
+            "earth"
+          ],
+          "passive id": "2"
+        }
+      ],
+      "id": "120",
+      "name": "목신의 힘"
+    },
+    "lord damage range": "670~748",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "창사 란셀",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 500,
+        "def": 500,
+        "hp": 1010,
+        "rec": 150
+      },
+      "_lord": {
+        "atk": 720,
+        "def": 700,
+        "hp": 1876,
+        "rec": 248
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 목속성 데미지",
+      "drop check count": 5,
+      "id": "30030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 우드"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 30030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A liquid-type demon with leaves sprouting from its head, born from the sap of a massive tree. It is curious and always hungry. There are many tales of Mossy suddenly joining those who walk through the forest. However, it should be driven away quickly since it is always after food. The lowest ranked of the demons, it is a perfect sparring partner for new Summoners. ",
+      "evolution": " ",
+      "fusion": "Nom! This is good, nom!<br>I want more, nom!",
+      "summon": "<br>You gonna eat that, nom?<br>Alright! Then I'll <br>join you, nom!"
+    },
+    "drop check count": 2,
+    "element": "earth",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "30130",
+          "name": "나무의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "30031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 47,
+    "id": 30030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "314~351",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "모릴스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 260,
+        "def": 350,
+        "hp": 850,
+        "rec": 220
+      },
+      "_lord": {
+        "atk": 338,
+        "def": 501,
+        "hp": 1745,
+        "rec": 286
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 72
+      },
+      "idle": {
+        "total number of frames": 39
+      },
+      "move": {
+        "total number of frames": 43
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            42,
+            50
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 강력한 목속성 2연속 데미지",
+      "drop check count": 5,
+      "id": "30031",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 95,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 105,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "통째로 베어 무는 우드"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 30030,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        42
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "After Mossy's bottomless stomach is full, it's said to evolve into King Mossy. Due to its huge body, its appetite grows even larger. It often goes to human settlements looking for food. Adults avoid it because it's though of as a harmful beast, but it's somehow popular with children. It sneaks onto farms shaped as an overgrown bush to steal crops, causing trouble for farmers.",
+      "evolution": "Om, nom!? Since evolving,<br>I've gotten even hungrier!",
+      "fusion": "This is delicious too, nom.<br>It's not just volume, but quality is important too, nom.",
+      "summon": "Nom! Can I eat delicious <br>foods if I go with you, nom?<br>Nom, a gourmet adventure!"
+    },
+    "drop check count": 2,
+    "element": "earth",
+    "evolution": {
+      "prev": "30030"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 48,
+    "id": 30031,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "목속성 유닛으로부터 피해 데미지 10% 감소",
+      "effects": [
+        {
+          "earth resist%": 10,
+          "passive id": "5"
+        }
+      ],
+      "id": "504",
+      "name": "나무의 수호"
+    },
+    "lord damage range": "556~621",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "모릴스 킹",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 300,
+        "def": 450,
+        "hp": 1300,
+        "rec": 260
+      },
+      "_lord": {
+        "atk": 598,
+        "def": 787,
+        "hp": 2425,
+        "rec": 551
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "random",
+        "target type": "party"
+      },
+      {
+        "action": "attack",
+        "chance%": 30,
+        "target conditions": "atk_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 148
+      },
+      "idle": {
+        "total number of frames": 44
+      },
+      "move": {
+        "total number of frames": 44
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            66
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "5"
+        }
+      ],
+      "desc": "3턴간 아군 전체의 공격력 상승",
+      "drop check count": 1,
+      "id": "30050",
+      "levels": [
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 25,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 26,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 27,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 28,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 29,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 30,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 31,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 32,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 33,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "atk% buff (1)": 34,
+              "buff turns": 3,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        }
+      ],
+      "name": "파워 스크림"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 30050,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        60,
+        75,
+        90
+      ],
+      "hit dmg% distribution": [
+        33,
+        33,
+        34
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 3
+    },
+    "dictionary": {
+      "description": "A human-like plant native to deep forests where the sun can't reach. They sleep as they grow in the earth. If pulled from the ground they will become violent and attack whoever disturbed them. They are dangerous when carelessly touched as their scream can shake a person's very soul. However, it could just be that they're just a bit crazy as they are sometimes friendly.",
+      "evolution": " ",
+      "fusion": "Wah!<br>Uhuh, uhuh!!",
+      "summon": "Grr!<br>Grr!<br>Grr!"
+    },
+    "drop check count": 2,
+    "element": "earth",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "60142",
+          "name": "미믹",
+          "type": "unit"
+        }
+      ],
+      "next": "30051"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 71,
+    "id": 30050,
+    "imp": {
+      "max atk": "60",
+      "max def": "60",
+      "max hp": "150",
+      "max rec": "60"
+    },
+    "kind": "normal",
+    "lord damage range": "376~421",
+    "movement": {
+      "attack": {
+        "move speed": 6,
+        "move speed type": "2",
+        "move type": "3"
+      },
+      "skill": {
+        "move speed": 6,
+        "move speed type": "2",
+        "move type": "3"
+      }
+    },
+    "name": "만드라고라",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 300,
+        "def": 400,
+        "hp": 1010,
+        "rec": 180
+      },
+      "_lord": {
+        "atk": 405,
+        "def": 532,
+        "hp": 1836,
+        "rec": 270
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_under",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 30,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 70,
+        "target conditions": "hp_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 50,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 99
+      },
+      "idle": {
+        "total number of frames": 56
+      },
+      "move": {
+        "total number of frames": 14
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30,
+            40
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 전체에게 뇌속성 2연속 데미지",
+      "drop check count": 1,
+      "id": "40011",
+      "levels": [
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 35,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 45,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 15,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "aoe",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "뇌신렬참"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 40010,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A warrior from the ruined Atharva Republic, he later became one of the Six Heroes. Raised in an old mine, he worked from the time he was a child. At one point he grew tired and left to become a demon bounty hunter. His swordsmanship was tempered through his mine work, and he could obliterate a normal demon in one blow. He spoke rough, but was polite to women.",
+      "evolution": " ",
+      "fusion": "Wow!<br>Can you feel that<br>energy flowing!?",
+      "summon": "Hey! Get out of my way!<br>Friend or foe, no one stands<br>in front of me!"
+    },
+    "drop check count": 8,
+    "element": "thunder",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "40130",
+          "name": "번개의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "40012"
+    },
+    "exp_pattern": 10,
+    "gender": "male",
+    "getting type": "not eligible for achievement",
+    "guide_id": 13,
+    "id": 40011,
+    "imp": {
+      "max atk": "160",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "160"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "뇌속성 유닛의 공격력 25% 상승",
+      "effects": [
+        {
+          "atk% buff": 25,
+          "elements buffed": [
+            "thunder"
+          ],
+          "passive id": "2"
+        }
+      ],
+      "id": "130",
+      "name": "뇌신의 힘"
+    },
+    "lord damage range": "755~844",
+    "movement": {
+      "attack": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0033,
+        "move speed type": "3",
+        "move type": "1"
+      }
+    },
+    "name": "전사 에젤",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 580,
+        "def": 320,
+        "hp": 1180,
+        "rec": 120
+      },
+      "_lord": {
+        "atk": 812,
+        "def": 420,
+        "hp": 2070,
+        "rec": 210
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 뇌속성 데미지",
+      "drop check count": 5,
+      "id": "40030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 일렉"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 40030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A liquid-type demon wrapped in electricity, thought to appear when lighting strikes. It has a horn on its head and a black pattern on its body. It is mischievous and laughs with its friends as it electrically shocks humans. Sparky is still a weak and very low level monster, but like so many other liquid-type enemies, they are perfect sparring partners for new Summoners.",
+      "evolution": " ",
+      "fusion": "I'm sparking!<br>Make me spark more!",
+      "summon": "Zap!<br>Do you want to<br>spark with me?"
+    },
+    "drop check count": 2,
+    "element": "thunder",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "40130",
+          "name": "번개의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "40031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 49,
+    "id": 40030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "401~449",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "라일스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 320,
+        "def": 280,
+        "hp": 830,
+        "rec": 210
+      },
+      "_lord": {
+        "atk": 432,
+        "def": 367,
+        "hp": 1628,
+        "rec": 273
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 83
+      },
+      "idle": {
+        "total number of frames": 42
+      },
+      "move": {
+        "total number of frames": 48
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            42,
+            50
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 강력한 뇌속성 2연속 데미지",
+      "drop check count": 5,
+      "id": "40031",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 95,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 105,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "통째로 베어 무는 일렉"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 40030,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        42
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "When Sparky charges up, it evolves into King Sparky. Its new electric shock power far exceeds that of the regular Sparky, and it can quickly put new Summoners in a bind. It has a very warlike nature, forcing Summoners into battle once it spots them. Thus, many Summoners immediately hide after spotting a King Sparky.",
+      "evolution": "My spark has turned<br>into a rumble!<br>Wanna see?",
+      "fusion": "Rumble, rumble, rumble!<br>My rumbling grows stronger!",
+      "summon": "Rumble, boom!<br>You're fine with my<br>rumble, right?"
+    },
+    "drop check count": 2,
+    "element": "thunder",
+    "evolution": {
+      "prev": "40030"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 50,
+    "id": 40031,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "뇌속성 유닛으로부터 피해 데미지 10% 감소",
+      "effects": [
+        {
+          "passive id": "5",
+          "thunder resist%": 10
+        }
+      ],
+      "id": "506",
+      "name": "번개의 수호"
+    },
+    "lord damage range": "652~730",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "라일스 킹",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 390,
+        "def": 330,
+        "hp": 1200,
+        "rec": 250
+      },
+      "_lord": {
+        "atk": 702,
+        "def": 629,
+        "hp": 2268,
+        "rec": 533
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "random",
+        "target type": "party"
+      },
+      {
+        "action": "attack",
+        "chance%": 30,
+        "target conditions": "atk_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 94
+      },
+      "idle": {
+        "total number of frames": 66
+      },
+      "move": {
+        "total number of frames": 12
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            100
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "5"
+        }
+      ],
+      "desc": "4턴간 아군 전체의 방어력 상승",
+      "drop check count": 1,
+      "id": "40050",
+      "levels": [
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 25,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 26,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 27,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 28,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 29,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 31,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 32,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 33,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        },
+        {
+          "bc cost": 12,
+          "effects": [
+            {
+              "buff turns": 4,
+              "def% buff (3)": 35,
+              "effect delay time(ms)/frame": "0.0/0",
+              "element buffed": "all",
+              "proc id": "5",
+              "target area": "aoe",
+              "target type": "party"
+            }
+          ]
+        }
+      ],
+      "name": "윈드 아머"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 40050,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        44,
+        56,
+        68
+      ],
+      "hit dmg% distribution": [
+        33,
+        33,
+        34
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 3
+    },
+    "dictionary": {
+      "description": "A half-human, half-bird female monster from the birdman tribe. With her lusty nature, she seduces young men on sight. Men who take her invitation, tempted by her lascivious looks, are taken to the harpy nest, and fed to harpy children. However, there is no safe choice. Someone who refuses is immediately charged and ripped to shreds by her sharp claws.",
+      "evolution": " ",
+      "fusion": "You're nice.<br>You think I am too, right?",
+      "summon": "I've been charmed by you.<br>I will protect you from now on."
+    },
+    "drop check count": 2,
+    "element": "thunder",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "60142",
+          "name": "미믹",
+          "type": "unit"
+        }
+      ],
+      "next": "40051"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 73,
+    "id": 40050,
+    "imp": {
+      "max atk": "60",
+      "max def": "60",
+      "max hp": "150",
+      "max rec": "60"
+    },
+    "kind": "normal",
+    "lord damage range": "408~456",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 6,
+        "move speed type": "2",
+        "move type": "3"
+      }
+    },
+    "name": "하피",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 330,
+        "def": 280,
+        "hp": 1200,
+        "rec": 120
+      },
+      "_lord": {
+        "atk": 439,
+        "def": 376,
+        "hp": 2136,
+        "rec": 201
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 광속성 데미지",
+      "drop check count": 5,
+      "id": "50030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 포톤"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 50030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A type of liquid-type monster with a sparkling body. They are a very common creature, although their origin is unknown. Some think they were made at the time of creation, and have since increased in number. Most are basically kind. When they find a person walking at night, they offer themselves as lamps. However, since there are so many, some have become violent and will attack humans.",
+      "evolution": " ",
+      "fusion": "What's this? I've gotten brighter.<br>Mind if I shine my light on you?",
+      "summon": "I'll light up your way,<br>so please, take me with you..."
+    },
+    "drop check count": 2,
+    "element": "light",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "50120",
+          "name": "빛의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "50031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 51,
+    "id": 50030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "365~408",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "히칼스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 300,
+        "def": 400,
+        "hp": 830,
+        "rec": 300
+      },
+      "_lord": {
+        "atk": 393,
+        "def": 580,
+        "hp": 1587,
+        "rec": 390
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 72
+      },
+      "idle": {
+        "total number of frames": 39
+      },
+      "move": {
+        "total number of frames": 43
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            42,
+            50
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 강력한 광속성 2연속 데미지",
+      "drop check count": 5,
+      "id": "50031",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 95,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 105,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "통째로 베어 무는 포톤"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 50030,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        42
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "There are many mysteries about Glowy, including its origin, but the most curious thing is the existence of the King Glowy. It's said that a group of liquid-type monsters merge to become a King Glowy. However, as no other creatures of this kind have done this before, researchers are puzzled as to how this could happen. When King Glowy appears, even the night becomes as bright as day.",
+      "evolution": "Haha, how dazzling!<br>I'm so much brighter now!",
+      "fusion": "Hehe, am I too bright?<br>Really? I'm too bright?",
+      "summon": "I'm sorry, I can't help<br>it that I'm so bright.<br>I can go if it's too much..."
+    },
+    "drop check count": 2,
+    "element": "light",
+    "evolution": {
+      "prev": "50030"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 52,
+    "id": 50031,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "광속성 유닛으로부터 피해 데미지 10% 감소",
+      "effects": [
+        {
+          "light resist%": 10,
+          "passive id": "5"
+        }
+      ],
+      "id": "508",
+      "name": "빛의 수호"
+    },
+    "lord damage range": "609~681",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "히칼스 킹",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 350,
+        "def": 520,
+        "hp": 1160,
+        "rec": 350
+      },
+      "_lord": {
+        "atk": 655,
+        "def": 870,
+        "hp": 2207,
+        "rec": 665
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 61
+      },
+      "idle": {
+        "total number of frames": 54
+      },
+      "move": {
+        "total number of frames": 56
+      }
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 50130,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        32
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A monster that shimmers all over. It likes eating gemstones, but as it can't digest them it instead stores them inside itself. It is often referred to as a moving treasure chest. Many Summoners try to capture them, but they're fast and not very common. One must be proficient in finding them to be able to capture one. It, the Jewel King and the Jewel God are classified as jewel types.",
+      "evolution": " ",
+      "fusion": " ",
+      "summon": "I am a Jewel Ghost!<br>I twinkle beautifully, don't I?<br>Let's be friends!"
+    },
+    "drop check count": 2,
+    "element": "light",
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 195,
+    "id": 50131,
+    "imp": {
+      "max atk": "0",
+      "max def": "0",
+      "max hp": "0",
+      "max rec": "0"
+    },
+    "kind": "sale",
+    "lord damage range": "113~127",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "주얼 고스트",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1300,
+        "rec": 123
+      },
+      "_lord": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1300,
+        "rec": 123
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 79
+      },
+      "idle": {
+        "total number of frames": 54
+      },
+      "move": {
+        "total number of frames": 72
+      }
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 50130,
+    "cost": 6,
+    "damage frames": {
+      "frame times": [
+        42
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A bigger, hungrier version of a Jewel Ghost. Since the gems it eats also remain inside of it, it is highly valued, even more so than the Jewel Ghost. Some Summoners search them out in order to get rich quick, but they are usually ruined by searching expenses. They are sometimes called foolish, and are often subject to ridicule. ",
+      "evolution": " ",
+      "fusion": " ",
+      "summon": "Oh, I'm full.<br>Hmm? You have more for me?<br>Then I guess I'm hungry again!"
+    },
+    "drop check count": 2,
+    "element": "light",
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 196,
+    "id": 50132,
+    "imp": {
+      "max atk": "0",
+      "max def": "0",
+      "max hp": "0",
+      "max rec": "0"
+    },
+    "kind": "sale",
+    "lord damage range": "113~127",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "주얼 킹",
+    "rarity": 3,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1800,
+        "rec": 123
+      },
+      "_lord": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1800,
+        "rec": 123
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 60
+      },
+      "idle": {
+        "total number of frames": 72
+      },
+      "move": {
+        "total number of frames": 72
+      }
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 50130,
+    "cost": 9,
+    "damage frames": {
+      "frame times": [
+        40
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A jewel type monster that is even larger and even more voracious than the Jewel King. Not only does it hold the gems it's eaten in its body, but those gems also merge together producing even more precious jewels making it is even more valuable than the others. Naturally, there are many Jewel God related crimes, there being a high number of counterfeits, abductions, and scams.",
+      "evolution": " ",
+      "fusion": " ",
+      "summon": "I can still eat.<br>Give me more gems, please!<br>My belly is bottomless!"
+    },
+    "drop check count": 2,
+    "element": "light",
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 197,
+    "id": 50133,
+    "imp": {
+      "max atk": "0",
+      "max def": "0",
+      "max hp": "0",
+      "max rec": "0"
+    },
+    "kind": "sale",
+    "lord damage range": "113~127",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "주얼 갓",
+    "rarity": 4,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 123,
+        "def": 123,
+        "hp": 2300,
+        "rec": 123
+      },
+      "_lord": {
+        "atk": 123,
+        "def": 123,
+        "hp": 2300,
+        "rec": 123
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 64
+      },
+      "idle": {
+        "total number of frames": 46
+      },
+      "move": {
+        "total number of frames": 35
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 암속성 데미지",
+      "drop check count": 5,
+      "id": "60030",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 55,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 65,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "한 입 깨무는 섀도우"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 60030,
+    "cost": 1,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "Glowy's mutated form after being showered with magic. It has an extremely brutal nature and attacks any humans it finds, all whilst constantly spitting out obscenities. However, since it is very weak like other liquid-type monsters, it is still a good sparring partner for new Summoners. They've also been said to show kindness at times. Some think that it's actually just like a Glowy, except that it acts up because it feels lonely.",
+      "evolution": " ",
+      "fusion": "Fusion? What the!?<br>*Growl* I don't wanna!",
+      "summon": "*Growl* What're you lookin' at!?<br>Be your friend?<br>Of course I will! *Growl*"
+    },
+    "drop check count": 2,
+    "element": "dark",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "60120",
+          "name": "어둠의 요정",
+          "type": "unit"
+        }
+      ],
+      "next": "60031"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 53,
+    "id": 60030,
+    "imp": {
+      "max atk": "80",
+      "max def": "80",
+      "max hp": "200",
+      "max rec": "80"
+    },
+    "kind": "normal",
+    "lord damage range": "543~607",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "아클스",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 400,
+        "def": 200,
+        "hp": 730,
+        "rec": 200
+      },
+      "_lord": {
+        "atk": 584,
+        "def": 260,
+        "hp": 1410,
+        "rec": 260
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 72
+      },
+      "idle": {
+        "total number of frames": 39
+      },
+      "move": {
+        "total number of frames": 43
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            42,
+            50
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        }
+      ],
+      "desc": "적 1명에게 강력한 암속성 2연속 데미지",
+      "drop check count": 5,
+      "id": "60031",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 75,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 85,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 95,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 105,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb bc%": 40,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "통째로 베어 무는 섀도우"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2017-06-14T11:43:33.000Z"
+    },
+    "category": 60030,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        42
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "Just like a Glowy, when multiple Gloomies come together, they transform into King Gloomy. Even though it's more brutal and obscene than a regular Gloomy, it still occasionally mixes in some kind words. Nonetheless, the destructive attacks it unleashes from its giant body are much stronger, and it is certainly more dangerous. It also has wings, but it has absolutely no ability to fly. ",
+      "evolution": "Would you mind if I evolved?<br>Huh? What's with that smile<br>on your face!? *Huff*",
+      "fusion": "Wha-? Fusion!? *Huff*<br>No, no complaints from me! *Puff*",
+      "summon": "Huh? Who are you? *Huff*<br>A Summoner? What's that!?<br>Fine, guess I'll follow you!"
+    },
+    "drop check count": 2,
+    "element": "dark",
+    "evolution": {
+      "prev": "60030"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 54,
+    "id": 60031,
+    "imp": {
+      "max atk": "120",
+      "max def": "120",
+      "max hp": "300",
+      "max rec": "120"
+    },
+    "kind": "normal",
+    "leader skill": {
+      "desc": "암속성 유닛으로부터 피해 데미지 10% 감소",
+      "effects": [
+        {
+          "dark resist%": 10,
+          "passive id": "5"
+        }
+      ],
+      "id": "510",
+      "name": "어둠의 수호"
+    },
+    "lord damage range": "815~911",
+    "movement": {
+      "attack": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.0041,
+        "move speed type": "2",
+        "move type": "1"
+      }
+    },
+    "name": "아클스 킹",
+    "rarity": 2,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 530,
+        "def": 230,
+        "hp": 1000,
+        "rec": 230
+      },
+      "_lord": {
+        "atk": 876,
+        "def": 520,
+        "hp": 2018,
+        "rec": 520
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_under",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 30,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 70,
+        "target conditions": "hp_max",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 50,
+        "target conditions": "hp_min",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 68
+      },
+      "idle": {
+        "total number of frames": 66
+      },
+      "move": {
+        "total number of frames": 48
+      }
+    },
+    "bb": {
+      "damage frames": [
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            30,
+            36
+          ],
+          "hit dmg% distribution": [
+            50,
+            50
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 2,
+          "proc id": "1"
+        },
+        {
+          "effect delay time(ms)/frame": "0.0/0",
+          "frame times": [
+            0
+          ],
+          "hit dmg% distribution": [
+            100
+          ],
+          "hit dmg% distribution (total)": 100,
+          "hits": 1,
+          "proc id": "11"
+        }
+      ],
+      "desc": "적 1명에게 암속성 2연속 데미지＆확률로 질병 효과",
+      "drop check count": 1,
+      "id": "60050",
+      "levels": [
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 30,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 40,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 50,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 60,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 70,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 80,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 90,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 100,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 110,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        },
+        {
+          "bc cost": 10,
+          "effects": [
+            {
+              "bb atk%": 120,
+              "bb flat atk": 30,
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "1",
+              "target area": "single",
+              "target type": "enemy"
+            },
+            {
+              "effect delay time(ms)/frame": "0.0/0",
+              "proc id": "11",
+              "sick%": 80,
+              "target area": "single",
+              "target type": "enemy"
+            }
+          ]
+        }
+      ],
+      "name": "본 스매시"
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 60050,
+    "cost": 2,
+    "damage frames": {
+      "frame times": [
+        30
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "An undead monster that moves freely thanks to the power of darkness in its bones. People tend to mistakenly think it still has a soul, but it is actually controlled by a dark force. It is unintelligent and doesn't sense pain, but it does have a very strong will to survive. It's said that it attacks those with a soul out to envy.",
+      "evolution": " ",
+      "fusion": "I-I will become stronger!<br>I will become stronger and <br>never have to die!!",
+      "summon": "Ugh, I-I can't defeat you.<br>You are m-my master..."
+    },
+    "drop check count": 2,
+    "element": "dark",
+    "evolution": {
+      "cost": 2500,
+      "mats": [
+        {
+          "id": "60142",
+          "name": "미믹",
+          "type": "unit"
+        }
+      ],
+      "next": "60051"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 77,
+    "id": 60050,
+    "imp": {
+      "max atk": "40",
+      "max def": "80",
+      "max hp": "150",
+      "max rec": "60"
+    },
+    "kind": "normal",
+    "lord damage range": "589~659",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "스켈레톤",
+    "rarity": 1,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 480,
+        "def": 230,
+        "hp": 930,
+        "rec": 90
+      },
+      "_lord": {
+        "atk": 634,
+        "def": 302,
+        "hp": 1695,
+        "rec": 151
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 113
+      },
+      "idle": {
+        "total number of frames": 32
+      },
+      "move": {
+        "total number of frames": 32
+      }
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 60130,
+    "cost": 3,
+    "damage frames": {
+      "frame times": [
+        73
+      ],
+      "hit dmg% distribution": [
+        100
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 1
+    },
+    "dictionary": {
+      "description": "A rare being said to be magical and to have recorded the time when the gods created the world. Along with the other metal type monsters, they are called the metal record species. Those who obtain one are awarded with loads of experience, so summoners often hunt them. So in addition to being rare, competition for them is fierce, making them even more difficult to capture.",
+      "evolution": " ",
+      "fusion": " ",
+      "summon": "Huh? I was captured?<br>And I'm usually so good at<br>escaping... Oh well, be gentle."
+    },
+    "drop check count": 2,
+    "element": "dark",
+    "evolution": {
+      "cost": 1000,
+      "mats": [
+        {
+          "id": "10202",
+          "name": "불의 메탈 고스트",
+          "type": "unit"
+        },
+        {
+          "id": "20202",
+          "name": "물의 메탈 고스트",
+          "type": "unit"
+        },
+        {
+          "id": "30202",
+          "name": "나무의 메탈 고스트",
+          "type": "unit"
+        },
+        {
+          "id": "40202",
+          "name": "번개의 메탈 고스트",
+          "type": "unit"
+        },
+        {
+          "id": "50202",
+          "name": "빛의 메탈 고스트",
+          "type": "unit"
+        }
+      ],
+      "next": "60133"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 198,
+    "id": 60132,
+    "imp": {
+      "max atk": "0",
+      "max def": "0",
+      "max hp": "0",
+      "max rec": "0"
+    },
+    "kind": "enhancing",
+    "lord damage range": "113~127",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "메탈 고스트",
+    "rarity": 3,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1000,
+        "rec": 123
+      },
+      "_lord": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1000,
+        "rec": 123
+      }
+    }
+  },
+  {
+    "ai": [
+      {
+        "action": "skill",
+        "chance%": 60,
+        "target conditions": "hp_50pr_over",
+        "target type": "enemy"
+      },
+      {
+        "action": "skill",
+        "chance%": 20,
+        "target conditions": "random",
+        "target type": "enemy"
+      },
+      {
+        "action": "attack",
+        "chance%": 100,
+        "target conditions": "random",
+        "target type": "enemy"
+      }
+    ],
+    "animations": {
+      "attack": {
+        "total number of frames": 113
+      },
+      "idle": {
+        "total number of frames": 44
+      },
+      "move": {
+        "total number of frames": 40
+      }
+    },
+    "bfmtMetadata": {
+      "createdAt": "2015-06-16T01:22:44.000Z",
+      "updatedAt": "2016-04-07T13:46:48.000Z"
+    },
+    "category": 60130,
+    "cost": 6,
+    "damage frames": {
+      "frame times": [
+        73,
+        78
+      ],
+      "hit dmg% distribution": [
+        80,
+        20
+      ],
+      "hit dmg% distribution (total)": 100,
+      "hits": 2
+    },
+    "dictionary": {
+      "description": "A rare being said to be magical and to have recorded the time when the gods created the world. It's of the metal record species. It's assumed to have much more experience than a Metal Ghost due to its bigger body. They don't belong to any one gender, but as their personality is more masculine, their speech usually earns them cold stares from women.",
+      "evolution": "Whoa, see how evolved I am?<br>Now I can get all the ladies?<br>That's gonna be a problem...",
+      "fusion": " ",
+      "summon": "Are you a Summoner?<br>Oh, well... Can you fuse<br>me with a cute girl!?"
+    },
+    "drop check count": 2,
+    "element": "dark",
+    "evolution": {
+      "prev": "60132"
+    },
+    "exp_pattern": 10,
+    "gender": "other",
+    "getting type": "not eligible for achievement",
+    "guide_id": 199,
+    "id": 60133,
+    "imp": {
+      "max atk": "0",
+      "max def": "0",
+      "max hp": "0",
+      "max rec": "0"
+    },
+    "kind": "enhancing",
+    "lord damage range": "113~127",
+    "movement": {
+      "attack": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      },
+      "skill": {
+        "move speed": 0.005,
+        "move speed type": "1",
+        "move type": "1"
+      }
+    },
+    "name": "메탈 킹",
+    "rarity": 4,
+    "sell caution": false,
+    "stats": {
+      "_base": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1500,
+        "rec": 123
+      },
+      "_lord": {
+        "atk": 123,
+        "def": 123,
+        "hp": 1500,
+        "rec": 123
+      }
+    }
+  }
+]

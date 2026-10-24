@@ -1,0 +1,10 @@
+node_modules/
+*.apk
+*.obb
+*.xapk
+*.tar.gz
+*.log
+coverage/
+.DS_Store
+dist/.DS_Store
+.openai/local*
