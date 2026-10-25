@@ -1,11 +1,11 @@
 {
   "name": "brave-frontier-ko-web",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "check": "node --check dist/app.js && node --check dist/engine.js && node --check dist/tutorial.js && node --check dist/sprites.js && node --check dist/ui.js && node --check dist/sam.js && node scripts/validate.mjs",
+    "check": "node --check dist/app.js && node --check dist/engine.js && node --check dist/tutorial-journey.js && node --check dist/tutorial.js && node --check dist/sprites.js && node --check dist/ui.js && node --check dist/sam.js && node scripts/validate.mjs",
     "dev": "node scripts/serve.mjs"
   }
 }

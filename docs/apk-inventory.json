@@ -3814,6 +3814,11 @@
       "sha256": "16bbcc5631b9c6812f5f36a9a446e4b89a35e7e600e515133a4f23f79d27169a"
     },
     {
+      "file": "elgaia.png",
+      "bytes": 14375,
+      "sha256": "2ee505c1de9f56046aad06885274d74e7406f7ef5100d7f3ec5ee2db53669444"
+    },
+    {
       "file": "footer_base.png",
       "bytes": 69545,
       "sha256": "78294b3bbbfa1b74e29045cb3e033db7f8f092e05849ea86d1f288c601391d30"
@@ -3939,6 +3944,11 @@
       "sha256": "200042ccaa63d49176642ab1655ce995f05f8e5b65489a8760a0b02d3c747521"
     },
     {
+      "file": "mytown_base.jpg",
+      "bytes": 87297,
+      "sha256": "b15b6cf67a83405151a5d3aacb2678f6b8706c7aa15ba134927d56d1cb5c00e1"
+    },
+    {
       "file": "navi_chara1_0.png",
       "bytes": 107419,
       "sha256": "312e926601854589d0c381f2ae9692e2d53c7ad67d1964a8fdd2145cc0fe969d"
@@ -3972,6 +3982,36 @@
       "file": "navi_chara1_8.png",
       "bytes": 107770,
       "sha256": "62f91d06da64714096382c1d946e8b23002bb74c739b60d87e28da54bc53b14e"
+    },
+    {
+      "file": "navi_chara2_0.png",
+      "bytes": 129884,
+      "sha256": "136ab0c6705d83dad274e309b9dddea7a1648b236da008acefea0c9b4f225f73"
+    },
+    {
+      "file": "navi_chara2_1.png",
+      "bytes": 129841,
+      "sha256": "c3bccadf4526f3f60cc88ed5e8550daace3cec4136833b2331c904410ff0b05e"
+    },
+    {
+      "file": "navi_chara2_2.png",
+      "bytes": 129564,
+      "sha256": "76b17ea9ba9edf0175000ac4d4f1f8713d8c57f627c8afb68feb1b9c81c4be55"
+    },
+    {
+      "file": "navi_chara2_3.png",
+      "bytes": 129367,
+      "sha256": "a57ab03093c3ddb01b5b27f5907df207f18150793989bb62936cdd8030caddbf"
+    },
+    {
+      "file": "navi_chara2_5.png",
+      "bytes": 129626,
+      "sha256": "924ed73268f48fe51952f00d74639df66c30633eb9a29f6dba46e9c1f2c79fce"
+    },
+    {
+      "file": "navi_chara2_6.png",
+      "bytes": 128826,
+      "sha256": "2806ce23ae6806e265ae45556f2047d9b735eff968f3751354c51c89177ed175"
     },
     {
       "file": "page_1200_3.png",
@@ -4039,6 +4079,11 @@
       "file": "thum_navi_chara1_0.png",
       "bytes": 19300,
       "sha256": "79654f5df1068c4c1c3400ae398468df9f65b23ce472caa9c04c0fbdca4f5aff"
+    },
+    {
+      "file": "thum_navi_chara2_0.png",
+      "bytes": 19959,
+      "sha256": "e77640bbed19a9711eba14b0540d30385ed078265712ab601c063a58a194fe6b"
     },
     {
       "file": "title2_logo.png",

@@ -49,6 +49,9 @@ EXTRAS = [
     'unit_explanation_frame1.png', 'unit_explanation_frame2.png',
     'gacha_normal_bg_img.png', 'gacha_rare_bg_img.png',
     'gacha_normal_summons_btn1.png', 'gacha_rare_summons_btn1.png',
+    'mytown_base.jpg', 'elgaia.png', 'thum_navi_chara2_0.png',
+    'navi_chara2_0.png', 'navi_chara2_1.png', 'navi_chara2_2.png',
+    'navi_chara2_3.png', 'navi_chara2_5.png', 'navi_chara2_6.png',
 ]
 
 def rows(data):

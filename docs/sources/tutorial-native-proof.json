@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "scope": "Recovered GL APK arm64 main tutorial dispatch; static source verification, not server replay or pixel/frame parity certification.",
+  "binary": {
+    "path": "lib/arm64-v8a/libgame.so (supplied APK; not committed)",
+    "sha256": "076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95",
+    "architecture": "AArch64 ELF",
+    "addressKind": "ELF virtual addresses, before ASLR"
+  },
+  "sources": {
+    "scripts": "docs/preservation-tutorials.json",
+    "master": "docs/preservation-master-subset.json",
+    "evidenceText": "tutorial-native-proof.txt",
+    "scriptLineReferences": "docs/preservation-tutorials.json values, split on newline without transformation"
+  },
+  "findingKo": "기본 새 게임은 tuto1 → tuto9 → tuto15 → tuto16 → 홈이다. 파일번호 순서로 합성·편성·독 치료 장면을 중간에 끼우면 이 APK의 기본 경로와 달라진다.",
+  "mainline": [
+    {
+      "chapter": 1,
+      "script": "tuto1.txt",
+      "missionId": "1",
+      "sceneId": 81,
+      "nextChapterWrittenAtDispatch": 9,
+      "proof": [
+        "TutorialStepScene::updateEvent @0x1b93064",
+        "lastMission string 1 @0x1b93814",
+        "setTutoChapterID(9) @0x1b9388c–0x1b93894"
+      ]
+    },
+    {
+      "chapter": 9,
+      "script": "tuto9.txt",
+      "missionId": "2",
+      "sceneId": 81,
+      "nextChapterWrittenAtDispatch": 10,
+      "proof": [
+        "jump table chapter9 →0x1b934ec",
+        "lastMission string 2 @0x1b93524",
+        "incTutoChapterID @0x1b934e4"
+      ]
+    },
+    {
+      "chapter": 10,
+      "script": "tuto15.txt",
+      "sceneId": 952,
+      "nextChapterWrittenAtDispatch": 11,
+      "summaryKo": "티리스와 헤어짐 → 엘가이아 귀환 → 카를의 보석 5개 선물 표시 → 소환 메뉴 → 소환 확인 → 결과 안내",
+      "proof": [
+        "getTutorialScriptFile mapping @0x1eb8808–0x1eb8810",
+        "jump table chapter10 →0x1b9349c",
+        "scene952 and increment @0x1b934d0–0x1b934e4"
+      ]
+    },
+    {
+      "chapter": 11,
+      "script": "tuto16.txt",
+      "sceneId": 952,
+      "nextChapterWrittenAtDispatch": 12,
+      "summaryKo": "카를이 원정에 떠나며 강해져 다시 만나자는 작별 인사",
+      "proof": [
+        "getTutorialScriptFile mapping @0x1eb8814–0x1eb8820",
+        "jump table chapter11 →0x1b93214",
+        "scene952 and increment @0x1b934d0–0x1b934e4"
+      ]
+    },
+    {
+      "chapter": 12,
+      "script": null,
+      "sceneId": 41,
+      "effects": [
+        "setTutoEndFlg(1)",
+        "setTutoEndMsgFlg(true)",
+        "setTriggerableTutorial(true)",
+        "home scene"
+      ],
+      "proof": [
+        "TutorialStepScene::updateEvent chapter12 branch @0x1b932ec–0x1b93344",
+        "TutorialStepScene::initConnect @0x1b92700–0x1b9274c issues TutorialUpdateRequest for chapter12 only"
+      ]
+    }
+  ],
+  "scriptFilenameMapping": {
+    "1": "tuto1.txt",
+    "2": "tuto2.txt",
+    "3": "tuto3.txt",
+    "4": "tuto4.txt",
+    "5": "tuto5.txt",
+    "6": "tuto6.txt",
+    "7": "tuto7.txt",
+    "8": "tuto8.txt",
+    "9": "tuto9.txt",
+    "50": "tuto10.txt",
+    "51": "tuto11.txt",
+    "52": "tuto12.txt",
+    "53": "tuto13.txt",
+    "54": "tuto14.txt",
+    "10": "tuto15.txt",
+    "11": "tuto16.txt",
+    "12": "tuto17.txt"
+  },
+  "scriptFilenameMappingProof": "GameUtils::getTutorialScriptFile @0x1eb8758; compares actual chapter IDs, not lexicographic names. Chapter12 maps filename17 but finish branch does not load a script.",
+  "nativeJumpTable": {
+    "tableAddress": "0x236a42a",
+    "entryType": "uint16 little endian",
+    "baseAddress": "0x1b93064",
+    "formula": "target=base+4*table[chapter-1]",
+    "entries": [
+      {
+        "chapter": 1,
+        "label": "QUEST1",
+        "targetAddress": "0x1b93064",
+        "sceneId": 81
+      },
+      {
+        "chapter": 2,
+        "label": "TALK1",
+        "targetAddress": "0x1b93390",
+        "sceneId": 952
+      },
+      {
+        "chapter": 3,
+        "label": "MOVIE",
+        "targetAddress": "0x1b934e0",
+        "sceneId": null
+      },
+      {
+        "chapter": 4,
+        "label": "TALK2",
+        "targetAddress": "0x1b9335c",
+        "sceneId": 952
+      },
+      {
+        "chapter": 5,
+        "label": "UNIT_MIX",
+        "targetAddress": "0x1b93248",
+        "sceneId": 900
+      },
+      {
+        "chapter": 6,
+        "label": "PARTY_EDIT",
+        "targetAddress": "0x1b932b0",
+        "sceneId": 310
+      },
+      {
+        "chapter": 7,
+        "label": "TALK3",
+        "targetAddress": "0x1b933c4",
+        "sceneId": 952
+      },
+      {
+        "chapter": 8,
+        "label": "QUEST_SELECT1",
+        "targetAddress": "0x1b933f8",
+        "sceneId": 900
+      },
+      {
+        "chapter": 9,
+        "label": "QUEST2",
+        "targetAddress": "0x1b934ec",
+        "sceneId": 81
+      },
+      {
+        "chapter": 10,
+        "label": "GACHA",
+        "targetAddress": "0x1b9349c",
+        "sceneId": 952
+      },
+      {
+        "chapter": 11,
+        "label": "TALK6",
+        "targetAddress": "0x1b93214",
+        "sceneId": 952
+      },
+      {
+        "chapter": 12,
+        "label": "FINISH",
+        "targetAddress": "0x1b932ec",
+        "sceneId": 41
+      },
+      {
+        "chapter": 50,
+        "label": "TALK4",
+        "targetAddress": "0x1b9327c",
+        "sceneId": 952
+      },
+      {
+        "chapter": 51,
+        "label": "ITEM_MIX",
+        "targetAddress": "0x1b931e0",
+        "sceneId": 900
+      },
+      {
+        "chapter": 52,
+        "label": "TALK5",
+        "targetAddress": "0x1b9342c",
+        "sceneId": 952
+      },
+      {
+        "chapter": 53,
+        "label": "ITEM_EQUIP",
+        "targetAddress": "0x1b93460",
+        "sceneId": 900
+      },
+      {
+        "chapter": 54,
+        "label": "QUEST3",
+        "targetAddress": "0x1b93594",
+        "sceneId": 41
+      }
+    ]
+  },
+  "resumeRules": [
+    {
+      "condition": "normal, non-debug full checkChapter entry",
+      "behavior": "chapter >=12 is normalized to12; chapter >11 marks tutorial ended",
+      "proof": "0x1b92794–0x1b927d8; normalized value saved @0x1b92d38–0x1b92d40"
+    },
+    {
+      "condition": "chapter<=11 and mapped script absent from both local and bundle",
+      "behavior": "advance one chapter and recurse; separate fallback from the intentional1→9 branch",
+      "proof": "0x1b927ac–0x1b92820"
+    },
+    {
+      "condition": "chapter1 and mission1 already cleared",
+      "behavior": "resume from chapter9, then check mission2 and gem conditions",
+      "proof": "0x1b92864–0x1b928a0"
+    },
+    {
+      "condition": "chapter9 and mission2 already cleared, or chapter10",
+      "behavior": "BraveCoin >=5 → chapter10, BraveCoin <5 →chapter11",
+      "proof": "0x1b92ccc–0x1b92d18"
+    },
+    {
+      "condition": "last played chapter >= current chapter in updateEvent",
+      "behavior": "dispatch last played chapter+1; record dispatched chapter before branch",
+      "proof": "0x1b93018–0x1b9303c"
+    }
+  ],
+  "otherBranches": {
+    "chapters2through8": {
+      "status": "Retained dispatcher branches. Not traversed from normal chapter1 because chapter1 explicitly stores9. Do not describe them as absent files.",
+      "scripts": {
+        "2": "Tilith world/home dialogue",
+        "3": "empty source/movie skip branch",
+        "4": "Karl fuse intro",
+        "5": "unit fusion guided UI",
+        "6": "squad formation guided UI",
+        "7": "Karl encouragement",
+        "8": "quest selection guided UI"
+      }
+    },
+    "chapters50through54": {
+      "status": "Separate triggerable tutorial family, not part of initial1→9→10→11→12 path. Footer code can change finished chapter12 to50. Full optional-flow timing not yet emulated.",
+      "proof": "GameScene::checkTouchFooter @0x161673c–0x1616780 reads TriggerableTutorialEnabled, maps12→50, clears end flag, sets TriggerableTutorialStarted",
+      "scripts": {
+        "50": "tuto10: Karl poison/Seria introduction",
+        "51": "tuto11: antidote synthesis/facility upgrade",
+        "52": "tuto12: recovery and Seria history",
+        "53": "tuto13: item equip/navigation",
+        "54": "tuto14 filename mapping remains, but updateEvent chapter54 exits to home without initializing this script"
+      }
+    },
+    "tuto101.txt": {
+      "status": "Not a mainline chapter. Episode3 opening navigation helper.",
+      "proof": "HomeScene2::playEp3OpenScript @0x16f0744–0x16f0768 loads tuto101.txt",
+      "action": "change_new_home_scene"
+    },
+    "tuto102.txt": {
+      "status": "AnotherHome unlock navigation helper, not a mainline chapter.",
+      "proof": "AnotherHomeScene::waitReleaseEffect @0x16e7558–0x16e757c loads tuto102.txt",
+      "action": "change_summoner_menu_scene"
+    },
+    "tuto103.txt": {
+      "status": "Summoner navigation helper, not a mainline chapter.",
+      "proof": "SummonerTopScene::initialize @0x1b1f0bc–0x1b1f0e0 loads tuto103.txt",
+      "action": "change_summoner_status_scene"
+    }
+  },
+  "tuto15Ui": [
+    {
+      "action": "change_town_top_scene",
+      "line": 86
+    },
+    {
+      "action": "change_gacha_top_scene",
+      "line": 95,
+      "highlight": [
+        213,
+        428,
+        53,
+        53
+      ],
+      "anchor": "_ip5yd",
+      "instructionLine": 93
+    },
+    {
+      "action": "change_gacha_detail_scene",
+      "line": 103,
+      "highlight": [
+        92,
+        267,
+        134,
+        40
+      ],
+      "anchor": "tag107",
+      "instructionLine": 102
+    },
+    {
+      "action": "change_gacha_action_scene",
+      "line": 109,
+      "highlight": [
+        95,
+        341,
+        134,
+        40
+      ],
+      "anchor": "tag113"
+    },
+    {
+      "action": "post-summon result tap",
+      "line": 114,
+      "highlight": [
+        0,
+        0,
+        320,
+        480
+      ],
+      "anchor": "_ip5ex"
+    },
+    {
+      "action": "change_tuto_step_scene",
+      "line": 121,
+      "nativeTargetScene": 950,
+      "proof": "TutorialEventScene::scriptEvent @0x1b8e67c–0x1b8e6d4"
+    }
+  ],
+  "knownAmounts": {
+    "giftText": {
+      "gems": 5,
+      "source": "tuto15.txt:78"
+    },
+    "summonPriceText": {
+      "gems": 5,
+      "source": "tuto15.txt:114"
+    },
+    "giftNativeLimitation": "PARAM40 at tuto15:76 is display state only: advParam40 branch0xfc7e58 toggles three object visibility values. It is not a +5 currency mutation. Server credit timing/payload was not recovered. A web once-only gift transaction is an explicitly documented reconstruction."
+  },
+  "masterMissions": [
+    {
+      "missionId": "1",
+      "missionDungeonId": "1",
+      "missionBattleCount": "3",
+      "missionEnergyUse": "0",
+      "exp": "5",
+      "zel": "500",
+      "karma": "100",
+      "requiredMissionIds": "0",
+      "cutsceneFile": "0,0"
+    },
+    {
+      "missionId": "2",
+      "missionDungeonId": "1",
+      "missionBattleCount": "3",
+      "missionEnergyUse": "0",
+      "exp": "8",
+      "zel": "1000",
+      "karma": "200",
+      "requiredMissionIds": "1",
+      "cutsceneFile": "0,0"
+    },
+    {
+      "missionId": "10",
+      "missionDungeonId": "10",
+      "missionBattleCount": "5",
+      "missionEnergyUse": "3",
+      "exp": "20",
+      "zel": "300",
+      "karma": "0",
+      "requiredMissionIds": "2",
+      "cutsceneFile": "0,map1-dungeon0-1end.txt"
+    }
+  ],
+  "mission3Finding": "mission3 is absent from preserved subset. Native optional checkChapter has an old mission3 comparison @0x1b92c88–0x1b92ca4, but default dispatch only explicitly starts1 and2. Mission10 requires2 and is normal quest content; no source proof maps tuto14 to mission10. Never create a mission3 dependency that blocks the verified mainline.",
+  "requiredMainlineAssets": {
+    "tuto15": [
+      "dungeon_battle_10100.jpg",
+      "battle_header_ip5.png",
+      "navi_chara1_0.png",
+      "navi_chara1_1.png",
+      "navi_chara1_2.png",
+      "navi_chara1_3.png",
+      "navi_chara1_4.png",
+      "navi_chara1_8.png",
+      "mytown_base.jpg",
+      "elgaia.png",
+      "navi_chara2_0.png",
+      "navi_chara2_1.png",
+      "navi_chara2_2.png",
+      "navi_chara2_3.png",
+      "navi_chara2_5.png",
+      "bf010_map_grass.mp3",
+      "bf009_village.mp3",
+      "bf251_se_whiteout.mp3",
+      "bf312_se_dia_get.mp3",
+      "bf300_se_action.mp3"
+    ],
+    "seriaPortraits": "navi_chara3 is only needed for separate50+ content; not required for verified initial mainline"
+  },
+  "sceneTimingSource": {
+    "tuto15TownEntry": "line58 bg pan to0,-184 over8; lines59–62 delay2, Elgaia title fade-in1.5, delay4, fade-out1.5",
+    "tuto16": "town bg begins0,-184; Karl at-110,-40; five dialogue stops; line26 fade-black3; line30 change_tuto_step_scene"
+  },
+  "limits": [
+    "Static code and preserved script evidence; no original server response or full device capture is available.",
+    "Native chapter is often advanced when launching a script; this is not evidence that web rewards should be granted before battle success. Preserve completion and reward state independently.",
+    "Optional triggerable50+ sequence is not fully simulated here.",
+    "This evidence establishes order and transitions, not frame-perfect rendering, exact summon pool, or native RNG."
+  ]
+}

@@ -1,0 +1,19 @@
+/* Native dialogue assets. Layout remains subject to the separate frame audit. */
+.journey-story-scene{position:relative;min-height:max(150cqw,100dvh);overflow:hidden;background:#000}
+.journey-story-stage{position:absolute;inset:0;background-position:center top;background-size:100% auto;background-repeat:no-repeat}
+.journey-story-scene.in-grass .journey-story-stage{background-image:url('assets/dungeon_battle_10100.jpg');background-size:auto 150cqw}
+.journey-story-scene.in-town .journey-story-stage{background-image:url('assets/mytown_base.jpg');background-size:100% 150cqw}
+.journey-person{position:absolute;object-fit:contain;object-position:center bottom}
+.journey-person.tilith{left:9.375%;top:4.6875cqw;width:86.5625%;height:84.0625cqw}
+.journey-person.karl{left:-17.1875%;top:-6.25cqw;width:142.8125%;height:107.8125cqw;max-width:none}
+.journey-gift{position:absolute;left:16%;top:35cqw;width:68%;padding:7cqw 3cqw;color:#fff3bf;background:#080b13e8;border:3px double #c0a45c;text-align:center;box-shadow:0 0 20px #000}
+.journey-gift span,.journey-gift small{display:block;font-size:3.3cqw}.journey-gift strong{display:block;font-size:12cqw;color:#baf8ff;margin:2cqw}
+.journey-pause,.summon-animation-screen>button.journey-pause{position:absolute;top:1cqw;right:1cqw;bottom:auto;left:auto;width:auto;padding:1.4cqw 3cqw;background:#07121aeb;border:1px solid #af9658;border-radius:3px;color:white;font-size:2.7cqw;z-index:20;pointer-events:auto}
+.journey-review-label{position:absolute;top:1cqw;left:1cqw;padding:1.5cqw 3cqw;font-size:2.7cqw;color:#fff7ce;background:#07121ae6;z-index:10}
+.journey-confirm{position:relative;min-height:125cqw;padding-bottom:7cqw}.journey-confirm>img{display:block;width:100%;height:48cqw;object-fit:cover;object-position:top}
+.journey-confirm-panel{margin:0 5cqw;padding:5cqw;background:#080c15ef;border:3px double #bda36a;text-align:center;color:#fff4d2}.journey-confirm-panel h3{font-size:5cqw}.journey-confirm-panel p{font-size:3.3cqw;line-height:1.8;margin:3cqw 0}.journey-confirm-panel button{display:block;width:100%;margin-top:4cqw}
+.journey-result{position:relative;min-height:max(150cqw,100dvh);padding:12cqw 6cqw 8cqw;background:radial-gradient(ellipse at 50% 40%,#57462c,#02050b 75%);color:#fff1c2;text-align:center}
+.journey-result .summon-result{position:relative;padding:0}.journey-result .summon-result>img{width:100%;height:85cqw;object-fit:contain}.journey-result .summon-result>h2{font-size:6cqw;margin:3cqw 0}.journey-result .summon-result>p{font-size:3.5cqw;line-height:1.6}.journey-result .gold-button{margin-top:5cqw;width:100%}
+.journey-guide-overlay{position:fixed;top:0;bottom:0;z-index:30;pointer-events:none;overflow:clip;container-type:inline-size}
+.journey-guide-overlay .tutorial-coach-portrait{top:12cqw}.journey-guide-overlay .tutorial-coach{top:16.5cqw;min-height:32cqw}
+.journey-guide-overlay .tutorial-coach small{bottom:1.7cqw}.journey-guide-overlay .journey-pause{top:1cqw}

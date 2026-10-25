@@ -1,0 +1,553 @@
+Recovered APK main tutorial dispatch evidence
+Binary SHA256: 076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95
+Tool: Capstone AArch64 disassembly; dynamic symbol names and PLT relocations from ELF.
+Read with tutorial-native-proof.json; addresses are image virtual addresses, not source line numbers.
+
+=== Filename mapping: explicit chapter comparisons, not filename ordering ===
+01eb877c  bl       #0xc164c0                                  UserInfo::shared()
+01eb8780  bl       #0xc0b020                                  UserInfo::getTutoChapterID()
+01eb8784  cmp      w0, #1                                     
+01eb8788  cset     w9, eq                                     
+01eb878c  cmp      w0, #2                                     
+01eb8790  csel     w9, w0, w9, eq                             
+01eb8794  cmp      w0, #3                                     
+01eb8798  csel     w9, w0, w9, eq                             
+01eb879c  cmp      w0, #4                                     
+01eb87a0  csel     w9, w0, w9, eq                             
+01eb87a4  cmp      w0, #5                                     
+01eb87a8  csel     w9, w0, w9, eq                             
+01eb87ac  cmp      w0, #6                                     
+01eb87b0  csel     w9, w0, w9, eq                             
+01eb87b4  cmp      w0, #7                                     
+01eb87b8  csel     w9, w0, w9, eq                             
+01eb87bc  cmp      w0, #8                                     
+01eb87c0  csel     w9, w0, w9, eq                             
+01eb87c4  cmp      w0, #9                                     
+01eb87c8  mov      w8, #0xa                                   
+01eb87cc  csel     w9, w0, w9, eq                             
+01eb87d0  cmp      w0, #0x32                                  
+01eb87d4  csel     w8, w8, w9, eq                             
+01eb87d8  mov      w9, #0xb                                   
+01eb87dc  cmp      w0, #0x33                                  
+01eb87e0  csel     w8, w9, w8, eq                             
+01eb87e4  mov      w9, #0xc                                   
+01eb87e8  cmp      w0, #0x34                                  
+01eb87ec  csel     w8, w9, w8, eq                             
+01eb87f0  mov      w9, #0xd                                   
+01eb87f4  cmp      w0, #0x35                                  
+01eb87f8  csel     w8, w9, w8, eq                             
+01eb87fc  mov      w9, #0xe                                   
+01eb8800  cmp      w0, #0x36                                  
+01eb8804  csel     w8, w9, w8, eq                             
+01eb8808  mov      w9, #0xf                                   
+01eb880c  cmp      w0, #0xa                                   
+01eb8810  csel     w8, w9, w8, eq                             
+01eb8814  mov      w9, #0x10                                  
+01eb8818  cmp      w0, #0xb                                   
+01eb881c  adrp     x1, #0x233f000                             
+01eb8820  csel     w8, w9, w8, eq                             
+01eb8824  cmp      w0, #0xc                                   
+01eb8828  mov      w9, #0x11                                  
+01eb882c  add      x1, x1, #0xa7                              tuto
+01eb8830  mov      x0, x19                                    
+01eb8834  csel     w20, w9, w8, eq                            
+01eb8838  bl       #0xc62f00                                  std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::basic_string<decltype(nullptr)>(char const*)
+01eb883c  mov      x8, sp                                     
+01eb8840  mov      w0, w20                                    
+01eb8844  mov      x22, sp                                    
+01eb8848  bl       #0xc817e0                                  CommonUtils::IntToString(int)
+
+=== Main dispatch switch table and replay guard ===
+01b93018  bl       #0xc164c0                                  UserInfo::shared()
+01b9301c  bl       #0xc6fe70                                  UserInfo::getPlayTutoChapterID()
+01b93020  cmp      w0, w20                                    
+01b93024  b.lt     #0x1b93034                                 
+01b93028  bl       #0xc164c0                                  UserInfo::shared()
+01b9302c  bl       #0xc6fe70                                  UserInfo::getPlayTutoChapterID()
+01b93030  add      w20, w0, #1                                
+01b93034  bl       #0xc164c0                                  UserInfo::shared()
+01b93038  mov      w1, w20                                    
+01b9303c  bl       #0xc4aad0                                  UserInfo::setPlayTutoChapterID(int)
+01b93040  sub      w8, w20, #1                                
+01b93044  cmp      w8, #0x35                                  
+01b93048  b.hi     #0x1b93348                                 
+01b9304c  adrp     x9, #0x236a000                             
+01b93050  add      x9, x9, #0x42a                             
+01b93054  adr      x10, #0x1b93064                            
+01b93058  ldrh     w11, [x9, x8, lsl #1]                      
+01b9305c  add      x10, x10, x11, lsl #2                      
+01b93060  br       x10                                        
+01b93064  bl       #0xc806e0                                  TutorialStepScene::initPartyStatus()
+
+=== Chapter1: load current script; mission1; scene81; directly set chapter9 ===
+01b937dc  bl       #0xc22360                                  ScriptEngine::shared()
+01b937e0  add      x8, sp, #0x1a0                             
+01b937e4  mov      x20, x0                                    
+01b937e8  bl       #0xc897b0                                  GameUtils::getTutorialScript()
+01b937ec  add      x3, sp, #0x1a0                             
+01b937f0  mov      w1, #0x43                                  
+01b937f4  mov      w2, #0x42                                  
+01b937f8  mov      x0, x20                                    
+01b937fc  bl       #0xc43250                                  ScriptEngine::initEngine(int, int, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93800  ldrb     w8, [sp, #0x1a0]                           
+01b93804  tbz      w8, #0, #0x1b93810                         
+01b93808  ldr      x0, [sp, #0x1b0]                           
+01b9380c  bl       #0xc52840                                  operator delete(void*)
+01b93810  bl       #0xc298c0                                  UserState::shared()
+01b93814  mov      w8, #0x3102                                
+01b93818  add      x1, sp, #0x188                             
+01b9381c  stp      xzr, xzr, [sp, #0x188]                     
+01b93820  str      xzr, [sp, #0x198]                          
+01b93824  strh     w8, [sp, #0x188]                           
+01b93828  strb     wzr, [sp, #0x18a]                          
+01b9382c  bl       #0xc201f0                                  UserState::setLastMissionID(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93830  ldrb     w8, [sp, #0x188]                           
+01b93834  tbz      w8, #0, #0x1b93840                         
+01b93838  ldr      x0, [sp, #0x198]                           
+01b9383c  bl       #0xc52840                                  operator delete(void*)
+01b93840  bl       #0xc298c0                                  UserState::shared()
+01b93844  mov      w8, #0x3002                                
+01b93848  add      x1, sp, #0x170                             
+01b9384c  stp      xzr, xzr, [sp, #0x170]                     
+01b93850  str      xzr, [sp, #0x180]                          
+01b93854  strh     w8, [sp, #0x170]                           
+01b93858  strb     wzr, [sp, #0x172]                          
+01b9385c  bl       #0xc3d200                                  UserState::setReinforcementUserID(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93860  ldrb     w8, [sp, #0x170]                           
+01b93864  tbz      w8, #0, #0x1b93870                         
+01b93868  ldr      x0, [sp, #0x180]                           
+01b9386c  bl       #0xc52840                                  operator delete(void*)
+01b93870  bl       #0xc298c0                                  UserState::shared()
+01b93874  mov      w1, #-1                                    
+01b93878  bl       #0xc7eff0                                  UserState::setReinforcementUserDeckNo(int)
+01b9387c  mov      w1, #0x51                                  
+01b93880  mov      x0, x19                                    
+01b93884  mov      w2, wzr                                    
+01b93888  bl       #0xc4f6b0                                  GameScene::changeStepScene(int, bool)
+01b9388c  bl       #0xc164c0                                  UserInfo::shared()
+01b93890  mov      w1, #9                                     
+01b93894  bl       #0xc799a0                                  UserInfo::setTutoChapterID(int)
+01b93898  b        #0x1b935e0                                 
+
+=== Chapter9: mission2 and generic chapter increment ===
+01b934d0  mov      w1, #0x3b8                                 
+01b934d4  mov      x0, x19                                    
+01b934d8  mov      w2, wzr                                    
+01b934dc  bl       #0xc52860                                  GameScene::changeSceneWithSceneID(int, bool)
+01b934e0  bl       #0xc164c0                                  UserInfo::shared()
+01b934e4  bl       #0xc2d630                                  UserInfo::incTutoChapterID()
+01b934e8  b        #0x1b935e0                                 
+01b934ec  bl       #0xc22360                                  ScriptEngine::shared()
+01b934f0  add      x8, sp, #0xc8                              
+01b934f4  mov      x20, x0                                    
+01b934f8  bl       #0xc897b0                                  GameUtils::getTutorialScript()
+01b934fc  add      x3, sp, #0xc8                              
+01b93500  mov      w1, #0x43                                  
+01b93504  mov      w2, #0x42                                  
+01b93508  mov      x0, x20                                    
+01b9350c  bl       #0xc43250                                  ScriptEngine::initEngine(int, int, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93510  ldrb     w8, [sp, #0xc8]                            
+01b93514  tbz      w8, #0, #0x1b93520                         
+01b93518  ldr      x0, [sp, #0xd8]                            
+01b9351c  bl       #0xc52840                                  operator delete(void*)
+01b93520  bl       #0xc298c0                                  UserState::shared()
+01b93524  mov      w8, #0x3202                                
+01b93528  add      x1, sp, #0xb0                              
+01b9352c  stp      xzr, xzr, [sp, #0xb0]                      
+01b93530  str      xzr, [sp, #0xc0]                           
+01b93534  strh     w8, [sp, #0xb0]                            
+01b93538  strb     wzr, [sp, #0xb2]                           
+01b9353c  bl       #0xc201f0                                  UserState::setLastMissionID(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93540  ldrb     w8, [sp, #0xb0]                            
+01b93544  tbz      w8, #0, #0x1b93550                         
+01b93548  ldr      x0, [sp, #0xc0]                            
+01b9354c  bl       #0xc52840                                  operator delete(void*)
+01b93550  bl       #0xc298c0                                  UserState::shared()
+01b93554  mov      w8, #0x3002                                
+01b93558  add      x1, sp, #0x98                              
+01b9355c  stp      xzr, xzr, [sp, #0x98]                      
+01b93560  str      xzr, [sp, #0xa8]                           
+01b93564  strh     w8, [sp, #0x98]                            
+01b93568  strb     wzr, [sp, #0x9a]                           
+01b9356c  bl       #0xc3d200                                  UserState::setReinforcementUserID(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93570  ldrb     w8, [sp, #0x98]                            
+01b93574  tbz      w8, #0, #0x1b93580                         
+01b93578  ldr      x0, [sp, #0xa8]                            
+01b9357c  bl       #0xc52840                                  operator delete(void*)
+01b93580  bl       #0xc298c0                                  UserState::shared()
+01b93584  mov      w1, #-1                                    
+01b93588  bl       #0xc7eff0                                  UserState::setReinforcementUserDeckNo(int)
+01b9358c  mov      w1, #0x51                                  
+01b93590  b        #0x1b934d4                                 
+
+=== Chapter10/11: script scene952; chapter12: finish and home ===
+01b93214  bl       #0xc22360                                  ScriptEngine::shared()
+01b93218  add      x8, sp, #8                                 
+01b9321c  mov      x20, x0                                    
+01b93220  bl       #0xc897b0                                  GameUtils::getTutorialScript()
+01b93224  add      x3, sp, #8                                 
+01b93228  mov      w1, #0x43                                  
+01b9322c  mov      w2, #0x42                                  
+01b93230  mov      x0, x20                                    
+01b93234  bl       #0xc43250                                  ScriptEngine::initEngine(int, int, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b93238  ldrb     w8, [sp, #8]                               
+01b9323c  tbz      w8, #0, #0x1b934d0                         
+01b93240  ldr      x0, [sp, #0x18]                            
+01b93244  b        #0x1b934cc                                 
+01b932ec  ldrb     w8, [x19, #0x178]                          
+01b932f0  orr      w8, w8, #4                                 
+01b932f4  strb     w8, [x19, #0x178]                          
+01b932f8  bl       #0xc22360                                  ScriptEngine::shared()
+01b932fc  bl       #0xc2d8a0                                  ScriptEngine::exit()
+01b93300  bl       #0xc6e8c0                                  GameLayer::shared()
+01b93304  bl       #0xc84dc0                                  GameLayer::clear()
+01b93308  bl       #0xc164c0                                  UserInfo::shared()
+01b9330c  mov      w1, #1                                     
+01b93310  bl       #0xc1c8f0                                  UserInfo::setTutoEndFlg(int)
+01b93314  bl       #0xc164c0                                  UserInfo::shared()
+01b93318  mov      w1, #1                                     
+01b9331c  bl       #0xc3fb30                                  UserInfo::setTutoEndMsgFlg(bool)
+01b93320  bl       #0xc164c0                                  UserInfo::shared()
+01b93324  mov      w1, #1                                     
+01b93328  bl       #0xc6a620                                  UserInfo::setTriggerableTutorial(bool)
+01b9332c  bl       #0xc54310                                  DLCManagerComplementor::shared()
+01b93330  bl       #0xc3f5f0                                  DLCManagerComplementor::loadBundleResourceMap()
+01b93334  bl       #0xc54310                                  DLCManagerComplementor::shared()
+01b93338  bl       #0xc5c880                                  DLCManagerComplementor::NoIdSceneSpecialHandle()
+01b9333c  mov      w1, #0x29                                  
+01b93340  mov      x0, x19                                    
+01b93344  bl       #0xc1e1c0                                  GameScene::changeSceneWithSceneID(int)
+01b9349c  bl       #0xc22360                                  ScriptEngine::shared()
+01b934a0  add      x8, sp, #0x20                              
+01b934a4  mov      x20, x0                                    
+01b934a8  bl       #0xc897b0                                  GameUtils::getTutorialScript()
+01b934ac  add      x3, sp, #0x20                              
+01b934b0  mov      w1, #0x43                                  
+01b934b4  mov      w2, #0x42                                  
+01b934b8  mov      x0, x20                                    
+01b934bc  bl       #0xc43250                                  ScriptEngine::initEngine(int, int, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b934c0  ldrb     w8, [sp, #0x20]                            
+01b934c4  tbz      w8, #0, #0x1b934d0                         
+01b934c8  ldr      x0, [sp, #0x30]                            
+01b934cc  bl       #0xc52840                                  operator delete(void*)
+01b934d0  mov      w1, #0x3b8                                 
+01b934d4  mov      x0, x19                                    
+01b934d8  mov      w2, wzr                                    
+01b934dc  bl       #0xc52860                                  GameScene::changeSceneWithSceneID(int, bool)
+01b934e0  bl       #0xc164c0                                  UserInfo::shared()
+01b934e4  bl       #0xc2d630                                  UserInfo::incTutoChapterID()
+01b934e8  b        #0x1b935e0                                 
+
+=== Full entry check and server-update gate ===
+01b926e4  stp      x20, x19, [sp, #-0x20]!                    
+01b926e8  stp      x29, x30, [sp, #0x10]                      
+01b926ec  add      x29, sp, #0x10                             
+01b926f0  ldr      w8, [x0, #0x170]                           
+01b926f4  mov      x19, x0                                    
+01b926f8  orr      w8, w8, #0x1000                            
+01b926fc  str      w8, [x0, #0x170]                           
+01b92700  bl       #0xc3dee0                                  TutorialStepScene::checkChapter()
+01b92704  bl       #0xc164c0                                  UserInfo::shared()
+01b92708  bl       #0xc0b020                                  UserInfo::getTutoChapterID()
+01b9270c  cmp      w0, #0xc                                   
+01b92710  b.ne     #0x1b92750                                 
+01b92714  adrp     x0, #0x231a000                             
+01b92718  adrp     x1, #0x236a000                             
+01b9271c  add      x0, x0, #0xebc                             Tutorial
+01b92720  add      x1, x1, #0x496                             Tutorial Request 4
+01b92724  mov      w2, wzr                                    
+01b92728  bl       #0xc6c810                                  Utils::trackEvent(char const*, char const*, int)
+01b9272c  mov      w0, #0x20                                  
+01b92730  bl       #0xc4dbb0                                  operator new(unsigned long)
+01b92734  mov      x20, x0                                    
+01b92738  bl       #0xc85ae0                                  TutorialUpdateRequest::TutorialUpdateRequest()
+01b9273c  ldp      x29, x30, [sp, #0x10]                      
+01b92740  mov      x0, x19                                    
+01b92744  mov      x1, x20                                    
+01b92748  ldp      x20, x19, [sp], #0x20                      
+01b9274c  b        #0xc38b60                                  GameScene::accessPhp(RequestData*)
+01b92750  ldp      x29, x30, [sp, #0x10]                      
+01b92754  ldp      x20, x19, [sp], #0x20                      
+01b92758  ret                                                 
+
+=== Resume normalization and missing-file fallback ===
+01b9278c  bl       #0xc164c0                                  UserInfo::shared()
+01b92790  bl       #0xc0b020                                  UserInfo::getTutoChapterID()
+01b92794  cmp      w0, #0xc                                   
+01b92798  mov      w8, #0xc                                   
+01b9279c  mov      w19, w0                                    
+01b927a0  csel     w26, w0, w8, lt                            
+01b927a4  cmp      w0, #0xb                                   
+01b927a8  b.gt     #0x1b927d0                                 
+01b927ac  sub      x8, x29, #0x90                             
+01b927b0  bl       #0xc7b590                                  GameUtils::getTutorialScriptFile()
+01b927b4  sub      x0, x29, #0x90                             
+01b927b8  bl       #0xc73320                                  CommonUtils::existsLocalFile(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+01b927bc  tbz      w0, #0, #0x1b927e0                         
+01b927c0  mov      w21, wzr                                   
+01b927c4  ldurb    w8, [x29, #-0x90]                          
+01b927c8  tbz      w8, #0, #0x1b92804                         
+01b927cc  b        #0x1b92834                                 
+01b927d0  bl       #0xc164c0                                  UserInfo::shared()
+01b927d4  mov      w1, #1                                     
+01b927d8  bl       #0xc1c8f0                                  UserInfo::setTutoEndFlg(int)
+01b927dc  b        #0x1b92840                                 
+01b927e0  sub      x8, x29, #0xa8                             
+01b927e4  bl       #0xc7b590                                  GameUtils::getTutorialScriptFile()
+01b927e8  sub      x0, x29, #0xa8                             
+01b927ec  bl       #0xc69210                                  CommonUtils::existsBundleFile(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+01b927f0  ldurb    w8, [x29, #-0xa8]                          
+01b927f4  eor      w21, w0, #1                                
+01b927f8  tbnz     w8, #0, #0x1b92824                         
+01b927fc  ldurb    w8, [x29, #-0x90]                          
+01b92800  tbnz     w8, #0, #0x1b92834                         
+01b92804  tbz      w21, #0, #0x1b92840                        
+01b92808  add      w19, w26, #1                               
+01b9280c  bl       #0xc164c0                                  UserInfo::shared()
+01b92810  mov      w1, w19                                    
+01b92814  bl       #0xc799a0                                  UserInfo::setTutoChapterID(int)
+01b92818  mov      x0, x20                                    
+01b9281c  bl       #0x1b9275c                                 TutorialStepScene::checkChapter()
+01b92820  b        #0x1b92eb8                                 
+01b92840  bl       #0xc810a0                                  UserDebugInfo::shared()
+01b92844  bl       #0xc5f580                                  UserDebugInfo::getTutoDebugFlg()
+01b92848  tbnz     w0, #0, #0x1b92eb8                         
+01b9284c  cmp      w26, #6                                    
+01b92850  b.eq     #0x1b928b4                                 
+01b92854  cmp      w26, #5                                    
+01b92858  b.eq     #0x1b928a4                                 
+01b9285c  cmp      w26, #1                                    
+01b92860  b.ne     #0x1b928cc                                 
+01b92864  bl       #0xc3ee70                                  UserClearMissionInfoList::shared()
+01b92868  mov      w8, #0x3102                                
+01b9286c  add      x1, sp, #0xa0                              
+01b92870  stp      xzr, xzr, [sp, #0xa0]                      
+01b92874  str      xzr, [sp, #0xb0]                           
+01b92878  strh     w8, [sp, #0xa0]                            
+01b9287c  strb     wzr, [sp, #0xa2]                           
+01b92880  bl       #0xc20860                                  UserClearMissionInfoList::isExist(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b92884  ldrb     w8, [sp, #0xa0]                            
+01b92888  mov      w19, w0                                    
+01b9288c  tbz      w8, #0, #0x1b92898                         
+01b92890  ldr      x0, [sp, #0xb0]                            
+01b92894  bl       #0xc52840                                  operator delete(void*)
+01b92898  tbz      w19, #0, #0x1b92b58                        
+01b9289c  mov      w26, #9                                    
+01b928a0  b        #0x1b928d4                                 
+01b92ccc  bl       #0xc3ee70                                  UserClearMissionInfoList::shared()
+01b92cd0  mov      w8, #0x3202                                
+01b92cd4  add      x1, sp, #0x28                              
+01b92cd8  stp      xzr, xzr, [sp, #0x28]                      
+01b92cdc  str      xzr, [sp, #0x38]                           
+01b92ce0  strh     w8, [sp, #0x28]                            
+01b92ce4  strb     wzr, [sp, #0x2a]                           
+01b92ce8  bl       #0xc20860                                  UserClearMissionInfoList::isExist(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+01b92cec  ldrb     w8, [sp, #0x28]                            
+01b92cf0  mov      w19, w0                                    
+01b92cf4  tbz      w8, #0, #0x1b92d00                         
+01b92cf8  ldr      x0, [sp, #0x38]                            
+01b92cfc  bl       #0xc52840                                  operator delete(void*)
+01b92d00  tbz      w19, #0, #0x1b92d34                        
+01b92d04  bl       #0xc65120                                  UserTeamInfo::shared()
+01b92d08  bl       #0xc57960                                  UserTeamInfo::getBraveCoin()
+01b92d0c  cmp      w0, #5                                     
+01b92d10  mov      w8, #0xa                                   
+01b92d14  cinc     w19, w8, lt                                
+01b92d18  b        #0x1b92d38                                 
+01b92d1c  bl       #0xc6a1b0                                  UserTeamArchive::shared()
+01b92d20  bl       #0xc65460                                  UserTeamArchive::getItemMixCnt()
+01b92d24  cmp      w0, #0                                     
+01b92d28  mov      w8, #0x33                                  
+01b92d2c  cinc     w19, w8, gt                                
+01b92d30  b        #0x1b92d38                                 
+01b92d34  mov      w19, #9                                    
+01b92d38  bl       #0xc164c0                                  UserInfo::shared()
+01b92d3c  mov      w1, w19                                    
+01b92d40  bl       #0xc799a0                                  UserInfo::setTutoChapterID(int)
+
+=== PARAM40 display toggle and PARAM45 fadeBgm; neither increments gems ===
+00fc7e58  ldr      x0, [x27, #0x168]                          
+00fc7e5c  mov      w1, #1                                     
+00fc7e60  ldr      x8, [x0]                                   
+00fc7e64  ldr      x8, [x8, #0xc8]                            
+00fc7e68  blr      x8                                         
+00fc7e6c  ldr      x0, [x27, #0x170]                          
+00fc7e70  mov      w1, wzr                                    
+00fc7e74  ldr      x8, [x0]                                   
+00fc7e78  ldr      x8, [x8, #0xc8]                            
+00fc7e7c  blr      x8                                         
+00fc7e80  ldr      x0, [x27, #0x178]                          
+00fc7e84  b        #0xfc838c                                  
+00fc8388  ldr      x0, [x27, #0x180]                          
+00fc838c  ldr      x8, [x0]                                   
+00fc8390  mov      w1, wzr                                    
+00fc8394  ldr      x8, [x8, #0xc8]                            
+00fc8398  blr      x8                                         
+00fc839c  ldrb     w8, [x27, #0x10]                           
+00fc83a0  tbz      w8, #2, #0xfcadbc                          
+00fc89ac  ldr      x0, [sp, #0x5e8]                           
+00fc89b0  bl       #0xc42e60                                  CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+00fc89b4  ldr      x0, [x27, #0xc8]                           
+00fc89b8  bl       #0xc23fa0                                  GameScene::fadeOutBgm(float)
+00fc89bc  ldrb     w8, [x27, #0x10]                           
+00fc89c0  tbz      w8, #2, #0xfcadbc                          
+00fc89c4  b        #0xfc9e08                                  
+
+=== change_tuto_step_scene returns to scene950 ===
+01b8e67c  adrp     x1, #0x2350000                             
+01b8e680  add      x1, x1, #0x84f                             change_tuto_step_scene
+01b8e684  csinc    x0, x8, x20, ne                            
+01b8e688  mov      w2, #0x16                                  
+01b8e68c  bl       #0xc1dce0                                  memcmp
+01b8e690  cbz      w0, #0x1b8e6cc                             
+01b8e6cc  mov      w1, #0x3b6                                 
+01b8e6d0  mov      x0, x19                                    
+01b8e6d4  bl       #0xc6bc10                                  GameScene::changeStepScene(int)
+01b8e6d8  ldr      x0, [x19, #0x338]                          
+01b8e6dc  cbnz     x0, #0x1b8e6a0                             
+
+=== 101/102/103 actual callers ===
+01b1f088  bl       #0xc22360                                  ScriptEngine::shared()
+01b1f08c  bl       #0xc2d8a0                                  ScriptEngine::exit()
+01b1f090  bl       #0xc164c0                                  UserInfo::shared()
+01b1f094  bl       #0xc13c80                                  UserInfo::isTutoPlaying()
+01b1f098  tbz      w0, #0, #0x1b1f2d8                         
+01b1f09c  mov      w8, #1                                     
+01b1f0a0  strb     w8, [x19, #0x338]                          
+01b1f0a4  mov      w8, #0x16                                  
+01b1f0a8  stp      xzr, xzr, [x29, #-0xa0]                    
+01b1f0ac  sturb    w8, [x29, #-0xa0]                          
+01b1f0b0  mov      w8, #0x742e                                
+01b1f0b4  movk     w8, #0x7478, lsl #16                       
+01b1f0b8  stur     w8, [x29, #-0x98]                          
+01b1f0bc  adrp     x8, #0x2367000                             
+01b1f0c0  add      x8, x8, #0xf08                             tuto103.txt
+01b1f0c4  ldr      x8, [x8]                                   
+01b1f0c8  sub      x0, x29, #0xa0                             
+01b1f0cc  stur     xzr, [x29, #-0x90]                         
+01b1f0d0  stp      xzr, xzr, [x29, #-0x78]                    
+01b1f0d4  stur     xzr, [x29, #-0x80]                         
+01b1f0d8  stur     x8, [x26, #1]                              
+01b1f0dc  sturb    wzr, [x29, #-0x94]                         
+01b1f0e0  bl       #0xc3a3a0                                  CommonUtils::getCsvListForLocal(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+016f06f0  sub      sp, sp, #0xc0                              
+016f06f4  str      x27, [sp, #0x60]                           
+016f06f8  stp      x26, x25, [sp, #0x70]                      
+016f06fc  stp      x24, x23, [sp, #0x80]                      
+016f0700  stp      x22, x21, [sp, #0x90]                      
+016f0704  stp      x20, x19, [sp, #0xa0]                      
+016f0708  stp      x29, x30, [sp, #0xb0]                      
+016f070c  add      x29, sp, #0xb0                             
+016f0710  mrs      x25, tpidr_el0                             
+016f0714  ldr      x8, [x25, #0x28]                           
+016f0718  mov      x19, x0                                    
+016f071c  str      x8, [sp, #0x58]                            
+016f0720  mov      w8, #1                                     
+016f0724  strb     w8, [x0, #0x3f8]                           
+016f0728  mov      w8, #0x16                                  
+016f072c  strb     wzr, [x0, #0x442]                          
+016f0730  stp      xzr, xzr, [sp, #0x20]                      
+016f0734  strb     w8, [sp, #0x20]                            
+016f0738  mov      w8, #0x742e                                
+016f073c  movk     w8, #0x7478, lsl #16                       
+016f0740  str      w8, [sp, #0x28]                            
+016f0744  adrp     x8, #0x2351000                             
+016f0748  add      x8, x8, #0x462                             tuto101.txt
+016f074c  ldr      x8, [x8]                                   
+016f0750  add      x0, sp, #0x20                              
+016f0754  str      xzr, [sp, #0x30]                           
+016f0758  stp      xzr, xzr, [sp, #0x48]                      
+016f075c  str      xzr, [sp, #0x40]                           
+016f0760  stur     x8, [sp, #0x21]                            
+016f0764  strb     wzr, [sp, #0x2c]                           
+016f0768  bl       #0xc3a3a0                                  CommonUtils::getCsvListForLocal(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+016e74f0  sub      sp, sp, #0xc0                              
+016e74f4  str      x27, [sp, #0x60]                           
+016e74f8  stp      x26, x25, [sp, #0x70]                      
+016e74fc  stp      x24, x23, [sp, #0x80]                      
+016e7500  stp      x22, x21, [sp, #0x90]                      
+016e7504  stp      x20, x19, [sp, #0xa0]                      
+016e7508  stp      x29, x30, [sp, #0xb0]                      
+016e750c  add      x29, sp, #0xb0                             
+016e7510  mrs      x25, tpidr_el0                             
+016e7514  ldr      x8, [x25, #0x28]                           
+016e7518  mov      x19, x0                                    
+016e751c  str      x8, [sp, #0x58]                            
+016e7520  ldr      w8, [x0, #0x444]                           
+016e7524  strb     wzr, [x0, #0x442]                          
+016e7528  cmp      w8, #0x10                                  
+016e752c  b.eq     #0x16e768c                                 
+016e7530  cmp      w8, #0xa                                   
+016e7534  b.ne     #0x16e7780                                 
+016e7538  mov      w8, #1                                     
+016e753c  strb     w8, [x19, #0x3e0]                          
+016e7540  mov      w8, #0x16                                  
+016e7544  stp      xzr, xzr, [sp, #0x20]                      
+016e7548  strb     w8, [sp, #0x20]                            
+016e754c  mov      w8, #0x742e                                
+016e7550  movk     w8, #0x7478, lsl #16                       
+016e7554  str      w8, [sp, #0x28]                            
+016e7558  adrp     x8, #0x2350000                             
+016e755c  add      x8, x8, #0xc8f                             tuto102.txt
+016e7560  ldr      x8, [x8]                                   
+016e7564  add      x0, sp, #0x20                              
+016e7568  str      xzr, [sp, #0x30]                           
+016e756c  stp      xzr, xzr, [sp, #0x48]                      
+016e7570  str      xzr, [sp, #0x40]                           
+016e7574  stur     x8, [sp, #0x21]                            
+016e7578  strb     wzr, [sp, #0x2c]                           
+016e757c  bl       #0xc3a3a0                                  CommonUtils::getCsvListForLocal(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+
+=== Decoded switch table @0x236a42a ===
+{"chapter": 1, "label": "QUEST1", "targetAddress": "0x1b93064", "sceneId": 81}
+{"chapter": 2, "label": "TALK1", "targetAddress": "0x1b93390", "sceneId": 952}
+{"chapter": 3, "label": "MOVIE", "targetAddress": "0x1b934e0", "sceneId": null}
+{"chapter": 4, "label": "TALK2", "targetAddress": "0x1b9335c", "sceneId": 952}
+{"chapter": 5, "label": "UNIT_MIX", "targetAddress": "0x1b93248", "sceneId": 900}
+{"chapter": 6, "label": "PARTY_EDIT", "targetAddress": "0x1b932b0", "sceneId": 310}
+{"chapter": 7, "label": "TALK3", "targetAddress": "0x1b933c4", "sceneId": 952}
+{"chapter": 8, "label": "QUEST_SELECT1", "targetAddress": "0x1b933f8", "sceneId": 900}
+{"chapter": 9, "label": "QUEST2", "targetAddress": "0x1b934ec", "sceneId": 81}
+{"chapter": 10, "label": "GACHA", "targetAddress": "0x1b9349c", "sceneId": 952}
+{"chapter": 11, "label": "TALK6", "targetAddress": "0x1b93214", "sceneId": 952}
+{"chapter": 12, "label": "FINISH", "targetAddress": "0x1b932ec", "sceneId": 41}
+{"chapter": 50, "label": "TALK4", "targetAddress": "0x1b9327c", "sceneId": 952}
+{"chapter": 51, "label": "ITEM_MIX", "targetAddress": "0x1b931e0", "sceneId": 900}
+{"chapter": 52, "label": "TALK5", "targetAddress": "0x1b9342c", "sceneId": 952}
+{"chapter": 53, "label": "ITEM_EQUIP", "targetAddress": "0x1b93460", "sceneId": 900}
+{"chapter": 54, "label": "QUEST3", "targetAddress": "0x1b93594", "sceneId": 41}
+
+=== Separate triggerable footer entry (bounded disassembly) ===
+0161673c  bl       #0xc164c0                                  UserInfo::shared()
+01616740  bl       #0xc72d60                                  UserInfo::getTriggerableTutorialEnabled()
+01616744  tbz      w0, #0, #0x16167bc                         
+01616748  bl       #0xc164c0                                  UserInfo::shared()
+0161674c  bl       #0xc0b020                                  UserInfo::getTutoChapterID()
+01616750  cmp      w0, #0xc                                   
+01616754  mov      w8, #0x32                                  
+01616758  csel     w21, w8, w0, eq                            
+0161675c  bl       #0xc164c0                                  UserInfo::shared()
+01616760  mov      w1, w21                                    
+01616764  bl       #0xc799a0                                  UserInfo::setTutoChapterID(int)
+01616768  bl       #0xc164c0                                  UserInfo::shared()
+0161676c  mov      w1, wzr                                    
+01616770  bl       #0xc1c8f0                                  UserInfo::setTutoEndFlg(int)
+01616774  bl       #0xc164c0                                  UserInfo::shared()
+01616778  mov      w1, #1                                     
+0161677c  bl       #0xc41df0                                  UserInfo::setTriggerableTutorialStarted(bool)
+01616780  bl       #0xc6e8c0                                  GameLayer::shared()
+01616784  bl       #0xc84dc0                                  GameLayer::clear()
+01616788  bl       #0xc54310                                  DLCManagerComplementor::shared()
+0161678c  mov      w1, #0x3b6                                 
+01616790  bl       #0xc0df90                                  DLCManagerComplementor::downloadBundleResourcesViaSceneId(int)
+01616794  mov      w0, #0x340                                 
+01616798  bl       #0xc4dbb0                                  operator new(unsigned long)
+0161679c  mov      x21, x0                                    
+016167a0  bl       #0xc40e60                                  TutorialStepScene::TutorialStepScene()
+016167a4  ldr      x8, [x19]                                  
+016167a8  mov      x0, x19                                    
+016167ac  mov      x1, x21                                    
+016167b0  ldr      x8, [x8, #0x318]                           
+016167b4  blr      x8                                         
+016167b8  b        #0x1616820                                 
+016167bc  mov      w0, #0x370                                 

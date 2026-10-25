@@ -1,5 +1,6 @@
 // Pure offline rules. Original statistics and Korean names live in units.json.
 // Basic combat follows inspected native paths; growth, quests, rewards and drop masters remain web adaptations.
+import {JOURNEY_STEPS,initialJourney,journeyStep,validateJourney} from './tutorial-journey.js';
 export const SAVE_KEY = 'brave-frontier-ko.v1';
 export const ELEMENTS = {
   fire:{name:'불', color:'#ff8465', symbol:'불'}, water:{name:'물',color:'#73cfff',symbol:'물'},
@@ -22,7 +23,7 @@ export function newSave(starterId,catalog,name='소환사'){
   if(!['10011','20011','30011','40011'].includes(starterId))throw Error('선택할 수 없는 영웅입니다.');
   const support=['10030','20030','30030','40030'].filter(id=>catalog[id].element!==catalog[starterId].element).slice(0,2);
   const ids=[starterId,...support];
-  return {version:1,name:String(name).trim().slice(0,12)||'소환사',starterId,units:Object.fromEntries(ids.map(id=>[id,{id,level:1,xp:0}])),party:ids,zel:2500,karma:800,gems:6,clears:{},summons:0,battles:0,sound:false,volume:0.35,speed:1,tutorialSeen:false,tutorial:tutorialProgress(),updatedAt:Date.now()};
+  return {version:1,name:String(name).trim().slice(0,12)||'소환사',starterId,units:Object.fromEntries(ids.map(id=>[id,{id,level:1,xp:0}])),party:ids,zel:2500,karma:800,gems:6,clears:{},summons:0,battles:0,sound:false,volume:0.35,speed:1,tutorialSeen:false,tutorial:tutorialProgress(),journey:initialJourney(),updatedAt:Date.now()};
 }
 export function tutorialProgress(raw){
  if(raw==null)return {chapter:1,wave:0,active:false,completed:[]};
@@ -45,7 +46,43 @@ export function validateSave(raw,catalog){
     if(!QUESTS.some(q=>q.id===id)||!info||!integer(info.count,1,1e7)||!integer(info.stars,1,3))throw Error('탐험 기록이 올바르지 않습니다.');
     clears[id]={count:info.count,stars:info.stars};
   }
-  return {version:1,name:raw.name.slice(0,12)||'소환사',starterId:Object.hasOwn(cleanUnits,raw.starterId)?raw.starterId:raw.party[0],units:cleanUnits,party:[...raw.party],zel:raw.zel,karma:raw.karma,gems:raw.gems,clears,summons:raw.summons,battles:raw.battles,sound:raw.sound===true,volume:Number.isFinite(raw.volume)?Math.max(0,Math.min(1,raw.volume)):0.35,speed:raw.speed===2?2:1,tutorialSeen:raw.tutorialSeen===true,tutorial:tutorialProgress(raw.tutorial),updatedAt:Date.now()};
+  return {version:1,name:raw.name.slice(0,12)||'소환사',starterId:Object.hasOwn(cleanUnits,raw.starterId)?raw.starterId:raw.party[0],units:cleanUnits,party:[...raw.party],zel:raw.zel,karma:raw.karma,gems:raw.gems,clears,summons:raw.summons,battles:raw.battles,sound:raw.sound===true,volume:Number.isFinite(raw.volume)?Math.max(0,Math.min(1,raw.volume)):0.35,speed:raw.speed===2?2:1,tutorialSeen:raw.tutorialSeen===true,tutorial:tutorialProgress(raw.tutorial),journey:validateJourney(raw.journey,catalog),updatedAt:Date.now()};
+}
+function enterJourneyStep(save,index){
+ const next=JOURNEY_STEPS[index];if(!next)throw Error('다음 안내를 찾을 수 없습니다.');
+ // The script states a five-gem gift; this is the offline equivalent of a
+ // server award, not an interpretation of PARAM40 as a currency setter.
+ if(next.gift&&!save.journey.giftClaimed){
+  if(save.gems>1e9-5)throw Error('보석을 더 받을 수 없습니다.');
+  save.gems+=5;save.journey.giftClaimed=true;
+ }
+ save.journey.step=next.id;save.journey.active=next.kind!=='complete';
+ return next;
+}
+export function completeJourneyBattle(save,chapter){
+ const step=journeyStep(save.journey);
+ if(!save.journey?.active||step?.kind!=='battle'||step.chapter!==chapter||!save.tutorial.completed.includes(chapter))return false;
+ enterJourneyStep(save,JOURNEY_STEPS.indexOf(step)+1);return true;
+}
+export function advanceJourney(save,expectedStep,action,catalog,roll=Math.random()){
+ const step=journeyStep(save.journey);
+ if(!save.journey?.active||!step||step.id!==expectedStep)throw Error('이미 다음 안내로 이동했어요.');
+ const expected=step.kind==='story'?'next':step.kind==='gate'?'gate-finished':step.action;
+ if(!expected||action!==expected)throw Error('안내에 표시된 곳을 선택해 주세요.');
+ if(step.kind==='confirm'){
+  if(save.journey.summonResult)throw Error('이미 소환한 동료가 있어요.');
+  save.journey.summonResult=summon(save,'hero',catalog,roll);
+ }
+ return enterJourneyStep(save,JOURNEY_STEPS.indexOf(step)+1);
+}
+export function resumeJourneyState(save){
+ const step=journeyStep(save.journey);
+ // Native chapter10 recovery: a spent gem balance must not start another
+ // charge or block the farewell. Saved summon results always take priority.
+ if(save.journey?.active&&save.journey.giftClaimed&&!save.journey.summonResult&&save.gems<5&&['t15-78','t15-81','t15-93','t15-102','t15-108'].includes(step?.id)){
+  save.journey.step='t16-18';return true;
+ }
+ return false;
 }
 export function stats(unit,catalog){
   const d=catalog[unit.id],progress=(unit.level-1)/19;

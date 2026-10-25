@@ -1,8 +1,9 @@
-import {SAVE_KEY,ELEMENTS,QUESTS,makeCatalog,newSave,validateSave,stats,growthCost,grow,setParty,isUnlocked,createBattle,act,queueAction,queueEnemyTurn,advanceCombat,attackFrames,enemyTurn,nextWave,usePotion,claimVictory,summon} from './engine.js';
+import {SAVE_KEY,ELEMENTS,QUESTS,makeCatalog,newSave,validateSave,stats,growthCost,grow,setParty,isUnlocked,createBattle,act,queueAction,queueEnemyTurn,advanceCombat,attackFrames,enemyTurn,nextWave,usePotion,claimVictory,summon,completeJourneyBattle,advanceJourney,resumeJourneyState} from './engine.js';
 import {SpritePlayer} from './sprites.js';
 import {NativeUI} from './ui.js';
 import {SamPlayer} from './sam.js';
 import {TUTORIALS,TutorialSession} from './tutorial.js';
+import {journeyStep} from './tutorial-journey.js';
 
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,6 +15,7 @@ const ui=(name,cls='')=>`<canvas data-ui="${name}" class="${cls}" aria-hidden="t
 let catalog,unitData,sprites,save=null,screen='title',selectedStarter='10011',filter='all',showAllUnits=false,partyDraft=[],detailId=null;
 let toastTimer,modalUnit=null,battle=null,battleMode='attack',target=0,auto=false,battleTimer=null,allTimers=[],locked=false,logs=[],battleResult=null;
 let tutorial=null,commandIndex=null,holdTimer=null,suppressCommandClickUntil=0;
+let journeyPlaying=false,journeyReviewOriginal=null;
 let prologueIndex=0,prologueName='소환사';
 const prologueLines=['나는 루시어스…\n이 게이트를 관장하는 신이다…','나는 네가 이곳에 도착할 날을\n기다려 왔다…','선택받은 자여…\n너의 이름은 무엇인가?','{name}…\n이 문 너머에서\n새로운 힘이 너를 기다리고 있다…','그 힘을 네 것으로 만들어라…\n그리고 그 힘으로\n이 세계에 평화를 가져오너라…'];
 const animations=new Map(),particles=[],pickups=[],hitFlashes=new Map(),defeats=new Map();
@@ -27,24 +29,24 @@ const audio={music:null,musicKey:null,
  stop(){this.music?.pause();this.music=null;this.musicKey=null;}
 };
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),3000);}
-function persist(){if(!save)return;save.updatedAt=Date.now();try{localStorage.setItem(SAVE_KEY,JSON.stringify(save));}catch{toast('자동 저장 공간이 부족해요. 설정에서 저장 파일을 내려받아 주세요.');}}
+function persist(){if(!save||journeyReviewOriginal)return;save.updatedAt=Date.now();try{localStorage.setItem(SAVE_KEY,JSON.stringify(save));}catch{toast('자동 저장 공간이 부족해요. 설정에서 저장 파일을 내려받아 주세요.');}}
 function elBadge(id){const d=catalog[id],el=ELEMENTS[d.element];return `<span class="element" style="--element:${el.color}">${el.name}</span>`;}
 function unitImage(id,kind='thum'){return `assets/unit_ills_${kind}_${id}.png`;}
 function closeModal(){modal.close();modalUnit=null;detailId=null;}
 function openModal(title,body,{wide=false}={}){modalUnit=null;modal.innerHTML=`<div class="modal-top"><h2>${esc(title)}</h2><button class="modal-close" data-action="close-modal" aria-label="닫기">×</button></div>${body}`;if(!modal.open)modal.showModal();}
 function header(){
-  $('#header').hidden=!save||['title','prologue','starter','battle','summon-animation'].includes(screen);
+  $('#header').hidden=!save||['title','prologue','starter','battle','summon-animation','journey-story','journey-result'].includes(screen);
   if(!save)return;
   const rank=1+Math.floor(save.battles/3);
   $('#header').innerHTML=`<div class="native-user">${esc(save.name)}</div><div class="native-rank">소환사</div><div class="native-level">레벨 <b>${rank}</b> <small>동료 ${Object.keys(save.units).length}</small></div><div class="native-exp"><span>경험</span><i style="width:${save.battles%3/3*65}%"></i></div><div class="native-energy"><span>기력</span><b>제한 없음</b></div><div class="native-recovery">모험 ${save.battles}회 완료</div><div class="native-money gems"><b>${fmt(save.gems)}</b></div><div class="native-money zel"><b>${fmt(save.zel)}</b></div><div class="native-money karma"><b>${fmt(save.karma)}</b></div><div class="native-arena">모험</div>`;
 }
 const footerItems=[['home','home','홈'],['units','unit','유닛'],['village','village','마을'],['shop','shop','상점'],['summon','Summon','소환'],['friends','friend','친구']];
 function nav(){
-  const hidden=!save||['title','prologue','starter','battle','result','summon-animation'].includes(screen);$('#nav').hidden=hidden;
+  const hidden=!save||['title','prologue','starter','battle','result','summon-animation','journey-story','journey-confirm','journey-result'].includes(screen);$('#nav').hidden=hidden;
   if(!hidden)$('#nav').innerHTML=`${ui('button_base.png','footer-texture')}${footerItems.map(([id,asset,label])=>`<button data-action="navigate" data-screen="${id}" ${screen===id?'aria-current="page"':''} aria-label="${label}">${ui(`btn_${asset}_${screen===id?'02':'01'}.png`)}<span>${label}</span></button>`).join('')}`;
 }
-function navigate(next){if(battle&&next!=='battle')stopBattle();screen=next;closeModal();render();window.scrollTo({top:0,behavior:'instant'});if(save?.sound)void audio.musicFor(next==='summon'?'bf009_village.mp3':'bf009_village.mp3');}
-function render(){const previous=lastRenderedScreen;const leaving=previous!==screen&&['party','unit-detail'].includes(previous)?view.cloneNode(true):null;if(leaving){const originals=view.querySelectorAll('canvas');leaving.querySelectorAll('canvas').forEach((c,i)=>{c.getContext('2d').drawImage(originals[i],0,0);c.removeAttribute('data-unit');c.removeAttribute('data-sam');});}document.body.dataset.screen=screen;document.body.dataset.tutorial=!!tutorial;header();nav();view.style.paddingBottom=['title','prologue','starter','battle','result','summon-animation'].includes(screen)?'0':'';const renders={title:renderTitle,prologue:renderPrologue,starter:renderStarter,home:renderHome,quests:renderQuests,units:renderUnits,summon:renderSummon,settings:renderSettings,battle:renderBattle,result:renderResult,village:renderVillage,shop:renderShop,friends:renderFriends,tutorials:renderTutorialHub,'unit-detail':renderUnitDetail,'summon-animation':renderSummonAnimation,party:renderPartyEditor};renders[screen]();if(previous&&previous!==screen&&(['party','unit-detail'].includes(previous)||['party','unit-detail'].includes(screen)))slideWorkLayer(leaving);lastRenderedScreen=screen;}
+function navigate(next){journeyPlaying=false;if(battle&&next!=='battle')stopBattle();screen=next;closeModal();render();window.scrollTo({top:0,behavior:'instant'});if(save?.sound)void audio.musicFor('bf009_village.mp3');}
+function render(){document.querySelector('.journey-guide-overlay')?.remove();const previous=lastRenderedScreen;const leaving=previous!==screen&&['party','unit-detail'].includes(previous)?view.cloneNode(true):null;if(leaving){const originals=view.querySelectorAll('canvas');leaving.querySelectorAll('canvas').forEach((c,i)=>{c.getContext('2d').drawImage(originals[i],0,0);c.removeAttribute('data-unit');c.removeAttribute('data-sam');});}document.body.dataset.screen=screen;document.body.dataset.tutorial=!!tutorial;header();nav();view.style.paddingBottom=['title','prologue','starter','battle','result','summon-animation','journey-story','journey-confirm','journey-result'].includes(screen)?'0':'';const renders={title:renderTitle,prologue:renderPrologue,starter:renderStarter,home:renderHome,quests:renderQuests,units:renderUnits,summon:renderSummon,settings:renderSettings,battle:renderBattle,result:renderResult,village:renderVillage,shop:renderShop,friends:renderFriends,tutorials:renderTutorialHub,'unit-detail':renderUnitDetail,'summon-animation':renderSummonAnimation,party:renderPartyEditor,'journey-story':renderJourneyStory,'journey-confirm':renderJourneyConfirm,'journey-result':renderJourneyResult};renders[screen]();if(previous&&previous!==screen&&(['party','unit-detail'].includes(previous)||['party','unit-detail'].includes(screen)))slideWorkLayer(leaving);lastRenderedScreen=screen;if(journeyPlaying)renderJourneyGuide();}
 function slideWorkLayer(leaving){
  document.querySelectorAll('.screen-transition-ghost').forEach(e=>e.remove());view.getAnimations().forEach(a=>a.cancel());const token=++transitionToken;
  if(matchMedia('(prefers-reduced-motion:reduce)').matches){view.inert=false;return;}
@@ -89,25 +91,84 @@ function renderSummon(){
 function doSummon(kind){
  if(summonSequence)return;const result=summon(save,kind,catalog);persist();summonSequence={result,phase:'gate',start:performance.now()};screen='summon-animation';render();audio.effect('bf233_se_skill_action.mp3');
 }
-function renderSummonAnimation(){view.innerHTML=`<section class="summon-animation-screen"><canvas id="summon-animation-canvas" width="640" height="960" aria-label="원본 소환 게이트 애니메이션"></canvas><button data-action="summon-open" ${summonSequence.phase==='open'?'disabled':''}>${summonSequence.phase==='gate'?'게이트를 눌러 동료를 만나세요':'소환의 문이 열리고 있어요…'}</button></section>`;}
-function finishSummon(){const result=summonSequence.result;summonSequence=null;screen='summon';render();audio.effect('bf114_zin_unit_get1.mp3');const u=catalog[result.id];openModal(result.duplicate?'다시 만난 인연':'새로운 동료',`<div class="summon-result"><canvas class="summon-reveal-circle" data-sam="GachaEndCircleGet" width="640" height="640" aria-hidden="true"></canvas><div class="stars">${'★'.repeat(u.rarity)}</div>${u.hasIllustration?`<img src="${unitImage(u.id,'full')}" alt="${esc(u.name)}">`:`<canvas data-unit="${u.id}" width="440" height="250" style="width:100%;height:210px" aria-label="${esc(u.name)}"></canvas>`}<h2>${esc(u.name)}</h2><p>${result.duplicate?`이미 함께하는 동료예요.<br>카르마 ${fmt(result.karma)}을 받았습니다.`:'새로운 인연이 부대에 합류했어요.<br>편성에서 동료를 선택해 보세요.'}</p><button class="gold-button" style="width:100%;margin-top:22px" data-action="close-modal">확인</button></div>`);}
+function renderSummonAnimation(){view.innerHTML=`<section class="summon-animation-screen"><canvas id="summon-animation-canvas" width="640" height="960" aria-label="원본 소환 게이트 애니메이션"></canvas>${journeyPlaying?'<button class="journey-pause" data-action="journey-pause">중단</button>':''}<button data-action="summon-open" ${summonSequence.phase==='open'?'disabled':''}>${summonSequence.phase==='gate'?'게이트를 눌러 동료를 만나세요':'소환의 문이 열리고 있어요…'}</button></section>`;}
+function finishSummon(){if(summonSequence.journey){summonSequence=null;advanceJourney(save,'summon-gate','gate-finished',catalog);persist();resumeJourney();return;}const result=summonSequence.result;summonSequence=null;screen='summon';render();audio.effect('bf114_zin_unit_get1.mp3');const u=catalog[result.id];openModal(result.duplicate?'다시 만난 인연':'새로운 동료',`<div class="summon-result"><canvas class="summon-reveal-circle" data-sam="GachaEndCircleGet" width="640" height="640" aria-hidden="true"></canvas><div class="stars">${'★'.repeat(u.rarity)}</div>${u.hasIllustration?`<img src="${unitImage(u.id,'full')}" alt="${esc(u.name)}">`:`<canvas data-unit="${u.id}" width="440" height="250" style="width:100%;height:210px" aria-label="${esc(u.name)}"></canvas>`}<h2>${esc(u.name)}</h2><p>${result.duplicate?`이미 함께하는 동료예요.<br>카르마 ${fmt(result.karma)}을 받았습니다.`:'새로운 인연이 부대에 합류했어요.<br>편성에서 동료를 선택해 보세요.'}</p><button class="gold-button" style="width:100%;margin-top:22px" data-action="close-modal">확인</button></div>`);}
 function drawSummon(now){
  const canvas=$('#summon-animation-canvas');if(!canvas||!summonSequence)return;const ctx=canvas.getContext('2d'),t=now-summonSequence.start;ctx.clearRect(0,0,640,960);
  samPlayer.draw(ctx,'GachaEndCircleGet',{time:t,x:0,y:170});
  if(summonSequence.phase==='gate'){const duration=samPlayer.duration('GachaGateClose3');samPlayer.draw(ctx,'GachaGateClose3',{time:t<duration?t:t-duration,label:t<duration?'start':'loop',loop:t>=duration,x:0,y:150});}
  else{samPlayer.draw(ctx,'GachaGateOpen3',{time:t,label:'start',loop:false,x:0,y:150});samPlayer.draw(ctx,'GachaGateOpenAdd',{time:t,label:'start',loop:false,x:0,y:150,additive:true});if(t>=samPlayer.duration('GachaGateOpenAdd'))finishSummon();}
 }
-function renderSettings(){view.innerHTML=`<div class="screen-top"><h2>소환사의 설정</h2><p>나에게 맞는 속도로 모험을 이어가세요.</p></div><section class="settings-group"><h3>소리와 전투</h3><div class="setting-row"><span>배경 음악 · 효과음</span><button data-action="sound">${save.sound?'켜짐':'꺼짐'}</button></div><div class="setting-row"><label for="volume">소리 크기</label><input id="volume" type="range" min="0" max="1" step="0.05" value="${save.volume}"></div><div class="setting-row"><span>기본 전투 속도</span><button data-action="speed">${save.speed}배속</button></div></section><section class="settings-group"><h3>모험 기록</h3><div class="setting-links"><button data-action="export-save">↓ 저장 파일 내려받기</button><button data-action="import-prompt">↑ 저장 파일 불러오기</button><button data-action="guide">티리스의 전투 훈련</button><button data-action="help">조작 방법 알아보기</button><button data-action="about">웹판 정보와 원본 출처</button><button class="danger" data-action="reset-prompt">새 모험 시작하기</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p class="subtle" style="margin-top:15px">다른 기기에서는 저장 파일을 불러와 이어갈 수 있어요. 일반 모험은 새로고침하면 도전이 취소됩니다. 훈련은 현재 전투의 처음부터 이어집니다.</p></section><div class="settings-version">한국어 웹판 · 판번호 0.3.0</div>`;}
+function renderSettings(){view.innerHTML=`<div class="screen-top"><h2>소환사의 설정</h2><p>나에게 맞는 속도로 모험을 이어가세요.</p></div><section class="settings-group"><h3>소리와 전투</h3><div class="setting-row"><span>배경 음악 · 효과음</span><button data-action="sound">${save.sound?'켜짐':'꺼짐'}</button></div><div class="setting-row"><label for="volume">소리 크기</label><input id="volume" type="range" min="0" max="1" step="0.05" value="${save.volume}"></div><div class="setting-row"><span>기본 전투 속도</span><button data-action="speed">${save.speed}배속</button></div></section><section class="settings-group"><h3>모험 기록</h3><div class="setting-links"><button data-action="export-save">↓ 저장 파일 내려받기</button><button data-action="import-prompt">↑ 저장 파일 불러오기</button><button data-action="guide">티리스의 전투 훈련</button><button data-action="help">조작 방법 알아보기</button><button data-action="about">웹판 정보와 원본 출처</button><button class="danger" data-action="reset-prompt">새 모험 시작하기</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p class="subtle" style="margin-top:15px">다른 기기에서는 저장 파일을 불러와 이어갈 수 있어요. 일반 모험은 새로고침하면 도전이 취소됩니다. 훈련은 현재 전투의 처음부터 이어집니다.</p></section><div class="settings-version">한국어 웹판 · 판번호 0.4.0</div>`;}
 function about(){openModal('이 웹판에 대하여',`<div class="modal-body"><p>업로드된 브레이브 프론티어 게임 파일의 캐릭터 이미지, 모션, 배경, 음악을 이용한 한국어 웹 재구현입니다.</p><div class="skill-box"><strong>원본에서 가져온 것</strong><p>캐릭터 그래픽과 프레임 애니메이션, 배경과 사운드. 유닛 이름·기초 능력치·필살기 설명은 공개된 한국어판 추출 자료와 대조했습니다.</p></div><div class="skill-box"><strong>이 웹판의 규칙</strong><p>일반 공격의 기본 피해·속성·치명타·스파크와 결정 배분은 원본 코드를 대조했습니다. 탐험 경로, 적 배치, 성장 곡선, 보상과 소환 확률은 웹판 규칙입니다. 훈련의 적 능력치는 보존된 2014년 글로벌판 기록을 사용하며, 현재 원본 앱과 같은 버전인지는 확인되지 않았습니다. 원작의 전체 콘텐츠와 온라인 서버는 포함되어 있지 않습니다.</p></div><p class="disclosure">원작 그래픽·음악: 알림·구미<br>한국어 데이터: 블루아크의 공개 추출 자료<br>원본 분석과 변경 내역은 저장소 문서에서 확인할 수 있어요.</p><button class="gold-button" data-action="close-modal">확인</button></div>`);}
 function help(){openModal('모험의 길잡이',`<div class="modal-body"><div class="help-steps"><p><b>공격</b><br>적을 눌러 목표를 정하고, 동료의 칸을 누르세요. 한 차례에 동료마다 한 번씩 행동할 수 있어요.</p><p><b>필살기와 방어</b><br>동료 칸을 길게 누른 뒤 오른쪽 위로 밀면 필살기, 아래로 밀면 방어합니다. 아래 행동 버튼으로도 선택할 수 있어요. 필살기에는 결정이 필요합니다.</p><p><b>함께 공격하기</b><br>서로 다른 동료의 타격이 같은 적에게 겹치면 스파크로 피해가 늘어납니다. 일제 공격은 모든 동료가 차례로 공격해요.</p><p><b>속성 상성</b><br>불 → 숲 → 번개 → 물 → 불 순서로 유리합니다. 빛과 어둠은 서로에게 강해요.</p><p><b>회복과 자동 전투</b><br>도전마다 회복약을 세 번 쓸 수 있어요. 자동 전투에서는 준비된 필살기도 사용합니다.</p><p><b>성장과 편성</b><br>모험과 소환으로 동료를 모으세요. 유닛 상세에서 강화할 수 있고, 부대의 첫 동료가 리더가 됩니다.</p></div><button class="gold-button" data-action="close-modal">알겠어요</button></div>`);}
 function guide(){navigate('tutorials');}
 function exportSave(){const blob=new Blob([JSON.stringify(save,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='브레이브-프론티어-저장.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);toast('저장 파일을 내려받았습니다.');}
+function resumeJourney(){
+ if(!save?.journey)return;
+ stopBattle();closeModal();journeyPlaying=true;
+ if(resumeJourneyState(save))persist();
+ const step=journeyStep(save.journey);
+ if(step.kind==='complete'){finishJourney();return;}
+ if(step.kind==='battle'){startTutorial(step.chapter,true,true);return;}
+ if(step.kind==='gate'){
+  summonSequence={result:save.journey.summonResult,phase:'gate',start:performance.now(),journey:true};screen='summon-animation';
+ }else{
+  summonSequence=null;
+  screen=({story:'journey-story',action:step.screen,confirm:'journey-confirm',result:'journey-result'})[step.kind];
+  if(step.screen==='summon')summonKind='hero';
+ }
+ window.scrollTo({top:0,behavior:'instant'});render();
+ void audio.musicFor(step.background==='grass'?'bf010_map_grass.mp3':'bf009_village.mp3');
+}
+function journeyAction(expectedStep,action){
+ advanceJourney(save,expectedStep,action,catalog);persist();resumeJourney();
+}
+function reviewJourney(){
+ if(journeyReviewOriginal)return;
+ journeyReviewOriginal=save;
+ const starter=unitData.starterIds.includes(save.starterId)?save.starterId:unitData.starterIds[0];
+ save=newSave(starter,catalog,save.name);save.sound=journeyReviewOriginal.sound;save.volume=journeyReviewOriginal.volume;
+ resumeJourney();
+}
+function leaveJourney(){
+ stopBattle();summonSequence=null;journeyPlaying=false;
+ if(journeyReviewOriginal){save=journeyReviewOriginal;journeyReviewOriginal=null;navigate('tutorials');toast('다시보기를 마쳤어요. 원래 모험 기록으로 돌아왔어요.');}
+ else{save.tutorial.active=false;persist();navigate('tutorials');}
+}
+function finishJourney(){
+ if(journeyReviewOriginal){save=journeyReviewOriginal;journeyReviewOriginal=null;}
+ journeyPlaying=false;persist();navigate('home');
+}
+function renderJourneyStory(){
+ const step=journeyStep(save.journey),karl=step.who==='karl',text=esc(step.text.replaceAll('{name}',save.name)).replaceAll('\n','<br>');
+ view.innerHTML=`<section class="journey-story-scene ${step.background==='town'?'in-town':'in-grass'}"><div class="journey-story-stage">${step.who?`<img class="journey-person ${karl?'karl':'tilith'}" src="assets/navi_chara${karl?2:1}_${step.face}.png" alt="${karl?'칼':'티리스'}">`:''}${step.gift?`<div class="journey-gift"><span>보석</span><strong>5</strong><small>보유 보석 ${fmt(save.gems)}개</small></div>`:''}</div><button class="story-dialog" data-action="journey-next" data-step="${step.id}">${step.who?`<span class="story-speaker">${karl?'칼':'티리스'}</span>`:''}${text}<span class="story-next">▼ 계속</span></button><button class="journey-pause" data-action="journey-pause">중단</button>${journeyReviewOriginal?'<span class="journey-review-label">안내 다시보기</span>':''}</section>`;
+}
+function renderJourneyConfirm(){
+ const step=journeyStep(save.journey);
+ view.innerHTML=`<section class="journey-confirm native-summon"><div class="screen-top"><h2>레어 소환</h2></div><img src="assets/gacha_rare_bg_img.png" alt="소환의 문"><div class="journey-confirm-panel"><h3>동료를 소환할까요?</h3><p>보석 5개로 동료 한 명을 소환합니다.</p><p>보유 보석 <b>${fmt(save.gems)}</b>개 → <b>${fmt(Math.max(0,save.gems-5))}</b>개</p><button class="gold-button" data-action="journey-confirm" data-step="${step.id}">소환하기</button><button class="text-btn" data-action="journey-pause">나중에 계속하기</button></div></section>`;
+}
+function renderJourneyResult(){
+ const step=journeyStep(save.journey),result=save.journey.summonResult,u=catalog[result.id];
+ view.innerHTML=`<section class="journey-result"><div class="summon-result"><canvas class="summon-reveal-circle" data-sam="GachaEndCircleGet" width="640" height="640" aria-hidden="true"></canvas><div class="stars">${'★'.repeat(u.rarity)}</div><img src="${unitImage(u.id,'full')}" alt="${esc(u.name)}"><h2>${esc(u.name)}</h2><p>${result.duplicate?`다시 만난 동료예요.<br>카르마 ${fmt(result.karma)}을 받았습니다.`:'새로운 동료가 합류했어요!'}</p><button class="gold-button" data-action="journey-result" data-step="${step.id}">확인</button></div><button class="journey-pause" data-action="journey-pause">중단</button></section>`;
+}
+function renderJourneyGuide(){
+ document.querySelector('.journey-guide-overlay')?.remove();
+ const step=journeyStep(save?.journey);if(!journeyPlaying||step?.kind!=='action')return;
+ const target=document.querySelector(step.selector);if(!target)return;
+ const r=target.getBoundingClientRect(),shell=$('#shell').getBoundingClientRect();
+ const layer=document.createElement('div');layer.className='journey-guide-overlay';layer.style.left=shell.left+'px';layer.style.width=shell.width+'px';
+ layer.innerHTML=`<div class="tutorial-focus" style="left:${r.left-shell.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px"></div><div class="tutorial-point native-motion" style="left:${r.left-shell.left+r.width*.5}px;top:${r.top+r.height*.5}px"><canvas data-sam="Touch" width="160" height="170" aria-hidden="true"></canvas></div><img class="tutorial-coach-portrait" src="assets/thum_navi_chara2_0.png" alt="칼"><div class="tutorial-coach">${esc(step.text).replaceAll('\n','<br>')}<small>빛나는 곳을 눌러 주세요</small></div><button class="journey-pause" data-action="journey-pause">중단</button>`;
+ document.body.appendChild(layer);
+}
+window.addEventListener('resize',()=>{if(journeyPlaying)renderJourneyGuide();});
+window.addEventListener('scroll',()=>{if(journeyPlaying)renderJourneyGuide();},{passive:true});
 function renderTutorialHub(){
  const progress=save.tutorial;
- view.innerHTML=`<section class="tutorial-hub"><div class="screen-top"><h2>티리스의 안내</h2></div><img class="tutorial-hub-portrait" src="assets/navi_chara1_1.png" alt="여신 티리스"><p class="tutorial-hub-intro">${esc(save.name)}, 함께 초원을 건너 볼까?<br>내 안내에 따라 직접 공격하고, 회복약과 필살기도 써 봐!</p>${TUTORIALS.map(q=>`<button class="quest" data-action="tutorial-start" data-chapter="${q.id}" ${q.id===2&&!progress.completed.includes(1)?'disabled':''}><div class="quest-info"><h3>${q.name}</h3><p>${q.summary}</p></div><div class="quest-end">${progress.completed.includes(q.id)?'다시 보기':progress.chapter===q.id&&progress.wave?'이어서 하기':'시작하기'} ›</div></button>`).join('')}<button class="gold-button secondary" data-action="navigate" data-screen="home">마을로 돌아가기</button></section>`;
+ view.innerHTML=`<section class="tutorial-hub"><div class="screen-top"><h2>티리스의 안내</h2></div><img class="tutorial-hub-portrait" src="assets/navi_chara1_1.png" alt="여신 티리스"><p class="tutorial-hub-intro">${esc(save.name)}, 함께 초원을 건너 볼까?<br>내 안내에 따라 직접 공격하고, 회복약과 필살기도 써 봐!</p>${save.journey?.active?'<button class="gold-button" data-action="journey-resume">첫 모험 안내 이어서</button>':''}<button class="gold-button secondary" data-action="journey-review">처음부터 안내 다시보기</button><p class="tutorial-controls-note">다시보기는 현재 모험 기록을 바꾸지 않습니다.</p>${TUTORIALS.map(q=>`<button class="quest" data-action="tutorial-start" data-chapter="${q.id}" ${q.id===2&&!progress.completed.includes(1)?'disabled':''}><div class="quest-info"><h3>${q.name}</h3><p>${q.summary}</p></div><div class="quest-end">${progress.completed.includes(q.id)?'다시 보기':progress.chapter===q.id&&progress.wave?'이어서 하기':'시작하기'} ›</div></button>`).join('')}<button class="gold-button secondary" data-action="navigate" data-screen="home">마을로 돌아가기</button></section>`;
 }
-function startTutorial(chapter,resume=true){
- stopBattle();const progress=save.tutorial;
+function startTutorial(chapter,resume=true,linked=false){
+ stopBattle();journeyPlaying=linked;const progress=save.tutorial;
  if(chapter===2&&!progress.completed.includes(1)){toast('전투의 기초부터 배워 봐요.');navigate('tutorials');return;}
  const wave=resume&&progress.chapter===chapter&&!progress.completed.includes(chapter)?progress.wave:0;
  tutorial=new TutorialSession(save,catalog,chapter,wave);battle=tutorial.battle;target=tutorial.target;
@@ -118,7 +179,7 @@ function recordTutorial(){
  if(!tutorial)return;const p=save.tutorial,c=tutorial.checkpoint;
  let changed=p.chapter!==c.chapter||p.wave!==c.wave;
  Object.assign(p,c);
- if(tutorial.complete){if(!p.completed.includes(c.chapter)){p.completed.push(c.chapter);save.tutorialSeen=true;}if(p.active){p.active=false;changed=true;audio.effect('bf104_zin_quest_clear_ff.mp3');}}
+ if(tutorial.complete){if(!p.completed.includes(c.chapter)){p.completed.push(c.chapter);save.tutorialSeen=true;changed=true;}if(p.active){p.active=false;changed=true;audio.effect('bf104_zin_quest_clear_ff.mp3');}if(journeyPlaying&&completeJourneyBattle(save,c.chapter))changed=true;}
  if(changed)persist();
 }
 function tutorialResult(result){
@@ -162,7 +223,7 @@ function renderTutorialOverlay(){
  if(tutorial.crystal)section.querySelector('.battle-arena').insertAdjacentHTML('beforeend',`<div class="tutorial-gem ${tutorial.crystal}">${ui(tutorial.crystal==='heart'?'heart-crystal':'battle-crystal')}</div>`);
  const overlay=document.createElement('div');overlay.className='tutorial-overlay';section.appendChild(overlay);
  if(s.kind==='complete'){
-  overlay.innerHTML=`<div class="tutorial-complete"><img src="assets/navi_chara1_1.png" alt="기뻐하는 티리스"><h2>훈련 완료</h2><p>${text}</p>${tutorial.quest.id===1?'<button class="gold-button" data-action="tutorial-start" data-chapter="2">속성과 필살기 배우기</button>':''}<button class="gold-button secondary" data-action="tutorial-exit">훈련 목록</button><button class="text-btn" data-action="navigate" data-screen="home">마을로 돌아가기</button></div>`;return;
+  overlay.innerHTML=`<div class="tutorial-complete"><img src="assets/navi_chara1_1.png" alt="기뻐하는 티리스"><h2>훈련 완료</h2><p>${text}</p>${journeyPlaying?'<button class="gold-button" data-action="journey-resume">안내 계속</button><button class="text-btn" data-action="tutorial-exit">나중에 계속하기</button>':`${tutorial.quest.id===1?'<button class="gold-button" data-action="tutorial-start" data-chapter="2">속성과 필살기 배우기</button>':''}<button class="gold-button secondary" data-action="tutorial-exit">훈련 목록</button><button class="text-btn" data-action="navigate" data-screen="home">마을로 돌아가기</button>`}</div>`;return;
  }
  if(s.kind==='story'){
   overlay.innerHTML=s.wake?`<button class="tutorial-story tutorial-wake" data-action="tutorial-next"><span class="wake-copy">${text}</span><span class="wake-next">화면을 눌러 계속</span></button>`:`<div class="tutorial-story"><img class="tutorial-person" src="assets/navi_chara1_${s.face}.png" alt="티리스"><button class="story-dialog" data-action="tutorial-next"><span class="story-speaker">${esc(s.speaker||'티리스')}</span>${text}<span class="story-next">▼ 계속</span></button></div>`;
@@ -312,10 +373,24 @@ document.addEventListener('click',event=>{
  const a=button.dataset.action,id=button.dataset.id;
  if(a.startsWith('command-')&&event.detail!==0&&performance.now()<suppressCommandClickUntil)return;
  try{
+  if(a==='journey-resume'){resumeJourney();return;}
+  if(a==='journey-review'){reviewJourney();return;}
+  if(a==='journey-pause'){leaveJourney();return;}
+  if(a==='journey-next'){journeyAction(button.dataset.step,'next');return;}
+  if(a==='journey-confirm'){journeyAction(button.dataset.step,'confirm-summon');return;}
+  if(a==='journey-result'){journeyAction(button.dataset.step,'accept-summon');return;}
+  if(journeyPlaying&&!tutorial){
+   const step=journeyStep(save.journey);
+   if(step.kind==='action'){
+    if(button.matches(step.selector))journeyAction(step.id,step.action);
+    return;
+   }
+   if(a!=='summon-open')return;
+  }
   if(a==='navigate')navigate(button.dataset.screen);
   else if(a==='begin'){prologueIndex=0;screen='prologue';render();}
   else if(a==='prologue-next'){if(prologueIndex===2)prologueName=$('#prologue-name').value.trim().slice(0,12)||'소환사';if(++prologueIndex===prologueLines.length)screen='starter';render();}
-  else if(a==='continue'){if(save.tutorial.active)startTutorial(save.tutorial.chapter);else navigate('home');}
+  else if(a==='continue'){if(save.journey?.active)resumeJourney();else if(save.tutorial.active)startTutorial(save.tutorial.chapter);else navigate('home');}
   else if(a==='starter'){const name=$('#summoner-name')?.value;selectedStarter=id;renderStarter();$('#summoner-name').value=name||'소환사';}
   else if(a==='close-modal')closeModal();
   else if(a==='help')help();
@@ -326,8 +401,8 @@ document.addEventListener('click',event=>{
   else if(a==='tutorial-chest')tutorialAction('chest');
   else if(a==='tutorial-pause')tutorialPause();
   else if(a==='tutorial-resume')closeModal();
-  else if(a==='tutorial-retry')startTutorial(tutorial.quest.id);
-  else if(a==='tutorial-exit'){save.tutorial.active=false;persist();navigate('tutorials');}
+  else if(a==='tutorial-retry')startTutorial(tutorial.quest.id,true,journeyPlaying);
+  else if(a==='tutorial-exit'){if(journeyPlaying)leaveJourney();else{save.tutorial.active=false;persist();navigate('tutorials');}}
   else if(a==='command-burst'){battleAction(Number(button.dataset.index),'burst');}
   else if(a==='command-guard'){battleAction(Number(button.dataset.index),'guard');}
   else if(a==='quest-info')questInfo(id);
@@ -382,7 +457,7 @@ document.addEventListener('pointerup',event=>{
 document.addEventListener('pointercancel',()=>{clearTimeout(holdTimer);gesture=null;commandIndex=null;if(tutorial)tutorial.commandOpen=false;if(screen==='battle')renderBattle();});
 document.addEventListener('contextmenu',event=>{if(event.target.closest('[data-action="battle-unit"]'))event.preventDefault();});
 document.addEventListener('keydown',event=>{if(screen!=='battle'||modal.open)return;if(event.key==='Escape'){commandIndex=null;if(tutorial)tutorial.commandOpen=false;renderBattle();return;}const focused=event.target.closest('[data-action="battle-unit"]');if(event.key===' '&&focused&&!focused.disabled){event.preventDefault();const i=Number(focused.dataset.index);if(tutorial){if(tutorial.step.input==='burst'&&tutorial.step.index===i){tutorial.commandOpen=true;renderBattle();}else tutorialAction('hold',i);}else{commandIndex=i;renderBattle();}return;}if(/^[1-6]$/.test(event.key)){event.preventDefault();battleAction(Number(event.key)-1);}else if(tutorial&&event.key==='Enter'&&['story','say'].includes(tutorial.step.kind)){event.preventDefault();tutorialAction('next');}else if(tutorial&&event.key===' '&&tutorial.step.input==='hold'){event.preventDefault();tutorialAction('hold',2);}else if(tutorial&&event.key==='ArrowUp'&&tutorial.step.input==='burst'){event.preventDefault();tutorialAction('burst',2);}});
-document.addEventListener('submit',event=>{if(event.target.id!=='starter-form')return;event.preventDefault();save=newSave(selectedStarter,catalog,$('#summoner-name').value);persist();startTutorial(1,false);});
+document.addEventListener('submit',event=>{if(event.target.id!=='starter-form')return;event.preventDefault();save=newSave(selectedStarter,catalog,$('#summoner-name').value);persist();resumeJourney();});
 document.addEventListener('input',event=>{if(event.target.id==='volume'){save.volume=Number(event.target.value);persist();if(audio.music)audio.music.volume=save.volume*.45;}});
 document.addEventListener('change',async event=>{if(event.target.id!=='save-file')return;const file=event.target.files[0];event.target.value='';if(!file)return;try{if(file.size>1000000)throw Error('저장 파일이 너무 큽니다.');const raw=validateSave(JSON.parse(await file.text()),catalog);openModal('모험 기록을 불러올까요?',`<div class="modal-body"><p>${esc(raw.name)} · 동료 ${Object.keys(raw.units).length}명 · 완료 ${raw.battles}회<br>현재 브라우저의 기록을 이 파일의 기록으로 바꿉니다.</p><button class="gold-button secondary" data-action="export-save">현재 기록 먼저 내려받기</button><button class="gold-button" data-action="confirm-import">불러오기</button></div>`);modal.dataset.pendingSave=JSON.stringify(raw);}catch{toast('올바른 저장 파일이 아니에요. 기존 기록은 유지됩니다.');}});
 modal.addEventListener('click',event=>{if(event.target===modal){const r=modal.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeModal();}});
