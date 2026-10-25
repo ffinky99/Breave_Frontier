@@ -1,0 +1,116 @@
+{
+  "sourceArchive": "21900.zip",
+  "sourceArchiveCatalog": "/workspace/scratch/76e8a7930034/analysis/archive-index.json",
+  "masterManifest": "/workspace/scratch/76e8a7930034/analysis/preservation-masters/manifest.json",
+  "masterFiles": [
+    {
+      "path": "3-mst-translated/F_UNIT_MST_1_Ver1084.json",
+      "file": "F_UNIT_MST_1_Ver1084.json",
+      "bytes": 2491491,
+      "sha256": "1146f09489a07b9187cd3f04bf7dc3ef3bb74e35385869534671af95bf8ea645"
+    },
+    {
+      "path": "3-mst-translated/F_UNIT_MST_2_Ver1084.json",
+      "file": "F_UNIT_MST_2_Ver1084.json",
+      "bytes": 2530924,
+      "sha256": "0696ccda59fccf48598c5267eaeb8a306e994618384151cead38cec6a9195b2b"
+    },
+    {
+      "path": "3-mst-translated/F_DUNGEON_MST_Ver1002.json",
+      "file": "F_DUNGEON_MST_Ver1002.json",
+      "bytes": 865618,
+      "sha256": "16f090514d65846f6bd4a9998b50d6c810bc806a79858c0ff766cdb1a22536fc"
+    },
+    {
+      "path": "3-mst-translated/F_UNIT_CGS_MST_Ver811.json",
+      "file": "F_UNIT_CGS_MST_Ver811.json",
+      "bytes": 375863,
+      "sha256": "522982a216a654410c2267ba351d3f8af803826eb3794d8447606ffc2eab895a"
+    },
+    {
+      "path": "3-mst-translated/F_MISSION_MST_1_Ver1118.json",
+      "file": "F_MISSION_MST_1_Ver1118.json",
+      "bytes": 2046060,
+      "sha256": "d4e364b6c1c5a825c0153c57bdd4123cd35800c74db795d913d119b6c9a99f83"
+    },
+    {
+      "path": "3-mst-translated/F_MISSION_MST_2_Ver1118.json",
+      "file": "F_MISSION_MST_2_Ver1118.json",
+      "bytes": 2074948,
+      "sha256": "48409579dd9e6019aa50825486a17a3945ea1213550bc83e05030c1f17ac0c51"
+    },
+    {
+      "path": "3-mst-translated/F_RESOURCE_BASE_MST_Ver24.json",
+      "file": "F_RESOURCE_BASE_MST_Ver24.json",
+      "bytes": 210960,
+      "sha256": "6fe02e5c2c855a7b5a5f6f82a82884675486ba6fc95f1a944e4a3f190f3a0690"
+    },
+    {
+      "path": "3-mst-translated/F_MISSION_SCRIPT_MST_Ver288.json",
+      "file": "F_MISSION_SCRIPT_MST_Ver288.json",
+      "bytes": 225049,
+      "sha256": "fee32d239177bf067e161d8f10545a51de184fed791bd77124d7110862d3fe66"
+    },
+    {
+      "path": "3-mst-translated/F_MISSION_NPC_UNIT_MST_Ver212.json",
+      "file": "F_MISSION_NPC_UNIT_MST_Ver212.json",
+      "bytes": 111802,
+      "sha256": "ea09460830116797506928a01a7c3004b28787968d085a8745389b93aa9f8a9f"
+    }
+  ],
+  "webAnimationsFile": "/workspace/sites/brave-frontier-ko/dist/animations.json",
+  "webAnimationsSha256": "a9c209cae68537febf77f8d8dddf14707ec6b8a89655c91fad72f5f471c32ccd",
+  "unitCount": 24,
+  "actionCount": 72,
+  "allActionCsvRowsEqual": true,
+  "onlyExplicitIdleAsMoveUnitIds": [
+    "30050"
+  ],
+  "fieldInterpretation": "Raw master field names and strings are preserved; no image tuple semantics are inferred here.",
+  "missionComparison": [
+    {
+      "missionId": "1",
+      "masterBattleCount": 3,
+      "masterEnergy": 0,
+      "masterExp": 5,
+      "masterZel": 500,
+      "masterKarma": 100,
+      "requiredMissionIds": "0",
+      "cutsceneFile": "0,0",
+      "captured2014BattleCount": 3,
+      "battleCountsEqual": true,
+      "enemyStatsComparable": false
+    },
+    {
+      "missionId": "2",
+      "masterBattleCount": 3,
+      "masterEnergy": 0,
+      "masterExp": 8,
+      "masterZel": 1000,
+      "masterKarma": 200,
+      "requiredMissionIds": "1",
+      "cutsceneFile": "0,0",
+      "captured2014BattleCount": 3,
+      "battleCountsEqual": true,
+      "enemyStatsComparable": false
+    },
+    {
+      "missionId": "10",
+      "masterBattleCount": 5,
+      "masterEnergy": 3,
+      "masterExp": 20,
+      "masterZel": 300,
+      "masterKarma": 0,
+      "requiredMissionIds": "2",
+      "cutsceneFile": "0,map1-dungeon0-1end.txt",
+      "captured2014BattleCount": 5,
+      "battleCountsEqual": true,
+      "enemyStatsComparable": false
+    }
+  ],
+  "limitations": [
+    "F_MISSION_MST has no enemy-wave roster, enemy HP/ATK/DEF, or enemy AI records. Matching battle_count cannot confirm 2014 enemy values equal 2022 values.",
+    "missionNpcId is 0 for missions1,2,10. F_MISSION_NPC_UNIT does not establish player starter party or these enemy waves.",
+    "Animation type4 references the atk CSV for all24 units; this comparison verifies filename identity without inferring when native code selects type4."
+  ]
+}

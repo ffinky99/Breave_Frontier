@@ -6,12 +6,14 @@ import assert from 'node:assert/strict';
 
 const root=fileURLToPath(new URL('..',import.meta.url));
 const json=async p=>JSON.parse(await readFile(path.join(root,p),'utf8'));
-const manifest=await json('docs/apk-inventory.json'),units=await json('dist/units.json'),animations=await json('dist/animations.json');
+const manifest=await json('docs/apk-inventory.json'),preservation=await json('docs/preservation-inventory.json'),units=await json('dist/units.json'),animations=await json('dist/animations.json');
+const bundledAssets=[...manifest.copiedAssets,...preservation.copiedAssets];
 assert.equal(units.units.length,24);assert.ok(manifest.copiedAssets.length>=141);
 assert.equal(new Set(units.units.map(u=>u.id)).size,24);
 const names=new Set(await readdir(path.join(root,'dist/assets')));
-assert.equal(names.size,manifest.copiedAssets.length,'모든 배포 자산은 원본 해시 목록에 있어야 한다');
-for(const item of manifest.copiedAssets){
+assert.equal(new Set(bundledAssets.map(a=>a.file)).size,bundledAssets.length,'서로 다른 원본을 덮어쓰면 안 된다');
+assert.equal(names.size,bundledAssets.length,'모든 배포 자산은 원본 해시 목록에 있어야 한다');
+for(const item of bundledAssets){
   const buf=await readFile(path.join(root,'dist/assets',item.file));
   assert.equal(buf.length,item.bytes,item.file);assert.equal(createHash('sha256').update(buf).digest('hex'),item.sha256,item.file);
 }
@@ -35,4 +37,4 @@ for(const name of ['index.html','style.css','native.css','tutorial.css','screens
   assert.doesNotMatch(text,/https?:\/\//,'runtime must use bundled resources only');
 }
 assert.match(await readFile(path.join(root,'dist/index.html'),'utf8'),/<html lang="ko">/);
-console.log(`검증 완료: 유닛 ${units.units.length}종, 원본 자산 ${manifest.copiedAssets.length}개, 이미지 해시·모션 범위·로컬 참조 일치`);
+console.log(`검증 완료: 유닛 ${units.units.length}종, 원본 자산 ${bundledAssets.length}개(APK ${manifest.copiedAssets.length}, 보존 자료 ${preservation.copiedAssets.length}), 이미지 해시·모션 범위·로컬 참조 일치`);

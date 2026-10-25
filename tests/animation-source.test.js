@@ -17,8 +17,8 @@ test('24종 모두 원문 타격 프레임·분배를 유지하고 실제 타격
   assert.equal(events.length,source.hits,u.id);assert.deepEqual(events.map(e=>e.frame),source['frame times'].map(f=>f+10));
  }
 });
-test('SAM의 11개 연출은 원본 24fps·구간·모든 이미지와 연결된다',()=>{
- assert.equal(Object.keys(sam).length,11);
+test('SAM의 14개 연출은 원본 24fps·구간·모든 이미지와 연결된다',()=>{
+ assert.equal(Object.keys(sam).length,14);
  for(const [name,data] of Object.entries(sam)){
   assert.equal(data.fps,24,name);assert.equal(data.frames.length,inventory[name].frames);assert.deepEqual(data.labels,inventory[name].labels);
   for(const image of data.images)assert.ok(existsSync(new URL('../dist/assets/'+image.file,import.meta.url)),image.file);

@@ -1,0 +1,75 @@
+{
+  "repository": "cheahjs/bravefrontier_data",
+  "repository_head_commit": "7be4ee5ade8023580c83563fb306eb4e2b747256",
+  "repository_head_date": "2021-11-17T07:32:40Z",
+  "retrieved_at_utc": "2026-10-25",
+  "entries": [
+    {
+      "id": "1",
+      "name": "Basics of Battle",
+      "source": "missions_parsed/Basics of Battle_2014-03-10-20-43.json",
+      "local": "tutorial-1-capture-2014.json",
+      "git_blob_sha1": "797a2945a40bcfffe7dfc500c8e3dfb6eb81b8fe",
+      "url": "https://raw.githubusercontent.com/cheahjs/bravefrontier_data/7be4ee5ade8023580c83563fb306eb4e2b747256/missions_parsed/Basics%20of%20Battle_2014-03-10-20-43.json",
+      "github_url": "https://github.com/cheahjs/bravefrontier_data/blob/7be4ee5ade8023580c83563fb306eb4e2b747256/missions_parsed/Basics%20of%20Battle_2014-03-10-20-43.json",
+      "bytes": 9157,
+      "sha256": "994dc3bb023d2ce067a42665cea2ea5829013da01784c39e19492568a2a55fcb",
+      "source_commit": "7be4ee5ade8023580c83563fb306eb4e2b747256",
+      "parsed_root_name": "Basics of Battle",
+      "battle_count": 3,
+      "last_source_change_commit": "a311c2927d439ae64705da66de3716367e71d108",
+      "last_source_change_date": "2014-10-22T11:31:59Z"
+    },
+    {
+      "id": "2",
+      "name": "Element & Skill",
+      "source": "missions_parsed/Element & Skill_2014-03-10-20-47.json",
+      "local": "tutorial-2-capture-2014.json",
+      "git_blob_sha1": "4b85fcbea4ee41c722b4d54a4140c5d84cd819b0",
+      "url": "https://raw.githubusercontent.com/cheahjs/bravefrontier_data/7be4ee5ade8023580c83563fb306eb4e2b747256/missions_parsed/Element%20%26%20Skill_2014-03-10-20-47.json",
+      "github_url": "https://github.com/cheahjs/bravefrontier_data/blob/7be4ee5ade8023580c83563fb306eb4e2b747256/missions_parsed/Element%20%26%20Skill_2014-03-10-20-47.json",
+      "bytes": 17340,
+      "sha256": "fd08bd933f15ee6467f273e5d135f8e975a4903725c68036b228164feeb539a1",
+      "source_commit": "7be4ee5ade8023580c83563fb306eb4e2b747256",
+      "parsed_root_name": "Element & Skill",
+      "battle_count": 3,
+      "last_source_change_commit": "a311c2927d439ae64705da66de3716367e71d108",
+      "last_source_change_date": "2014-10-22T11:31:59Z"
+    }
+  ],
+  "interpretation": {
+    "region": "Global",
+    "provenance": "Community parsed captures in missions_parsed, with repository commit history. These are not original packet bytes.",
+    "captured_filename_date_format": "The filenames use year-day-month (2014-03-10 = 2014-10-03); confirmed by earliest commit dated 2014-10-03.",
+    "confirmed_fields": [
+      "battles in captured order",
+      "monster unit id",
+      "monster element",
+      "monster stats.hp/atk/def",
+      "act counts range",
+      "ai id and expanded actions",
+      "condition resists",
+      "skills and drop fields as parsed in source"
+    ],
+    "not_confirmed": [
+      "same data as APK 2.19.6.0 or 2022 preservation masters",
+      "player party IDs or stats",
+      "enemy screen coordinates or slot indices",
+      "complete random encounter generation rules",
+      "tutorial 3 enemy data",
+      "raw packet provenance or parser correctness for all drop-name fields"
+    ],
+    "application": "Suitable as identified historical enemy-data evidence. Compare with 2022 masters before declaring original-version parity; do not infer absent numeric fields."
+  },
+  "related_sources": {
+    "global_metadata": "https://github.com/BluuArc/bfmt-data/blob/032f064db79c406fe4f027eb527085d09ea9b8af/gl/mission/{id}.json",
+    "global_ai": "https://github.com/cheahjs/bravefrontier_data/blob/7be4ee5ade8023580c83563fb306eb4e2b747256/ai.json",
+    "japanese_missions": "https://github.com/cheahjs/bravefrontier_data/blob/7be4ee5ade8023580c83563fb306eb4e2b747256/jp/missions.json"
+  },
+  "tutorial_3_status": {
+    "global_missions_current": "No mission key 3; mission 10 requires 2.",
+    "japanese_missions_current": "Mission key 3 exists as 実戦演習; battle_count3, energy_use0, xp10, zel2000, karma300, requires2. Mission10 requires3.",
+    "korean_missions_current": "No missions file in kr directory.",
+    "enemy_capture": "Not found for mission3 in inspected repositories."
+  }
+}

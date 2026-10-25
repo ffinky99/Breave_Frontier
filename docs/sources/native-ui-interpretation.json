@@ -1,0 +1,199 @@
+{
+  "sourceLibrary": "APK/lib/arm64-v8a/libgame.so",
+  "sourceLibrarySha256": "076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95",
+  "disassemblyFile": "docs/sources/native-ui-evidence.txt",
+  "evidenceRanges": [
+    {
+      "name": "UnitMstResponse home/detail field dispatch",
+      "address": "0x13f74c0",
+      "length": 336
+    },
+    {
+      "name": "HomeScene2::unitDraw",
+      "address": "0x16f0108",
+      "length": 1512
+    },
+    {
+      "name": "UnitDetailUserUnitScene scale setup",
+      "address": "0x1bba590",
+      "length": 40
+    },
+    {
+      "name": "UnitDetailUserUnitScene detail getter",
+      "address": "0x1bba60c",
+      "length": 192
+    },
+    {
+      "name": "UnitDetailUserUnitScene tuple use",
+      "address": "0x1bba880",
+      "length": 180
+    },
+    {
+      "name": "CCSprite::setTextureCoords content scale",
+      "address": "0x1f3776c",
+      "length": 152
+    },
+    {
+      "name": "AppDelegate setContentScaleFactor",
+      "address": "0x102fafc",
+      "length": 16
+    },
+    {
+      "name": "GameSprite::setPosition",
+      "address": "0xfe46a8",
+      "length": 104
+    }
+  ],
+  "confirmed": {
+    "unitDisplayHomePosition_1W9CxaFK": {
+      "rawFieldKey": "1W9CxaFK",
+      "setterCall": "0x13f7558",
+      "getter": "0x1356c44",
+      "consumer": "HomeScene2::unitDraw @0x16f0108",
+      "semantics": "Source texture crop rectangle x,y,width,height in original image pixels. Consumer multiplies all four values by0.5, initializes CCSprite with texture+CCRect; CCSprite texture coordinate generation multiplies rect by contentScaleFactor2.",
+      "nativeDisplaySize": [
+        64,
+        175
+      ],
+      "displaySizeAt640Wide": [
+        128,
+        350
+      ],
+      "displayAnchor": [
+        0,
+        1
+      ],
+      "destination": "Passed separately as unitDraw arguments; tuple is not the destination rectangle.",
+      "vtableSlot0x2b0": "CCSprite::initWithTexture(CCTexture2D*, CCRect const&) @0x1f371d4"
+    },
+    "unitDisplayDetailPosition_6z54rgb3": {
+      "rawFieldKey": "6z54rgb3",
+      "setterCall": "0x13f75fc",
+      "getter": "0x1356d18",
+      "consumer": "UnitDetailUserUnitScene::setStatusInfo @0x1bba36c",
+      "scaleInstruction": "0x1bba5a4 fmov s11,#0.5",
+      "semantics": "Destination x,y,width,height. All four are multiplied by0.5 for the native320-point UI, first2 sent to GameSprite::setPosition, last2 to GameSprite::setSize. Full illustration texture is used, not a crop.",
+      "positionCall": "0x1bba910",
+      "sizeCall": "0x1bba920",
+      "displayAnchor": [
+        0,
+        1
+      ],
+      "at640Wide": "Use raw tuple directly as destination x,y,width,height."
+    },
+    "tutorialBackgroundSam": {
+      "assets": [
+        {
+          "file": "BattleDungeon10100CloudBack.sam",
+          "sha256": "752e89d49b406616ea16e084beac79321d73502171de5530f240f3ac5e08cef8",
+          "bounds": [
+            0,
+            0,
+            640,
+            640
+          ],
+          "fps": 24,
+          "frames": 1200
+        },
+        {
+          "file": "BattleDungeon10100WindAddBack.sam",
+          "sha256": "7381add57b2114392f03cef00859392bd3307e1b75be74bc2108a515500e7287",
+          "bounds": [
+            0,
+            0,
+            640,
+            640
+          ],
+          "fps": 24,
+          "frames": 1200
+        },
+        {
+          "file": "BattleDungeon10100SunShineAddFront.sam",
+          "sha256": "2714019d3623af07eec8c64594d2adef07e3bba28544b8464c4fbdfbe5f4f826",
+          "bounds": [
+            0,
+            0,
+            640,
+            640
+          ],
+          "fps": 24,
+          "frames": 1200
+        }
+      ],
+      "scriptSource": "APK/assets/tuto9.txt",
+      "param42Position": [
+        160,
+        110
+      ],
+      "nativeContentSize": [
+        320,
+        320
+      ],
+      "nativeAnchor": [
+        0.5,
+        0.5
+      ],
+      "positionAt640Wide": [
+        320,
+        220
+      ],
+      "topLeftAt640Wide": [
+        0,
+        -100
+      ],
+      "proof": {
+        "contentSizeDividedByContentScaleFactor": "SuperAnimNode::Init 0xfece58–0xfece88",
+        "anchorSet": "SuperAnimNode::Init 0xfecf14–0xfecf34",
+        "positionForwarded": "SuperAnimList::addAnime2 0xfeb2a4–0xfeb2b0",
+        "scalePreserved": "ScriptEngine::advParam getScale→setScale 0xfcbdd0–0xfcbdd8 and 0xfcc210–0xfcc218"
+      }
+    },
+    "homeRawCropExamples": [
+      {
+        "unitId": "10011",
+        "rawPixelCrop": [
+          311,
+          -39,
+          174,
+          475
+        ],
+        "displaySizeAt640Wide": [
+          128,
+          350
+        ]
+      },
+      {
+        "unitId": "10030",
+        "rawPixelCrop": [
+          38,
+          -139,
+          140,
+          382
+        ],
+        "displaySizeAt640Wide": [
+          128,
+          350
+        ]
+      }
+    ],
+    "detailRawDestinationExample": {
+      "unitId": "10011",
+      "destinationAt640Wide": [
+        -34,
+        146,
+        808,
+        630
+      ],
+      "destinationAt320Native": [
+        -17,
+        73,
+        404,
+        315
+      ]
+    }
+  },
+  "notInferred": [
+    "Screen destination of Home portrait is not encoded by the four Home tuple values.",
+    "Rendering equations alone do not establish original runtime data for missing enemy waves."
+  ]
+}

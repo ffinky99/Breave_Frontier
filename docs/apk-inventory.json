@@ -3444,6 +3444,26 @@
       "sha256": "6f53d56d19728263ab8f341f9fd2a903b151cab0678bad5ed2fd7afe0be55ff8"
     },
     {
+      "file": "BattleDungeon10100CloudBack_640x70.png",
+      "bytes": 9654,
+      "sha256": "14bc50d38ba6866e719dc6919e1ad095e1bff7f5a2d851e9eeb77fffacec2e9d"
+    },
+    {
+      "file": "BattleDungeon10100CloudBack_732x142.png",
+      "bytes": 18137,
+      "sha256": "636eb6630db3ce2a2b7b2ebed1fcc653c26d112e94fa7e1649e947feb10836d8"
+    },
+    {
+      "file": "BattleDungeon10100SunShineAddFront_289x255.png",
+      "bytes": 24276,
+      "sha256": "566d45afa35f0824a9a386b8882b7ad26538771b62f7da7dcef64c767cffc396"
+    },
+    {
+      "file": "BattleDungeon10100WindAddBack_402x133.png",
+      "bytes": 12063,
+      "sha256": "1472a32a2b0cabaf292ea3b2be66078690a03127f7b05eb7030d60ff4636355e"
+    },
+    {
       "file": "BraveBurstSlideMotionAdd_100x100.png",
       "bytes": 1966,
       "sha256": "d34b7d002cdcaf1ee1783b2e65c20a5ec04a08b2f43e390249242801c8743682"

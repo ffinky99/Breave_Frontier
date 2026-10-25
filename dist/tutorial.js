@@ -1,9 +1,10 @@
 // Korean localization of the user's APK: tuto1.txt and tuto9.txt.
 // Every line number is retained for comparison with docs/tutorial-source.json.
-// Server encounter HP, damage, and drops were not in these scripts. The small
-// deterministic rehearsal below preserves their required event order, not their
-// unknown server balance. It never spends or grants the player's currencies.
+// Enemy IDs/stats now come from identified 2014 GL captures. Guided damage and
+// temporary allies still enforce the script; see docs/튜토리얼-복원.md for limits.
+// The rehearsal never spends or grants the player's currencies.
 import {stats, act, enemyTurn, usePotion, elementMultiplier} from './engine.js';
+import {TUTORIAL_ENCOUNTERS} from './tutorial-encounters.js';
 
 const story=(line,text,face=0,extra={})=>({line,text,face,kind:'story',...extra});
 const say=(line,text,focus=null,extra={})=>({line,text,focus,kind:'say',...extra});
@@ -61,7 +62,7 @@ export const TUTORIALS=[
   story(29,'그럼 전투의 기본을 더 배워 보자.\n준비됐어? 초원을 건너가자!',0),
   say(48,'이번에는 유닛의 속성이야.\n알아 두면 전투에서 큰 도움이 돼!','elements'),
   say(54,'모든 유닛에는 속성이 있어.\n불 · 물 · 숲 · 번개 · 빛 · 어둠, 이렇게 여섯 가지야.','elements'),
-  say(60,'괴물에게도 속성이 있어. 이 녀석은 물 속성이네.\n각 속성에는 강한 상대와 약한 상대가 있어.','enemy-1',{enter:'water-target'}),
+  say(60,'괴물에게도 속성이 있어. 이 녀석은 물 속성이네.\n각 속성에는 강한 상대와 약한 상대가 있어.','enemy-current',{enter:'water-target'}),
   say(65,'적을 선택하면 더 큰 피해를 줄 수 있는\n유닛에게 유리한 속성 표시가 나타나.','unit-1'),
   action(71,'번개는 물에 강해!\n번개 속성 유닛으로 물 속성 적을 공격해 봐.','attack',1,'unit-1',{kill:true}),
   say(78,'잘했어! 내가 있어서 다행이지?\n나머지 속성의 관계도 보여 줄게.'),
@@ -105,19 +106,15 @@ export class TutorialSession {
  wave(n){
   this.battle.wave=n;this.battle.turn=1;this.battle.phase='player';this.battle.turnActions=0;
   this.battle.party.forEach(p=>{p.acted=false;p.guard=false;});
-  // Known tutorial bosses: Morils King / Skeleton. Other groups and numbers are
-  // deterministic stand-ins; their original server encounter definitions are absent.
-  const groups=this.quest.id===1?[['30030'],['30030','40030'],['30031']]:[['10030','20030'],['10030','20030'],['60050']];
-  this.battle.enemies=groups[n].map((id,index)=>{
-   const d=this.catalog[id],hp=n===2?2200:1200;
-   return {id,index,hp,maxHp:hp,atk:n===2?145:90,def:n===2?100:60,rec:0,element:d.element,boss:n===2};
-  });
+  // Preserve captured array order. Original screen-slot coordinates are unknown.
+  this.battle.enemies=TUTORIAL_ENCOUNTERS[this.quest.id][n].map((enemy,index)=>
+   ({...enemy,index,maxHp:enemy.hp,rec:0,boss:n===2}));
   this.target=0;this.chestVisible=false;this.crystal=null;
  }
  enter(){
   const s=this.step;const events=[];
   if(s.enter?.startsWith('wave'))this.wave(Number(s.enter.at(-1)));
-  if(s.enter==='water-target')this.target=1;
+  if(s.enter==='water-target')this.target=this.battle.enemies.findIndex(e=>e.element==='water');
   if(['enemy-strike','boss-strike'].includes(s.enter)){
    const p=this.battle.party[2],enemy=Math.max(0,this.battle.enemies.findIndex(e=>e.hp>0));
    const hp=Math.round(p.maxHp*(s.enter==='boss-strike'?.23:.58)),value=Math.max(0,p.hp-hp);p.hp=hp;

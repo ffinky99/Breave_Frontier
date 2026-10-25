@@ -230,5 +230,56 @@
       }
     ],
     "sha256": "73c51d6d788aa5501e3cdf9620b958502209cd038440cf7caaae0f068541f662"
+  },
+  "BattleDungeon10100CloudBack": {
+    "fps": 24,
+    "frames": 1200,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 1199
+      }
+    ],
+    "sha256": "752e89d49b406616ea16e084beac79321d73502171de5530f240f3ac5e08cef8"
+  },
+  "BattleDungeon10100WindAddBack": {
+    "fps": 24,
+    "frames": 1200,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 1199
+      }
+    ],
+    "sha256": "7381add57b2114392f03cef00859392bd3307e1b75be74bc2108a515500e7287"
+  },
+  "BattleDungeon10100SunShineAddFront": {
+    "fps": 24,
+    "frames": 1200,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 1199
+      }
+    ],
+    "sha256": "2714019d3623af07eec8c64594d2adef07e3bba28544b8464c4fbdfbe5f4f826"
   }
 }

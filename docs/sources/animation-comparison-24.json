@@ -1,0 +1,772 @@
+[
+  {
+    "unitId": "10011",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_10011.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5f72f6b9a66811a74c52d9c5a132b882ade4938bc7c5a477d08e752ee197a855"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_10011.csv",
+        "csvRows": 1,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "0a078948da8d76f2d6748d3b9d0027b0bf2ec954427371733fbc22b6666d0492"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_10011.csv",
+        "csvRows": 14,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "964037b67d77b4695d1a2f93816a37e3ad493a5cdf39329c7dd5a8284c34644c"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_10011.csv"
+  },
+  {
+    "unitId": "10030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_10030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_10030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_10030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_10030.csv"
+  },
+  {
+    "unitId": "10050",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_10050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5ad6dc1b6be651f9098c8047fe7aa2de3be79e23c44d481d8f413e7c07713015"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_10050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "49b7cbbdaec3ea718bcdc73a3c866b4788f862bfeb4759e4f10515677ce84188"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_10050.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "eb1fd15a2240ccec24c23b1b4085f8ba9a063842b65f0fd1c0c7e545262eff72"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_10050.csv"
+  },
+  {
+    "unitId": "20011",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_20011.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "b790fe2c650824bb25752e6dceb91081f0df528b77f8c714dc8b58d7d2dcb8c9"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_20011.csv",
+        "csvRows": 1,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "9d24bfd8da3269e63444e6017a1b47ada53354483fe9c7a3c7b16c79290b2a82"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_20011.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "83ce7fc98524edd8e72f1d1ba0b351ed0f1742a4a563454e83cb2444a5978d12"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_20011.csv"
+  },
+  {
+    "unitId": "20030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_20030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_20030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_20030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_20030.csv"
+  },
+  {
+    "unitId": "20050",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_20050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5ad6dc1b6be651f9098c8047fe7aa2de3be79e23c44d481d8f413e7c07713015"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_20050.csv",
+        "csvRows": 1,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "c467cd46e31823fc2d19c468b46e549ad0075875e7109b5e197d76c42cccd65f"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_20050.csv",
+        "csvRows": 9,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "8ebc1cc6a4900b8226dca41de5b61f81ea7df7c0e16601293b0083e9afd86979"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_20050.csv"
+  },
+  {
+    "unitId": "30011",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_30011.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "b790fe2c650824bb25752e6dceb91081f0df528b77f8c714dc8b58d7d2dcb8c9"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_30011.csv",
+        "csvRows": 1,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "aa89758bdd7d950ad09b5351c16bc2e2bbe6ba041ae5c39e272287fd1a3fb48c"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_30011.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "452fe2fa6ec36296a774b067e35c3b3f7949bfe48cad37119cf929a86213f3c4"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_30011.csv"
+  },
+  {
+    "unitId": "30030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_30030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_30030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_30030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_30030.csv"
+  },
+  {
+    "unitId": "30031",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_30031.csv",
+        "csvRows": 3,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "f9ebe9cba49ad308e76d1f304c9af7e9cc2fa031095118f22121c8dfe625bb77"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_30031.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "dd273612d09082e58e88f4f56ac921f4b214a9e88ddb6f06b7482135a5834dd8"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_30031.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "8ae83e046d5498152334e169725924187b643a85eb929a285ff017cb79c72e9d"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_30031.csv"
+  },
+  {
+    "unitId": "30050",
+    "currentFallbackActions": [
+      "move"
+    ],
+    "masterExplicitlyReusesIdleForMove": true,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_30050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5ad6dc1b6be651f9098c8047fe7aa2de3be79e23c44d481d8f413e7c07713015"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_idle_cgs_30050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5ad6dc1b6be651f9098c8047fe7aa2de3be79e23c44d481d8f413e7c07713015"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_30050.csv",
+        "csvRows": 23,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "58701d7cabf85997b72812b72dc3dceed9cb174a6345025d231b4e6ad15b9cc9"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_30050.csv"
+  },
+  {
+    "unitId": "40011",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_40011.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "6b8e8541d517e4e401cba98d2c726fa88f620e1d360ae15d72487aac70d35214"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_40011.csv",
+        "csvRows": 1,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "df69b8dde691d80b3c24a5f1871c4ea031f5885b12b3a8fd4eeda2ce6e717d9a"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_40011.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "60a1dca4b1e07181c6eec7d97b2cd5e1d106c4ae205d77754379842f380c0f13"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_40011.csv"
+  },
+  {
+    "unitId": "40030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_40030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_40030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_40030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_40030.csv"
+  },
+  {
+    "unitId": "40031",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_40031.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "c917609d010a94df6795f3bbe87b91bbfbb23fa86d2daa5e38384f9974110287"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_40031.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d76e93cba32b53069b9748e74001780943c58676c7c7ecda071e307e4810ae39"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_40031.csv",
+        "csvRows": 11,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "1d0acda1c2a3cab29caefaf7dacbd5b32000339c30231f8f07081e5ada8b2a48"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_40031.csv"
+  },
+  {
+    "unitId": "40050",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_40050.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "54762e23cc1e24f0e2ddb0d4a6335edee13200cdfac0d8bf9604259e3678d4b4"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_40050.csv",
+        "csvRows": 2,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5739be54cea7b76d562ba4e327c386b57f15af8f205cd11bf3287dab1273ceb3"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_40050.csv",
+        "csvRows": 11,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "80e25c8326419139abbf48472341026a134cf5d027aac79ceb872c9ca072aca1"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_40050.csv"
+  },
+  {
+    "unitId": "50030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_50030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_50030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_50030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_50030.csv"
+  },
+  {
+    "unitId": "50031",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_50031.csv",
+        "csvRows": 3,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "f9ebe9cba49ad308e76d1f304c9af7e9cc2fa031095118f22121c8dfe625bb77"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_50031.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "dd273612d09082e58e88f4f56ac921f4b214a9e88ddb6f06b7482135a5834dd8"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_50031.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "8ae83e046d5498152334e169725924187b643a85eb929a285ff017cb79c72e9d"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_50031.csv"
+  },
+  {
+    "unitId": "50131",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_50131.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d8f310aa4a9395ccc2077816cf096654b16871d60652f4910bfa29158351a202"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_50131.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "af38bdbfdfee5a27debf65383ec644186cf9ebb727f58db4d9714a988c03abcf"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_50131.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "3a7ba054becbd97c2c8fcfaadefe2ba2c16e9a7d1b7a3b9c40030c447a558a51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_50131.csv"
+  },
+  {
+    "unitId": "50132",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_50132.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d8f310aa4a9395ccc2077816cf096654b16871d60652f4910bfa29158351a202"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_50132.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "87a39dd3dd0cd0305d882af37ceaf09945b89b679dd69be4ed7cfe7d8fbb36a5"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_50132.csv",
+        "csvRows": 8,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "142182b9679a5dd30bd4633391056427cbae9c3d7f7ba64b22a3897c3560260f"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_50132.csv"
+  },
+  {
+    "unitId": "50133",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_50133.csv",
+        "csvRows": 12,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "44b94ecb8346a235b64672ef505cc3f6365aae09990ec0e792708a8f5945e051"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_50133.csv",
+        "csvRows": 12,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "fe9244dde0a066ee2db8f29d2d8b4259c6950a0e4696ca6c03db09af2f8a9651"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_50133.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "b547a1f249d075c8830afe345ffbb8e28b4839b98f43b37611e90cfcf5689487"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_50133.csv"
+  },
+  {
+    "unitId": "60030",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_60030.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "d2dc737eea5f4158e47ee6d285a3b2c22599caa0ae8bc8b9e9c57bcd424d04d3"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_60030.csv",
+        "csvRows": 5,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "066dd18418b210856dd572f1423bb355e160a4160a25da005803c57f52af9433"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_60030.csv",
+        "csvRows": 7,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "ca15b4bf8061bd67dd65b72989e5edd38f885199ec97af9de8d360e386b4bb51"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_60030.csv"
+  },
+  {
+    "unitId": "60031",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_60031.csv",
+        "csvRows": 3,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "f9ebe9cba49ad308e76d1f304c9af7e9cc2fa031095118f22121c8dfe625bb77"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_60031.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "dd273612d09082e58e88f4f56ac921f4b214a9e88ddb6f06b7482135a5834dd8"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_60031.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "8ae83e046d5498152334e169725924187b643a85eb929a285ff017cb79c72e9d"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_60031.csv"
+  },
+  {
+    "unitId": "60050",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_60050.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "c8f81818f831cb1e93799b9629214b8b9baac73d0cc2eee39d77053deba655d8"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_60050.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "5142c32a3384255cd1245c532046a404079c280551c013981f09a6c756d051ab"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_60050.csv",
+        "csvRows": 6,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "c220fa179b847204194f9f2a49de09600eeae8c71e8da54a1ea5bcadc24caf3c"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_60050.csv"
+  },
+  {
+    "unitId": "60132",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_60132.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "e52c12f9eb3d9146d443c516b08d450f4e414248e97cd3a001d64c85f89310c0"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_60132.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "db22ebeeab1ef696ea0d88f7bb3131ca9d9eb79a120af5dda67963cc16f94438"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_60132.csv",
+        "csvRows": 16,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "db9177c8a81e1e24fa3bbdf1c174b3f6b0e39bdefdba2ec87fc1795621385a28"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_60132.csv"
+  },
+  {
+    "unitId": "60133",
+    "currentFallbackActions": [],
+    "masterExplicitlyReusesIdleForMove": false,
+    "actions": [
+      {
+        "type": "1",
+        "webAction": "idle",
+        "masterFilename": "unit_idle_cgs_60133.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "b9af3d996a5d3eb4ae940ba45ca910cdad35109ba828b9d0adcc2f4a52ddc5ec"
+      },
+      {
+        "type": "2",
+        "webAction": "move",
+        "masterFilename": "unit_move_cgs_60133.csv",
+        "csvRows": 4,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "2766c0a2ce680a811608852a8788cd6f52a92bef4a64302e022e63d5895276d5"
+      },
+      {
+        "type": "3",
+        "webAction": "atk",
+        "masterFilename": "unit_atk_cgs_60133.csv",
+        "csvRows": 16,
+        "rowsExactlyEqual": true,
+        "sourceSha256": "db9177c8a81e1e24fa3bbdf1c174b3f6b0e39bdefdba2ec87fc1795621385a28"
+      }
+    ],
+    "animationType4Filename": "unit_atk_cgs_60133.csv"
+  }
+]

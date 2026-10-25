@@ -3,9 +3,33 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {newSave,makeCatalog,validateSave} from '../dist/engine.js';
 import {TUTORIALS,TutorialSession} from '../dist/tutorial.js';
+import {TUTORIAL_ENCOUNTERS} from '../dist/tutorial-encounters.js';
 const catalog=makeCatalog(JSON.parse(readFileSync(new URL('../dist/units.json',import.meta.url))));
 const source=JSON.parse(readFileSync(new URL('../docs/tutorial-source.json',import.meta.url)));
 const drain=t=>{for(let i=0;t.waiting&&i<5;i++)t.settle();assert.equal(t.waiting,false);};
+test('두 장의 적 구성·능력치는 원문 캡처의 여섯 웨이브와 일치한다',()=>{
+ for(const chapter of [1,2]){
+  const raw=JSON.parse(readFileSync(new URL(`../docs/sources/tutorial-${chapter}-capture-2014.json`,import.meta.url)));
+  const waves=Object.values(raw)[0].battles;
+  for(let wave=0;wave<3;wave++){
+   const t=new TutorialSession(newSave('10011',catalog),catalog,chapter,wave);
+   assert.equal(t.battle.enemies.length,waves[wave].monsters.length);
+   waves[wave].monsters.forEach((e,i)=>{
+    const actual=t.battle.enemies[i];assert.equal(actual.id,String(e['unit id']));
+    for(const key of ['hp','atk','def'])assert.equal(actual[key],e.stats[key]);
+    assert.equal(actual.element,e.element);assert.equal(actual.aiId,e['ai id']);
+   });
+  }
+ }
+ assert.equal(TUTORIAL_ENCOUNTERS[1][2][0].hp,3000);
+ assert.equal(TUTORIAL_ENCOUNTERS[2][2][0].hp,4000);
+});
+test('속성 안내는 캡처 배열 순서에 상관없이 물 속성 적을 선택한다',()=>{
+ const t=new TutorialSession(newSave('10011',catalog),catalog,2);
+ while(t.step.line!==60)t.perform('next');
+ assert.equal(t.battle.enemies[t.target].id,'20030');
+ assert.equal(t.step.focus,'enemy-current');
+});
 function play(t){
  let count=0;const history=[];
  while(!t.complete&&count++<200){

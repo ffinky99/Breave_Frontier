@@ -29,9 +29,17 @@ export class SamPlayer {
   const gradient=ctx.createLinearGradient(0,canvas.height*.25,0,canvas.height*.8);gradient.addColorStop(0,burst?'#fff29b':'#fff');gradient.addColorStop(.5,burst?'#ffc420':'#c1cbd8');gradient.addColorStop(1,burst?'#d23908':'#687589');ctx.fillStyle=gradient;ctx.fillText(text,canvas.width/2,canvas.height/2);
   this.labelCache.set(resource.file,canvas);return canvas;
  }
+ koreanHint(resource){
+  if(this.labelCache.has(resource.file))return this.labelCache.get(resource.file);
+  const canvas=document.createElement('canvas');canvas.width=resource.size[0];canvas.height=resource.size[1];const ctx=canvas.getContext('2d'),hold=resource.file.startsWith('Hold'),small=canvas.width===64,flash=resource.file.includes('_3')||(!hold&&resource.file.includes('_2'));
+  ctx.drawImage(this.images.get(resource.file),0,0);
+  ctx.fillStyle=flash?'#eafff6':hold?'#203e3a':'#172a3a';ctx.fillRect(small?4:10,small?4:10,small?56:54,small?24:22);
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='900 20px system-ui,sans-serif';ctx.lineJoin='round';ctx.lineWidth=2;ctx.strokeStyle=flash?'#138daa':'#111';ctx.strokeText(hold?'길게':'터치',canvas.width/2,canvas.height/2+1);ctx.fillStyle=flash?'#fff':'#ffe69d';ctx.fillText(hold?'길게':'터치',canvas.width/2,canvas.height/2+1);
+  this.labelCache.set(resource.file,canvas);return canvas;
+ }
  draw(ctx,name,{time=0,label='loop',loop=true,x=0,y=0,width=640,height=640,additive=false,exclude=[],koreanCommands=false}={}){
   const d=this.data[name];if(!d)return;ctx.save();ctx.translate(x,y);ctx.scale(width/d.bounds[2],height/d.bounds[3]);if(additive)ctx.globalCompositeOperation='lighter';
-  for(const object of this.frameAt(name,time,label,loop)){const resource=d.images[object.res];if(!object.color[3]||exclude.some(part=>resource.file.includes(part)))continue;const image=this.images.get(resource.file);if(!image)continue;ctx.save();ctx.globalAlpha*=object.color[3]/255;ctx.transform(...samTransform(object.matrix,resource.matrix,resource.size));ctx.drawImage(koreanCommands&&/183x86|219x124/.test(resource.file)?this.koreanLabel(resource):this.tint(resource.file,object.color),0,0);ctx.restore();}
+  for(const object of this.frameAt(name,time,label,loop)){const resource=d.images[object.res];if(!object.color[3]||exclude.some(part=>resource.file.includes(part)))continue;const image=this.images.get(resource.file);if(!image)continue;ctx.save();ctx.globalAlpha*=object.color[3]/255;ctx.transform(...samTransform(object.matrix,resource.matrix,resource.size));const hint=/^(Touch|Hold)_(74x42|64x32)/.test(resource.file);ctx.drawImage(koreanCommands&&hint?this.koreanHint(resource):koreanCommands&&/183x86|219x124/.test(resource.file)?this.koreanLabel(resource):this.tint(resource.file,object.color),0,0);ctx.restore();}
   ctx.restore();
  }
 }

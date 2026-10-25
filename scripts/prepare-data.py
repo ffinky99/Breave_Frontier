@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 raw = json.loads((ROOT/'docs/units-source-kr.json').read_text())
+presentation = {u['unitId']: u for u in json.loads((ROOT/'docs/preservation-master-subset.json').read_text())['unit']}
 units = []
 for d in raw:
     bb = d.get('bb') or {}
@@ -32,6 +33,7 @@ for d in raw:
         'source': 'https://github.com/BluuArc/bfmt-data/blob/master/kr/unit/'+str(d['id'])+'.json',
         'sourceUpdatedAt': d.get('bfmtMetadata',{}).get('updatedAt'),
         'hasIllustration': (ROOT/'dist/assets'/('unit_ills_full_'+str(d['id'])+'.png')).exists(),
+        'homeCrop': [int(n) for n in presentation[str(d['id'])]['unitDisplayHomePosition_1W9CxaFK'].split(',')],
     }
     units.append(unit)
 data={'version':1,'units':units,'starterIds':['10011','20011','30011','40011']}

@@ -98,8 +98,11 @@ test('최대 성장한 다섯 명의 부대로 모든 웹판 모험을 완주할
   for(const q of QUESTS){const b=finish(createBattle(s,q.id,catalog,2048));assert.equal(b.phase,'victory',q.id);claimVictory(s,b,catalog);}
   assert.equal(Object.keys(s.clears).length,8);
 });
-test('원본 모션의 0 길이 프레임과 누락된 이동 모션을 안전하게 재생한다',()=>{
+test('원본의 0 길이 프레임과 마스터가 지정한 대기 모션 재사용을 안전하게 재생한다',()=>{
   const animations=JSON.parse(readFileSync(new URL('../dist/animations.json',import.meta.url))),player=new SpritePlayer(animations);
-  assert.ok(player.duration('10011','move')>0);assert.deepEqual(animations['30050'].fallbackActions,['move']);
+  assert.ok(player.duration('10011','move')>0);assert.deepEqual(animations['30050'].fallbackActions,[]);
+  assert.deepEqual(animations['30050'].reusedActions,{move:'idle'});
+  assert.equal(animations['30050'].sourceFiles.move,'unit_idle_cgs_30050.csv');
+  assert.deepEqual(animations['30050'].actions.move,animations['30050'].actions.idle);
   for(const id of Object.keys(animations))for(const action of ['idle','move','atk'])for(const time of [0,100,1e6])assert.ok(player.getFrame(id,action,time)[0]<animations[id].frames.length);
 });

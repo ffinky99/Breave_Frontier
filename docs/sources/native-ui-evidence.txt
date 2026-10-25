@@ -1,0 +1,729 @@
+Source: /workspace/scratch/76e8a7930034/analysis/apk/lib/arm64-v8a/libgame.so
+SHA256: 076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95
+Native field keys: [('0x233c03d', '1W9CxaFK'), ('0x233c046', '6z54rgb3')]
+
+ UnitMstResponse home/detail field dispatch 0x13f74c0
+0x13f74c0 adrp x1, #0x233c000 
+0x13f74c4 add x1, x1, #0x3d 
+0x13f74c8 mov x0, x22 
+0x13f74cc bl #0xc1b440 strcmp
+0x13f74d0 cbnz w0, #0x13f756c 
+0x13f74d4 ldr x23, [x19, #0x18] 
+0x13f74d8 mov x0, x21 
+0x13f74dc str xzr, [sp, #0x210] 
+0x13f74e0 str xzr, [sp, #0x208] 
+0x13f74e4 str xzr, [sp, #0x200] 
+0x13f74e8 bl #0xc0c370 strlen
+0x13f74ec cmn x0, #0x10 
+0x13f74f0 b.hs #0x13f8478 
+0x13f74f4 mov x24, x0 
+0x13f74f8 cmp x0, #0x17 
+0x13f74fc b.hs #0x13f7518 
+0x13f7500 add x9, sp, #0x200 
+0x13f7504 lsl w8, w24, #1 
+0x13f7508 orr x25, x9, #1 
+0x13f750c strb w8, [sp, #0x200] 
+0x13f7510 cbnz x24, #0x13f753c 
+0x13f7514 b #0x13f754c 
+0x13f7518 add x8, x24, #0x10 
+0x13f751c and x26, x8, #0xfffffffffffffff0 
+0x13f7520 mov x0, x26 
+0x13f7524 bl #0xc4dbb0 operator new(unsigned long)
+0x13f7528 orr x8, x26, #1 
+0x13f752c mov x25, x0 
+0x13f7530 str x8, [sp, #0x200] 
+0x13f7534 str x0, [sp, #0x210] 
+0x13f7538 str x24, [sp, #0x208] 
+0x13f753c mov x0, x25 
+0x13f7540 mov x1, x21 
+0x13f7544 mov x2, x24 
+0x13f7548 bl #0xc72460 memcpy
+0x13f754c add x1, sp, #0x200 
+0x13f7550 mov x0, x23 
+0x13f7554 strb wzr, [x25, x24] 
+0x13f7558 bl #0xc1b8b0 UnitMst::setHomeImgPos(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+0x13f755c ldrb w8, [sp, #0x200] 
+0x13f7560 tbz w8, #0, #0x13f756c 
+0x13f7564 ldr x0, [sp, #0x210] 
+0x13f7568 bl #0xc52840 operator delete(void*)
+0x13f756c adrp x1, #0x233c000 
+0x13f7570 add x1, x1, #0x46 
+0x13f7574 mov x0, x22 
+0x13f7578 bl #0xc1b440 strcmp
+0x13f757c cbnz w0, #0x13f7610 
+0x13f7580 ldr x23, [x19, #0x18] 
+0x13f7584 mov x0, x21 
+0x13f7588 stp xzr, xzr, [sp, #0x1f0] 
+0x13f758c str xzr, [sp, #0x1e8] 
+0x13f7590 bl #0xc0c370 strlen
+0x13f7594 cmn x0, #0x10 
+0x13f7598 b.hs #0x13f8478 
+0x13f759c mov x24, x0 
+0x13f75a0 cmp x0, #0x17 
+0x13f75a4 b.hs #0x13f75c0 
+0x13f75a8 add x9, sp, #0x1e8 
+0x13f75ac lsl w8, w24, #1 
+0x13f75b0 orr x25, x9, #1 
+0x13f75b4 strb w8, [sp, #0x1e8] 
+0x13f75b8 cbnz x24, #0x13f75e0 
+0x13f75bc b #0x13f75f0 
+0x13f75c0 add x8, x24, #0x10 
+0x13f75c4 and x26, x8, #0xfffffffffffffff0 
+0x13f75c8 mov x0, x26 
+0x13f75cc bl #0xc4dbb0 operator new(unsigned long)
+0x13f75d0 orr x8, x26, #1 
+0x13f75d4 mov x25, x0 
+0x13f75d8 stp x8, x24, [sp, #0x1e8] 
+0x13f75dc str x0, [sp, #0x1f8] 
+0x13f75e0 mov x0, x25 
+0x13f75e4 mov x1, x21 
+0x13f75e8 mov x2, x24 
+0x13f75ec bl #0xc72460 memcpy
+0x13f75f0 add x1, sp, #0x1e8 
+0x13f75f4 mov x0, x23 
+0x13f75f8 strb wzr, [x25, x24] 
+0x13f75fc bl #0xc24f90 UnitMst::setDetailImgPos(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+0x13f7600 ldrb w8, [sp, #0x1e8] 
+0x13f7604 tbz w8, #0, #0x13f7610 
+0x13f7608 ldr x0, [sp, #0x1f8] 
+0x13f760c bl #0xc52840 operator delete(void*)
+
+ HomeScene2::unitDraw 0x16f0108
+0x16f0108 sub sp, sp, #0x1d0 
+0x16f010c str d14, [sp, #0x130] 
+0x16f0110 stp d13, d12, [sp, #0x140] 
+0x16f0114 stp d11, d10, [sp, #0x150] 
+0x16f0118 stp d9, d8, [sp, #0x160] 
+0x16f011c stp x28, x27, [sp, #0x170] 
+0x16f0120 stp x26, x25, [sp, #0x180] 
+0x16f0124 stp x24, x23, [sp, #0x190] 
+0x16f0128 stp x22, x21, [sp, #0x1a0] 
+0x16f012c stp x20, x19, [sp, #0x1b0] 
+0x16f0130 stp x29, x30, [sp, #0x1c0] 
+0x16f0134 add x29, sp, #0x1c0 
+0x16f0138 mrs x27, tpidr_el0 
+0x16f013c ldr x8, [x27, #0x28] 
+0x16f0140 mov w23, w4 
+0x16f0144 mov w21, w3 
+0x16f0148 mov w22, w2 
+0x16f014c mov w20, w1 
+0x16f0150 mov x19, x0 
+0x16f0154 stur x8, [x29, #-0xa0] 
+0x16f0158 bl #0xc2f2e0 UserPartyInfoList::shared()
+0x16f015c mov w1, w23 
+0x16f0160 bl #0xc585f0 BasePartyInfoList::getObjectWithOrder(int)
+0x16f0164 cbz x0, #0x16f030c 
+0x16f0168 mov x24, x0 
+0x16f016c bl #0xc51b80 UserUnitInfoList::shared()
+0x16f0170 mov x25, x0 
+0x16f0174 sub x8, x29, #0xb8 
+0x16f0178 mov x0, x24 
+0x16f017c bl #0xc75d60 UserPartyInfo::getUserUnitID()
+0x16f0180 sub x1, x29, #0xb8 
+0x16f0184 mov x0, x25 
+0x16f0188 bl #0xc5d310 UserUnitInfoList::getObjectWithUserUnitID(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+0x16f018c ldurb w8, [x29, #-0xb8] 
+0x16f0190 mov x25, x0 
+0x16f0194 tbz w8, #0, #0x16f01a0 
+0x16f0198 ldur x0, [x29, #-0xa8] 
+0x16f019c bl #0xc52840 operator delete(void*)
+0x16f01a0 cbz x25, #0x16f030c 
+0x16f01a4 add x8, sp, #0x10 
+0x16f01a8 mov x0, x24 
+0x16f01ac bl #0xc75d60 UserPartyInfo::getUserUnitID()
+0x16f01b0 adrp x2, #0x2350000 
+0x16f01b4 add x2, x2, #0xd22 
+0x16f01b8 add x0, sp, #0x10 
+0x16f01bc mov w3, #0xb 
+0x16f01c0 mov x1, xzr 
+0x16f01c4 bl #0xc2d120 std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::insert(unsigned long, char const*, unsigned long)
+0x16f01c8 ldr x8, [x0, #0x10] 
+0x16f01cc ldr q0, [x0] 
+0x16f01d0 stur x8, [x29, #-0xc0] 
+0x16f01d4 stur q0, [x29, #-0xd0] 
+0x16f01d8 stp xzr, xzr, [x0, #8] 
+0x16f01dc str xzr, [x0] 
+0x16f01e0 ldrb w8, [sp, #0x10] 
+0x16f01e4 tbz w8, #0, #0x16f01f0 
+0x16f01e8 ldr x0, [sp, #0x20] 
+0x16f01ec bl #0xc52840 operator delete(void*)
+0x16f01f0 sub x1, x29, #0xd0 
+0x16f01f4 add x2, sp, #0x10 
+0x16f01f8 mov x0, x19 
+0x16f01fc stp xzr, xzr, [sp, #0x18] 
+0x16f0200 str xzr, [sp, #0x10] 
+0x16f0204 bl #0xc0f940 GameScene::getCacheSprite(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f0208 ldrb w8, [sp, #0x10] 
+0x16f020c mov x24, x0 
+0x16f0210 tbz w8, #0, #0x16f021c 
+0x16f0214 ldr x0, [sp, #0x20] 
+0x16f0218 bl #0xc52840 operator delete(void*)
+0x16f021c cbz x24, #0x16f023c 
+0x16f0220 bl #0xc6e8c0 GameLayer::shared()
+0x16f0224 mov w1, w20 
+0x16f0228 mov x2, x24 
+0x16f022c bl #0xc228a0 GameLayer::removeChild(int, cocos2d::CCNode*)
+0x16f0230 sub x1, x29, #0xd0 
+0x16f0234 mov x0, x19 
+0x16f0238 bl #0xc57c80 GameScene::delCacheKey(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f023c mov x0, x25 
+0x16f0240 bl #0xc8b9f0 UserUnitInfo::isMySummoner() const
+0x16f0244 tbz w0, #0, #0x16f0314 
+0x16f0248 bl #0xc19fa0 SummonerImageMstList::shared()
+0x16f024c bl #0xc17080 SummonerImageMstList::getObjectMySelf()
+0x16f0250 add x8, sp, #0x88 
+0x16f0254 mov x25, x0 
+0x16f0258 bl #0xc3cd50 SummonerImageMst::getHomeImgPos()
+0x16f025c mov w8, #0x2c02 
+0x16f0260 stp xzr, xzr, [sp, #0x68] 
+0x16f0264 strh w8, [sp, #0x68] 
+0x16f0268 add x8, sp, #0x10 
+0x16f026c add x0, sp, #0x88 
+0x16f0270 add x1, sp, #0x68 
+0x16f0274 str xzr, [sp, #0x78] 
+0x16f0278 strb wzr, [sp, #0x6a] 
+0x16f027c bl #0xc3f9e0 CommonUtils::parseList(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f0280 ldrb w8, [sp, #0x68] 
+0x16f0284 ldp x24, x28, [sp, #0x10] 
+0x16f0288 stp xzr, xzr, [sp, #0x18] 
+0x16f028c str xzr, [sp, #0x10] 
+0x16f0290 tbz w8, #0, #0x16f029c 
+0x16f0294 ldr x0, [sp, #0x78] 
+0x16f0298 bl #0xc52840 operator delete(void*)
+0x16f029c ldrb w8, [sp, #0x88] 
+0x16f02a0 tbz w8, #0, #0x16f02ac 
+0x16f02a4 ldr x0, [sp, #0x98] 
+0x16f02a8 bl #0xc52840 operator delete(void*)
+0x16f02ac mov x0, x25 
+0x16f02b0 bl #0xc75ba0 SummonerUnitUtils::getUnitTexture(SummonerImageMst*)
+0x16f02b4 mov x25, x0 
+0x16f02b8 mov x0, x24 
+0x16f02bc bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f02c0 add x0, x24, #0x18 
+0x16f02c4 mov v8.16b, v0.16b 
+0x16f02c8 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f02cc add x0, x24, #0x30 
+0x16f02d0 mov v9.16b, v0.16b 
+0x16f02d4 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f02d8 add x0, x24, #0x48 
+0x16f02dc mov v10.16b, v0.16b 
+0x16f02e0 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f02e4 mov v11.16b, v0.16b 
+0x16f02e8 cbz x25, #0x16f0428 
+0x16f02ec ldr x8, [x25] 
+0x16f02f0 mov x0, x25 
+0x16f02f4 ldr x9, [x8, #0x68] 
+0x16f02f8 add x8, sp, #0x88 
+0x16f02fc blr x9 
+0x16f0300 ldr s13, [sp, #0xa0] 
+0x16f0304 mov w26, #1 
+0x16f0308 b #0x16f0430 
+0x16f030c mov x23, xzr 
+0x16f0310 b #0x16f05f4 
+0x16f0314 bl #0xc163b0 UnitMstList::shared()
+0x16f0318 ldr x8, [x25] 
+0x16f031c mov x24, x0 
+0x16f0320 mov x0, x25 
+0x16f0324 ldr x9, [x8, #0x90] 
+0x16f0328 add x8, sp, #0xd8 
+0x16f032c blr x9 
+0x16f0330 add x1, sp, #0xd8 
+0x16f0334 mov x0, x24 
+0x16f0338 bl #0xc644d0 UnitMstList::getObject(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >)
+0x16f033c ldrb w8, [sp, #0xd8] 
+0x16f0340 mov x24, x0 
+0x16f0344 tbz w8, #0, #0x16f0350 
+0x16f0348 ldr x0, [sp, #0xe8] 
+0x16f034c bl #0xc52840 operator delete(void*)
+0x16f0350 cbz x24, #0x16f0638 
+0x16f0354 mov x0, x25 
+0x16f0358 bl #0xc7baf0 UserUnitInfo::getUnitImgType()
+0x16f035c mov w1, w0 
+0x16f0360 add x8, sp, #0x88 
+0x16f0364 mov x0, x24 
+0x16f0368 bl #0xc465c0 UnitMst::getHomeImgPos(int)
+0x16f036c mov w8, #0x2c02 
+0x16f0370 stp xzr, xzr, [sp, #0x68] 
+0x16f0374 strh w8, [sp, #0x68] 
+0x16f0378 add x8, sp, #0x10 
+0x16f037c add x0, sp, #0x88 
+0x16f0380 add x1, sp, #0x68 
+0x16f0384 str xzr, [sp, #0x78] 
+0x16f0388 strb wzr, [sp, #0x6a] 
+0x16f038c bl #0xc3f9e0 CommonUtils::parseList(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f0390 ldrb w8, [sp, #0x68] 
+0x16f0394 ldp x24, x28, [sp, #0x10] 
+0x16f0398 stp xzr, xzr, [sp, #0x18] 
+0x16f039c str xzr, [sp, #0x10] 
+0x16f03a0 tbz w8, #0, #0x16f03ac 
+0x16f03a4 ldr x0, [sp, #0x78] 
+0x16f03a8 bl #0xc52840 operator delete(void*)
+0x16f03ac ldrb w8, [sp, #0x88] 
+0x16f03b0 tbz w8, #0, #0x16f03bc 
+0x16f03b4 ldr x0, [sp, #0x98] 
+0x16f03b8 bl #0xc52840 operator delete(void*)
+0x16f03bc sub x8, x28, x24 
+0x16f03c0 mov x9, #-0x5555555555555556 
+0x16f03c4 asr x8, x8, #3 
+0x16f03c8 movk x9, #0xaaab 
+0x16f03cc mul x8, x8, x9 
+0x16f03d0 cmp x8, #3 
+0x16f03d4 b.hi #0x16f0648 
+0x16f03d8 mov x23, xzr 
+0x16f03dc cbz x24, #0x16f05e4 
+0x16f03e0 cmp x24, x28 
+0x16f03e4 b.eq #0x16f0414 
+0x16f03e8 mov x19, x28 
+0x16f03ec ldrb w8, [x19, #-0x18]! 
+0x16f03f0 tbnz w8, #0, #0x16f0408 
+0x16f03f4 cmp x24, x19 
+0x16f03f8 mov x28, x19 
+0x16f03fc b.eq #0x16f0414 
+0x16f0400 ldrb w8, [x19, #-0x18]! 
+0x16f0404 tbz w8, #0, #0x16f03f4 
+0x16f0408 ldur x0, [x28, #-8] 
+0x16f040c bl #0xc52840 operator delete(void*)
+0x16f0410 b #0x16f03f4 
+0x16f0414 mov x0, x24 
+0x16f0418 bl #0xc52840 operator delete(void*)
+0x16f041c ldurb w8, [x29, #-0xd0] 
+0x16f0420 tbz w8, #0, #0x16f05f4 
+0x16f0424 b #0x16f05ec 
+0x16f0428 mov w26, wzr 
+0x16f042c fmov s13, #1.00000000 
+0x16f0430 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x16f0434 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x16f0438 mov v12.16b, v0.16b 
+0x16f043c cbz w26, #0x16f0448 
+0x16f0440 add x0, sp, #0x88 
+0x16f0444 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f0448 str w20, [sp, #0xc] 
+0x16f044c add w26, w23, #0x1b 
+0x16f0450 mov w20, w22 
+0x16f0454 cbz x25, #0x16f0478 
+0x16f0458 ldr x8, [x25] 
+0x16f045c mov x0, x25 
+0x16f0460 ldr x9, [x8, #0x68] 
+0x16f0464 add x8, sp, #0x68 
+0x16f0468 blr x9 
+0x16f046c ldr s14, [sp, #0x84] 
+0x16f0470 mov w23, #1 
+0x16f0474 b #0x16f0480 
+0x16f0478 mov w23, wzr 
+0x16f047c fmov s14, #1.00000000 
+0x16f0480 mov w22, w21 
+0x16f0484 fmul s12, s13, s12 
+0x16f0488 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x16f048c bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x16f0490 fmul s13, s14, s0 
+0x16f0494 cbz w23, #0x16f04a0 
+0x16f0498 add x0, sp, #0x68 
+0x16f049c bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f04a0 fmov s0, #0.50000000 
+0x16f04a4 fmov s2, wzr 
+0x16f04a8 fmul s3, s8, s0 
+0x16f04ac fmul s4, s9, s0 
+0x16f04b0 fmul s8, s10, s0 
+0x16f04b4 fmul s9, s11, s0 
+0x16f04b8 fadd s0, s13, s2 
+0x16f04bc fdiv s1, s12, s12 
+0x16f04c0 fdiv s0, s0, s13 
+0x16f04c4 mov w0, #0x358 
+0x16f04c8 fmul s10, s3, s1 
+0x16f04cc fmul s11, s4, s0 
+0x16f04d0 bl #0xc4dbb0 operator new(unsigned long)
+0x16f04d4 mov x23, x0 
+0x16f04d8 bl #0xc46210 GameSprite::GameSprite()
+0x16f04dc add x0, sp, #0x10 
+0x16f04e0 mov v0.16b, v10.16b 
+0x16f04e4 mov v1.16b, v11.16b 
+0x16f04e8 mov v2.16b, v8.16b 
+0x16f04ec mov v3.16b, v9.16b 
+0x16f04f0 add x21, sp, #0x10 
+0x16f04f4 bl #0xc42760 cocos2d::CCRect::CCRect(float, float, float, float)
+0x16f04f8 ldr x8, [x23] 
+0x16f04fc add x2, sp, #0x10 
+0x16f0500 mov x0, x23 
+0x16f0504 mov x1, x25 
+0x16f0508 ldr x8, [x8, #0x2b0] 
+0x16f050c blr x8 
+0x16f0510 adrp x8, #0x2880000 
+0x16f0514 ldr x8, [x8, #0xf08] 
+0x16f0518 add x0, x21, #0x38 
+0x16f051c add x8, x8, #0x10 
+0x16f0520 str x8, [sp, #0x10] 
+0x16f0524 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f0528 add x0, x21, #0x18 
+0x16f052c bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f0530 add x0, sp, #0x10 
+0x16f0534 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f0538 mov w8, #0x42800000 
+0x16f053c mov w9, #0x432f0000 
+0x16f0540 fmov s0, w8 
+0x16f0544 fmov s1, w9 
+0x16f0548 mov x0, x23 
+0x16f054c bl #0xc1da70 GameSprite::setSize(float, float)
+0x16f0550 fmov s1, #1.00000000 
+0x16f0554 add x0, sp, #0x10 
+0x16f0558 fmov s0, wzr 
+0x16f055c bl #0xc435f0 cocos2d::CCPoint::CCPoint(float, float)
+0x16f0560 ldr x8, [x23] 
+0x16f0564 add x1, sp, #0x10 
+0x16f0568 mov x0, x23 
+0x16f056c ldr x8, [x8, #0xd8] 
+0x16f0570 blr x8 
+0x16f0574 add x0, sp, #0x10 
+0x16f0578 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x16f057c scvtf s0, w20 
+0x16f0580 scvtf s1, w22 
+0x16f0584 mov x0, x23 
+0x16f0588 bl #0xc40920 GameSprite::setPosition(float, float)
+0x16f058c ldr x8, [x23] 
+0x16f0590 mov x0, x23 
+0x16f0594 mov w1, w26 
+0x16f0598 ldr x8, [x8, #0x110] 
+0x16f059c blr x8 
+0x16f05a0 bl #0xc6e8c0 GameLayer::shared()
+0x16f05a4 ldr w1, [sp, #0xc] 
+0x16f05a8 mov w2, #3 
+0x16f05ac mov x3, x23 
+0x16f05b0 bl #0xc10d80 GameLayer::addChild(int, int, cocos2d::CCNode*)
+0x16f05b4 sub x1, x29, #0xd0 
+0x16f05b8 add x2, sp, #0x10 
+0x16f05bc mov x0, x19 
+0x16f05c0 mov x3, x23 
+0x16f05c4 stp xzr, xzr, [sp, #0x18] 
+0x16f05c8 str xzr, [sp, #0x10] 
+0x16f05cc bl #0xc20980 GameScene::setCacheSprite(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, GameSprite*)
+0x16f05d0 ldrb w8, [sp, #0x10] 
+0x16f05d4 tbz w8, #0, #0x16f05e0 
+0x16f05d8 ldr x0, [sp, #0x20] 
+0x16f05dc bl #0xc52840 operator delete(void*)
+0x16f05e0 cbnz x24, #0x16f03e0 
+0x16f05e4 ldurb w8, [x29, #-0xd0] 
+0x16f05e8 tbz w8, #0, #0x16f05f4 
+0x16f05ec ldur x0, [x29, #-0xc0] 
+0x16f05f0 bl #0xc52840 operator delete(void*)
+0x16f05f4 ldr x8, [x27, #0x28] 
+0x16f05f8 ldur x9, [x29, #-0xa0] 
+0x16f05fc cmp x8, x9 
+0x16f0600 b.ne #0x16f06ec 
+0x16f0604 mov x0, x23 
+0x16f0608 ldp x29, x30, [sp, #0x1c0] 
+0x16f060c ldp x20, x19, [sp, #0x1b0] 
+0x16f0610 ldp x22, x21, [sp, #0x1a0] 
+0x16f0614 ldp x24, x23, [sp, #0x190] 
+0x16f0618 ldp x26, x25, [sp, #0x180] 
+0x16f061c ldp x28, x27, [sp, #0x170] 
+0x16f0620 ldp d9, d8, [sp, #0x160] 
+0x16f0624 ldp d11, d10, [sp, #0x150] 
+0x16f0628 ldp d13, d12, [sp, #0x140] 
+0x16f062c ldr d14, [sp, #0x130] 
+0x16f0630 add sp, sp, #0x1d0 
+0x16f0634 ret  
+0x16f0638 mov x23, xzr 
+0x16f063c ldurb w8, [x29, #-0xd0] 
+0x16f0640 tbnz w8, #0, #0x16f05ec 
+0x16f0644 b #0x16f05f4 
+0x16f0648 ldr x8, [x25] 
+0x16f064c mov x0, x25 
+0x16f0650 ldr x9, [x8, #0x90] 
+0x16f0654 add x8, sp, #0xc0 
+0x16f0658 blr x9 
+0x16f065c mov w9, #0x7566 
+0x16f0660 mov w8, #8 
+0x16f0664 movk w9, #0x6c6c, lsl #16 
+0x16f0668 mov x0, x25 
+0x16f066c stp xzr, xzr, [sp, #0xa8] 
+0x16f0670 str xzr, [sp, #0xb8] 
+0x16f0674 strb w8, [sp, #0xa8] 
+0x16f0678 stur w9, [sp, #0xa9] 
+0x16f067c strb wzr, [sp, #0xad] 
+0x16f0680 bl #0xc7baf0 UserUnitInfo::getUnitImgType()
+0x16f0684 mov w2, w0 
+0x16f0688 add x8, sp, #0x10 
+0x16f068c add x0, sp, #0xc0 
+0x16f0690 add x1, sp, #0xa8 
+0x16f0694 bl #0xc8b580 GameUtils::getUnitIllsImage(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >, int)
+0x16f0698 add x0, sp, #0x10 
+0x16f069c bl #0xc43650 BaseScene::getTextureForLocal(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x16f06a0 ldrb w8, [sp, #0x10] 
+0x16f06a4 mov x25, x0 
+0x16f06a8 tbnz w8, #0, #0x16f06c0 
+0x16f06ac ldrb w8, [sp, #0xa8] 
+0x16f06b0 tbnz w8, #0, #0x16f06d0 
+0x16f06b4 ldrb w8, [sp, #0xc0] 
+0x16f06b8 tbz w8, #0, #0x16f02b8 
+0x16f06bc b #0x16f06e0 
+0x16f06c0 ldr x0, [sp, #0x20] 
+0x16f06c4 bl #0xc52840 operator delete(void*)
+0x16f06c8 ldrb w8, [sp, #0xa8] 
+0x16f06cc tbz w8, #0, #0x16f06b4 
+0x16f06d0 ldr x0, [sp, #0xb8] 
+0x16f06d4 bl #0xc52840 operator delete(void*)
+0x16f06d8 ldrb w8, [sp, #0xc0] 
+0x16f06dc tbz w8, #0, #0x16f02b8 
+0x16f06e0 ldr x0, [sp, #0xd0] 
+0x16f06e4 bl #0xc52840 operator delete(void*)
+0x16f06e8 b #0x16f02b8 
+0x16f06ec bl #0xc23e80 __stack_chk_fail
+
+ UnitDetailUserUnitScene scale setup 0x1bba590
+0x1bba590 ldr x0, [x23] 
+0x1bba594 str s0, [sp, #0x90] 
+0x1bba598 str x21, [sp, #0x28] 
+0x1bba59c add x19, sp, #0x840 
+0x1bba5a0 bl #0xc61680 UnitStatusInfo::isSummoner() const
+0x1bba5a4 fmov s11, #0.50000000 
+0x1bba5a8 str x23, [sp, #0x70] 
+0x1bba5ac tbz w0, #0, #0x1bba60c 
+0x1bba5b0 bl #0xc19fa0 SummonerImageMstList::shared()
+0x1bba5b4 ldr x8, [x23] 
+
+ UnitDetailUserUnitScene detail getter 0x1bba60c
+0x1bba60c ldr x0, [x23] 
+0x1bba610 bl #0xc4b1b0 UnitStatusInfo::getUnitImgType()
+0x1bba614 ldr x24, [sp, #0x48] 
+0x1bba618 mov w1, w0 
+0x1bba61c add x8, sp, #0x5a0 
+0x1bba620 mov x0, x24 
+0x1bba624 bl #0xc60430 UnitMst::getDetailImgPos(int)
+0x1bba628 adrp x1, #0x2336000 
+0x1bba62c add x1, x1, #0xb95 
+0x1bba630 sub x8, x29, #0xe0 
+0x1bba634 add x0, sp, #0x5a0 
+0x1bba638 bl #0xc2f060 CommonUtils::split(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, char const*)
+0x1bba63c mov x22, x23 
+0x1bba640 ldp x21, x23, [x29, #-0xe0] 
+0x1bba644 add x8, sp, #0x908 
+0x1bba648 mov x0, x24 
+0x1bba64c bl #0xc7a260 UnitMst::getUnitID()
+0x1bba650 mov w9, #0x7566 
+0x1bba654 mov w8, #8 
+0x1bba658 movk w9, #0x6c6c, lsl #16 
+0x1bba65c str xzr, [sp, #0x8f0] 
+0x1bba660 str xzr, [sp, #0x900] 
+0x1bba664 str xzr, [sp, #0x8f8] 
+0x1bba668 strb w8, [sp, #0x8f0] 
+0x1bba66c stur w9, [x19, #0xb1] 
+0x1bba670 strb wzr, [sp, #0x8f5] 
+0x1bba674 ldr x0, [x22] 
+0x1bba678 bl #0xc4b1b0 UnitStatusInfo::getUnitImgType()
+0x1bba67c mov w2, w0 
+0x1bba680 sub x8, x29, #0xe0 
+0x1bba684 add x0, sp, #0x908 
+0x1bba688 add x1, sp, #0x8f0 
+0x1bba68c bl #0xc8b580 GameUtils::getUnitIllsImage(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >, int)
+0x1bba690 sub x0, x29, #0xe0 
+0x1bba694 bl #0xc357d0 CommonUtils::getTextureForLocal(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x1bba698 ldurb w8, [x29, #-0xe0] 
+0x1bba69c mov x22, x0 
+0x1bba6a0 tbnz w8, #0, #0x1bba6f8 
+0x1bba6a4 ldrb w8, [sp, #0x8f0] 
+0x1bba6a8 tbnz w8, #0, #0x1bba708 
+0x1bba6ac ldrb w8, [sp, #0x908] 
+0x1bba6b0 tbz w8, #0, #0x1bba6bc 
+0x1bba6b4 ldr x0, [sp, #0x918] 
+0x1bba6b8 bl #0xc52840 operator delete(void*)
+0x1bba6bc mov x0, x22 
+0x1bba6c0 bl #0xc458a0 GameSprite::init(cocos2d::CCTexture2D*)
+0x1bba6c4 b #0x1bba86c 
+0x1bba6c8 ldr x24, [x0, #8] 
+
+ UnitDetailUserUnitScene tuple use 0x1bba880
+0x1bba880 cbz x22, #0x1bba934 
+0x1bba884 sub x8, x23, x21 
+0x1bba888 mov x9, #-0x5555555555555556 
+0x1bba88c asr x8, x8, #3 
+0x1bba890 movk x9, #0xaaab 
+0x1bba894 mul x8, x8, x9 
+0x1bba898 cmp x8, #4 
+0x1bba89c b.lo #0x1bba934 
+0x1bba8a0 mov x0, x21 
+0x1bba8a4 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x1bba8a8 add x0, x21, #0x18 
+0x1bba8ac fmul s8, s0, s11 
+0x1bba8b0 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x1bba8b4 fmul s0, s0, s11 
+0x1bba8b8 fmov s1, wzr 
+0x1bba8bc add x0, x21, #0x30 
+0x1bba8c0 fadd s9, s0, s1 
+0x1bba8c4 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x1bba8c8 add x0, x21, #0x48 
+0x1bba8cc fmul s10, s0, s11 
+0x1bba8d0 bl #0xc42e60 CommonUtils::StrToFloat(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&)
+0x1bba8d4 fmul s11, s0, s11 
+0x1bba8d8 fmov s1, #1.00000000 
+0x1bba8dc add x0, sp, #0x5a0 
+0x1bba8e0 fmov s0, wzr 
+0x1bba8e4 bl #0xc435f0 cocos2d::CCPoint::CCPoint(float, float)
+0x1bba8e8 ldr x8, [x22] 
+0x1bba8ec add x1, sp, #0x5a0 
+0x1bba8f0 mov x0, x22 
+0x1bba8f4 ldr x8, [x8, #0xd8] 
+0x1bba8f8 blr x8 
+0x1bba8fc add x0, sp, #0x5a0 
+0x1bba900 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0x1bba904 mov x0, x22 
+0x1bba908 mov v0.16b, v8.16b 
+0x1bba90c mov v1.16b, v9.16b 
+0x1bba910 bl #0xc40920 GameSprite::setPosition(float, float)
+0x1bba914 mov x0, x22 
+0x1bba918 mov v0.16b, v10.16b 
+0x1bba91c mov v1.16b, v11.16b 
+0x1bba920 bl #0xc1da70 GameSprite::setSize(float, float)
+0x1bba924 bl #0xc6e8c0 GameLayer::shared()
+0x1bba928 ldr w1, [x28, #0x390] 
+0x1bba92c mov x2, x22 
+0x1bba930 bl #0xc47200 GameLayer::addChild(int, cocos2d::CCNode*)
+
+ CCSprite::setTextureCoords content scale 0x1f3776c
+0x1f3776c sub sp, sp, #0xb0 
+0x1f37770 stp d11, d10, [sp, #0x60] 
+0x1f37774 stp d9, d8, [sp, #0x70] 
+0x1f37778 stp x22, x21, [sp, #0x80] 
+0x1f3777c stp x20, x19, [sp, #0x90] 
+0x1f37780 stp x29, x30, [sp, #0xa0] 
+0x1f37784 add x29, sp, #0xa0 
+0x1f37788 mrs x22, tpidr_el0 
+0x1f3778c ldr x8, [x22, #0x28] 
+0x1f37790 mov x20, x1 
+0x1f37794 mov x19, x0 
+0x1f37798 stur x8, [x29, #-0x48] 
+0x1f3779c ldr s8, [x1, #0x30] 
+0x1f377a0 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x1f377a4 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x1f377a8 ldr s9, [x20, #0x34] 
+0x1f377ac fmul s8, s8, s0 
+0x1f377b0 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x1f377b4 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x1f377b8 ldr s10, [x20, #0x50] 
+0x1f377bc fmul s9, s9, s0 
+0x1f377c0 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x1f377c4 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x1f377c8 ldr s11, [x20, #0x54] 
+0x1f377cc fmul s10, s10, s0 
+0x1f377d0 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x1f377d4 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0x1f377d8 fmul s3, s11, s0 
+0x1f377dc mov x0, sp 
+0x1f377e0 mov v0.16b, v8.16b 
+0x1f377e4 mov v1.16b, v9.16b 
+0x1f377e8 mov v2.16b, v10.16b 
+0x1f377ec mov x21, sp 
+0x1f377f0 bl #0xc42760 cocos2d::CCRect::CCRect(float, float, float, float)
+0x1f377f4 mov x1, sp 
+0x1f377f8 mov x0, x20 
+0x1f377fc bl #0xc67ed0 cocos2d::CCRect::operator=(cocos2d::CCRect const&)
+0x1f37800 adrp x8, #0x2880000 
+
+ AppDelegate setContentScaleFactor 0x102fafc
+0x102fafc bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0x102fb00 fmov s0, #2.00000000 
+0x102fb04 bl #0xc5cd90 cocos2d::CCDirector::setContentScaleFactor(float)
+0x102fb08 sub x0, x29, #0xa8 
+
+ GameSprite::setPosition 0xfe46a8
+0xfe46a8 sub sp, sp, #0x50 
+0xfe46ac stp x20, x19, [sp, #0x30] 
+0xfe46b0 stp x29, x30, [sp, #0x40] 
+0xfe46b4 add x29, sp, #0x40 
+0xfe46b8 mrs x20, tpidr_el0 
+0xfe46bc ldr x8, [x20, #0x28] 
+0xfe46c0 mov x19, x0 
+0xfe46c4 stur x8, [x29, #-0x18] 
+0xfe46c8 add x8, sp, #8 
+0xfe46cc str s0, [x0, #0x2ec] 
+0xfe46d0 str s1, [x0, #0x2f0] 
+0xfe46d4 bl #0xc31690 CommonUtils::convertPosition(float, float)
+0xfe46d8 add x1, sp, #8 
+0xfe46dc mov x0, x19 
+0xfe46e0 bl #0xc12720 cocos2d::CCSprite::setPosition(cocos2d::CCPoint const&)
+0xfe46e4 add x0, sp, #8 
+0xfe46e8 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0xfe46ec ldr x8, [x20, #0x28] 
+0xfe46f0 ldur x9, [x29, #-0x18] 
+0xfe46f4 cmp x8, x9 
+0xfe46f8 b.ne #0xfe470c 
+0xfe46fc ldp x29, x30, [sp, #0x40] 
+0xfe4700 ldp x20, x19, [sp, #0x30] 
+0xfe4704 add sp, sp, #0x50 
+0xfe4708 ret  
+0xfe470c bl #0xc23e80 __stack_chk_fail
+
+ SuperAnimNode content size and anchor 0xfece48
+0xfece48 ldr s0, [x19, #0x1e8] 
+0xfece4c ldr s1, [x19, #0x1ec] 
+0xfece50 add x0, sp, #0x28 
+0xfece54 bl #0xc0e170 cocos2d::CCSize::CCSize(float, float)
+0xfece58 ldr s8, [sp, #0x40] 
+0xfece5c bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0xfece60 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0xfece64 ldr s2, [x19, #0x1e8] 
+0xfece68 ldr s1, [x19, #0x1ec] 
+0xfece6c fdiv s8, s8, s0 
+0xfece70 add x0, sp, #8 
+0xfece74 mov v0.16b, v2.16b 
+0xfece78 bl #0xc0e170 cocos2d::CCSize::CCSize(float, float)
+0xfece7c ldr s9, [sp, #0x24] 
+0xfece80 bl #0xc3a960 cocos2d::CCDirector::sharedDirector()
+0xfece84 bl #0xc4a910 cocos2d::CCDirector::getContentScaleFactor()
+0xfece88 fdiv s1, s9, s0 
+0xfece8c add x0, sp, #0x48 
+0xfece90 mov v0.16b, v8.16b 
+0xfece94 bl #0xc0e170 cocos2d::CCSize::CCSize(float, float)
+0xfece98 ldr x8, [x19] 
+0xfece9c add x1, sp, #0x48 
+0xfecea0 mov x0, x19 
+0xfecea4 ldr x8, [x8, #0xf0] 
+0xfecea8 blr x8 
+0xfeceac add x0, sp, #0x48 
+0xfeceb0 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0xfeceb4 add x0, sp, #8 
+0xfeceb8 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0xfecebc add x0, sp, #0x28 
+0xfecec0 bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+0xfecec4 str w21, [x19, #0x190] 
+0xfecec8 str x20, [x19, #0x198] 
+0xfececc str wzr, [x19, #0x1f8] 
+0xfeced0 bl #0xc65640 cocos2d::CCShaderCache::sharedShaderCache()
+0xfeced4 adrp x1, #0x231f000 
+0xfeced8 add x1, x1, #0x726 
+0xfecedc bl #0xc45530 cocos2d::CCShaderCache::programForKey(char const*)
+0xfecee0 cbnz x0, #0xfecee8 
+0xfecee4 bl #0xc8a020 LoadSuperAnimShader()
+0xfecee8 bl #0xc65640 cocos2d::CCShaderCache::sharedShaderCache()
+0xfeceec adrp x1, #0x231f000 
+0xfecef0 add x1, x1, #0x726 
+0xfecef4 bl #0xc45530 cocos2d::CCShaderCache::programForKey(char const*)
+0xfecef8 ldr x8, [x19] 
+0xfecefc mov x1, x0 
+0xfecf00 mov x0, x19 
+0xfecf04 ldr x8, [x8, #0x140] 
+0xfecf08 blr x8 
+0xfecf0c mov x0, x19 
+0xfecf10 bl #0xc3d070 cocos2d::CCNode::scheduleUpdate()
+0xfecf14 fmov s0, #0.50000000 
+0xfecf18 add x0, sp, #0x48 
+0xfecf1c mov v1.16b, v0.16b 
+0xfecf20 bl #0xc435f0 cocos2d::CCPoint::CCPoint(float, float)
+0xfecf24 ldr x8, [x19] 
+0xfecf28 add x1, sp, #0x48 
+0xfecf2c mov x0, x19 
+0xfecf30 ldr x8, [x8, #0xd8] 
+0xfecf34 blr x8 
+0xfecf38 add x0, sp, #0x48 
+0xfecf3c bl #0xc8aad0 cocos2d::CCObject::~CCObject()
+
+ SuperAnimList forwards position 0xfeb2a0
+0xfeb2a0 tbz w25, #0, #0xfeb2fc 
+0xfeb2a4 mov x0, x26 
+0xfeb2a8 mov v0.16b, v9.16b 
+0xfeb2ac mov v1.16b, v8.16b 
+0xfeb2b0 bl #0xc33230 SuperAnimEx::setPosition(float, float)
+0xfeb2b4 ldr w1, [sp, #0xc] 
+
+ ScriptEngine keeps existing scale 0xfcbdd0
+0xfcbdd0 bl #0xc26c50 cocos2d::CCNode::getScale()
+0xfcbdd4 mov x0, x22 
+0xfcbdd8 bl #0xc54210 SuperAnimEx::setScale(float)

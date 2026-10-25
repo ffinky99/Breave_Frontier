@@ -66,7 +66,8 @@ def main():
         ids = sorted(re.match(r'assets/unit_ills_battle_(\d+)\.png$', n).group(1)
                      for n in names if re.fullmatch(r'assets/unit_ills_battle_\d+\.png', n))
         selected = set(EXTRAS)
-        sam_names = ['Touch','Hold','BraveBurstSlideMotion','GuardSlideMotion','BraveBurstSlideMotionAdd','GuardSlideMotionAdd','GachaGateClose3','GachaGateOpen3','GachaGateOpenAdd','GachaGetEndCircle','GachaEndCircleGet']
+        sam_names = ['Touch','Hold','BraveBurstSlideMotion','GuardSlideMotion','BraveBurstSlideMotionAdd','GuardSlideMotionAdd','GachaGateClose3','GachaGateOpen3','GachaGateOpenAdd','GachaGetEndCircle','GachaEndCircleGet',
+                     'BattleDungeon10100CloudBack','BattleDungeon10100WindAddBack','BattleDungeon10100SunShineAddFront']
         sam = {name: decode_sam(z.read('assets/' + name + '.sam')) for name in sam_names}
         for animation in sam.values():
             selected.update(image['file'] for image in animation['images'])
