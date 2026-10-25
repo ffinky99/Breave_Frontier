@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "scope": "Supplied APK 2.19.6.0 arm64 static inspection; not an Android runtime observation; no original server contact",
+  "sources": {
+    "apk": "brave-frontier-2-19-6-0.apk",
+    "apkSha256": "346d29478b3a2a8246c79267abf7c5d9e1e785b10d63677dbdf93fb14d139bf9",
+    "elf": "libgame.so",
+    "elfSha256": "076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95",
+    "scripts": "/workspace/scratch/76e8a7930034/tutorial-link-audit/decoded-scripts/"
+  },
+  "findings": [
+    {
+      "id": "unit-stop-atk",
+      "status": "confirmed-native",
+      "function": "MissionScene::checkTutorialState",
+      "address": "0x1803900",
+      "instructions": [
+        "0x1803b74",
+        "0x1803b94",
+        "0x1803b98",
+        "0x1803ba4",
+        "0x1803bac"
+      ],
+      "fact": "unit_stop_atk checks scene+0x410 >= 5, then sets scene state 0x29; increments counter each check. No HP, hit, or action-completion condition in this branch.",
+      "reset": "MissionScene::scriptEvent 0x18190bc stores zero to +0x410",
+      "timing": "updateEvent calls checkTutorialState at 0x1802678 before state dispatch; 5 battle updates then sixth condition check returns to script. Scene update count, not proven wall-clock milliseconds.",
+      "evidence": [
+        "tutorial-state.txt",
+        "battle-loop.txt",
+        "mission-tutorial.txt"
+      ]
+    },
+    {
+      "id": "pause-resume",
+      "status": "confirmed-native",
+      "function": "ScriptEngine::advParam",
+      "address": "0xfc7708",
+      "jumpTable": {
+        "normalTable": "0x231e0be",
+        "normalBase": "0xfc7988",
+        "secondaryTable": "0x231e3fa",
+        "secondaryBase": "0xfc79f4",
+        "param24": "0xfc88a4",
+        "param25": "0xfc8030"
+      },
+      "fact": "PARAM24 calls EdgeAnimeList::pauseAnime; PARAM25 calls resumeAnime.",
+      "script": "tuto1.txt:125-155 starts leader, waits unit_stop_atk, pauses, resumes for next ally, pauses again, then resumes and waits battle_end.",
+      "evidence": [
+        "script-native-excerpts.txt",
+        "script-source-excerpts.txt"
+      ]
+    },
+    {
+      "id": "script-event-persistence",
+      "status": "confirmed-native",
+      "address": "0xfc7c24-0xfc7d2c",
+      "fact": "PARAM100 third argument none skips UserInfo::setTutoEventID and preserves prior event. clear replaces event with literal clear. MissionScene::scriptEvent resets drop-once byte +0x414 at 0x18190b4 whenever current event is tuto_drop_heart or tuto_drop_battle_crystal.",
+      "impact": "Do not clear heart-drop event on subsequent none steps; drop allowance resets on each scriptEvent while matching drop event persists.",
+      "evidence": [
+        "script-native-excerpts.txt",
+        "mission-tutorial.txt"
+      ]
+    },
+    {
+      "id": "forced-drop-rate",
+      "status": "confirmed-native",
+      "addresses": {
+        "heart": "0x1819254",
+        "battle": "0x1819324"
+      },
+      "fact": "Matching tutorial drop event returns 100.0 once per scene flag reset, marks +0x414=1; subsequent checks return 0.0. During tutorial BattleUnit getDrop methods delegate to these callbacks instead of normal rate.",
+      "evidence": [
+        "damage.txt",
+        "virtual-table-resolution.txt"
+      ]
+    },
+    {
+      "id": "magic-crystals",
+      "status": "confirmed-native",
+      "address": "0x1818808-0x18188cc",
+      "fact": "tuto6_bat2_drop_crystal creates exactly 15 BattleItemCrystal objects with item type 2, player party target, CCRect(134,130,32,32).",
+      "script": "tuto9.txt:114-119 drop -> PLAYWAIT1.5 -> getAll with tuto_get_battle_crystal -> PLAYWAIT1.5",
+      "evidence": [
+        "mission-tutorial.txt",
+        "script-source-excerpts.txt"
+      ]
+    },
+    {
+      "id": "magic-crystal-target",
+      "status": "confirmed-native",
+      "address": "0x1044660-0x1044670",
+      "fact": "BattleItemCrystal::getTargetUnit overrides random active target to party position2 if event is tuto_get_battle_crystal. Target is cached.",
+      "impact": "15 magic crystals go to leader at position2; no evidence for filling every ally.",
+      "evidence": [
+        "crystal.txt"
+      ]
+    },
+    {
+      "id": "crystal-receipt",
+      "status": "confirmed-native",
+      "addresses": {
+        "getAll": "0x10474a8",
+        "move": "0x1043500",
+        "exit": "0x10443d0",
+        "add": "0x1134fa0"
+      },
+      "fact": "getAll begins each item's movement. getMoveAction uses random delay 0..0.5 divided by CCDirector::getSpeedFactor, 0.6/speed move with EaseIn rate1.2, then completion callback. exitItemMove calls addBattleCrystal. addBattleCrystal starts from 100 internal gauge units, adds passive/buff bonuses, then incSkillGage; no tutorial max-fill branch in inspected path.",
+      "impact": "Apply BB at each crystal arrival. Current web base starters all have cost15, compatible with normalized +1 per crystal.",
+      "evidence": [
+        "crystal.txt",
+        "crystal-receive.txt",
+        "skill-cost.txt",
+        "virtual-table-resolution.txt"
+      ]
+    },
+    {
+      "id": "heart-receipt",
+      "status": "confirmed-native",
+      "addresses": {
+        "target": "0x10b85ec",
+        "arrival": "0x1044d38",
+        "amount": "0x111fd1c"
+      },
+      "fact": "Heart target chosen randomly among living damaged party members; fallback random active unit if none damaged. At exitItemMove it computes getHeartCrystalRecover and queues DamageList::setRecover. Base recover is total heal divided by random(3.0,4.2), minimum1 before passive correction; no flat35% found.",
+      "evidence": [
+        "crystal-receive.txt",
+        "crystal.txt",
+        "battle-loop.txt"
+      ]
+    },
+    {
+      "id": "tutorial-player-survival",
+      "status": "confirmed-native",
+      "function": "BattleUnit::decHp",
+      "address": "0x111df28",
+      "instructions": [
+        "0x111df74",
+        "0x111dfbc",
+        "0x111dfc4",
+        "0x111dfd4",
+        "0x111dfd8",
+        "0x111dfdc"
+      ],
+      "fact": "After normal HP decrement, when UserInfo::isTutoPlaying and unit getType()==1 (PlayerUnit), remaining HP is clamped to at least1. Enemies are not given this tutorial clamp.",
+      "evidence": [
+        "tutorial-damage-overrides.txt",
+        "battle-tutorial-xrefs.txt",
+        "virtual-table-resolution.txt",
+        "action-start.txt"
+      ]
+    },
+    {
+      "id": "enemy-target",
+      "status": "confirmed-native",
+      "address": "0x18193f4",
+      "fact": "MissionScene::getTutoTarget returns player position2 when play tutorial chapter1; otherwise returns random active player.",
+      "evidence": [
+        "damage.txt"
+      ]
+    },
+    {
+      "id": "allies-order",
+      "status": "confirmed-native",
+      "address": "0x1b938a4",
+      "fact": "TutorialStepScene::initPartyStatus only on chapter1 scans owned current-party units, keeps leader, finds nonleader fire and thunder, reorders leader2/fire0/thunder1, queues DeckEditRequest. No new unit creation, forced level1/2, or explicit 10030/40030 IDs in function.",
+      "evidence": [
+        "party-initialization.txt"
+      ]
+    },
+    {
+      "id": "wait-predicates",
+      "status": "confirmed-native",
+      "address": "0x1803900",
+      "fact": "active_action_end calls active unit isEndAction; player_turn_start/enemy_turn_start test corresponding party isMyTurn; *_turn_end also require BattleManager::isTurnEndwait; battle_end checks scene state0x1a; treasure_start checks state0xb.",
+      "evidence": [
+        "tutorial-state.txt",
+        "skill-gauge.txt",
+        "virtual-table-resolution.txt"
+      ]
+    },
+    {
+      "id": "damage-overrides-not-confirmed",
+      "status": "not-established",
+      "fact": "The inspected tutorial script handlers start normal actions; no basis found for enemy HP thirds, last-tap forced kill, burst killing all targets, or setting leader HP to58%/23%. Generic damage routines retain RNG/stat machinery. This does not prove absence in every possible upstream data path.",
+      "scan": "Direct tutorial UserInfo calls scanned in arm64 range0x1040000..0x1168000. decHp survival clamp found; calcAttack/procAttack contain no direct calls to these tutorial APIs.",
+      "limits": [
+        "Same-version tutorial server monster stats/party roster not recovered.",
+        "Existing web enemy captures use older GL data; not same-version statistical proof.",
+        "No original device frame capture; travel10f and HP counter curve not established.",
+        "Normal combat formula parity is outside this bounded audit."
+      ],
+      "evidence": [
+        "battle-tutorial-xrefs.txt",
+        "damage.txt",
+        "tutorial-damage-overrides.txt",
+        "action-start.txt"
+      ],
+      "normalActionPath": "scriptEvent unit_*_atk -> PlayerParty::touchPlayer(unit,0) (vtable offset0x38) -> PlayerUnit::touch(0). procAttack calls calcAttack at0x10ffa88.",
+      "debugCaution": "procAttack has UserDebugInfo::isDebugMode(0) branch after calcAttack; not evidence of tutorial forced damage."
+    }
+  ],
+  "checklist": {
+    "T06": "keep incomplete for server exact roster/stats/rewards; add proven survival clamp only if applicable",
+    "T07": "queue and five update pause/return plus arrival receipts are supported; do not claim all frame details",
+    "T08": "partial source timing support; no full motion/HP-counter parity claim",
+    "T09": "source wait conditions and BB gestures supported; full same-version end-to-end parity not established"
+  }
+}

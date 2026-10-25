@@ -3439,6 +3439,36 @@
   ],
   "copiedAssets": [
     {
+      "file": "ArrowLeft_47x53.png",
+      "bytes": 2580,
+      "sha256": "03776b691b119fa676ec6ae2d5b4852853ce2b996f29f2456f70feba576c2a28"
+    },
+    {
+      "file": "ArrowLeft_51x55.png",
+      "bytes": 2699,
+      "sha256": "aa652d722d4de9a3fb581008a3dae762e56cd03a9b0ec5eec36d202b2b768f37"
+    },
+    {
+      "file": "ArrowLeft_52x53.png",
+      "bytes": 2502,
+      "sha256": "0d859cdde02bc785383b5f96160e5add7113cd2cbbc11abbc839223ddb95936d"
+    },
+    {
+      "file": "ArrowRight_47x53.png",
+      "bytes": 2541,
+      "sha256": "b5e8bcf92797281760124c2d8a117bf3d93a41788261ce3c2ff2b12f208b61a7"
+    },
+    {
+      "file": "ArrowRight_51x55.png",
+      "bytes": 2672,
+      "sha256": "50b4cab5ec8de57d7468ad11d7baeeedc2294413e3dc5d28e8d3e5f1e14fd24b"
+    },
+    {
+      "file": "ArrowRight_52x54.png",
+      "bytes": 2538,
+      "sha256": "b34f1c0f0676c899bb93ffabc7825676b8f59fdc427de851300e3bb025c1ebee"
+    },
+    {
       "file": "BattleDungeon10100CloudBack_640x122.png",
       "bytes": 690,
       "sha256": "6f53d56d19728263ab8f341f9fd2a903b151cab0678bad5ed2fd7afe0be55ff8"
@@ -3849,6 +3879,11 @@
       "sha256": "2eb93fa999990bcd61227c17dad4b6802fdd68f6ca8237bd8e47ddff4291513b"
     },
     {
+      "file": "handle_name_frame.png",
+      "bytes": 10699,
+      "sha256": "0f359e3db30168c755cffa98714bc87bf488e2f6daf2729cd619dad72d714b21"
+    },
+    {
       "file": "header_title_base.png",
       "bytes": 2838,
       "sha256": "e5dc5d7c26b8f7ade6c8943776e4ee3f66e7c95bf24981348fc37b5fdda11fd4"
@@ -3912,6 +3947,11 @@
       "file": "home_win_raid_open.png",
       "bytes": 73530,
       "sha256": "fab8b23a2499c8feae5aca7a3c30cf4e7a79b2c45a39e27d0d7be3c835cdb8b5"
+    },
+    {
+      "file": "image_tutorial.png",
+      "bytes": 104776,
+      "sha256": "8bf6578cfd5d7118b4efdcfadd18e6881ff7669ae2a88e9bf303427e23e635e0"
     },
     {
       "file": "item_frame_0.png",

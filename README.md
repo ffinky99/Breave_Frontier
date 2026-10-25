@@ -94,3 +94,5 @@ npm run check
 원작 그래픽·음악·캐릭터와 명칭은 Alim·gumi의 브레이브 프론티어 자료입니다. 한국어 유닛 데이터는 [BluuArc/bfmt-data](https://github.com/BluuArc/bfmt-data/tree/master/kr/unit), 모션 형식 확인은 [BluuArc/BFFrameAnimator-js](https://github.com/BluuArc/BFFrameAnimator-js)를 참고했습니다. 기존 데이터·자산에 대한 권리는 각 권리자에게 있습니다.
 
 0.4.0의 기본 튜토리얼 연결과 선택 분기 구분은 [복원 기록](docs/tutorial-journey-restoration.md), 남은 차이는 [체크리스트](docs/original-parity-checklist.md)를 참고하세요.
+
+0.5.0의 도입·첫 영웅 선택·타격 및 결정 동기화 복원은 [후속 기록](docs/tutorial-detail-restoration.md)을 참고하세요.

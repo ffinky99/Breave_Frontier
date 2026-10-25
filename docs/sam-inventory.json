@@ -1,4 +1,48 @@
 {
+  "ArrowLeft": {
+    "fps": 24,
+    "frames": 62,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 59
+      },
+      {
+        "name": "delete",
+        "start": 60,
+        "end": 61
+      }
+    ],
+    "sha256": "aafc0dd65168cf1e27a96ded95a2e718677f791c79a843fa4d85c435924d954f"
+  },
+  "ArrowRight": {
+    "fps": 24,
+    "frames": 62,
+    "labels": [
+      {
+        "name": "start",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "name": "loop",
+        "start": 1,
+        "end": 59
+      },
+      {
+        "name": "delete",
+        "start": 60,
+        "end": 61
+      }
+    ],
+    "sha256": "e9cb98cac3831d2f80f4758ac4fbdf455ce41b098821ba42e93ab7fb64a3b2aa"
+  },
   "Touch": {
     "fps": 24,
     "frames": 33,

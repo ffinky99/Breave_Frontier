@@ -47,7 +47,7 @@ test('네 시작 영웅이 6개 전투부터 소환·작별·홈까지 연결되
    next(save);const before=structuredClone(save.journey);save=roundtrip(save);
    assert.deepEqual(save.journey,before);assert.equal(resumeJourneyState(save),false);
   }
-  assert.equal(save.journey.step,'complete');assert.equal(save.gems,gems);
+  assert.equal(save.journey.step,'complete');assert.equal(save.gems,gems+3);assert.equal(save.zel,102500);assert.equal(save.journey.completionRewardClaimed,true);
   assert.equal(save.summons,1);assert.equal(Object.keys(save.units).length,count+1);
  }
 });
@@ -61,6 +61,16 @@ test('잘못된 조작과 연속 클릭은 선물 지급·소환 지불을 반�
  const paid=structuredClone(save);assert.throws(()=>advanceJourney(save,'t15-108','confirm-summon',catalog));assert.deepEqual(save,paid);
  const restored=roundtrip(save);assert.deepEqual(restored.journey.summonResult,save.journey.summonResult);
  next(restored);assert.equal(restored.journey.step,'summon-result');assert.equal(restored.summons,1);
+});
+test('완료 보상은 마지막 대사 뒤 한 번 지급되며 재개와 중복 입력으로 증가하지 않는다',()=>{
+ const save=arrive('t16-25'),gems=save.gems,zel=save.zel;
+ next(save);assert.equal(save.gems,gems+3);assert.equal(save.zel,zel+100000);
+ const restored=roundtrip(save),before=structuredClone(restored);
+ assert.equal(resumeJourneyState(restored),false);assert.throws(()=>advanceJourney(restored,'t16-25','next',catalog));assert.deepEqual(restored,before);
+});
+test('이전 완료 저장의 보상 필드 마이그레이션은 재화를 소급 지급하거나 초기화하지 않는다',()=>{
+ const old=arrive('t16-25');next(old);delete old.journey.completionRewardClaimed;old.gems=73;old.zel=813;
+ const migrated=roundtrip(old);assert.equal(migrated.journey.completionRewardClaimed,true);assert.equal(migrated.gems,73);assert.equal(migrated.zel,813);assert.equal(resumeJourneyState(migrated),false);
 });
 test('잔액 부족의 확인 실패는 저장을 바꾸지 않고 재개 시 원본처럼 작별로 간다',()=>{
  const save=arrive('t15-108');save.gems=4;const before=structuredClone(save);

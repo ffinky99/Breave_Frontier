@@ -20,8 +20,8 @@ function finish(b){
   return b;
 }
 
-test('네 시작 영웅은 서로 다른 속성의 지원 유닛 두 명과 시작한다',()=>{
-  for(const id of data.starterIds){const s=fresh(id);assert.equal(s.party.length,3);assert.equal(s.party[0],id);assert.equal(new Set(s.party.map(x=>catalog[x].element)).size,3);assert.equal(s.gems,6);}
+test('네 시작 영웅은 불·번개 지원 유닛과 시작한다',()=>{
+  for(const id of data.starterIds){const s=fresh(id);assert.equal(s.party.length,3);assert.equal(s.party[0],id);assert.deepEqual(s.party.slice(1),['10030','40030']);assert.equal(new Set(s.party).size,3);assert.equal(s.gems,6);}
   assert.throws(()=>fresh('60133'));
 });
 test('모든 시작 영웅은 서로 다른 난수 60개에서 첫 모험을 완주한다',()=>{

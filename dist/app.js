@@ -4,6 +4,7 @@ import {NativeUI} from './ui.js';
 import {SamPlayer} from './sam.js';
 import {TUTORIALS,TutorialSession} from './tutorial.js';
 import {journeyStep} from './tutorial-journey.js';
+import {IntroSequence,HERO_DESCRIPTIONS,cleanName} from './intro.js';
 
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,19 +13,18 @@ const ko=text=>String(text||'').replace(/<br\s*\/?>/gi,' ').replace(/\bHP\b/g,'�
 const view=$('#view'),modal=$('#modal');
 let nativeUI,samPlayer,summonSequence=null,homeSlide=0,unitDetailId=null,detailReturn='units',summonKind='hero',partyReturn='units',lastRenderedScreen=null,transitionToken=0;
 const ui=(name,cls='')=>`<canvas data-ui="${name}" class="${cls}" aria-hidden="true"></canvas>`;
-let catalog,unitData,sprites,save=null,screen='title',selectedStarter='10011',filter='all',showAllUnits=false,partyDraft=[],detailId=null;
+let catalog,unitData,sprites,save=null,screen='title',filter='all',showAllUnits=false,partyDraft=[],detailId=null;
 let toastTimer,modalUnit=null,battle=null,battleMode='attack',target=0,auto=false,battleTimer=null,allTimers=[],locked=false,logs=[],battleResult=null;
 let tutorial=null,commandIndex=null,holdTimer=null,suppressCommandClickUntil=0;
 let journeyPlaying=false,journeyReviewOriginal=null;
-let prologueIndex=0,prologueName='소환사';
-const prologueLines=['나는 루시어스…\n이 게이트를 관장하는 신이다…','나는 네가 이곳에 도착할 날을\n기다려 왔다…','선택받은 자여…\n너의 이름은 무엇인가?','{name}…\n이 문 너머에서\n새로운 힘이 너를 기다리고 있다…','그 힘을 네 것으로 만들어라…\n그리고 그 힘으로\n이 세계에 평화를 가져오너라…'];
+let intro=null,introParameters,introPreferences=null,heroPointer=null;
 const animations=new Map(),particles=[],pickups=[],hitFlashes=new Map(),defeats=new Map();
 let effectsUntil=0,lastAttackAt=-10000,lastActor=-1,lastFrame=0,announcement='',battleBackgroundStarted=0;
 const images=new Map();
 const allyPositions=[[520,260],[554,368],[427,306],[424,218],[455,390],[573,313]];
 const enemyPositions=[[125,265],[76,348],[216,345]];
 const audio={music:null,musicKey:null,
- async musicFor(key){if(!save?.sound)return;if(this.musicKey===key&&this.music)return;this.music?.pause();this.music=new Audio(`assets/${key}`);this.music.loop=true;this.music.volume=save.volume*.45;this.musicKey=key;try{await this.music.play();}catch{this.musicKey=null;}},
+ async musicFor(key,settings=save){if(!settings?.sound)return;if(this.musicKey===key&&this.music)return;this.music?.pause();this.music=new Audio(`assets/${key}`);this.music.loop=true;this.music.volume=settings.volume*.45;this.musicKey=key;try{await this.music.play();}catch{this.musicKey=null;}},
  effect(name='bf300_se_action.mp3'){if(!save?.sound)return;const sound=new Audio(`assets/${name}`);sound.volume=save.volume;void sound.play().catch(()=>{});},
  stop(){this.music?.pause();this.music=null;this.musicKey=null;}
 };
@@ -54,10 +54,36 @@ function slideWorkLayer(leaving){
  const frames=Array.from({length:17},(_,i)=>({offset:i/16,transform:`translateX(${(1-Math.pow(i/16,1/3.5))*100}%)`}));view.inert=true;view.animate(frames,{duration:160,delay,fill:'backwards',easing:'linear'}).finished.catch(()=>{}).finally(()=>{if(token===transitionToken)view.inert=false;});
 }
 function renderTitle(){view.innerHTML=`<section class="title-screen"><div class="title-actions"><button data-action="${save?'continue':'begin'}">${save?'모험 이어하기':'화면을 눌러 시작'}</button><span>한국어 웹판</span><button class="text-btn" data-action="about">웹판 정보</button></div></section>`;}
-function renderPrologue(){
- view.innerHTML=`<section class="prologue-screen"><div class="prologue-light" aria-hidden="true">${Array.from({length:5},(_,i)=>`<img src="assets/page_1200_3.png" alt="" style="--i:${i}">`).join('')}</div><div class="prologue-words"><p>${esc(prologueLines[prologueIndex].replace('{name}',prologueName)).replaceAll('\n','<br>')}</p>${prologueIndex===2?`<label for="prologue-name">소환사 이름</label><input id="prologue-name" value="${esc(prologueName)}" maxlength="12" autocomplete="off">`:''}<button data-action="prologue-next">${prologueIndex===2?'이 이름으로 시작':'화면을 눌러 계속'} ▼</button></div></section>`;
+function beginIntro(){
+ stopBattle();journeyPlaying=false;introPreferences={sound:save?.sound||false,volume:save?.volume??.35};intro=new IntroSequence(introParameters);screen='prologue';audio.stop();void audio.musicFor('bf027_map_god.mp3',introPreferences);render();window.scrollTo(0,0);
 }
-function renderStarter(){view.innerHTML=`<div class="screen-top"><span class="eyebrow">첫 번째 동료</span><h2 style="margin-top:12px">당신과 함께할 영웅은?</h2><p>네 영웅 중 한 명을 선택하세요.<br>다른 영웅들도 모험 중 소환으로 만날 수 있어요.</p></div><div class="starter-grid">${unitData.starterIds.map(id=>{const u=catalog[id];return `<button class="starter ${selectedStarter===id?'selected':''}" data-action="starter" data-id="${id}" aria-pressed="${selectedStarter===id}" style="--tint:${ELEMENTS[u.element].color}40">${elBadge(id)}<img src="${unitImage(id,'full')}" alt="${esc(u.name)}"><strong>${esc(u.name)}</strong><small>${esc(ko(u.leader.desc))}</small></button>`;}).join('')}</div><form class="starter-form" id="starter-form"><label for="summoner-name">소환사 이름</label><input id="summoner-name" name="name" value="${esc(prologueName)}" maxlength="12" autocomplete="off" aria-label="소환사 이름"><button class="gold-button" type="submit">${esc(catalog[selectedStarter].name)}와 모험 시작</button><p class="subtle" style="text-align:center">게임 진행은 이 브라우저에 자동으로 저장됩니다.</p></form>`;}
+const introCanvas=()=>'<canvas id="intro-canvas" width="640" height="960" aria-hidden="true"></canvas>';
+function renderPrologue(){
+ if(!intro)return;
+ let body='';
+ if(intro.stage.startsWith('line'))body=`<button class="prologue-touch" data-action="prologue-next" aria-label="대사 표시 또는 다음 대사"><span class="prologue-words" aria-live="off">${esc(intro.message.text)}</span></button>`;
+ else if(intro.stage==='name')body=`<form id="intro-name-form"><label for="prologue-name">소환사 이름을 입력하세요.<br>최대 8글자</label><input id="prologue-name" aria-label="소환사 이름" value="${esc(intro.name)}" maxlength="128" autocomplete="off" required><button class="intro-button name-random" type="button" data-action="name-random">임의 이름</button><button class="intro-button name-ok" type="submit">확인</button></form>`;
+ else if(intro.stage==='skip')body=`<section class="intro-skip" role="dialog" aria-label="튜토리얼 선택"><div class="intro-reward-art"><img src="assets/image_tutorial.png" alt="보석과 젤 보물상자"><strong class="reward-heading">튜토리얼을 완료하고<br>보상을 받으세요!</strong><b class="reward-gems">보석 3개</b><b class="reward-zel">젤 100,000</b><strong class="reward-footer">동료 소환과 성장을 위한 선물!</strong></div><p class="intro-skip-copy">${intro.skipWarning?'건너뛰면 위의 튜토리얼 보상을 받을 수 없어요.<br>그래도 건너뛸까요?':'튜토리얼을 완료하면 이 보상을 받을 수 있어요!'}</p><button class="intro-button skip-left" data-action="${intro.skipWarning?'intro-skip-yes':'intro-play'}">${intro.skipWarning?'예':'시작'}</button><button class="intro-button skip-right" data-action="${intro.skipWarning?'intro-skip-no':'intro-skip'}">${intro.skipWarning?'아니요':'건너뛰기'}</button></section>`;
+ view.innerHTML=`<section class="prologue-screen">${introCanvas()}${body}</section>`;
+}
+function renderStarter(){
+ view.innerHTML=`<section class="starter-screen">${introCanvas()}<div class="hero-pages" role="group" aria-label="첫 영웅 선택">${unitData.starterIds.map((id,i)=>`<article class="hero-page" aria-label="${esc(catalog[id].name)}"><img src="${unitImage(id,'full')}" alt="${esc(catalog[id].name)}" draggable="false" style="width:${images.get('full-'+id).width/6.4}cqw"><p>${HERO_DESCRIPTIONS[i].map((line,j)=>j===2?`<span style="color:${['#ff0000','#3c7bff','#92d050','#ffff00'][i]}">${line}</span>`:line).join('<br>')}</p></article>`).join('')}</div><button class="hero-arrow hero-left" data-action="hero-page" data-direction="-1" aria-label="이전 영웅"><canvas data-sam="ArrowLeft" width="128" height="128" aria-hidden="true"></canvas></button><button class="hero-arrow hero-right" data-action="hero-page" data-direction="1" aria-label="다음 영웅"><canvas data-sam="ArrowRight" width="128" height="128" aria-hidden="true"></canvas></button><button class="intro-button hero-ok" data-action="hero-confirm" aria-label="선택한 영웅 확인">확인</button></section>`;
+
+}
+function updateIntro(now){
+ if(!intro||!['prologue','starter'].includes(screen))return;
+ const previous=intro.stage;intro.update(now,{paused:document.hidden||modal.open});
+ if(intro.stage==='complete'){
+  const skipped=intro.skip;save=newSave(unitData.starterIds[intro.hero],catalog,intro.name);Object.assign(save,introPreferences);if(skipped){save.journey=null;save.tutorialSeen=true;}intro=null;audio.stop();persist();if(skipped)navigate('home');else resumeJourney();return;
+ }
+ if(previous!==intro.stage){screen=intro.stage==='hero'?'starter':'prologue';render();}
+ const canvas=$('#intro-canvas');if(canvas)intro.draw(canvas.getContext('2d'),images.get('intro-particle'));
+ const words=$('.prologue-words');if(words&&words.textContent!==intro.message.text)words.textContent=intro.message.text;
+ for(const button of document.querySelectorAll('.hero-arrow,.hero-ok'))button.disabled=intro.locked||intro.carousel.moving||intro.carousel.dragging;
+ for(const [i,page] of [...document.querySelectorAll('.hero-page')].entries()){page.style.transform=`translateX(${intro.carousel.offset(i)/3.2}%)`;page.setAttribute('aria-hidden',String(i!==intro.carousel.page));}
+ const tap=$('.prologue-touch');if(tap)tap.disabled=intro.locked;
+ if(audio.music&&introPreferences.sound){const fade=intro.stage==='exit'?Math.max(0,1-intro.age/3000):Math.min(1,intro.time/1000);audio.music.volume=introPreferences.volume*.45*fade;}
+}
 const homePortals=[['home_win_quest.png','퀘스트'],['home_win_gate.png','차원의 틈'],['home_win_arena.png','아레나'],['home_win_raid_open.png','레이드']];
 function renderHome(){
  const slots=[save.party[1],save.party[2],save.party[0],save.party[3],save.party[4]];
@@ -99,7 +125,7 @@ function drawSummon(now){
  if(summonSequence.phase==='gate'){const duration=samPlayer.duration('GachaGateClose3');samPlayer.draw(ctx,'GachaGateClose3',{time:t<duration?t:t-duration,label:t<duration?'start':'loop',loop:t>=duration,x:0,y:150});}
  else{samPlayer.draw(ctx,'GachaGateOpen3',{time:t,label:'start',loop:false,x:0,y:150});samPlayer.draw(ctx,'GachaGateOpenAdd',{time:t,label:'start',loop:false,x:0,y:150,additive:true});if(t>=samPlayer.duration('GachaGateOpenAdd'))finishSummon();}
 }
-function renderSettings(){view.innerHTML=`<div class="screen-top"><h2>소환사의 설정</h2><p>나에게 맞는 속도로 모험을 이어가세요.</p></div><section class="settings-group"><h3>소리와 전투</h3><div class="setting-row"><span>배경 음악 · 효과음</span><button data-action="sound">${save.sound?'켜짐':'꺼짐'}</button></div><div class="setting-row"><label for="volume">소리 크기</label><input id="volume" type="range" min="0" max="1" step="0.05" value="${save.volume}"></div><div class="setting-row"><span>기본 전투 속도</span><button data-action="speed">${save.speed}배속</button></div></section><section class="settings-group"><h3>모험 기록</h3><div class="setting-links"><button data-action="export-save">↓ 저장 파일 내려받기</button><button data-action="import-prompt">↑ 저장 파일 불러오기</button><button data-action="guide">티리스의 전투 훈련</button><button data-action="help">조작 방법 알아보기</button><button data-action="about">웹판 정보와 원본 출처</button><button class="danger" data-action="reset-prompt">새 모험 시작하기</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p class="subtle" style="margin-top:15px">다른 기기에서는 저장 파일을 불러와 이어갈 수 있어요. 일반 모험은 새로고침하면 도전이 취소됩니다. 훈련은 현재 전투의 처음부터 이어집니다.</p></section><div class="settings-version">한국어 웹판 · 판번호 0.4.0</div>`;}
+function renderSettings(){view.innerHTML=`<div class="screen-top"><h2>소환사의 설정</h2><p>나에게 맞는 속도로 모험을 이어가세요.</p></div><section class="settings-group"><h3>소리와 전투</h3><div class="setting-row"><span>배경 음악 · 효과음</span><button data-action="sound">${save.sound?'켜짐':'꺼짐'}</button></div><div class="setting-row"><label for="volume">소리 크기</label><input id="volume" type="range" min="0" max="1" step="0.05" value="${save.volume}"></div><div class="setting-row"><span>기본 전투 속도</span><button data-action="speed">${save.speed}배속</button></div></section><section class="settings-group"><h3>모험 기록</h3><div class="setting-links"><button data-action="export-save">↓ 저장 파일 내려받기</button><button data-action="import-prompt">↑ 저장 파일 불러오기</button><button data-action="guide">티리스의 전투 훈련</button><button data-action="help">조작 방법 알아보기</button><button data-action="about">웹판 정보와 원본 출처</button><button class="danger" data-action="reset-prompt">새 모험 시작하기</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p class="subtle" style="margin-top:15px">다른 기기에서는 저장 파일을 불러와 이어갈 수 있어요. 일반 모험은 새로고침하면 도전이 취소됩니다. 훈련은 현재 전투의 처음부터 이어집니다.</p></section><div class="settings-version">한국어 웹판 · 판번호 0.5.0</div>`;}
 function about(){openModal('이 웹판에 대하여',`<div class="modal-body"><p>업로드된 브레이브 프론티어 게임 파일의 캐릭터 이미지, 모션, 배경, 음악을 이용한 한국어 웹 재구현입니다.</p><div class="skill-box"><strong>원본에서 가져온 것</strong><p>캐릭터 그래픽과 프레임 애니메이션, 배경과 사운드. 유닛 이름·기초 능력치·필살기 설명은 공개된 한국어판 추출 자료와 대조했습니다.</p></div><div class="skill-box"><strong>이 웹판의 규칙</strong><p>일반 공격의 기본 피해·속성·치명타·스파크와 결정 배분은 원본 코드를 대조했습니다. 탐험 경로, 적 배치, 성장 곡선, 보상과 소환 확률은 웹판 규칙입니다. 훈련의 적 능력치는 보존된 2014년 글로벌판 기록을 사용하며, 현재 원본 앱과 같은 버전인지는 확인되지 않았습니다. 원작의 전체 콘텐츠와 온라인 서버는 포함되어 있지 않습니다.</p></div><p class="disclosure">원작 그래픽·음악: 알림·구미<br>한국어 데이터: 블루아크의 공개 추출 자료<br>원본 분석과 변경 내역은 저장소 문서에서 확인할 수 있어요.</p><button class="gold-button" data-action="close-modal">확인</button></div>`);}
 function help(){openModal('모험의 길잡이',`<div class="modal-body"><div class="help-steps"><p><b>공격</b><br>적을 눌러 목표를 정하고, 동료의 칸을 누르세요. 한 차례에 동료마다 한 번씩 행동할 수 있어요.</p><p><b>필살기와 방어</b><br>동료 칸을 길게 누른 뒤 오른쪽 위로 밀면 필살기, 아래로 밀면 방어합니다. 아래 행동 버튼으로도 선택할 수 있어요. 필살기에는 결정이 필요합니다.</p><p><b>함께 공격하기</b><br>서로 다른 동료의 타격이 같은 적에게 겹치면 스파크로 피해가 늘어납니다. 일제 공격은 모든 동료가 차례로 공격해요.</p><p><b>속성 상성</b><br>불 → 숲 → 번개 → 물 → 불 순서로 유리합니다. 빛과 어둠은 서로에게 강해요.</p><p><b>회복과 자동 전투</b><br>도전마다 회복약을 세 번 쓸 수 있어요. 자동 전투에서는 준비된 필살기도 사용합니다.</p><p><b>성장과 편성</b><br>모험과 소환으로 동료를 모으세요. 유닛 상세에서 강화할 수 있고, 부대의 첫 동료가 리더가 됩니다.</p></div><button class="gold-button" data-action="close-modal">알겠어요</button></div>`);}
 function guide(){navigate('tutorials');}
@@ -122,7 +148,7 @@ function resumeJourney(){
  void audio.musicFor(step.background==='grass'?'bf010_map_grass.mp3':'bf009_village.mp3');
 }
 function journeyAction(expectedStep,action){
- advanceJourney(save,expectedStep,action,catalog);persist();resumeJourney();
+ const review=!!journeyReviewOriginal,next=advanceJourney(save,expectedStep,action,catalog);persist();resumeJourney();if(next.kind==='complete'&&!review)toast('튜토리얼 완료! 보석 3개와 젤 100,000을 받았어요.');
 }
 function reviewJourney(){
  if(journeyReviewOriginal)return;
@@ -171,7 +197,7 @@ function startTutorial(chapter,resume=true,linked=false){
  stopBattle();journeyPlaying=linked;const progress=save.tutorial;
  if(chapter===2&&!progress.completed.includes(1)){toast('전투의 기초부터 배워 봐요.');navigate('tutorials');return;}
  const wave=resume&&progress.chapter===chapter&&!progress.completed.includes(chapter)?progress.wave:0;
- tutorial=new TutorialSession(save,catalog,chapter,wave);battle=tutorial.battle;target=tutorial.target;
+ tutorial=new TutorialSession(save,catalog,chapter,wave,{durationFor:id=>sprites.duration(id,'atk')});battle=tutorial.battle;target=tutorial.target;
  Object.assign(progress,{chapter,wave,active:true});persist();screen='battle';battleMode='attack';logs=[];closeModal();render();
  void audio.musicFor('bf010_map_grass.mp3');window.scrollTo({top:0,behavior:'instant'});
 }
@@ -184,10 +210,9 @@ function recordTutorial(){
 }
 function tutorialResult(result){
  if(!tutorial||!result.accepted)return;
- target=tutorial.target;battle=tutorial.battle;locked=tutorial.waiting;
- if(result.events.length){effectsUntil=performance.now();animateEvents(result.events);}
+ target=tutorial.target;battle=tutorial.battle;locked=tutorial.inputBlocked;
+ if(result.events.length){effectsUntil=tutorial.time;animateEvents(result.events);}
  recordTutorial();renderBattle();
- if(tutorial.waiting){clearTimeout(battleTimer);battleTimer=later(()=>{if(tutorial)tutorialResult(tutorial.settle());},Math.max(550,effectsUntil-performance.now()+150));}
 }
 function tutorialAction(type,index){
  if(!tutorial||modal.open)return;
@@ -204,7 +229,7 @@ function focusSelector(focus){
 }
 function placeCommand(index){
  const section=$('.battle-screen'),button=section?.querySelector(`[data-action="battle-unit"][data-index="${index}"]`);if(!button)return;
- const p=battle.party[index],r=button.getBoundingClientRect(),root=section.getBoundingClientRect(),guard=!tutorial||tutorial.step.kind==='free',charged=p.bbCost&&p.bb>=p.bbCost;
+ const p=battle.party[index],r=button.getBoundingClientRect(),root=section.getBoundingClientRect(),guard=!tutorial||tutorial.freeInput,charged=p.bbCost&&p.bb>=p.bbCost;
  const menu=document.createElement('div');menu.className='brave-command native-sam-command '+(charged?'has-burst':'guard-only');menu.style.left=`${r.left-root.left+r.width*.5+(index<3?16*root.width/640:0)}px`;menu.style.top=`${r.top-root.top+r.height*.5}px`;
  menu.innerHTML=`<canvas class="command-motion ${charged?'bb-motion':'guard-motion'}" data-sam="${charged?'BraveBurstSlideMotion':'GuardSlideMotion'}" width="640" height="640" aria-hidden="true"></canvas><canvas class="command-motion ${charged?'bb-motion':'guard-motion'}" data-sam="${charged?'BraveBurstSlideMotionAdd':'GuardSlideMotionAdd'}" data-additive="true" width="640" height="640" aria-hidden="true"></canvas>${charged?`<button class="command-burst" data-action="command-burst" data-index="${index}" aria-label="필살기 ${esc(catalog[p.id].skill.name)}"></button>`:''}${guard?`<button class="command-guard" data-action="command-guard" data-index="${index}" aria-label="방어"></button>`:''}`;section.appendChild(menu);
 
@@ -214,7 +239,7 @@ function renderTutorialOverlay(){
  const s=tutorial.step,text=esc(tutorial.text()).replaceAll('\n','<br>');
  for(const btn of section.querySelectorAll('[data-action="battle-unit"]')){
   const i=Number(btn.dataset.index),input=tutorial.selectedItem?'heal':s.input==='hold'?'hold':s.input==='burst'?'burst':'attack';
-  btn.disabled=locked||!tutorial.allowed(input,i)||(s.kind==='free'&&!tutorial.selectedItem&&(battle.party[i].acted||battle.party[i].hp<=0));
+  btn.disabled=locked||!tutorial.allowed(input,i)||(tutorial.freeInput&&!tutorial.selectedItem&&(battle.party[i].acted||battle.party[i].hp<=0));
  }
  for(const btn of section.querySelectorAll('[data-action="target"]'))btn.disabled=locked||!tutorial.allowed('target',Number(btn.dataset.index));
  const potion=section.querySelector('.potion-slot');potion.disabled=locked||!tutorial.allowed('item');potion.classList.toggle('selected',tutorial.selectedItem);
@@ -225,11 +250,12 @@ function renderTutorialOverlay(){
  if(s.kind==='complete'){
   overlay.innerHTML=`<div class="tutorial-complete"><img src="assets/navi_chara1_1.png" alt="기뻐하는 티리스"><h2>훈련 완료</h2><p>${text}</p>${journeyPlaying?'<button class="gold-button" data-action="journey-resume">안내 계속</button><button class="text-btn" data-action="tutorial-exit">나중에 계속하기</button>':`${tutorial.quest.id===1?'<button class="gold-button" data-action="tutorial-start" data-chapter="2">속성과 필살기 배우기</button>':''}<button class="gold-button secondary" data-action="tutorial-exit">훈련 목록</button><button class="text-btn" data-action="navigate" data-screen="home">마을로 돌아가기</button>`}</div>`;return;
  }
+ if(tutorial.inputBlocked)return;
  if(s.kind==='story'){
   overlay.innerHTML=s.wake?`<button class="tutorial-story tutorial-wake" data-action="tutorial-next"><span class="wake-copy">${text}</span><span class="wake-next">화면을 눌러 계속</span></button>`:`<div class="tutorial-story"><img class="tutorial-person" src="assets/navi_chara1_${s.face}.png" alt="티리스"><button class="story-dialog" data-action="tutorial-next"><span class="story-speaker">${esc(s.speaker||'티리스')}</span>${text}<span class="story-next">▼ 계속</span></button></div>`;
   overlay.insertAdjacentHTML('beforeend','<button class="tutorial-exit" data-action="tutorial-pause">중단</button>');return;
  }
- if(s.kind==='free'){
+ if(tutorial.freeInput){
   overlay.innerHTML=`<div class="tutorial-free-tag">${text}</div>`;
   if(battle.phase==='defeat')overlay.innerHTML=`<div class="tutorial-complete"><h2>다시 도전하자!</h2><p>현재 전투부터 다시 배울 수 있어.</p><button class="gold-button" data-action="tutorial-retry">다시 도전</button><button class="text-btn" data-action="tutorial-exit">훈련 목록</button></div>`;
  }else{
@@ -253,10 +279,11 @@ function renderBattle(){
 }
 function announce(text){announcement=text;const el=$('#announcement');if(el){el.textContent=text;el.classList.remove('show');void el.offsetWidth;el.classList.add('show');}}
 function log(text){logs.push(text);if(logs.length>30)logs.shift();}
-function pushParticle(text,x,y,color='#ffefbd',delay=0,size=25){particles.push({text,x,y,color,size,start:performance.now()+delay,life:950,bitmap:/^\+?\d+$/.test(text)?(text[0]==='+'?'recover':'damage'):null});}
+function pushParticle(text,x,y,color='#ffefbd',delay=0,size=25){particles.push({text,x,y,color,size,start:(tutorial?.time??performance.now())+delay,life:950,bitmap:/^\+?\d+$/.test(text)?(text[0]==='+'?'recover':'damage'):null});}
 function animateEvents(events){
- const now=performance.now(),speed=save.speed;
+ const now=tutorial?.time??performance.now(),speed=tutorial?1:save.speed;
  for(const event of events){
+  if(event.type==='wave-start'){animations.clear();particles.length=0;pickups.length=0;hitFlashes.clear();defeats.clear();continue;}
   if(event.type==='action-start'){
     const actor=battle.party[event.actor],pos=enemyPositions[event.target];
     animations.set('p'+event.actor,{start:event.start,duration:event.duration,travel:event.travel,speed:event.speed,action:'atk',target:pos,mode:event.mode,element:actor.element});
@@ -291,11 +318,10 @@ function animateEvents(events){
   } else if(event.type==='guard'){const pos=allyPositions[event.actor];pushParticle('방어',pos[0],pos[1]-60,'#98ddf6',0,18);effectsUntil=Math.max(effectsUntil,now+400/speed);log(`${catalog[battle.party[event.actor].id].name}가 방어합니다.`);}
   else if(event.type==='heal'){const pos=allyPositions[event.actor];pushParticle('+'+event.value,pos[0],pos[1]-50,'#a2f0ac',500/speed,19);}
   else if(event.type==='crystal'){
-    const to=allyPositions[event.actor],from=enemyPositions[event.target??0];pickups.push({kind:event.kind,from:[from[0],from[1]-35],to:[to[0],to[1]-25],start:now,life:800/speed,value:event.value});
-    if(tutorial&&event.kind==='heart'&&event.value)pushParticle('+'+event.value,to[0],to[1]-50,'#a2f0ac',800/speed,19);
+    const to=allyPositions[event.actor],from=enemyPositions[event.target??0];pickups.push({kind:event.kind,from:[from[0],from[1]-35],to:[to[0],to[1]-25],start:event.moveAt??now,life:event.travel??800/speed,ease:event.ease??1,value:event.value,ordinal:event.ordinal??0});
     audio.effect(event.kind==='heart'?'bf228_se_heart_drop.mp3':'bf227_se_crystal_drop.mp3');effectsUntil=Math.max(effectsUntil,now+850/speed);
   }
-  else if(event.type==='crystal-collect'&&!tutorial&&event.kind==='heart'&&event.value){const to=allyPositions[event.actor];pushParticle('+'+event.value,to[0],to[1]-50,'#a2f0ac',0,19);}
+  else if(event.type==='crystal-collect'&&event.kind==='heart'&&event.value){const to=allyPositions[event.actor];pushParticle('+'+event.value,to[0],to[1]-50,'#a2f0ac',0,19);}
   else if(event.type==='chest'){audio.effect('bf244_se_treasure_open.mp3');pushParticle('열었다!',100,240,'#ffeda2',50,20);effectsUntil=Math.max(effectsUntil,now+650/speed);}
   else if(event.type==='buff'){const p=battle.party[event.actor];announce(catalog[p.id].skill.name);for(const pos of allyPositions.slice(0,battle.party.length))pushParticle(event.kind==='attack-buff'?'공격 상승':'방어 상승',pos[0],pos[1]-50,'#c2edb0',0,13);effectsUntil=Math.max(effectsUntil,now+900/speed);audio.effect('bf233_se_skill_action.mp3');log(catalog[p.id].skill.name+' 발동');}
  }
@@ -326,7 +352,7 @@ function renderResult(){
 function drawBattle(now){
  const canvas=$('#battle-canvas');if(!battle||!canvas)return;const ctx=canvas.getContext('2d');ctx.clearRect(0,0,640,440);const bg=images.get('battle');if(bg)ctx.drawImage(bg,0,0,640,440);
  // Tutorial PARAM 42 centers the 640px SAM stage at (160,110) in 320px UI space.
- const backgroundTime=now-battleBackgroundStarted;
+ const backgroundTime=now-battleBackgroundStarted;now=tutorial?.time??now;
  samPlayer.draw(ctx,'BattleDungeon10100CloudBack',{time:backgroundTime,x:0,y:-100});
  samPlayer.draw(ctx,'BattleDungeon10100WindAddBack',{time:backgroundTime,x:0,y:-100,additive:true});
  const entities=[...battle.party.map((p,i)=>({p,i,side:'p',pos:allyPositions[i]})),...battle.enemies.map((p,i)=>({p,i,side:'e',pos:enemyPositions[i]}))].sort((a,b)=>a.pos[1]-b.pos[1]);
@@ -344,11 +370,12 @@ function drawBattle(now){
   if(active&&a.mode==='burst'){const t=(now-a.start)/a.duration;ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=Math.max(0,Math.sin(t*Math.PI))*.7;ctx.strokeStyle=ELEMENTS[a.element].color;ctx.lineWidth=6;ctx.beginPath();ctx.arc(a.target[0],a.target[1]-45,25+80*t,0,Math.PI*2);ctx.stroke();for(let j=0;j<7;j++){const angle=t*5+j*Math.PI*2/7;ctx.beginPath();ctx.moveTo(a.target[0]+Math.cos(angle)*30,a.target[1]-45+Math.sin(angle)*30);ctx.lineTo(a.target[0]+Math.cos(angle)*120,a.target[1]-45+Math.sin(angle)*120);ctx.stroke();}ctx.restore();}
  }
  samPlayer.draw(ctx,'BattleDungeon10100SunShineAddFront',{time:backgroundTime,x:0,y:-100,additive:true});
- for(let i=pickups.length-1;i>=0;i--){const p=pickups[i],t=(now-p.start)/p.life;if(t>=1){pickups.splice(i,1);continue;}const img=images.get(p.kind==='heart'?'heart-crystal':'battle-crystal');if(!img)continue;const w=32,h=p.kind==='heart'?32:64,f=t<.7?0:t<.85?1:2,x=p.from[0]+(p.to[0]-p.from[0])*t,y=p.from[1]+(p.to[1]-p.from[1])*t-Math.sin(t*Math.PI)*95;ctx.save();ctx.globalAlpha=t>.85?(1-t)/.15:1;ctx.drawImage(img,f*w,0,w,h,x-12,y-h*.375,24,h*.75);ctx.restore();}
+ for(let i=pickups.length-1;i>=0;i--){const p=pickups[i],t=Math.max(0,(now-p.start)/p.life);if(t>=1){pickups.splice(i,1);continue;}const img=images.get(p.kind==='heart'?'heart-crystal':'battle-crystal');if(!img)continue;const w=32,h=p.kind==='heart'?32:64,f=t<.7?0:t<.85?1:2,eased=Math.pow(t,p.ease),spread=Math.sin(p.ordinal*2.4)*35*(1-eased),x=p.from[0]+(p.to[0]-p.from[0])*eased+spread,y=p.from[1]+(p.to[1]-p.from[1])*eased-Math.sin(t*Math.PI)*(p.ease===1.2?0:95)-Math.cos(p.ordinal*2.4)*20*(1-eased);ctx.save();ctx.globalAlpha=t>.85?(1-t)/.15:1;ctx.drawImage(img,f*w,0,w,h,x-12,y-h*.375,24,h*.75);ctx.restore();}
  for(let i=particles.length-1;i>=0;i--){const p=particles[i],dt=now-p.start;if(dt<0)continue;if(dt>p.life){particles.splice(i,1);continue;}ctx.save();ctx.globalAlpha=Math.min(1,(p.life-dt)/250);ctx.textAlign='center';ctx.font=`700 ${p.size}px "Malgun Gothic",sans-serif`;ctx.strokeStyle='#1b1b20';ctx.lineWidth=3;if(p.bitmap&&images.has(p.bitmap)){const digits=p.text.replace('+',''),scale=p.size/23,w=16*scale,img=images.get(p.bitmap),left=p.x-digits.length*w/2;for(let j=0;j<digits.length;j++)ctx.drawImage(img,Number(digits[j])*16,0,16,23,left+j*w,p.y-dt*.055-23*scale,w,23*scale);}else{ctx.strokeText(p.text,p.x,p.y-dt*.055);ctx.fillStyle=p.color;ctx.fillText(p.text,p.x,p.y-dt*.055);}ctx.restore();}
 }
 function animationLoop(now){
- if(now-lastFrame>15){lastFrame=now;nativeUI?.paint();
+ if(now-lastFrame>15){lastFrame=now;nativeUI?.paint();updateIntro(now);
+  if(screen==='battle'&&tutorial){const result=tutorial.tick(now,{paused:modal.open||document.hidden});if(result.changed||result.events.length)tutorialResult(result);}
   for(const canvas of document.querySelectorAll('canvas[data-home-art]:not([data-painted])')){
    const id=canvas.dataset.homeArt,img=images.get('full-'+id);if(!img)continue;
    const ctx=canvas.getContext('2d');ctx.clearRect(0,0,128,350);ctx.drawImage(img,...catalog[id].homeCrop,0,0,128,350);canvas.dataset.painted='true';
@@ -362,7 +389,7 @@ function animationLoop(now){
   }
   if(screen==='battle')drawBattle(now);
   if(screen==='summon-animation')drawSummon(now);
-  for(const canvas of document.querySelectorAll('canvas[data-sam]')){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);const name=canvas.dataset.sam;if(!canvas.dataset.started)canvas.dataset.started=now;const elapsed=now-Number(canvas.dataset.started),intro=samPlayer.duration(name,'start');samPlayer?.draw(ctx,name,{time:elapsed<intro?elapsed:elapsed-intro,label:elapsed<intro?'start':'loop',loop:elapsed>=intro,x:name==='Touch'||name==='Hold'?-240:0,y:name==='Touch'||name==='Hold'?-210:0,koreanCommands:true,additive:canvas.dataset.additive==='true'});}
+  for(const canvas of document.querySelectorAll('canvas[data-sam]')){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);const name=canvas.dataset.sam;if(!canvas.dataset.started)canvas.dataset.started=now;const elapsed=now-Number(canvas.dataset.started),intro=samPlayer.duration(name,'start');samPlayer?.draw(ctx,name,{time:elapsed<intro?elapsed:elapsed-intro,label:elapsed<intro?'start':'loop',loop:elapsed>=intro,x:name.startsWith('Arrow')?-256:name==='Touch'||name==='Hold'?-240:0,y:name.startsWith('Arrow')?-256:name==='Touch'||name==='Hold'?-210:0,koreanCommands:true,additive:canvas.dataset.additive==='true'});}
   for(const canvas of document.querySelectorAll('canvas[data-unit]')){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);const previewTime=canvas.dataset.motion==='atk'?now-Number(canvas.dataset.started):now,action=canvas.dataset.motion==='atk'&&previewTime<sprites.duration(canvas.dataset.unit,'atk')?'atk':'idle';sprites?.draw(ctx,canvas.dataset.unit,{x:canvas.width/2,y:canvas.height*.82,scale:2.6,action,time:action==='atk'?previewTime:now,loop:action==='idle'});}
   if(auto&&battle&&!locked&&!modal.open&&battle.phase==='player'&&now-lastAttackAt>650/save.speed){const index=battle.party.findIndex(p=>p.hp>0&&!p.acted);if(index>=0){const p=battle.party[index];battleAction(index,p.bbCost&&p.bb>=p.bbCost?'burst':'attack');}}
  }
@@ -388,10 +415,14 @@ document.addEventListener('click',event=>{
    if(a!=='summon-open')return;
   }
   if(a==='navigate')navigate(button.dataset.screen);
-  else if(a==='begin'){prologueIndex=0;screen='prologue';render();}
-  else if(a==='prologue-next'){if(prologueIndex===2)prologueName=$('#prologue-name').value.trim().slice(0,12)||'소환사';if(++prologueIndex===prologueLines.length)screen='starter';render();}
+  else if(a==='begin')beginIntro();
+  else if(a==='prologue-next'){intro.tap();screen=intro.stage==='hero'?'starter':'prologue';render();}
+  else if(a==='name-random'){$('#prologue-name').value=['빛의소환사','푸른여명','별빛여행자','새벽의검'][Math.floor(Math.random()*4)];}
+  else if(a==='hero-page')intro.carousel.arrow(Number(button.dataset.direction));
+  else if(a==='hero-confirm'){if(!intro.carousel.moving&&!intro.carousel.dragging&&intro.chooseHero(intro.carousel.page)){screen='prologue';render();}}
+  else if(a==='intro-skip'||a==='intro-skip-no'){intro.skipWarning=a==='intro-skip';render();}
+  else if(a==='intro-play'||a==='intro-skip-yes'){intro.chooseTutorial(a==='intro-skip-yes');render();}
   else if(a==='continue'){if(save.journey?.active)resumeJourney();else if(save.tutorial.active)startTutorial(save.tutorial.chapter);else navigate('home');}
-  else if(a==='starter'){const name=$('#summoner-name')?.value;selectedStarter=id;renderStarter();$('#summoner-name').value=name||'소환사';}
   else if(a==='close-modal')closeModal();
   else if(a==='help')help();
   else if(a==='about')about();
@@ -425,7 +456,7 @@ document.addEventListener('click',event=>{
   else if(a==='export-save')exportSave();
   else if(a==='import-prompt'){$('#save-file').click();}
   else if(a==='reset-prompt'){openModal('새 모험을 시작할까요?',`<div class="modal-body"><p>현재 모험을 이어갈 수 있도록 먼저 저장 파일을 내려받아 주세요.<br>새 모험을 시작하면 이 브라우저의 진행 상황이 바뀝니다.</p><button class="gold-button secondary" data-action="export-save">현재 모험 저장 파일 내려받기</button><button class="gold-button" data-action="reset-confirm">새 모험 시작</button></div>`);}
-  else if(a==='reset-confirm'){closeModal();stopBattle();save=null;prologueIndex=0;screen='prologue';audio.stop();render();}
+  else if(a==='reset-confirm'){closeModal();beginIntro();}
   else if(a==='target'){if(tutorial)tutorialAction('target',Number(button.dataset.index));else{target=Number(button.dataset.index);renderBattle();}}
   else if(a==='mode'){battleMode=button.dataset.mode;closeModal();renderBattle();}
   else if(a==='attack-all'){closeModal();attackAll();}
@@ -457,16 +488,21 @@ document.addEventListener('pointerup',event=>{
 document.addEventListener('pointercancel',()=>{clearTimeout(holdTimer);gesture=null;commandIndex=null;if(tutorial)tutorial.commandOpen=false;if(screen==='battle')renderBattle();});
 document.addEventListener('contextmenu',event=>{if(event.target.closest('[data-action="battle-unit"]'))event.preventDefault();});
 document.addEventListener('keydown',event=>{if(screen!=='battle'||modal.open)return;if(event.key==='Escape'){commandIndex=null;if(tutorial)tutorial.commandOpen=false;renderBattle();return;}const focused=event.target.closest('[data-action="battle-unit"]');if(event.key===' '&&focused&&!focused.disabled){event.preventDefault();const i=Number(focused.dataset.index);if(tutorial){if(tutorial.step.input==='burst'&&tutorial.step.index===i){tutorial.commandOpen=true;renderBattle();}else tutorialAction('hold',i);}else{commandIndex=i;renderBattle();}return;}if(/^[1-6]$/.test(event.key)){event.preventDefault();battleAction(Number(event.key)-1);}else if(tutorial&&event.key==='Enter'&&['story','say'].includes(tutorial.step.kind)){event.preventDefault();tutorialAction('next');}else if(tutorial&&event.key===' '&&tutorial.step.input==='hold'){event.preventDefault();tutorialAction('hold',2);}else if(tutorial&&event.key==='ArrowUp'&&tutorial.step.input==='burst'){event.preventDefault();tutorialAction('burst',2);}});
-document.addEventListener('submit',event=>{if(event.target.id!=='starter-form')return;event.preventDefault();save=newSave(selectedStarter,catalog,$('#summoner-name').value);persist();resumeJourney();});
+document.addEventListener('submit',event=>{if(event.target.id!=='intro-name-form')return;event.preventDefault();if(!intro.submitName($('#prologue-name').value)){toast('소환사 이름을 입력해 주세요.');return;}render();});
+document.addEventListener('pointerdown',event=>{if(screen!=='starter'||intro.locked||!event.target.closest('.hero-pages'))return;heroPointer={id:event.pointerId,x:event.clientX,width:$('.hero-pages').clientWidth};intro.carousel.startDrag();event.target.setPointerCapture(event.pointerId);});
+document.addEventListener('pointermove',event=>{if(!heroPointer||heroPointer.id!==event.pointerId)return;intro.carousel.drag((event.clientX-heroPointer.x)/heroPointer.width*320);});
+for(const kind of ['pointerup','pointercancel'])document.addEventListener(kind,event=>{if(heroPointer?.id!==event.pointerId)return;intro.carousel.endDrag();heroPointer=null;});
+document.addEventListener('compositionend',event=>{if(event.target.id==='prologue-name')event.target.value=cleanName(event.target.value);});
+document.addEventListener('input',event=>{if(event.target.id==='prologue-name'&&!event.isComposing)event.target.value=Array.from(event.target.value).slice(0,8).join('');});
 document.addEventListener('input',event=>{if(event.target.id==='volume'){save.volume=Number(event.target.value);persist();if(audio.music)audio.music.volume=save.volume*.45;}});
 document.addEventListener('change',async event=>{if(event.target.id!=='save-file')return;const file=event.target.files[0];event.target.value='';if(!file)return;try{if(file.size>1000000)throw Error('저장 파일이 너무 큽니다.');const raw=validateSave(JSON.parse(await file.text()),catalog);openModal('모험 기록을 불러올까요?',`<div class="modal-body"><p>${esc(raw.name)} · 동료 ${Object.keys(raw.units).length}명 · 완료 ${raw.battles}회<br>현재 브라우저의 기록을 이 파일의 기록으로 바꿉니다.</p><button class="gold-button secondary" data-action="export-save">현재 기록 먼저 내려받기</button><button class="gold-button" data-action="confirm-import">불러오기</button></div>`);modal.dataset.pendingSave=JSON.stringify(raw);}catch{toast('올바른 저장 파일이 아니에요. 기존 기록은 유지됩니다.');}});
 modal.addEventListener('click',event=>{if(event.target===modal){const r=modal.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeModal();}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)audio.music?.pause();else if(save?.sound&&audio.music)void audio.music.play().catch(()=>{});});
 async function boot(){
  try{
-  const [unitsResponse,animationResponse,uiResponse,samResponse]=await Promise.all([fetch('units.json'),fetch('animations.json'),fetch('ui.json'),fetch('sam.json')]);if(!unitsResponse.ok||!animationResponse.ok||!uiResponse.ok||!samResponse.ok)throw Error('게임 데이터를 불러오지 못했어요.');
-  unitData=await unitsResponse.json();catalog=makeCatalog(unitData);sprites=new SpritePlayer(await animationResponse.json());nativeUI=new NativeUI(await uiResponse.json());samPlayer=new SamPlayer(await samResponse.json());await Promise.all([nativeUI.load(),samPlayer.load()]);
-  await Promise.all([...unitData.units.map(u=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images.set('full-'+u.id,img);resolve();};img.onerror=()=>reject(Error('유닛 일러스트를 불러오지 못했어요.'));img.src=unitImage(u.id,'full');})),...Object.entries({damage:'battle_damage_font.png',recover:'battle_recover_font.png','heart-crystal':'drop_heart_crystal.png','battle-crystal':'drop_battle_crystal.png'}).map(([key,file])=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(key,image);resolve();};image.onerror=reject;image.src='assets/'+file;})),sprites.load(Object.keys(catalog)),new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images.set('battle',img);resolve();};img.onerror=()=>reject(Error('전투 배경을 불러오지 못했어요.'));img.src='assets/dungeon_battle_10100.jpg';})]);
+  const [unitsResponse,animationResponse,uiResponse,samResponse,introResponse]=await Promise.all([fetch('units.json'),fetch('animations.json'),fetch('ui.json'),fetch('sam.json'),fetch('intro-particle.json')]);if(!unitsResponse.ok||!animationResponse.ok||!uiResponse.ok||!samResponse.ok||!introResponse.ok)throw Error('게임 데이터를 불러오지 못했어요.');
+  introParameters=await introResponse.json();unitData=await unitsResponse.json();catalog=makeCatalog(unitData);sprites=new SpritePlayer(await animationResponse.json());nativeUI=new NativeUI(await uiResponse.json());samPlayer=new SamPlayer(await samResponse.json());await Promise.all([nativeUI.load(),samPlayer.load()]);
+  await Promise.all([...unitData.units.map(u=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images.set('full-'+u.id,img);resolve();};img.onerror=()=>reject(Error('유닛 일러스트를 불러오지 못했어요.'));img.src=unitImage(u.id,'full');})),...Object.entries({'intro-particle':'page_1200_3.png',damage:'battle_damage_font.png',recover:'battle_recover_font.png','heart-crystal':'drop_heart_crystal.png','battle-crystal':'drop_battle_crystal.png'}).map(([key,file])=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(key,image);resolve();};image.onerror=reject;image.src='assets/'+file;})),sprites.load(Object.keys(catalog)),new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images.set('battle',img);resolve();};img.onerror=()=>reject(Error('전투 배경을 불러오지 못했어요.'));img.src='assets/dungeon_battle_10100.jpg';})]);
   let stored=null;try{stored=localStorage.getItem(SAVE_KEY);}catch{toast('자동 저장을 사용할 수 없어요. 설정에서 저장 파일을 내려받아 주세요.');}if(stored){try{save=validateSave(JSON.parse(stored),catalog);}catch{toast('저장 기록을 읽지 못했어요. 새 모험을 시작하거나 저장 파일을 불러와 주세요.');}}
   render();requestAnimationFrame(animationLoop);
  }catch(error){view.innerHTML=`<div class="loading"><p>${esc(error.message)}</p><button class="gold-button" onclick="location.reload()">다시 불러오기</button></div>`;}

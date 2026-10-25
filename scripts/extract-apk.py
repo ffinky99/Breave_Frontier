@@ -52,6 +52,7 @@ EXTRAS = [
     'mytown_base.jpg', 'elgaia.png', 'thum_navi_chara2_0.png',
     'navi_chara2_0.png', 'navi_chara2_1.png', 'navi_chara2_2.png',
     'navi_chara2_3.png', 'navi_chara2_5.png', 'navi_chara2_6.png',
+    'handle_name_frame.png', 'image_tutorial.png',
 ]
 
 def rows(data):
@@ -69,13 +70,17 @@ def main():
         ids = sorted(re.match(r'assets/unit_ills_battle_(\d+)\.png$', n).group(1)
                      for n in names if re.fullmatch(r'assets/unit_ills_battle_\d+\.png', n))
         selected = set(EXTRAS)
-        sam_names = ['Touch','Hold','BraveBurstSlideMotion','GuardSlideMotion','BraveBurstSlideMotionAdd','GuardSlideMotionAdd','GachaGateClose3','GachaGateOpen3','GachaGateOpenAdd','GachaGetEndCircle','GachaEndCircleGet',
+        sam_names = ['ArrowLeft','ArrowRight','Touch','Hold','BraveBurstSlideMotion','GuardSlideMotion','BraveBurstSlideMotionAdd','GuardSlideMotionAdd','GachaGateClose3','GachaGateOpen3','GachaGateOpenAdd','GachaGetEndCircle','GachaEndCircleGet',
                      'BattleDungeon10100CloudBack','BattleDungeon10100WindAddBack','BattleDungeon10100SunShineAddFront']
         sam = {name: decode_sam(z.read('assets/' + name + '.sam')) for name in sam_names}
         for animation in sam.values():
             selected.update(image['file'] for image in animation['images'])
         (ROOT/'dist/sam.json').write_text(json.dumps(sam, separators=(',', ':')))
         (ROOT/'docs/sam-inventory.json').write_text(json.dumps({name: {'fps': data['fps'], 'frames': len(data['frames']), 'labels': data['labels'], 'sha256': hashlib.sha256(z.read('assets/'+name+'.sam')).hexdigest()} for name,data in sam.items()}, indent=2))
+        particle_raw = z.read('assets/eff_page_1200_3.plist')
+        particle = {k: v for k, v in plistlib.loads(particle_raw).items() if k != 'textureImageData'}
+        (ROOT/'dist/intro-particle.json').write_text(json.dumps(particle, indent=2))
+        (ROOT/'docs/sources/intro-particle-source.json').write_text(json.dumps({'source':'assets/eff_page_1200_3.plist','sha256':hashlib.sha256(particle_raw).hexdigest(),'parameters':particle}, indent=2))
         animations = {}
         for uid in ids:
             for prefix in ['unit_anime_', 'unit_ills_battle_', 'unit_ills_thum_', 'unit_ills_full_']:

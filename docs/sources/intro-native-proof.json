@@ -1,0 +1,1183 @@
+{
+  "source": {
+    "apk": "brave-frontier-2-19-6-0.apk",
+    "apkSha256": "346d29478b3a2a8246c79267abf7c5d9e1e785b10d63677dbdf93fb14d139bf9",
+    "arm64Elf": "libgame.so",
+    "arm64ElfSha256": "076c8ed12e84d122938255c1530a4d4b1853d876b5928dd0c2389538fc4cad95",
+    "scope": "Static source verification for this 2.19.6.0 APK. No running-device pixel capture; localized Korean layout remains adaptation."
+  },
+  "coordinateSystem": {
+    "logicalCanvas": [
+      320,
+      480
+    ],
+    "imageDensity": 2,
+    "note": "GameSprite/GameUtils coordinates as supplied to native methods. ParticleAnime adapts top-down game y to Cocos y internally."
+  },
+  "texts": {
+    "INPUT_USER_NAME": [
+      {
+        "source": "assets/text.csv",
+        "line": 255,
+        "english": "Enter Username (Max 8 characters)",
+        "rowSha256": "25f01710ac71fbe46b0e30353238a433276e0db7e897e0803ba3ce2dd325f3ac"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 55,
+        "english": "Enter Username (Max 8 characters)",
+        "rowSha256": "2ef5dbbe13791038a4e1f956fe460f4766eb6c3acb64eec8b3905ca6704ee9a0"
+      }
+    ],
+    "EMPTY_USER_NAME": [
+      {
+        "source": "assets/text.csv",
+        "line": 256,
+        "english": "No Username",
+        "rowSha256": "c2391a8dad6ee1f9d1c9a9ddfb062dc87c84c331bdce12c16788c1b6fe80e6e6"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 1633,
+        "english": "No Username",
+        "rowSha256": "ba23e2131dc2612097695a0342a8e6c9384ffe3b629f73e8fd857c061c6d6eaa"
+      }
+    ],
+    "ELEM_DESC1": [
+      {
+        "source": "assets/text.csv",
+        "line": 257,
+        "english": "<center>Believers in Potential,<br>with a passionate<br>heart of <color=255:0:0>Fire</color></center>",
+        "rowSha256": "a1f13ef7161584e167aa75620750a90cdcd281c1ed27a70ab2d8b30965348216"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 57,
+        "english": "<center>Believers in Potential,<br>with a passionate<br>heart of <color=255:0:0>Fire</color></center>",
+        "rowSha256": "e2a38ed5aa8d65c1d9110d5c78f74a480b799ae003b627b0741cf4e1b196b8e2"
+      }
+    ],
+    "ELEM_DESC2": [
+      {
+        "source": "assets/text.csv",
+        "line": 258,
+        "english": "<center>Seekers of the Truth,<br>with a crystal clear<br>heart of <color=60:123:255>Water</color></center>",
+        "rowSha256": "2a73cf2bafec4d26f9c840a82a80f96a1421c78f934012a4ac404d66a5f12ef0"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 58,
+        "english": "<center>Seekers of the Truth,<br>with a crystal clear<br>heart of <color=60:123:255>Water</color></center>",
+        "rowSha256": "6293d518921349189b2a70b5c4d54c08ec55606ab23b43ec45f1d322914491ac"
+      }
+    ],
+    "ELEM_DESC3": [
+      {
+        "source": "assets/text.csv",
+        "line": 259,
+        "english": "<center>Bearers of Hope,<br>with a healing<br>heart of <color=146:208:80>Earth</color></center>",
+        "rowSha256": "4f08f28458bca02db7e41bf1bac8d8e04cd70d41feaff562eb0c60a80564525a"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 59,
+        "english": "<center>Bearers of Hope,<br>with a healing<br>heart of <color=146:208:80>Earth</color></center>",
+        "rowSha256": "c56ae86430fe25f8772fd42ca9183a5a6f955c6efa9f8ed7a349fbab88ed62f9"
+      }
+    ],
+    "ELEM_DESC4": [
+      {
+        "source": "assets/text.csv",
+        "line": 260,
+        "english": "<center>Warriors for Justice,<br>with a strikingly honest<br>heart of <color=255:255:0>Thunder</color></center>",
+        "rowSha256": "7267b8d977c87c2c92509ecf27a0d45e9f3e9679c4e5e35c3931fbed255c36af"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 60,
+        "english": "<center>Warriors for Justice,<br>with a strikingly honest<br>heart of <color=255:255:0>Thunder</color></center>",
+        "rowSha256": "4617327aca04fb48ecbcbfe15f74ac1862890e67e08ab66e98906a71e9939b06"
+      }
+    ],
+    "TUTORIAL1_1": [
+      {
+        "source": "assets/text.csv",
+        "line": 304,
+        "english": "<anchor=center><speed=10><br><wait=20><br>I am Lucius...<wait=20><br>The god of this Gate...",
+        "rowSha256": "9ffa981d3142da361def4be1133b3237a0c29660a1d787a3d938913e83e2c18c"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 52,
+        "english": "<anchor=center><speed=10><br><wait=20><br>I am Lucius...<wait=20><br>The god of this Gate...",
+        "rowSha256": "c5537fa531bf4bb60bff1d7856c22a470d9680e04841d0dc54a38b82eac366e6"
+      }
+    ],
+    "TUTORIAL1_2": [
+      {
+        "source": "assets/text.csv",
+        "line": 305,
+        "english": "<anchor=center><speed=10><br><wait=20><br>I have been waiting<wait=20><br>for the day of<wait=20><br>your arrival...<wait=20><br>",
+        "rowSha256": "145adfd90fa300dafea3d1a2fe9bbb679e9914e3277dac6a5332f9a7997cd39f"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 53,
+        "english": "<anchor=center><speed=10><br><wait=20><br>I have been waiting<wait=20><br>for the day of<wait=20><br>your arrival...<wait=20><br>",
+        "rowSha256": "49ade3fad8702111b01b11b95de89362c334daf8167e8804ec1540fb88b49d12"
+      }
+    ],
+    "TUTORIAL1_3": [
+      {
+        "source": "assets/text.csv",
+        "line": 306,
+        "english": "<anchor=center><speed=10><br><wait=20><br>Chosen One...<wait=20><br>What is your name?<wait=20><br>",
+        "rowSha256": "c72721f696b8977f7f57464f23772c2b71bbea8a208e491a99a9f08817b8d37f"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 54,
+        "english": "<anchor=center><speed=10><br><wait=20><br>Chosen One...<wait=20><br>What is your name?<wait=20><br>",
+        "rowSha256": "db24c62c8680897d494b83044e09afb8a6a6155eb7648aa06a5daff39b70edff"
+      }
+    ],
+    "TUTORIAL1_4": [
+      {
+        "source": "assets/text.csv",
+        "line": 307,
+        "english": "<anchor=center><speed=10><br><user_name>...<wait=20><br>Beyond this gate,<wait=20><br>a new source of power<wait=20><br>awaits you...<wait=20><br><br>",
+        "rowSha256": "162e5129a083a8866eecf1c33066b333e3b6d276638dfb8858229cd6fb9147eb"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 56,
+        "english": "<anchor=center><speed=10><br><user_name>...<wait=20><br>Beyond this gate,<wait=20><br>a new source of power<wait=20><br>awaits you...<wait=20><br><br>",
+        "rowSha256": "dcc6239e173099c781a621eaeb21f829c2609711a89d93ba9822e2bbbe442809"
+      }
+    ],
+    "TUTORIAL1_5": [
+      {
+        "source": "assets/text.csv",
+        "line": 308,
+        "english": "<anchor=center><speed=10><br>You must go<wait=20><br>make that power yours,<wait=20><br>and use it to bring peace<wait=20><br>to this world...<br>",
+        "rowSha256": "8ea99de4be7ad606f8a831c2f2cd9a484aef028ff34cc5d5e3f8b7d1776c44e8"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 61,
+        "english": "<anchor=center><speed=10><br>You must go<wait=20><br>make that power yours,<wait=20><br>and use it to bring peace<wait=20><br>to this world...<br>",
+        "rowSha256": "55a2e532ceceb231da5ad6883f2f553501d6f35d2b62212060fb9e6b5dbfec24"
+      }
+    ],
+    "POPUP_TUTORIAL_TEXT": [
+      {
+        "source": "assets/text.csv",
+        "line": 653,
+        "english": "Complete tutorial to get these REWARDS!",
+        "rowSha256": "9d2d4cef2d187c8a5721516b8a04be357839a8a956ce378ec71cec4b52e1a2a9"
+      },
+      {
+        "source": "assets/text_local.csv",
+        "line": 62,
+        "english": "Complete tutorial to get these great rewards!",
+        "rowSha256": "fc89476339bc8d1fbd31fcd7563efb8f21e2eec5581f151b88c0a25397c603a1"
+      }
+    ],
+    "POPUP_TUTORIAL_SKIP_WARNING_TEXT": [
+      {
+        "source": "assets/text_local.csv",
+        "line": 1629,
+        "english": "Skipping the tutorial will forfeit the tutorial rewards shown above.<br>Skip tutorial anyway?",
+        "rowSha256": "d73eacb0e0d013bcbcaa666e67f455d68a6526cc330366800965a604f5c169f5"
+      }
+    ],
+    "TUTORIAL_SKIP_TEXT": [
+      {
+        "source": "assets/text_local.csv",
+        "line": 1630,
+        "english": "Do you wish to skip the tutorial?",
+        "rowSha256": "ece96d8472e12c249331a748dcaaeb17b8a6bf2ed63847ccd1acf21a56b21f34"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "path": "assets/eff_page_1200_3.plist",
+      "presentInApk": true,
+      "bytes": 5848,
+      "sha256": "9f9504c56deafb118040d8de5e7d82ed17b4d689b988050a14c4ad8026c286e7"
+    },
+    {
+      "path": "assets/bf027_map_god.mp3",
+      "presentInApk": true,
+      "bytes": 708241,
+      "sha256": "94d3207361d54812830ab9269bc01690ef2f77ad60a21175f54f41a77032cbae"
+    },
+    {
+      "path": "assets/handle_name_frame.png",
+      "presentInApk": true,
+      "bytes": 10699,
+      "sha256": "0f359e3db30168c755cffa98714bc87bf488e2f6daf2729cd619dad72d714b21",
+      "pixelSize": [
+        432,
+        70
+      ]
+    },
+    {
+      "path": "assets/sub_m_btn1.png",
+      "presentInApk": true,
+      "bytes": 9840,
+      "sha256": "bc7896825c89dc3d9ec63f72041323d8f587e5c782dcad37904e9033db078712",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/sub_m_btn2.png",
+      "presentInApk": true,
+      "bytes": 9522,
+      "sha256": "8ae08dc846cc7f8c75061dd2442d37d2913129ada1f4856d47e56f367c212db7",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/ok_btn_label1.png",
+      "presentInApk": true,
+      "bytes": 3226,
+      "sha256": "2bc059eb6605f937222a67df6e2b8cae45614e0bb6e2332f77cf6f9df3390040",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/ok_btn_label2.png",
+      "presentInApk": true,
+      "bytes": 2961,
+      "sha256": "fb3cb6378f4d087004a48b0229ced824ebf51db16621fd2093d8fcc3e03df26c",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/random_btn_on.png",
+      "presentInApk": true,
+      "bytes": 9507,
+      "sha256": "8e07e9db7a5f5cd0a71394faaea1e4a3e3502c662408c994c54386882fdf5948",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/random_btn_off.png",
+      "presentInApk": true,
+      "bytes": 9352,
+      "sha256": "2b3ccce58a2d64fcf3bacd0aa779aff92e1174422f466befbbe7d1e7cfe87470",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/name_list.txt",
+      "presentInApk": true,
+      "bytes": 13087,
+      "sha256": "bb37b80a53617b0178fae4ef424ce09c53040e16830c36c071854682585a660f"
+    },
+    {
+      "path": "assets/image_tutorial.png",
+      "presentInApk": true,
+      "bytes": 104776,
+      "sha256": "8bf6578cfd5d7118b4efdcfadd18e6881ff7669ae2a88e9bf303427e23e635e0",
+      "pixelSize": [
+        550,
+        570
+      ]
+    },
+    {
+      "path": "assets/start_btn_label1.png",
+      "presentInApk": true,
+      "bytes": 4045,
+      "sha256": "23af00f03dec376ac81fcdce6b7e62c806e8186a09969a80d26463369dcbb512",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/start_btn_label2.png",
+      "presentInApk": true,
+      "bytes": 3922,
+      "sha256": "b6715eb3bc50abbeb5157aa2e28ff866d0ddbc49d62465ce6a122c1d57d33f56",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/skip_btn_label1.png",
+      "presentInApk": true,
+      "bytes": 2188,
+      "sha256": "15fd112011f67ee16b485151c4557c568b85f387f71d15d3e3ddd064a90e226d",
+      "pixelSize": [
+        105,
+        83
+      ]
+    },
+    {
+      "path": "assets/skip_btn_label2.png",
+      "presentInApk": true,
+      "bytes": 2137,
+      "sha256": "067a13d5ab9fd41445ecc3cdc9c914d77628ae91bf4314df0c825c1e245f8595",
+      "pixelSize": [
+        105,
+        83
+      ]
+    },
+    {
+      "path": "assets/yes_btn_label1.png",
+      "presentInApk": true,
+      "bytes": 3133,
+      "sha256": "c3f522209583a18fc34bd350d4e77bee686914dac9765fa07dc4355f11b31ae8",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/yes_btn_label2.png",
+      "presentInApk": true,
+      "bytes": 3052,
+      "sha256": "6dc9019a56fbcb4f7a4b5ef470ee2023f3a15501c11d3570676ea50eac96e680",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/no_btn_label1.png",
+      "presentInApk": true,
+      "bytes": 2298,
+      "sha256": "a338ab4bf6ad76050d6a02f18d04bae128c6e9ced94517d71b2b52e787c32c5d",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/no_btn_label2.png",
+      "presentInApk": true,
+      "bytes": 2240,
+      "sha256": "06391510ab46b5f0828b2f87cced0a1ce7c85234409f07adb30fbc5d117733d8",
+      "pixelSize": [
+        204,
+        84
+      ]
+    },
+    {
+      "path": "assets/ArrowLeft.sam",
+      "presentInApk": true,
+      "bytes": 2330,
+      "sha256": "aafc0dd65168cf1e27a96ded95a2e718677f791c79a843fa4d85c435924d954f"
+    },
+    {
+      "path": "assets/ArrowRight.sam",
+      "presentInApk": true,
+      "bytes": 2333,
+      "sha256": "e9cb98cac3831d2f80f4758ac4fbdf455ce41b098821ba42e93ab7fb64a3b2aa"
+    },
+    {
+      "path": "assets/unit_ills_full_10011.png",
+      "presentInApk": true,
+      "bytes": 62636,
+      "sha256": "48d1529c27c7333445bf53ef87ae18a1481aea3aeee0ad9176a2de30f79784c7",
+      "pixelSize": [
+        674,
+        526
+      ]
+    },
+    {
+      "path": "assets/unit_ills_full_20011.png",
+      "presentInApk": true,
+      "bytes": 65168,
+      "sha256": "05027ead130d5f0b51a012969278893757ee69efb845bbc3e1f13fb9e8c7c801",
+      "pixelSize": [
+        614,
+        506
+      ]
+    },
+    {
+      "path": "assets/unit_ills_full_30011.png",
+      "presentInApk": true,
+      "bytes": 62987,
+      "sha256": "3c950398f78bc561184e79418c79d524afe48a6c6fb6c3c127349a2cf5a5faa3",
+      "pixelSize": [
+        664,
+        522
+      ]
+    },
+    {
+      "path": "assets/unit_ills_full_40011.png",
+      "presentInApk": true,
+      "bytes": 59868,
+      "sha256": "be82888e4eb3b4425721cbc8239db735453966a11ca1e2a82f38f25eb886826b",
+      "pixelSize": [
+        702,
+        490
+      ]
+    }
+  ],
+  "intro": {
+    "nativeFunction": "TutorialScene1::updateEvent() @0x1b8ed90",
+    "order": [
+      "TUTORIAL1_1",
+      "TUTORIAL1_2",
+      "TUTORIAL1_3",
+      "nameInput",
+      "TUTORIAL1_4",
+      "heroSelect",
+      "TUTORIAL1_5",
+      "tutorialSkipPopup",
+      "exit"
+    ],
+    "orderProof": {
+      "dispatchTable": "0x236a260",
+      "entryType": "uint16",
+      "targetBase": "0x1b8eebc",
+      "targetMultiplier": 4,
+      "targets": [
+        "0x1b8eebc",
+        "0x1b8f0b8",
+        "0x1b8f048",
+        "0x1b8f0ac",
+        "0x1b8ef4c",
+        "0x1b8f11c",
+        "0x1b8f16c",
+        "0x1b8f128",
+        "0x1b90354"
+      ]
+    },
+    "text": {
+      "rect": [
+        10,
+        236,
+        300,
+        260
+      ],
+      "fontSize": 15,
+      "space": 8,
+      "defaultFont": "Arial Bold.ttf",
+      "defaultSpeed": 13,
+      "rowOverrideSpeed": 10,
+      "anchor": "center",
+      "talkWindowVisible": false,
+      "waitArrowVisible": false,
+      "proof": [
+        "0xfc548c..0xfc5504 → TALK_TEXT globals 0x2887360..0x2887378",
+        "0x1b8f374..0x1b8f3ac"
+      ],
+      "important": "TutorialScene1::getMsgRect returns (10,240,300,240), but this helper is not used by this MSGDRAW initEngine overload."
+    },
+    "timing": {
+      "directorHz": 60,
+      "directorInterval": 0.016666666666666666,
+      "directorProof": "0x102fb20..0x102fb34: 0x3f91111111111111 via virtual +0x38; CCDisplayLinkDirector vtable resolves to setAnimationInterval @0x1f06314",
+      "autoMessageBaseSpeed": 15,
+      "characterIntervalFormula": "max(baseSpeed - speed + 1, 1) updates",
+      "charactersPerIntervalFormula": "max(speed - baseSpeed + 1, 1)",
+      "speed10CharacterIntervalUpdates": 6,
+      "speed10NominalCharacterMilliseconds": 100,
+      "wait20Updates": 20,
+      "wait20NominalMilliseconds": 333.3333333333333,
+      "proof": [
+        "AutoMessage::speedSet @0xfc0908",
+        "AutoMessage::speedChange @0xfc4750",
+        "baseSpeed literal @0x231dfe8",
+        "waitSet @0xfc47d0",
+        "update @0xfc1d7c..0xfc1da8"
+      ],
+      "precision": "Wait counter is decremented first; when it becomes zero the same update may process a character interval. Native scheduling and Cocos actions must be distinguished from wall-clock browser timers.",
+      "sceneUpdateChain": {
+        "renderStep": "BaseScene::draw @0xfff18c..0xfff198 invokes virtual+0x348, resolved to GameScene::update @0x1601144.",
+        "tutorialStep": "GameScene::update @0x1601388..0x1601394 invokes virtual+0x3a8, resolved to TutorialScene1::updateEvent @0x1b8ed90.",
+        "proof": "scene-draw.txt, framerate-skip.txt, vtable-proof.json",
+        "meaning": "Tutorial counters advance once per normal active scene draw, with nominal director interval1/60. They can stop during inactive, connecting, or transition gates; no separate fixed30Hz scheduler was found in this call chain."
+      }
+    },
+    "interaction": {
+      "scriptWrapper": [
+        "PARAM id=15,param=-1",
+        "MSGDRAW text",
+        "MSGWAIT",
+        "STOP id=-1"
+      ],
+      "typingTap": "Set AutoMessage display count to 65535; next update reveals remaining text including pending waits.",
+      "completedTap": "Set ScriptEngine touch flag; PARAM15/isFinishedCmd gate permits continuation.",
+      "tapDuringEntryFade": "Not passed to ScriptEngine; scene must be in state5.",
+      "proof": [
+        "getScript @0xfc5268..0xfc52e8",
+        "PARAM15 @0xfcab8c..0xfcac48",
+        "touchBegan @0xfcedec..0xfcee18 and @0xfceed8",
+        "countMax @0xfc2684",
+        "isFinishedCmd @0xfce4c8..0xfce4e0",
+        "TutorialScene1 touch forwarding @0x1b90a18..0x1b90a30"
+      ]
+    },
+    "particle": {
+      "source": "assets/eff_page_1200_3.plist",
+      "parameters": {
+        "angle": 0.0,
+        "angleVariance": 360.0,
+        "blendFuncDestination": 1,
+        "blendFuncSource": 1,
+        "duration": -1.0,
+        "emitterType": 0.0,
+        "finishColorAlpha": 0.0,
+        "finishColorBlue": 0.5,
+        "finishColorGreen": 0.800000011920929,
+        "finishColorRed": 0.5,
+        "finishColorVarianceAlpha": 0.0,
+        "finishColorVarianceBlue": 0.30000001192092896,
+        "finishColorVarianceGreen": 0.30000001192092896,
+        "finishColorVarianceRed": 0.10000000149011612,
+        "finishParticleSize": 0.0,
+        "finishParticleSizeVariance": 0.0,
+        "gravityx": 0.0,
+        "gravityy": 0.0,
+        "maxParticles": 40.0,
+        "maxRadius": 100.0,
+        "maxRadiusVariance": 0.0,
+        "minRadius": 0.0,
+        "particleLifespan": 0.0,
+        "particleLifespanVariance": 5.0,
+        "radialAccelVariance": 0.0,
+        "radialAcceleration": 0.0,
+        "rotatePerSecond": 0.0,
+        "rotatePerSecondVariance": 0.0,
+        "rotationEnd": 0.0,
+        "rotationEndVariance": 30.0,
+        "rotationStart": 0.0,
+        "rotationStartVariance": 30.0,
+        "sourcePositionVariancex": 2.0,
+        "sourcePositionVariancey": 2.0,
+        "sourcePositionx": 160.0,
+        "sourcePositiony": 240.0,
+        "speed": 0.0,
+        "speedVariance": 0.0,
+        "startColorAlpha": 0.30000001192092896,
+        "startColorBlue": 0.5,
+        "startColorGreen": 0.800000011920929,
+        "startColorRed": 0.5,
+        "startColorVarianceAlpha": 0.0,
+        "startColorVarianceBlue": 0.30000001192092896,
+        "startColorVarianceGreen": 0.30000001192092896,
+        "startColorVarianceRed": 0.10000000149011612,
+        "startParticleSize": 388.2631530761719,
+        "startParticleSizeVariance": 0.0,
+        "tangentialAccelVariance": 0.0,
+        "tangentialAcceleration": 0.0,
+        "textureFileName": "page_1200_3.png"
+      },
+      "texture": {
+        "embeddedSha256": "a16cac4a7babdae69fd7be031d47fc51efcd9a8bc3c149ec8395137485ab7e91",
+        "embeddedBytes": 2230,
+        "pixelSize": [
+          128,
+          128
+        ],
+        "independentApkPngPresent": false,
+        "existingExtractedFile": "dist/assets/page_1200_3.png",
+        "existingExtractedFileSha256": "a16cac4a7babdae69fd7be031d47fc51efcd9a8bc3c149ec8395137485ab7e91",
+        "byteIdentical": true
+      },
+      "layer": 4,
+      "position": [
+        160,
+        140
+      ],
+      "initialScale": 0.1,
+      "scaleActions": [
+        {
+          "at": "initialize",
+          "seconds": 1,
+          "target": 0.2,
+          "proof": "0x1b8ec34..0x1b8ec44"
+        },
+        {
+          "at": "TUTORIAL1_4",
+          "seconds": 3,
+          "target": 0.3,
+          "proof": "0x1b8ef6c..0x1b8ef7c"
+        },
+        {
+          "at": "TUTORIAL1_5",
+          "seconds": 3,
+          "target": 0.4,
+          "proof": "0x1b8f18c..0x1b8f19c"
+        },
+        {
+          "at": "exit",
+          "seconds": 2,
+          "target": 1,
+          "proof": "0x1b90354..0x1b90364"
+        }
+      ],
+      "scaleSetterProof": "ParticleAnime vtable +0x390 resolves to CCParticleSystem::setScale @0x1f280a4",
+      "remaining": "Original process-global rand() state and device framebuffer blending cannot be reconstructed from static resources alone.",
+      "dynamics": {
+        "randomSignedFormula": "float(rand()) * 2^-31 * 2 - 1 (ARM float32 operations)",
+        "lifespanSecondsFormula": "max(0, 0 + 5 * randomSigned())",
+        "lifespanProof": "0x1f26eb8..0x1f26ef4",
+        "initialParticleCount": 0,
+        "initialEmitCounter": 0,
+        "initialElapsed": 0,
+        "initialStateProof": "CCParticleSystem constructor @0x1f25584..0x1f25594",
+        "emissionRateFormula": "40 / 0 => +Infinity under native floating point",
+        "emissionIntervalSeconds": 0,
+        "emissionProof": "0x1f267dc..0x1f267f0; 0x1f27540..0x1f27548",
+        "updateOrder": [
+          "If active and count<40, add dt to emitCounter.",
+          "While count<40 and emitCounter>0, create one particle and subtract emission interval0.",
+          "Increment system elapsed; duration−1 never stops emission.",
+          "For each particle subtract dt from ttl first.",
+          "If ttl<=0, swap with last live particle, reduce count, and continue at same index.",
+          "Otherwise integrate position, RGBA, size and rotation and write quad."
+        ],
+        "updateProof": [
+          "0x1f27518..0x1f275cc",
+          "0x1f276b4..0x1f277c8",
+          "0x1f279cc..0x1f27a0c"
+        ],
+        "initialFrameMeaning": "First positive-dt update samples40 particles then removes those with ttl<=dt. Later frames replenish vacancies before aging/culling. Do not prewarm, force all40 visible, or respawn dead particles during the same cull pass.",
+        "zeroDtMeaning": "No emission when initial emitCounter=0 and dt=0; conditional is strictly greater than0.",
+        "localSpawnPositionFormula": [
+          "2*randomSigned()",
+          "2*randomSigned()"
+        ],
+        "sourcePositionMeaning": "plist sourcePositionx/y set node position @0x1f26254..0x1f26274; TutorialScene1 then overrides node position with ParticleAnime::setPosition(160,140), which uses director.convertToGL @0xffe908. Do not add the plist160/240 again to local particles.",
+        "colorStart": "Clamp each component of startColor + variance*independentRandom to[0,1].",
+        "colorEnd": "Clamp each component of finishColor + variance*independentRandom to[0,1].",
+        "colorDelta": "(colorEnd - colorStart) / initialTtl",
+        "sizeStart": 388.2631530761719,
+        "sizeEnd": 0,
+        "sizeDelta": "-388.2631530761719 / initialTtl",
+        "rotationStart": "30*randomSigned() degrees",
+        "rotationEnd": "30*independentRandomSigned() degrees",
+        "rotationDelta": "(end-start)/initialTtl",
+        "positionIntegration": "Speed, gravity, radial and tangential acceleration are all0 in this plist, so local spawn position stays fixed.",
+        "liveUpdate": "color+=colorDelta*dt; size=max(0,size+sizeDelta*dt); rotation+=rotationDelta*dt.",
+        "interpolationProof": [
+          "color @0x1f270e8..0x1f27124",
+          "size @0x1f27128..0x1f271a4",
+          "rotation @0x1f271a8..0x1f27204",
+          "update @0x1f279cc..0x1f27a0c"
+        ],
+        "schedule": "CCNode::scheduleUpdateWithPriority(1) @0x1f26d30..0x1f26d5c; nominal director60Hz.",
+        "rendering": "Blend source=ONE,destination=ONE from plist; exact renderer premultiplication and GPU output remain to compare on device."
+      }
+    },
+    "transition": {
+      "entry": [
+        {
+          "type": "blackOverlayFadeOut",
+          "seconds": 3,
+          "layer": 8,
+          "blocksDialogue": true,
+          "proof": "0x1b8ee30..0x1b8ee68"
+        }
+      ],
+      "exit": [
+        {
+          "type": "whiteOverlayFadeIn",
+          "seconds": 3
+        },
+        {
+          "type": "delay",
+          "seconds": 2
+        },
+        {
+          "type": "tintWhiteToBlack",
+          "seconds": 1
+        }
+      ],
+      "exitProof": "0x1b904bc..0x1b904fc",
+      "exitExtraGateUpdates": 60,
+      "nextSceneId": 11,
+      "exitGate": "Counter must run below zero AND overlay actions must have ended. These overlap; do not add an extra second after the 6-second sequence.",
+      "nextSceneProof": "0x1b90510..0x1b9056c"
+    },
+    "bgm": {
+      "file": "bf027_map_god.mp3",
+      "fadeInSeconds": 1,
+      "fadeOutSeconds": 3,
+      "proof": [
+        "0x1b8ec94 onward",
+        "0x1b90510..0x1b90520"
+      ]
+    }
+  },
+  "nameInput": {
+    "nativeState": 7,
+    "titleKey": "INPUT_USER_NAME",
+    "titleRect": [
+      32,
+      240,
+      256,
+      96
+    ],
+    "titleColor": "#dcdcdc",
+    "titleFontSize": 16,
+    "titleSpace": 4,
+    "titleProof": "0x1b8f5ac..0x1b8f5e4",
+    "frame": {
+      "file": "handle_name_frame.png",
+      "position": [
+        160,
+        304
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "size": [
+        200,
+        32
+      ],
+      "proof": "0x1b8f758..0x1b8f7b4"
+    },
+    "displayLabel": {
+      "rect": [
+        88,
+        312,
+        200,
+        32
+      ],
+      "fontSize": 14,
+      "color": "#ffffff",
+      "proof": "0x1b8f7e4..0x1b8f814 and initialize @0x1b8ec80..0x1b8ec88"
+    },
+    "editBox": {
+      "hiddenPosition": [
+        1000,
+        1000
+      ],
+      "size": [
+        200,
+        32
+      ],
+      "componentMaxLength": 128,
+      "finalNameMaxLength": 8,
+      "filterTextMode": 4,
+      "proof": [
+        "0x1b8f600..0x1b8f6a4",
+        "editBoxTextChanged @0x1b91250..0x1b912f0 and @0x1b91390..0x1b9139c",
+        "editBoxReturn @0x1b9160c"
+      ],
+      "composition": "isTextRange() selects filter length8 or128 during composition; displayed preview always filtered to8. Keyboard return applies8."
+    },
+    "buttons": [
+      {
+        "id": 1001,
+        "kind": "OK",
+        "position": [
+          176,
+          372
+        ],
+        "logicalSize": [
+          102,
+          42
+        ],
+        "base": [
+          "sub_m_btn1.png",
+          "sub_m_btn2.png"
+        ],
+        "labels": [
+          "ok_btn_label1.png",
+          "ok_btn_label2.png"
+        ],
+        "proof": "0x1b8f91c..0x1b8f940"
+      },
+      {
+        "id": 1006,
+        "kind": "Randomize",
+        "position": [
+          48,
+          372
+        ],
+        "logicalSize": [
+          102,
+          42
+        ],
+        "images": [
+          "random_btn_on.png",
+          "random_btn_off.png"
+        ],
+        "condition": "name_list.txt present and nonempty",
+        "proof": "0x1b8f96c..0x1b8fa5c"
+      }
+    ],
+    "confirmFlow": "OK -> checkInputName -> setHandleName -> state9 NgwordCheckRequest -> successful state10 clears layers -> next dialogue. Empty/whitespace input -> state11/12 system error, any tap dismisses and returns to state7.",
+    "errorKey": "EMPTY_USER_NAME",
+    "confirmCancelPopup": false,
+    "backendBoundary": "Original profanity validation request is not locally reproducible without server. Do not claim original validation parity.",
+    "proof": [
+      "checkInputName @0x1b90640",
+      "touchBegan @0x1b90a64..0x1b90b38",
+      "updateEvent @0x1b8faa4..0x1b8faf0",
+      "errorDismiss @0x1b90b70..0x1b90b98"
+    ]
+  },
+  "heroSelect": {
+    "type": "horizontal paged carousel",
+    "canvas": [
+      320,
+      480
+    ],
+    "itemSize": [
+      320,
+      480
+    ],
+    "elements": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "initialPage": "arc4random() & 3",
+    "initialInputLockUpdates": 29,
+    "nominalInitialInputLockMs": 483.3333333333333,
+    "proof": "0x1b8fbb8..0x1b8fc4c and 0x1b9005c..0x1b900e8",
+    "art": {
+      "source": "InitialUnitList(element).getUnitID() -> unit_ills_full_%d.png",
+      "activePageCenter": [
+        160,
+        240
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "opacity": 100,
+      "proof": "TutorialUserElement::addObject @0x1b93e88..0x1b93ee0; GameSprite vtable +0x230 resolves CCSprite::setOpacity @0x1f387b8",
+      "unitIdBoundary": "Native mapping is data driven. 10011/20011/30011/40011 assets exist in supplied APK; InitialUnitList mapping itself is not an APK local initial_unit.csv."
+    },
+    "description": {
+      "keys": [
+        "ELEM_DESC1",
+        "ELEM_DESC2",
+        "ELEM_DESC3",
+        "ELEM_DESC4"
+      ],
+      "activePageRect": [
+        64,
+        0,
+        192,
+        480
+      ],
+      "fontSize": 16,
+      "space": 8,
+      "drawAnchor": 5,
+      "enclosed": true,
+      "proof": "drawEnclosedString @0x1b93f80..0x1b93fc4; updatePosition @0x1b93df0..0x1b93e24",
+      "activeCondition": "int(label.baseX) == 64 @0x1b94060..0x1b94070"
+    },
+    "navigation": [
+      {
+        "id": 1004,
+        "file": "ArrowLeft.sam",
+        "position": [
+          32,
+          240
+        ],
+        "touchRect": [
+          0,
+          208,
+          64,
+          64
+        ],
+        "releaseAccel": -40
+      },
+      {
+        "id": 1005,
+        "file": "ArrowRight.sam",
+        "position": [
+          288,
+          240
+        ],
+        "touchRect": [
+          256,
+          208,
+          64,
+          64
+        ],
+        "releaseAccel": 40
+      }
+    ],
+    "navigationProof": [
+      "0x1b8fec4..0x1b8ff2c",
+      "getArrowLeft @0x1195918",
+      "getArrowRight",
+      "touchEnded @0x1b90f08..0x1b90f5c"
+    ],
+    "swipe": true,
+    "button": {
+      "id": 1003,
+      "kind": "OK",
+      "position": [
+        109,
+        320
+      ],
+      "logicalSize": [
+        102,
+        42
+      ],
+      "base": [
+        "sub_m_btn1.png",
+        "sub_m_btn2.png"
+      ],
+      "labels": [
+        "ok_btn_label1.png",
+        "ok_btn_label2.png"
+      ],
+      "proof": "0x1b8fffc..0x1b90024"
+    },
+    "confirmFlow": "If lock<=0 and current page is active, OK stores its element, state15 clears layers5/6, state3 proceeds to TUTORIAL1_5.",
+    "confirmCancelPopup": false,
+    "proofConfirm": [
+      "0x1b90ba0..0x1b90c40",
+      "0x1b900ac..0x1b900d0"
+    ],
+    "notLivePath": "Native contains a state16/17 selected-image flash sequence, but the traced picker OK assigns15 and the dispatch table does not assign16. Do not introduce it as required behavior without proving an entry edge.",
+    "layoutCaution": "preservation-layouts.json layout_first_desc.csv says 218,830,200,80 for ok_btn. This is a separate layout record and is not read by this native TutorialScene1 picker; do not substitute it for hard-coded 109,320.",
+    "motion": {
+      "loop": true,
+      "brake": 0.9200000166893005,
+      "stopSpeedThreshold": 0.05,
+      "initializationProof": [
+        "constructor @0xfae5e8..0xfae618",
+        "setLoop(bool) @0xfb07dc stores field+0x52",
+        "setBrake(float) @0xfb07d4 stores field+0x44"
+      ],
+      "perUpdate": "velocity*=brake; if abs(velocity)<0.05 set0; if nonzero move scrollX by velocity; then apply page snap logic.",
+      "pageSnapThreshold": 40,
+      "pageSnapVelocity": 40,
+      "release": "touchEnded sets released=true at field+0x48.",
+      "pageSnap": "When released, not already snapping, abs(velocity)<40, and trunc(scrollX)%320 is nonzero: target=trunc(trunc(scrollX)/320)*320. If abs(velocity)>1 choose next page in velocity direction; otherwise choose nearest page by absolute remainder>=160. Set velocity=sign(target-trunc(scrollX))*40 and snapping=true.",
+      "snapEnd": "When snapping and position passes target, set exact target, velocity0, released=false, snapping=false and recompute item positions.",
+      "proof": [
+        "update @0xfae9e8..0xfae9f8",
+        "stop threshold @0xfaea58..0xfaea70",
+        "page snap @0xfaeb0c..0xfaebb0 and @0xfaee08..0xfaee5c",
+        "snap completion @0xfaed20..0xfaed88",
+        "touchEnded @0xfae99c"
+      ],
+      "swipeVelocity": "clamp(previousTouchViewX-currentTouchViewX,-17,17)*1.2000000476837158, then setAccel; native float32 lower limit literal is−20.400001525878906.",
+      "swipeProof": "TutorialScene1::touchMoved @0x1b90e20..0x1b90e94",
+      "arrowStepFramesDerived": [
+        36.79999923706055,
+        73.5999984741211,
+        107.45599365234375,
+        138.603515625,
+        167.2592315673828,
+        193.62249755859375,
+        217.87669372558594,
+        240.1905517578125,
+        260.71929931640625,
+        279.6057434082031,
+        296.9812927246094,
+        312.966796875,
+        320
+      ],
+      "arrowStepDerivation": "Starts exactly on a page, zero prior speed, receives +40 then released=true. At first update moves36.8 and resets snap speed40; later applies0.92 and clamps target when passed. Negative movement is symmetric. Derived from native formula, not a device frame capture.",
+      "arrowStepDurationUpdates": 13,
+      "arrowStepNominalDurationMs": 216.66666666666666,
+      "arrows": {
+        "ArrowLeft.sam": {
+          "fps": 24,
+          "frames": 62,
+          "labels": {
+            "start": [
+              0,
+              0
+            ],
+            "loop": [
+              1,
+              59
+            ],
+            "delete": [
+              60,
+              61
+            ]
+          },
+          "sha256": "aafc0dd65168cf1e27a96ded95a2e718677f791c79a843fa4d85c435924d954f"
+        },
+        "ArrowRight.sam": {
+          "fps": 24,
+          "frames": 62,
+          "labels": {
+            "start": [
+              0,
+              0
+            ],
+            "loop": [
+              1,
+              59
+            ],
+            "delete": [
+              60,
+              61
+            ]
+          },
+          "sha256": "e9cb98cac3831d2f80f4758ac4fbdf455ce41b098821ba42e93ab7fb64a3b2aa"
+        }
+      },
+      "arrowMetadataSource": "Existing docs/sam-inventory.json, cross-checked file hashes against supplied APK."
+    }
+  },
+  "skipPopup": {
+    "class": "TutorialSkipPopupScene",
+    "initialTextKey": "POPUP_TUTORIAL_TEXT",
+    "warningKey": "POPUP_TUTORIAL_SKIP_WARNING_TEXT",
+    "image": "image_tutorial.png",
+    "baseLayer": 56,
+    "entryFade": false,
+    "requestButtons": [
+      "Start(id1)",
+      "Skip(id2)"
+    ],
+    "confirmButtons": [
+      "Yes(id3)",
+      "No(id4)"
+    ],
+    "skipCondition": "FUNC_TUTORIAL_SKIP flag; Skip button hidden/disabled if false.",
+    "flow": {
+      "start": "setSkipMainTutorialFlag(false), notify parent callback18, pop",
+      "skip": "hide/disable Start+Skip, show/enable Yes+No, change warning text",
+      "yes": "setSkipMainTutorialFlag(true), notify parent callback18, pop",
+      "no": "restore Start+Skip and POPUP_TUTORIAL_TEXT"
+    },
+    "nativeLayout": {
+      "imagePositionFormula": [
+        "160 - contentWidth/2",
+        "240 - contentHeight*0.625"
+      ],
+      "windowRectFormula": [
+        "8.75",
+        "(480-(imageHeight+114))/2",
+        "302.5",
+        "imageHeight+114"
+      ],
+      "labelPositionFormula": [
+        "26.75",
+        "windowY+imageHeight+18"
+      ],
+      "labelWidth": 239,
+      "labelFontSize": 12,
+      "labelSpace": 4,
+      "buttonYFormula": "windowY+windowHeight-60",
+      "startXWithSkip": 42.7,
+      "startXWithoutSkip": 109,
+      "skipX": 175.3,
+      "yesX": 42.7,
+      "noX": 175.3,
+      "logicalButtonSize": [
+        102,
+        42
+      ]
+    },
+    "buttonFiles": {
+      "base": [
+        "sub_m_btn1.png",
+        "sub_m_btn2.png"
+      ],
+      "start": [
+        "start_btn_label1.png",
+        "start_btn_label2.png"
+      ],
+      "skip": [
+        "skip_btn_label1.png",
+        "skip_btn_label2.png"
+      ],
+      "yes": [
+        "yes_btn_label1.png",
+        "yes_btn_label2.png"
+      ],
+      "no": [
+        "no_btn_label1.png",
+        "no_btn_label2.png"
+      ]
+    },
+    "proof": [
+      "initialize @0x1b9188c",
+      "layout @0x1b91b28..0x1b91c9c",
+      "button creation @0x1b91d44..0x1b92078",
+      "touchBegan @0x1b92400",
+      "requestState @0x1b921c0",
+      "confirmState @0x1b92500",
+      "parent noticeOK @0x1b90978..0x1b90998"
+    ],
+    "backendBoundary": "Image is a bundled rewards presentation. Availability and delivery of server tutorial rewards are unverified; source UI flow can be replicated separately.",
+    "resolvedLayoutAtContentScale2": {
+      "imagePixelSize": [
+        550,
+        570
+      ],
+      "imageLogicalSize": [
+        275,
+        285
+      ],
+      "imagePosition": [
+        22.5,
+        61.875
+      ],
+      "imageAnchor": [
+        0,
+        1
+      ],
+      "windowRect": [
+        8.75,
+        40.5,
+        302.5,
+        399
+      ],
+      "labelPosition": [
+        26.75,
+        343.5
+      ],
+      "buttonY": 379.5,
+      "proof": [
+        "CCTexture2D::getContentSize divides pixels by director scale @0x1f47498",
+        "AppDelegate sets contentScaleFactor2 @0x102fafc..0x102fb04",
+        "GameSprite::init defaults anchor0,1 @0xfe4040..0xfe4060",
+        "GameSprite::getHeight @0xfe4214"
+      ]
+    }
+  },
+  "completionCriteria": {
+    "T01Minimum": [
+      "Use actual plist texture, count, source parameters and native scale timeline.",
+      "Run entry3s and exit3+2+1s overlay actions and BGM timing.",
+      "Restore exact dialogue/name/hero/skip ordering.",
+      "Use source speed10 / wait20 update semantics with tap-to-complete then tap-to-advance.",
+      "Hide talk window and wait arrow; use actual source text rectangle."
+    ],
+    "T02Minimum": [
+      "Four horizontal pages with translucent full artwork, ELEM_DESC text and original arrow SAMs.",
+      "Native coordinates, swipe/page snap, initial random page,29-update input lock and only settled-page OK.",
+      "OK directly selects and advances without invented confirm dialog.",
+      "Name field8-character final limit, source frame/button positions, empty-name error.",
+      "Two-stage Start/Skip then Yes/No popup using original bundled assets and source text keys."
+    ],
+    "notClaimableYet": [
+      "Pixel identical Korean typography, because supplied APK uses English font/text.",
+      "Original server profanity validation and skip rewards.",
+      "Bit identical Cocos particle random sequence and framebuffer output.",
+      "Device capture versus web frame/pixel comparison, including touch event frequency."
+    ]
+  }
+}

@@ -29,7 +29,7 @@ export const JOURNEY_STEPS=[
  {id:'complete',kind:'complete',nativeChapter:12,title:'새로운 모험',text:'티리스와 칼의 안내를 모두 마쳤어요.\n이제 홈에서 모험을 이어가세요.'},
 ];
 export const journeyStep=j=>JOURNEY_STEPS.find(s=>s.id===j?.step)||null;
-export const initialJourney=()=>({version:1,step:'battle-1',active:true,giftClaimed:false,summonResult:null});
+export const initialJourney=()=>({version:1,step:'battle-1',active:true,giftClaimed:false,completionRewardClaimed:false,summonResult:null});
 export function validateJourney(raw,catalog){
  if(raw==null)return null;
  const step=journeyStep(raw);
@@ -46,5 +46,7 @@ export function validateJourney(raw,catalog){
  const gate=JOURNEY_STEPS.findIndex(s=>s.kind==='gate'),afterSummon=JOURNEY_STEPS.findIndex(s=>s.id==='t15-114');
  if(summonResult&&position<gate)throw Error('소환 순서가 올바르지 않습니다.');
  if(position>=gate&&position<=afterSummon&&!summonResult)throw Error('소환 결과가 없습니다.');
- return {version:1,step:raw.step,active:raw.active,giftClaimed:raw.giftClaimed,summonResult};
+ const completionRewardClaimed=raw.completionRewardClaimed??(step.kind==='complete');
+ if(typeof completionRewardClaimed!=='boolean'||completionRewardClaimed!==(step.kind==='complete'))throw Error('튜토리얼 완료 보상 기록이 올바르지 않습니다.');
+ return {version:1,step:raw.step,active:raw.active,giftClaimed:raw.giftClaimed,completionRewardClaimed,summonResult};
 }

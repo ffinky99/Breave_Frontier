@@ -21,7 +21,9 @@ export const QUESTS = [
 export function makeCatalog(data){return Object.fromEntries(data.units.map(u=>[u.id,u]));}
 export function newSave(starterId,catalog,name='소환사'){
   if(!['10011','20011','30011','40011'].includes(starterId))throw Error('선택할 수 없는 영웅입니다.');
-  const support=['10030','20030','30030','40030'].filter(id=>catalog[id].element!==catalog[starterId].element).slice(0,2);
+  // Local initial roster: the server's original account grant is unavailable.
+  // Keep the fire/thunder companions used by the native tutorial party order.
+  const support=['10030','40030'];
   const ids=[starterId,...support];
   return {version:1,name:String(name).trim().slice(0,12)||'소환사',starterId,units:Object.fromEntries(ids.map(id=>[id,{id,level:1,xp:0}])),party:ids,zel:2500,karma:800,gems:6,clears:{},summons:0,battles:0,sound:false,volume:0.35,speed:1,tutorialSeen:false,tutorial:tutorialProgress(),journey:initialJourney(),updatedAt:Date.now()};
 }
@@ -55,6 +57,12 @@ function enterJourneyStep(save,index){
  if(next.gift&&!save.journey.giftClaimed){
   if(save.gems>1e9-5)throw Error('보석을 더 받을 수 없습니다.');
   save.gems+=5;save.journey.giftClaimed=true;
+ }
+ // Bundled image_tutorial.png advertises 3 gems and 100,000 Zel. This local,
+ // once-only completion award is distinct from Karl's five-gem summon gift.
+ if(next.kind==='complete'&&!save.journey.completionRewardClaimed){
+  if(save.gems>1e9-3||save.zel>1e9-100000)throw Error('튜토리얼 보상을 더 받을 수 없습니다.');
+  save.gems+=3;save.zel+=100000;save.journey.completionRewardClaimed=true;
  }
  save.journey.step=next.id;save.journey.active=next.kind!=='complete';
  return next;
@@ -188,6 +196,12 @@ export function queueAction(b,index,mode,targetIndex,catalog,{at=0,speed=1,durat
   if(!b.pendingHits.length&&!b.actionEnds.length&&!b.pendingCrystals?.length)determine(b);
   return events;
 }
+export function queueCrystal(b,{kind,actor,target=0,value=1,at=0,collectAt=at,speed=1,ordinal=0}){
+  // BattleItemCrystal::getMoveAction: delay[0,.5], EaseIn(1.2), move .6s.
+  const moveAt=collectAt+(b.tutorialMode?random(b)*500/speed:0),travel=(b.tutorialMode?600:800)/speed;
+  const crystal={kind,actor,target,value,spawnAt:at,moveAt,travel,ease:b.tutorialMode?1.2:1,ordinal,at:moveAt+travel};
+  (b.pendingCrystals??=[]).push(crystal);return {type:'crystal',...crystal};
+}
 export function advanceCombat(b,now){
   const pending=b.pendingHits||[],events=[];b.pendingCrystals??=[];
   pending.sort((a,b)=>a.at-b.at||a.actor-b.actor||a.hit-b.hit);
@@ -195,21 +209,22 @@ export function advanceCombat(b,now){
     if(packet.at>now)break;
     const e=packet.side==='enemy'?b.party[packet.target]:b.enemies[packet.target];
     const spark=packet.side!=='enemy'&&pending.some(other=>other!==packet&&other.side!=='enemy'&&other.target===packet.target&&other.frame===packet.frame);
-    const value=Math.max(1,Math.floor(packet.value*(spark?1.5:1))),overkill=e.hp<=0,actual=Math.min(e.hp,value);
-    e.hp=Math.max(0,e.hp-value);if(packet.side!=='enemy')b.damage+=actual;
+    const value=Math.max(1,Math.floor(packet.value*(spark?1.5:1))),overkill=e.hp<=0;
+    const floor=b.tutorialMode&&packet.side==='enemy'?1:0,actual=Math.min(Math.max(0,e.hp-floor),value);
+    e.hp=Math.max(floor,e.hp-value);if(packet.side!=='enemy')b.damage+=actual;
     if(packet.side==='enemy'){events.push({...packet,type:'enemy-impact',enemy:packet.actor,actor:packet.target,value,actual,spark:false,overkill});continue;}
     events.push({type:'impact',...packet,value,actual,spark,overkill});
     // The tutorial script confirms random distribution; rates are explicitly
     // local rehearsal values because enemy drop masters are absent from the APK.
     for(let check=0;check<packet.dropChecks;check++){
-      const kind=random(b)<.35?'battle':random(b)<.06?'heart':null;if(!kind)continue;
+      const forcedHeart=b.forceHeartDrop;const kind=forcedHeart?'heart':random(b)<.35?'battle':random(b)<.06?'heart':null;if(!kind)continue;
+      if(forcedHeart)b.forceHeartDrop=false;
       let candidates=b.party.map((p,i)=>({p,i})).filter(({p})=>p.hp>0);
       if(kind==='heart'&&candidates.some(({p})=>p.hp<p.maxHp))candidates=candidates.filter(({p})=>p.hp<p.maxHp);
       if(!candidates.length)continue;
       const {p,i}=candidates[Math.floor(random(b)*candidates.length)];
       const amount=kind==='heart'?Math.max(1,Math.trunc(p.rec/((3000+Math.floor(random(b)*1201))/1000))):1;
-      const crystal={kind,actor:i,target:packet.target,value:amount,at:packet.at+800/(packet.speed||1)};
-      b.pendingCrystals.push(crystal);events.push({type:'crystal',...crystal});
+      events.push(queueCrystal(b,{kind,actor:i,target:packet.target,value:amount,at:packet.at,speed:packet.speed||1}));
     }
   }
   for(const crystal of b.pendingCrystals.filter(c=>c.at<=now)){
@@ -241,7 +256,7 @@ export function queueEnemyTurn(b,catalog,{at=0,speed=1,durationFor=()=>1500}={})
   for(let i=0;i<b.enemies.length;i++){
     const enemy=b.enemies[i];if(enemy.hp<=0)continue;
     const live=b.party.map((p,j)=>({p,j})).filter(x=>x.p.hp>0);if(!live.length)break;
-    const {p,j}=live[Math.floor(random(b)*live.length)],burst=enemy.boss&&b.turn%3===0;
+    const {p,j}=live.find(x=>x.j===b.tutorialTarget)||live[Math.floor(random(b)*live.length)],burst=enemy.boss&&b.turn%3===0;
     const damage=rollDamage(b,enemy,p,(burst?1.6:1)*(b.defenseBuff?.7:1),p.guard);
     const {frames,weights}=attackFrames(catalog[enemy.id],burst?'burst':'attack'),values=splitDamage(damage.value,weights);
     const start=at+i*250/speed,startFrame=Math.ceil(start*speed*60/1000),travel=10/60*1000/speed;

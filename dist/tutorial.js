@@ -1,9 +1,9 @@
 // Korean localization of the user's APK: tuto1.txt and tuto9.txt.
 // Every line number is retained for comparison with docs/tutorial-source.json.
-// Enemy IDs/stats now come from identified 2014 GL captures. Guided damage and
-// temporary allies still enforce the script; see docs/튜토리얼-복원.md for limits.
+// Enemy IDs/stats come from 2014 GL captures; the target APK server values
+// remain unavailable. Guided hits now use the shared queued combat engine.
 // The rehearsal never spends or grants the player's currencies.
-import {stats, act, enemyTurn, usePotion, elementMultiplier} from './engine.js';
+import {stats, queueAction, queueEnemyTurn, advanceCombat, queueCrystal, usePotion} from './engine.js';
 import {TUTORIAL_ENCOUNTERS} from './tutorial-encounters.js';
 
 const story=(line,text,face=0,extra={})=>({line,text,face,kind:'story',...extra});
@@ -32,17 +32,17 @@ export const TUTORIALS=[
   say(121,'공격은 간단해. 아래의 행동 버튼을 누르면\n그 유닛이 적에게 달려가서 공격해.','unit-2'),
   action(125,'자, 직접 해 봐!\n가운데 행동 버튼을 눌러 봐.','attack',2,'unit-2'),
   action(139,'공격을 시작했어! 다른 행동 버튼도 누르면\n남은 유닛들이 함께 공격할 수 있어.','attack',0,'unit-0'),
-  action(151,'마지막 유닛도 이어서 공격해 봐!','attack',1,'unit-1',{kill:true}),
+  action(151,'마지막 유닛도 이어서 공격해 봐!','attack',1,'unit-1',{waitFor:'battle'}),
   say(160,'완벽해! 내가 잘 가르쳐 준 덕분이지?\n…그 표정은 뭐야? 됐어, 어서 가자!'),
   action(170,'또 나타났네… 뒤쪽 녀석부터 공격하자!\n뒤에 있는 적을 눌러 목표로 정해 봐.','target',1,'enemy-1',{enter:'wave1'}),
   say(174,'목표를 바꿨어! 적을 누르면 언제든\n공격할 대상을 바꿀 수 있다는 걸 기억해.','enemy-1'),
   action(183,'어서 행동 버튼을 눌러 공격해!','attack',2,'unit-2'),
   action(193,'위쪽 유닛도 함께 공격해!','attack',0,'unit-0'),
-  action(206,'아래쪽 유닛도 공격해!','attack',1,'unit-1',{kill:true}),
-  say(221,'공격받으면 유닛의 체력이 줄어들어.\n체력이 0이 되면 싸울 수 없으니 조심해!','hp-2',{enter:'enemy-strike'}),
+  action(206,'아래쪽 유닛도 공격해!','attack',1,'unit-1',{waitFor:'turn'}),
+  say(221,'공격받으면 유닛의 체력이 줄어들어.\n체력이 0이 되면 싸울 수 없으니 조심해!','hp-2'),
   action(230,'좋아, 이제 한 마리 남았어. 끝내 버리자!','attack',2,'unit-2',{heart:true}),
   action(240,'다른 유닛도 이어서 공격해!','attack',0,'unit-0'),
-  action(253,'마지막 공격이야!','attack',1,'unit-1',{kill:true}),
+  action(253,'마지막 공격이야!','attack',1,'unit-1',{waitFor:'action'}),
   say(264,'전투 중 떨어지는 하트 결정은 체력을 회복시켜 줘.\n많이 공격할수록 얻을 기회도 많아져.','heart',{enter:'heart'}),
   say(271,'괴물에게서 보물상자가 나오기도 해.\n상자를 누르면 열 수 있어. 무엇이 들었을까?','chest',{enter:'chest'}),
   action(275,'어서 보물상자를 눌러 열어 봐!','chest',null,'chest'),
@@ -64,7 +64,7 @@ export const TUTORIALS=[
   say(54,'모든 유닛에는 속성이 있어.\n불 · 물 · 숲 · 번개 · 빛 · 어둠, 이렇게 여섯 가지야.','elements'),
   say(60,'괴물에게도 속성이 있어. 이 녀석은 물 속성이네.\n각 속성에는 강한 상대와 약한 상대가 있어.','enemy-current',{enter:'water-target'}),
   say(65,'적을 선택하면 더 큰 피해를 줄 수 있는\n유닛에게 유리한 속성 표시가 나타나.','unit-1'),
-  action(71,'번개는 물에 강해!\n번개 속성 유닛으로 물 속성 적을 공격해 봐.','attack',1,'unit-1',{kill:true}),
+  action(71,'번개는 물에 강해!\n번개 속성 유닛으로 물 속성 적을 공격해 봐.','attack',1,'unit-1',{waitFor:'action'}),
   say(78,'잘했어! 내가 있어서 다행이지?\n나머지 속성의 관계도 보여 줄게.'),
   say(81,'불 → 숲 → 번개 → 물 → 불\n화살표가 가리키는 속성에 강해. 빛과 어둠은 서로에게 강해!','diagram'),
   say(85,'속성은 전투에 큰 영향을 줘.\n상성을 생각해서 부대를 꾸려야 해. 자, 남은 적도 쓰러뜨리자!'),
@@ -72,9 +72,9 @@ export const TUTORIALS=[
   say(97,'더 강한 적이 나타났네.\n특별한 기술, 필살기를 가르쳐 줄 때가 됐어!','bb-2',{enter:'wave1'}),
   say(104,'적을 공격하면 전투 결정이 떨어지기도 해.\n결정은 무작위로 동료에게 들어가 필살기 게이지를 채워 줘.','crystal'),
   say(109,'아직 게이지가 부족하네.\n이번 한 번만 내 마법으로 도와줄게. 고요한 빛이여…','bb-2'),
-  say(114,'전투 결정의 입맞춤!!!','crystal',{enter:'fill-bb',rainbow:true}),
-  action(126,'후후, 대단하지? 이제 필살기를 쓸 수 있어!\n가운데 행동 버튼을 길게 눌러 봐.','hold',2,'unit-2'),
-  action(132,'게이지가 가득 찼을 때 길게 누르면 기술 창이 열려.\n이제 오른쪽 위로 밀어 봐!','burst',2,'unit-2'),
+  say(114,'전투 결정의 입맞춤!!!','crystal',{rainbow:true}),
+  action(126,'후후, 대단하지? 이제 필살기를 쓸 수 있어!\n가운데 행동 버튼을 길게 눌러 봐.','hold',2,'unit-2',{enter:'fill-bb'}),
+  action(132,'게이지가 가득 찼을 때 길게 누르면 기술 창이 열려.\n이제 오른쪽 위로 밀어 봐!','burst',2,'unit-2',{waitFor:'battle'}),
   say(141,'잘했어! 유닛마다 고유한 필살기가 있어.\n게이지를 채워서 사용할 수 있지.'),
   say(142,'공격과 회복처럼 서로를 도울 수 있는\n필살기를 가진 유닛들을 함께 편성해 봐.'),
   say(149,'또 우두머리야! 지금까지 배운 걸 모두 써서\n이번 적도 쓰러뜨려 봐!','enemy-0',{enter:'wave2'}),
@@ -84,17 +84,20 @@ export const TUTORIALS=[
 ];
 
 export class TutorialSession {
- constructor(save,catalog,chapter=1,wave=0){
+ constructor(save,catalog,chapter=1,wave=0,{durationFor=()=>1500}={}){
   this.quest=TUTORIALS.find(q=>q.id===chapter);if(!this.quest||![0,1,2].includes(wave))throw Error('훈련을 찾을 수 없습니다.');
-  this.catalog=catalog;this.name=save.name;this.leader=save.starterId;this.stepIndex=0;
-  this.target=0;this.waiting=false;this.pendingNext=false;this.pendingEnemy=false;this.selectedItem=false;this.commandOpen=false;this.chestOpen=false;this.chestVisible=false;this.crystal=null;
+  this.catalog=catalog;this.durationFor=durationFor;this.name=save.name;this.leader=save.starterId;this.stepIndex=0;
+  this.target=0;this.waiting=false;this.mode=null;this.selectedItem=false;this.commandOpen=false;this.chestOpen=false;this.chestVisible=false;this.crystal=null;
+  this.time=0;this.lastWall=null;this.accumulator=0;this.updates=0;this.heartEvent=false;this.cleanup=false;
   this.visibleParty=chapter===2;this.visibleEnemies=chapter===2;
-  // Temporary rehearsal allies. They do not change the player's owned roster.
-  // initPartyStatus() orders fire support / thunder support / selected leader.
-  const ids=['10030','40030',this.leader];
-  this.battle={questId:'tutorial-'+chapter,seed:72157,turn:1,wave:0,phase:'player',party:ids.map(id=>{
-   const d=catalog[id],s=stats({id,level:chapter===2?2:1},catalog);
-   return {id,...s,maxHp:s.hp,element:d.element,bb:0,bbCost:d.skill.cost,guard:false,acted:false,level:chapter===2?2:1};
+  // Native initPartyStatus reorders existing fire/thunder allies around leader2.
+  // Old saves lacking either ally use an isolated rehearsal stand-in; never
+  // mutate the owned roster. Original server account grants remain unknown.
+  const support=element=>save.party.find(id=>id!==this.leader&&catalog[id].element===element)||({fire:'10030',thunder:'40030'})[element];
+  const ids=[support('fire'),support('thunder'),this.leader];
+  this.battle={questId:'tutorial-'+chapter,seed:72157,turn:1,wave:0,phase:'player',tutorialMode:true,tutorialTarget:chapter===1?2:undefined,party:ids.map(id=>{
+   const owned=save.units[id]||{id,level:1},d=catalog[id],s=stats(owned,catalog);
+   return {id,...s,maxHp:s.hp,element:d.element,bb:0,bbCost:d.skill.cost,guard:false,acted:false,level:owned.level};
   }),enemies:[],damage:0,maxCombo:0,claimed:false,attackBuff:0,defenseBuff:0,itemsUsed:0,events:[],turnActions:0};
   if(wave){this.stepIndex=this.quest.steps.findIndex(s=>s.enter==='wave'+wave);this.visibleParty=true;this.visibleEnemies=true;}
   this.enter();
@@ -102,97 +105,114 @@ export class TutorialSession {
  get step(){return this.quest.steps[this.stepIndex];}
  get complete(){return this.step.kind==='complete';}
  get checkpoint(){return {chapter:this.quest.id,wave:this.battle.wave};}
- text(){return this.step.text.replaceAll('{name}',this.name).replaceAll('{leader}',this.catalog[this.leader].name);}
+ get freeInput(){return this.step.kind==='free'||this.cleanup;}
+ get inputBlocked(){return this.waiting&&!this.freeInput;}
+ get pending(){const b=this.battle;return !!(b.pendingHits?.length||b.actionEnds?.length||b.pendingCrystals?.length);}
+ text(){return this.cleanup?'남아 있는 적을 쓰러뜨려 줘! 동료를 눌러 공격할 수 있어.':this.step.text.replaceAll('{name}',this.name).replaceAll('{leader}',this.catalog[this.leader].name);}
  wave(n){
-  this.battle.wave=n;this.battle.turn=1;this.battle.phase='player';this.battle.turnActions=0;
+  Object.assign(this.battle,{wave:n,turn:1,phase:'player',turnActions:0,pendingHits:[],actionEnds:[],pendingCrystals:[]});
   this.battle.party.forEach(p=>{p.acted=false;p.guard=false;});
-  // Preserve captured array order. Original screen-slot coordinates are unknown.
-  this.battle.enemies=TUTORIAL_ENCOUNTERS[this.quest.id][n].map((enemy,index)=>
-   ({...enemy,index,maxHp:enemy.hp,rec:0,boss:n===2}));
-  this.target=0;this.chestVisible=false;this.crystal=null;
+  this.battle.enemies=TUTORIAL_ENCOUNTERS[this.quest.id][n].map((enemy,index)=>({...enemy,index,maxHp:enemy.hp,rec:0,boss:n===2}));
+  this.target=0;this.chestVisible=false;this.crystal=null;this.cleanup=false;
  }
+ run(mode){this.mode=mode;this.waiting=true;this.updates=0;}
+ enemy(){this.battle.phase='enemyPending';return queueEnemyTurn(this.battle,this.catalog,{at:this.time,durationFor:this.durationFor});}
  enter(){
-  const s=this.step;const events=[];
-  if(s.enter?.startsWith('wave'))this.wave(Number(s.enter.at(-1)));
+  const s=this.step;let events=[];
+  if(s.enter?.startsWith('wave')){this.wave(Number(s.enter.at(-1)));events.push({type:'wave-start'});}
   if(s.enter==='water-target')this.target=this.battle.enemies.findIndex(e=>e.element==='water');
-  if(['enemy-strike','boss-strike'].includes(s.enter)){
-   const p=this.battle.party[2],enemy=Math.max(0,this.battle.enemies.findIndex(e=>e.hp>0));
-   const hp=Math.round(p.maxHp*(s.enter==='boss-strike'?.23:.58)),value=Math.max(0,p.hp-hp);p.hp=hp;
-   this.battle.party.forEach(p=>{p.acted=false;p.guard=false;});this.battle.turn++;this.battle.phase='player';
-   events.push({type:'enemy-hit',enemy,actor:2,value,actual:value,burst:s.enter==='boss-strike'});
-  }
-  if(s.enter==='heart'){
-   const p=this.battle.party[2],value=Math.min(p.maxHp-p.hp,Math.round(p.rec*.35));p.hp+=value;this.crystal='heart';
-   events.push({type:'heal',actor:2,value},{type:'crystal',kind:'heart',actor:2});
-  }
-  if(s.enter==='chest'){this.chestVisible=true;this.crystal=null;}
+  if(s.enter==='boss-strike'){events.push(...this.enemy());this.run('entry');}
+  if(s.enter==='heart')this.crystal='heart';
+  if(s.enter==='chest'){this.chestVisible=true;this.crystal=null;this.heartEvent=false;this.battle.forceHeartDrop=false;}
   if(s.enter==='fill-bb'){
-   this.battle.party.forEach(p=>p.bb=p.bbCost);this.crystal='battle';events.push(...this.battle.party.map((_,actor)=>({type:'crystal',kind:'battle',actor})));
+   // tuto9 lines117–121: drop15, wait1.5s, getAll, wait1.5s.
+   this.crystal='battle';this.deadline=this.time+3000;this.run('spell');
+   for(let i=0;i<15;i++)events.push(queueCrystal(this.battle,{kind:'battle',actor:2,value:1,at:this.time,collectAt:this.time+1500,ordinal:i}));
   }
   if(s.kind==='free'){this.crystal=null;this.commandOpen=false;this.battle.phase='player';}
   return events;
  }
  allowed(type,index){
-  if(this.waiting||this.complete)return false;
-  const s=this.step;
+  if(this.inputBlocked||this.complete)return false;
+  const s=this.step,b=this.battle;
+  if(this.freeInput){
+   if(b.phase!=='player')return false;
+   if(['attack','guard','burst','hold'].includes(type))return !!b.party[index]&&b.party[index].hp>0&&!b.party[index].acted;
+   return ['target','item','heal'].includes(type);
+  }
   if(s.kind==='story'||s.kind==='say')return type==='next';
-  if(s.kind==='free')return ['attack','guard','burst','target','item','heal','hold'].includes(type);
   return s.input===type&&(s.index==null||s.index===index);
  }
  advance(){
   if(this.step.after==='show-enemies')this.visibleEnemies=true;
   if(this.step.after==='show-party')this.visibleParty=true;
-  this.stepIndex=Math.min(this.stepIndex+1,this.quest.steps.length-1);
-  return this.enter();
- }
- strike(index,burst=false){
-  const b=this.battle,p=b.party[index],info=this.catalog[p.id],s=this.step;
-  const targets=burst?b.enemies.map((e,i)=>({e,i})).filter(x=>x.e.hp>0):[{e:b.enemies[this.target],i:this.target}];
-  const events=[];p.acted=true;
-  for(const {e,i} of targets){
-   const value=s.kill||burst?e.hp:Math.min(e.hp-1,Math.ceil(e.maxHp/3));e.hp-=value;b.damage+=value;
-   events.push({type:'hit',actor:index,target:i,mode:burst?'burst':'attack',hits:burst?info.skill.hits:info.hits,value,actual:value,critical:false,element:elementMultiplier(p.element,e.element),spark:false});
-  }
-  if(burst){p.bb=0;this.commandOpen=false;this.crystal=null;}
-  else p.bb=Math.min(p.bbCost,p.bb+4);
-  if(b.enemies[this.target].hp<=0)this.target=Math.max(0,b.enemies.findIndex(e=>e.hp>0));
-  b.maxCombo=Math.max(b.maxCombo,burst?info.skill.hits:info.hits);return events;
+  this.cleanup=false;this.mode=null;this.waiting=false;
+  this.stepIndex=Math.min(this.stepIndex+1,this.quest.steps.length-1);return this.enter();
  }
  perform(type,index){
   if(!this.allowed(type,index))return {accepted:false,events:[]};
-  const s=this.step,b=this.battle;let events=[];
+  const s=this.step,b=this.battle,free=this.freeInput;let events=[];
   if(type==='next')events=this.advance();
   else if(type==='target'){
    if(!b.enemies[index]||b.enemies[index].hp<=0)return {accepted:false,events:[]};
-   this.target=index;if(s.kind!=='free')events=this.advance();
+   this.target=index;if(!free)events=this.advance();
   }else if(type==='item'){
    if(b.itemsUsed>=3||b.phase!=='player')return {accepted:false,events:[]};
-   this.selectedItem=!this.selectedItem;if(s.kind!=='free')events=this.advance();
+   this.selectedItem=!this.selectedItem;if(!free)events=this.advance();
   }else if(type==='heal'){
    if(!this.selectedItem)return {accepted:false,events:[]};
    const value=usePotion(b,index);this.selectedItem=false;events.push({type:'heal',actor:index,value});
-   if(s.kind!=='free')this.pendingNext=true;
+   if(!free){this.deadline=this.time+1000;this.run('wait');}
   }else if(type==='chest'){
-   this.chestOpen=true;events.push({type:'chest'});this.pendingNext=true;
+   this.chestOpen=true;events.push({type:'chest'});this.deadline=this.time+650;this.run('wait');
   }else if(type==='hold'){
-   this.commandOpen=true;this.commandIndex=index;if(s.kind!=='free')events=this.advance();
-  }else if(s.kind==='free'){
-   events=act(b,index,type,this.target,this.catalog);
-   if(b.enemies[this.target]?.hp<=0)this.target=Math.max(0,b.enemies.findIndex(e=>e.hp>0));
-   if(b.phase==='waveclear')this.pendingNext=true;
-   if(b.phase==='enemyPending')this.pendingEnemy=true;
-   this.commandOpen=false;
-  }else if(type==='attack'||type==='burst'){
-   events=this.strike(index,type==='burst');this.pendingNext=true;
+   if(b.party[index].acted)return {accepted:false,events:[]};
+   this.commandOpen=true;this.commandIndex=index;if(!free)events=this.advance();
+  }else if(['attack','burst','guard'].includes(type)){
+   if(s.heart)this.heartEvent=true;
+   if(this.heartEvent)b.forceHeartDrop=true; // PARAM100 'none' preserves event.
+   events=queueAction(b,index,type,this.target,this.catalog,{at:this.time,duration:this.durationFor(b.party[index].id)+330});
+   this.commandOpen=false;if(type==='burst')this.crystal=null;
+   this.run(free?'battle':s.waitFor||'pause');
   }
-  if(events.length)this.waiting=true;
   return {accepted:true,events};
  }
- settle(){
-  this.waiting=false;let events=[];
-  if(this.pendingNext){this.pendingNext=false;events=this.advance();}
-  else if(this.pendingEnemy){this.pendingEnemy=false;events=enemyTurn(this.battle);}
-  if(events.length)this.waiting=true;
-  return {accepted:true,events};
+ frame(){
+  if(!this.waiting)return {events:[],changed:false};
+  // checkTutorialState runs before loopBattle. It advances five times and
+  // freezes both packets and actor animation on the sixth scene check.
+  if(this.mode==='pause'&&this.updates>=5)return {events:this.advance(),changed:true};
+  this.time+=1000/60;this.updates++;
+  const events=advanceCombat(this.battle,this.time),b=this.battle;
+  if(b.enemies[this.target]?.hp<=0)this.target=Math.max(0,b.enemies.findIndex(e=>e.hp>0));
+  if(this.mode==='pause')return {events,changed:events.length>0};
+  if(this.mode==='spell'){
+   if(this.time>=this.deadline&&!this.pending){this.waiting=false;this.mode=null;return {events,changed:true};}
+  }else if(this.mode==='wait'){
+   if(this.time>=this.deadline)return {events:[...events,...this.advance()],changed:true};
+  }else if(!this.pending){
+   if(this.mode==='entry'){this.waiting=false;this.mode=null;return {events,changed:true};}
+   if(this.mode==='action')return {events:[...events,...this.advance()],changed:true};
+   if(this.mode==='turn'){
+    if(b.phase==='enemyPending'){events.push(...this.enemy());this.mode='after-enemy';}
+    else return {events:[...events,...this.advance()],changed:true};
+   }else if(this.mode==='after-enemy')return {events:[...events,...this.advance()],changed:true};
+   else if(this.mode==='battle'){
+    if(b.phase==='waveclear')return {events:[...events,...this.advance()],changed:true};
+    if(b.phase==='enemyPending')events.push(...this.enemy());
+    else if(b.phase==='player'){this.waiting=false;this.cleanup=this.step.kind!=='free';return {events,changed:true};}
+   }
+  }
+  return {events,changed:events.length>0};
  }
+ tick(now,{paused=false}={}){
+  if(this.lastWall===null){this.lastWall=now;return {accepted:true,events:[],changed:false};}
+  const delta=now-this.lastWall;this.lastWall=now;
+  if(paused||!this.waiting){this.accumulator=0;return {accepted:true,events:[],changed:false};}
+  this.accumulator+=Math.min(250,Math.max(0,delta));const events=[];let changed=false;
+  while(this.accumulator>=1000/60&&this.waiting){this.accumulator-=1000/60;const next=this.frame();events.push(...next.events);changed||=next.changed;}
+  return {accepted:true,events,changed};
+ }
+ // Deterministic headless adapter only. The browser advances through tick().
+ settle(){let events=[];for(let i=0;this.waiting&&i<3600;i++)events.push(...this.frame().events);if(this.waiting)throw Error('훈련 대기 상태를 끝내지 못했습니다.');return {accepted:true,events};}
 }

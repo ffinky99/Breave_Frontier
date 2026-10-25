@@ -1,10 +1,25 @@
 /* Original 640-wide battle panels and APK dialogue textures. */
-.prologue-screen{position:relative;min-height:100dvh;height:max(150cqw,100dvh);background:#000;color:#eee8d8;text-align:center;overflow:hidden}
-.prologue-light{position:absolute;top:17cqw;left:15%;width:70%;height:50cqw;display:grid;place-items:center;isolation:isolate;animation:wakeIn 1s}
-.prologue-light img{position:absolute;width:70%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:.3;filter:sepia(.8) hue-rotate(75deg) saturate(.9);animation:gateLight 5s ease-in-out infinite;animation-delay:calc(var(--i)*-1s)}
-.prologue-words{position:absolute;left:3.125%;width:93.75%;top:75cqw;font-size:4.1cqw;line-height:2.1;animation:wakeIn .6s}
-.prologue-words>p{min-height:34cqw}.prologue-words>button{display:block;width:100%;background:transparent;color:#d8c899;font-size:2.9cqw;margin-top:6cqw;padding:3cqw}.prologue-words>label{display:block;font-size:2.8cqw}.prologue-words>input{width:75%;text-align:center;font-size:4cqw;padding:2cqw;border:1px solid #96856b;border-radius:3px}
-@keyframes gateLight{0%,100%{transform:rotate(-12deg) scale(.5);opacity:0}50%{transform:rotate(12deg) scale(1);opacity:.3}}
+body[data-screen=prologue] .game-shell,body[data-screen=starter] .game-shell{background:#000}
+.prologue-screen,.starter-screen{position:relative;height:150cqw;background:#000;color:#dcdcdc;text-align:center;overflow:hidden}
+#intro-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.prologue-touch{position:absolute;inset:0;width:100%;height:100%;background:none;padding:0;color:#dcdcdc;text-align:center}
+.prologue-touch:disabled{opacity:1;filter:none;cursor:default}
+.prologue-words{position:absolute;left:3.125%;top:73.75cqw;width:93.75%;height:81.25cqw;white-space:pre-line;font-size:4.6875cqw;line-height:7.1875cqw;font-weight:700}
+#intro-name-form label{position:absolute;left:10%;top:75cqw;width:80%;height:30cqw;font-size:5cqw;line-height:6.25cqw;color:#dcdcdc}
+#prologue-name{position:absolute;left:18.75%;top:95cqw;width:62.5%;height:10cqw;background:transparent url('assets/handle_name_frame.png') center/100% 100%;border:0;border-radius:0;text-align:center;padding:1.5cqw 3cqw;font-size:4.375cqw;color:white}
+.intro-button{position:absolute;width:31.875%;height:13.125cqw;background:transparent url('assets/sub_m_btn1.png') center/100% 100%;border:0;color:#fff5ba;font-weight:900;font-size:4.375cqw;text-shadow:1px 1px #000;padding:0}
+.intro-button:active{background-image:url('assets/sub_m_btn2.png')}.intro-button:disabled{opacity:.6}
+.name-random{left:15%;top:116.25cqw}.name-ok{left:55%;top:116.25cqw}
+.hero-pages{position:absolute;inset:0;overflow:hidden;touch-action:pan-y;user-select:none}.hero-page{position:absolute;inset:0;width:100%;height:100%}
+.hero-page img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:auto;max-width:none;opacity:.39215686;pointer-events:none}
+.hero-page p{position:absolute;left:20%;width:60%;height:100%;top:0;display:flex;flex-direction:column;justify-content:center;font-size:5cqw;line-height:7.5cqw;font-weight:700;color:#fff;text-shadow:1px 1px #000;margin:0;pointer-events:none}
+.hero-page p{display:block;align-content:center}
+.hero-arrow{position:absolute;top:65cqw;left:0;width:20%;height:20cqw;background:none;padding:0}.hero-right{left:80%}.hero-arrow canvas{width:100%;height:100%}.hero-ok{left:34.0625%;top:100cqw}
+.intro-skip{position:absolute;left:2.734375%;top:12.65625cqw;width:94.53125%;height:124.6875cqw;background:#090909 url('assets/sys_win_base.png');border:2px solid #c3ac70;border-radius:8px}
+.intro-reward-art{position:absolute;left:4.545%;top:6.68cqw;width:90.91%;height:89.0625cqw;color:#fff4b8;font-weight:900;text-shadow:2px 2px #000,-1px -1px #000}
+.intro-reward-art img{width:100%;height:100%}.intro-reward-art strong,.intro-reward-art b{position:absolute;background:#080902;display:grid;place-content:center;line-height:1.3}
+.reward-heading{top:0;left:0;width:100%;height:29%;font-size:5.3cqw}.reward-gems{top:28%;left:2%;width:45%;height:13%;font-size:5.3cqw}.reward-zel{top:59%;left:47%;width:51%;height:13%;font-size:5cqw}.reward-footer{top:74%;left:0;width:100%;height:25%;font-size:4.8cqw;padding:3cqw}
+.intro-skip-copy{position:absolute;top:94.6875cqw;left:5.95%;width:79%;font-size:3.75cqw;line-height:5cqw;text-align:left;margin:0}.intro-skip .intro-button{top:105.9375cqw;width:33.72%}.skip-left{left:11.22%}.skip-right{left:55.06%}
 .battle-screen{position:relative;isolation:isolate}
 .battle-unit{touch-action:none;user-select:none;-webkit-user-select:none}
 .tutorial-hub{padding-bottom:6cqw;min-height:110cqw;background:linear-gradient(#050b1455,#050b14df),url('assets/dungeon_battle_10100.jpg') center/cover}
